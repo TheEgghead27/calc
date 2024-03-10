@@ -1,0 +1,517 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%%\usepackage[letterpaper, margin=1in]{geometry}
+\usepackage{pgfplots}
+\usepackage{soul}
+\usepackage{graphicx} % Required for inserting images
+\usepgfplotslibrary{external}
+\tikzexternalize
+\pgfplotsset{compat=1.18}
+
+\title{Honner's Honors Calculus (Spring Semester)}
+\author{David Chen}
+\date{February - June 2024}
+
+\begin{document}
+
+\maketitle
+\section{Integration Techniques}
+\subsection{Trig Integrals}
+
+$$ \frac{d}{dx} asin(x) = \frac{1}{\sqrt{1 - x^2}} + C $$
+$$ \frac{d}{dx} atan(x) = \frac{1}{1 + x^2} + C $$
+
+\section{Indeterminate Forms - 6.8}
+Limits of the form $\frac{0}{0}$ or $\frac{\infty}{\infty}$. These do not indicate the true value of the limit.
+
+As a reminder:
+$$\lim_{x \to 0^+} \frac{1}{x} = + \infty$$
+is a valid limit, but it is invalid to write $$\lim_{x \to 0} \frac{1}{x}$$
+
+\subsection{L'Hôpital's Rule}
+Suppose $f(x)$ and $g(x)$ are differentiable and that $g'(x) \ne 0$ around a. If $\lim_{x\to a} \frac{f(x)}{g(x)}$ produces the indeterminate form $\frac{0}{0}$ or $\frac{\pm \infty}{\pm \infty}$, then $$\lim_{x \to a} \frac{f(x)}{g(x)} = \lim_{x \to \infty} \frac{f'(x)}{g'(x)}$$ provided that the limit on the right exists or is equal to $\pm \infty$.
+
+For L'Hôpital's Rule to apply, we must have a \emph{ratio} of functions, and in a true indeterminate form.
+
+\subsubsection{Pseudo-proof}
+Suppose $f$, $g$ are differentiable, and $\lim_{x \to a} f(x) = lim_{x \to a} g(x) = 0$. Recall, by linearization, we approximate $f$ around $a$ as $f(x) \approx f(a) + (x-a)f'(a)$. Consider that                                                                                              
+
+\begin{align*}
+   \frac{f(x)}{g(x)} & \approx \frac{f(a) + (x-a)f'(a)}{g(a) + (x-a)g'(a)} \\
+                     & \approx \frac{0 + (x-a)f'(a)}{0 + (x-a)g'(a)} \\
+                     &       = \frac{f'(a)}{g'(a)}
+\end{align*}
+
+\subsection{Improper Integrals - 7.8}
+An improper integral is an integral with an infinite limit of integration, or there exists a finite number of discontinuities between the limits of integration.
+
+Note that this integral may not exist, in which case it diverges (usually to $\pm \infty$). If the limit exists, then the integral converges.
+
+Example/Definition:
+$$\int_{1}^{\infty} e^{-x} dx = \lim_{b \to \infty} \int_{1}^{b} e^{-x} dx $$
+
+We must also use an improper integral bound limit to account for discontinuities:
+$$\int_{-1}^{1} \frac{1}{x^2} = \lim_{b \to 0} \int_{-1}^{b} \frac{1}{x^2} + \lim_{d \to 0} \int_{d}^{1} \frac{1}{x^2} $$
+
+\subsubsection{Some Ideas to be Wary Of}
+These are reasonable statements about improper integrals with a bound of $\infty$, but they are not accurate.
+
+\begin{enumerate}
+    \item The area accumulates forever, thus it is infinite.
+    \item The region is unbounded, thus its area is infinite.
+    \item \st{Just because the rate of accumulation (accumulated area) decreases, that does not guarantee that the total area is finite.} Beware $\frac{1}{x}$.
+\end{enumerate}
+
+\subsubsection{Bounding Argument to Provide Convergence/Divergence}
+If $0 \le f(x) \le g(x)$ then $$\int_{1}^{\infty} f(x) dx \le \int_{1}^{\infty} g(x) dx$$.
+
+Suppose you want to show that $f(x)$ converges. If you can find a $f(x) \ge f(x)$ that converges, then $f(x)$ converges. (A similar argument can be used to prove $g(x)$ diverges.)
+
+\section{Area/Volume (BC)}
+\subsection{Area Between Two Curves - 5.1}
+If $f$ and $g$ are continuous on $[a,b]$ with $f(x) \ge g(x)$ for $x \in [a,b]$, then the area between $f$ and $g$ from $a$ to $b$ is $$\int_{a}^{b} (f-g)dx$$ (or $\int_{a}^{b} |f-g| dx$).
+
+This can also be interpreted geometrically as the integral of the vertical difference between $f$ and $g$.
+
+\subsection{Solids of Revolution - 5.2}
+Solids with axial symmetry about an axis of revolution.
+
+\begin{enumerate}
+    \item Sketch the solid formed by revolving a region $R$ about an axis.
+    \item Suggest a method for computing the volume of the solid.
+\end{enumerate}
+
+Do be mindful of the fact that $V \propto Ar$, the radius (distance from axis of rotation) matters.
+
+\subsubsection{Disk/Washer Method}
+Integrates parallel to the axis of rotation. May be inconvenient, if not impossible, when finding an inverse function for $x$ in terms of $y$ is necessary.
+
+Based on a Riemann Sum of small disks $\pi r^2h$ becoming $$\lim_{n \to \infty} \sum_{i=1}^{n} \pi(f(x_i)^2)\Delta x_i$$
+
+Washers are merely the difference in area between a large disk and a concentric small disk.
+
+Let $f(x)$ be the function producing the curve underneath which the region $R$ is bounded by (with the other bounding sides being $x = a$, $x = b$, and $g(x)$). Additionally, let $g(x)$ be the bottom bound curve function. It is possible that $g(x) = 0$ (bottom bound is simply the x-axis). In this case, we are revolving about the x-axis.
+
+$$V = \pi \int_{a}^{b} (f(x)^2) dx$$
+$$V = \pi \int_{a}^{b} (f(x)^2 - g(x)^2) dx$$
+
+\subsubsection{Shell Method  - 5.3}
+Integrates perpendicular to the axis of rotation. May be inconvenient if one lacks a curve function corresponding to these axes.
+
+Based on a Riemann Sum of rectangular prisms $2 \pi rhw$ becoming
+$$\lim_{n \to \infty} \sum_{i=1}^{n} 2 \pi r(x_i) f(x_i) \Delta x_i$$
+
+Shells can be "unwrapped" into a figure resembling a rectangular prism, with the difference in area approaching $0$ as $w = \Delta x \to 0$.
+
+Let $f(x)$ be the function producing the curve underneath which the region $R$ is bounded by (with the other bounding sides being $x = a$, $x = b$, and $y = 0$). Let $r(x)$ be the function representing the distance ("radius") of the curve from the axis of rotation (usually $r(x) = b - x$, with $b$ potentially being $0$). In this case, we are revolving about the y-axis.
+
+$$V = 2\pi \int_{a}^{b} r(x)f(x) dx$$
+
+\subsubsection{Volume by Known Cross Section}
+Let $A(x)$ be the area of the cross section.
+
+$$V = \int_{a}^{b} A(x)dx$$
+
+The Disk/Washer method is a special case of the volume by known cross section ($A(x) = 2\pi x^2$, circles).
+
+\subsection{Arclength - 8.1}
+The length of an arc. Defined as
+$$ s = \int_{a}^{b} \sqrt{1+(f'(x))^2} dx$$
+
+Based on using infinitely many line segments to approximate the length of an arc.
+$S = \sqrt{(x_1-x_0)^2} + \sqrt{(x_2-x_1)^2} + ... + \sqrt{(x_n-x_{n-1})^2}$ ($\sum_{i=1}^n \sqrt{(\Delta x_n)^2 + (\Delta y_n)^2}$)
+
+For each term $\Delta s$, $\Delta s^2 = (\Delta x)^2 + (\Delta y)^2$.
+Since  $\Delta y = f(x + \Delta x) - f(x) = \frac{f(x + \Delta x) - f(x)}{\Delta x}\Delta x$, $\Delta y = f'(x)\Delta x$.
+
+\begin{align*}
+    S & = \sum_{i=1}^n \sqrt{(\Delta x_n)^2 + (f'(x_n)\Delta x_n)^2} \\
+      & = \sum_{i=1}^n \sqrt{(\Delta x_n)^2(1 + f'(x_n)^2)} \\
+      & = \int \sqrt{dx^2(1 + f'(x)^2)} \\
+      & = \int \sqrt{1 + (f'(x))^2} dx
+\end{align*}
+
+\subsubsection{The Three Forms of Arclength You can Do}
+\begin{enumerate}
+    \item Lines
+    \item Convenient u-sub polynomial
+    \item Circles (requires arcsine)
+    \item Calculator and cope
+\end{enumerate}
+
+\subsection{Surface Areas of Revolution - 8.2}
+Integrates using lateral surface areas of frustrums (difference between two right circular cones).
+
+Letting $r_1$, $l_1$ be the radius and slant height of the smaller cone, $r_2$, $l_1 + l$ be the radius and slant height of the second cone:
+$$A = \pi r_2(l_1 + l) - \pi r_1 l_1 = \pi[(r_2 - r_1)l_1 + r_2l]$$
+
+Based on similar triangles,
+$$\frac{l_1}{r_1} = \frac{l_1 + 1}{r_2}$$
+
+so $r_2 l_1 = r_1 l_1 + r_1 l$, $r_1 l = (r_2 - r_1)l_1$, and letting $r = \frac{r_1 + r_2}{2}$
+
+$$A = \pi (r_2 + r_1)l = 2 \pi r l$$
+
+When we are integrating, $l$ is the arclength, and $r$ is the radius from the axis of rotation, likely $f(x) = y$ or $g(y) = x$.
+
+Thus, for rotation about the x-axis:
+$$S = \int_{a}^{b} 2 \pi f(x) \sqrt{1 + f'(x)^2} dx = \int_{a}^{b} 2 \pi y \sqrt{1 + g'(y)^2} dy$$
+
+and for rotation about the y-axis:
+$$S = \int_{a}^{b} 2 \pi x \sqrt{1 + f'(x)^2} dx = \int_{a}^{b} 2 \pi g(y) \sqrt{1 + g'(y)^2} dy$$
+
+
+\section{Conic Sections}
+Conic sections are obtained through slicing a cone. The different types of conic section have analogous properties.
+
+\subsection{Parabola}
+
+\subsubsection{Construction/Locus}
+A parabola is the locus (of points in the plane) that is equidistant from a given point (focus) and a given line (directrix).
+\begin{flushright}
+    - The locus (set of points) definition of a parabola.
+\end{flushright}
+
+\subsubsection{Focus/Directrix}
+For a parabola of focus point $F(a,b)$, directrix $y=k$:
+$$\sqrt{(x-a)^2 + (y-b)^2} = |y-k|$$
+
+\subsubsection{Analytic Properties}
+\begin{itemize}
+    \item $p$ is the focal length, the distance between the vertex of a parabola and its focus/directrix.
+    \item The distance between focus and directrix is $2p$.
+    \item In the special case that the focus is on the y-axis ($F(0, p)$), the directrix is $y = -p$, the equation of the parabola has the form $$x^2 = 4py$$ or $$y^2=4px$$
+    
+    One can use translations (as they are rigid motions) to orient a parabola into this form. This includes completing the square.
+
+    \item A chord of a parabola is a line segment with two intersections with the parabola.
+        \begin{itemize}
+            \item The focal chord is a chord that also spans through the focus.
+            \item The Latus Rectum is the focal chord parallel to the directrix. The length is the focal width, $w = 4p$.
+        \end{itemize}
+
+    \item For a parabola $y=x^2$, a chord of endpoints $(a, a^2)$ and $(b, b^2)$ has a parallel tangent line at $(\frac{a+b}{2}, (\frac{a+b}{2})^2$.
+    \item Perpendicular tangent lines on a parabola will intersect on the directrix.
+    \item The y-intercept of a line tangent to $y=f(x)$ at $(a, a^2)$ has a y-intercept of $-a^2$.
+\end{itemize}
+
+\subsubsection{Reflective Property}
+The reflective property of the parabola is that the angle between a ray perpendicular to the directrix, and the tangent line at the intersection, is equal to the angle between the focus and that point of intersection. (All inbound rays will converge at the focus, useful for satellite dishes, all rays emitted from the focus will go in the same direction, useful for lights).
+
+\subsection{Ellipse}
+\subsubsection{Construction/Locus}
+The locus of points where the sum of the two focal distances is a constant $2a$.
+
+\paragraph{Fundamental Ellipse Equation (Focal Sum/Focal Width)}
+$$F_1P + F_2P = 2a$$
+
+\paragraph{Familiar Ellipse Equation}
+$$\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$$
+\\
+Based on  $b^2x^2+a^2y^2=a^2b^2$ as derived from the Fundamental Ellipse Equation.
+
+Note that $b^2 = a^2 - c^2$, $c^2=a^2-b^2$.
+
+\subsubsection{Focus/Directrix}
+The ratio of distance between a point to a focus $(0, c)$ of the ellipse, and the line $x = \frac{a^2}{c} = \frac{a}{e}$ is a constant:
+$$\frac{\sqrt{(x-c)^2+y^2}}{|x-\frac{a}{e}|} = \frac{c}{a} = e < 1$$
+
+The parabola is a special case of this equation with $e = 1$.
+
+\subsubsection{Analytic Properties}
+Expressions are provided for the special case of ellipses centered at $(0, 0)$ and with the x-axis as the major axis.
+
+\begin{itemize}
+    \item Foci: Points $F_1(-c, 0)$ and $F_2(c, 0)$
+    \item Focal Radii: $\overline{F_1P}$, $\overline{F_2P}$
+    \item Center: $(0, 0)$
+    \item Vertices: $(-a, 0)$, $(a, 0)$
+    \item Semi-Major Axis Length: $a$ ($a > b$, Major Axis is the wider one)
+    \item Semi-Minor Axis Length: $b$
+    \item Major Axis Length: $2a$ (see above)
+    \item Eccentricity: $e = \frac{c}{a}$, $0 < e < 1$ (The eccentricity of an ellipse is always between $0$ and $1$.)
+
+        As $e \to 0$, the ellipse figure approaches that of a circle.
+    \item Area: $ab\pi = (\sqrt{ab})^2\pi$, (related to geometric mean of "principal radii")
+    \item Circumference: No closed form exists
+\end{itemize}
+
+\subsubsection{Reflective Property}
+The reflective property of an ellipse is that the angle between any rays emitted from one focus to the ellipse is equal to the angle between the ray-ellipse intersection and the second focus. (All emitted rays from a focus will dissipate, then reconverge at the second focus at the same time due to the constant focal sum.)
+
+\subsection{Hyperbola}
+\subsubsection{Construction/Locus}
+The set of all points where the difference of the two focal distances is $2a$.
+
+\paragraph{Fundamental Hyperbola Equation (Focal Difference)}
+$$|\sqrt{(x-c)^2+y^2}-\sqrt{(x+c)^2+y^2})| = 2a$$
+
+\paragraph{Familiar Hyperbola Equation}
+$$\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$$
+
+Here, $b^2 = c^2 - a^2$, $c^2 = a^2 + b^2$.
+
+\subsubsection{Focus/Directrix}
+The set of points in which the distance to a focus $F(\pm c, 0)$ and a line $x = \frac{a^2}{c} = \frac{a}{e}$ ($a < c$) is a constant ratio $\frac{c}{a} = e > 1$.
+
+This is very similar to the focus/directrix construction of an ellipse, but now the line $x = \frac{a}{e}$ is between the foci.
+
+$$\frac{\sqrt{(x-c)^2+y^2}}{|x-\frac{a}{e}|} = \frac{c}{a} = e > 1$$
+
+\subsubsection{Analytic Properties}
+Expressions are provided for the special case of ellipses centered at $(0, 0)$ and with the x-axis as the focal axis.
+
+\begin{itemize}
+    \item Foci: Points $F_1(-c, 0)$ and $F_2(c, 0)$
+    \item Center: $(0, 0)$
+    \item Vertices: $(-a, 0)$, $(a, 0)$
+    \item Transverse Axis Length: $2a$
+    
+    The length of the line segment (distance) between the vertices.
+    
+    \item Conjugate Axis Length: $2b$
+    
+    The height of a rectangle bounded by the vertices, with diagonals being the asymptotes; technically this is the line segment centered at the origin, but it is alright to think of it as the side lengths.
+    
+    \item Eccentricity: $e = \frac{c}{a}$, $e > 1, a < c$
+    \item Asymptotes: $y = \pm\frac{b}{a}x$
+
+    Derived from $$\lim_{x \to \infty} \pm \frac{b}{a} \sqrt{x^2-a^2} = y$$ ($x^2 \gg a^2)$
+\end{itemize}
+
+\subsubsection{Reflective Property}
+The reflective property of a hyperbola is that an exterior ray aimed at a focus $F_1$ will reflect off the portion of the hyperbola near $F_1$ towards the second focus $F_2$.
+
+\subsection{Distance from a Point to a Line}
+For a point $P(x_o, y_o)$, and a line given by $Ax + By + C = 0$
+
+$$d = \frac{|C + Ax_o + By_o|}{\sqrt{A^2+B^2}}$$
+
+This is on its own a generalization of the boolean question "is a point on a line?" to a qualitative "how much is this point not on the line?"
+
+This can be generalized to any dimension.
+
+\subsection{Transformations}
+In general, transformations are two-variable functions that map planes onto other planes.
+
+\subsubsection{u-v Substitution Method}
+\paragraph{Translations}
+For a translation $(x, y) \longrightarrow (x + a, y + b)$, one can transform the x-y plane into the u-v plane by letting
+\begin{align*}
+    u & = x + a  \\
+    v & = y + b
+\end{align*}
+
+Then, we solve for $x$ and $y$, generating
+\begin{align*}
+    u - a & = x  \\
+    v - b & = y
+\end{align*}
+
+So for any point $P(x,y)$, there is a translated point $P'(u-a,v-b)$, or if we relabel the variables to be more familiar, $P'(x-a,y-b)$.
+
+In this case, $du = dx$ and $dv = dy$, representing how this is an isometry with perpendicular axes maintained.
+
+\paragraph{Axial Scaling}
+For a translation $(x, y) \longrightarrow (ax, by)$, one can find
+\begin{align*}
+    \frac{u}{a} & = x  \\
+    \frac{v}{b} & = y
+\end{align*}
+
+Here, $du = adx$ and $dv = bdy$, this is not an isometry.
+
+If we are to scale a circle in the x-y plane, we get
+\begin{align*}
+    x^2+y^2 & = 1 \\
+    \left( \frac{x}{a} \right)^2 + \left( \frac{y}{b} \right)^2 & = 1
+\end{align*}
+or an ellipse.
+
+\subsection{Rotations}
+For a given point $P(x,y)$, let us find $P' = R_{O, \theta}(x,y)$.
+
+We can rewrite $x$ and $y$ in terms of the trigonometric ratios of the right triangle formed between the point, the x-axis, and the origin.
+
+Letting $r$ be the distance $PO$:
+\begin{align*}
+    x &= r \cos{\alpha} \\ 
+    y &= r \sin{\alpha}
+\end{align*}
+
+Because rotation is about a circle centered about a point (in this case, $O(0,0)$), $PO = P'O = r$.
+However, the angle has changed from $\alpha$ to $\alpha + \theta$.
+
+Thus, the new coordinates are:
+\begin{align*}
+    u &= r \cos{\alpha + \theta} = r \cos{\alpha}\cos{\theta} - r \sin{\alpha}\sin{\theta} \\ 
+    v &= r \sin{\alpha + \theta} = r \sin{\alpha}\cos{\theta} + r \cos{\alpha}\sin{\theta} \\
+    u &= x \cos{\theta} - y \sin{\theta} \\
+    v &= x \sin{\theta} + y \cos{\theta}
+\end{align*}
+
+If we are rotating a point, we can use these equations directly, with $(u,v)$ being the new image.
+
+However to operate on an equation, we must solve for $x$ and $y$ based on these last two equations.
+
+Making convenient substitutions of $u \cos{\theta}$ and $v \sin{\theta}$, or $u \sin{\theta}$ and $v \cos{\theta}$ will make it possible to resolve the system of equations.\footnote{Alternatively, one can rotate by $-\theta$ to invert the rotation operation.}
+
+In the end, we find that a point $(x,y)$ rotated about the origin by angle $\theta$ has $x$ and $y$ coordinates
+\begin{align*}
+    x' =  x \cos{\theta} &+ y \sin{\theta} \\
+    y' = -x \sin{\theta} &+ y \cos{\theta}
+\end{align*}
+
+Or in short, $(x,y) \longrightarrow (x \cos{\theta} + y \sin{\theta}, -x \sin{\theta} + y \cos{\theta})$.
+
+Notice that the new coordinates $(x',y')$ are dependent upon both $x$ and $y$ terms from the original point, indicating an increase in complexity compared to translations and scaling.
+
+\subsection{Unifying Principles}
+\begin{itemize}
+    \item Reflective Properties
+    \item Focus-Directrix Properties
+    \item Locus Definitions
+    \item Eccentricity - related to the angle of the plane intersecting the cone, indicative of similarity
+    \item Symmetry
+    \item Conic Section - including degenerate hyperbola (double $abs(x)$) and degenerate ellipse (point) and degenerate parabola (tangent line)
+    \item Construction from Dandelin Spheres
+    \item Analytic Form
+\end{itemize}
+\subsubsection{General Analytic Form of Conic Sections}
+$$Ax^2 + By^2 + Cxy + Dx + Ey + F = 0$$
+
+Assuming $C = 0$, so there is no cross-term induced rotation:
+\begin{itemize}
+    \item Circles show up when $A = B$, we simply complete the square and toss the remaining constant terms over to $r^2$.
+    \item Ellipses show up when $AC > 0$ (same sign), $A \ne C$.
+    \item Hyperbolas show up when $AC < 0$ (different sign).
+    \item Parabolas show up with either $A = 0$ \emph{or} $B = 0$.
+\end{itemize}
+
+Assuming one of $A, B, C, D, E \ne 0$, it is possible to divide by that number to reveal an equivalent equation with only $5$ variables to solve for. Thus, it is possible to generate a general conic from $5$ points.
+
+Circles can be solved for using $3$ points, and so can (vertical, assuming $B, C = 0$) parabolas.
+
+There are three cases for the \emph{discriminant} of the general conic:
+\begin{enumerate}
+    \item If $C^2 - 4AB > 0$, the conic section is a hyperbola.
+    \item If $C^2 - 4AB = 0$, the conic section is a parabola.
+    \item If $C^2 - 4AB < 0$, the conic section is a ellipse.
+\end{enumerate}
+
+\section{Parametric/Polar}
+\subsection{Parameterization}
+A parameterization, which produces a parametric curve, defines a set of points $(x, y)$ as functions $(x(t), y(t))$.
+
+A parameterization can be described as a function $r(t) = (x(t), y(t))$, a mapping of the $\mathbb{R}$ number line (the domain) onto a set of points (the range) in $\mathbb{R}^2$. This can also be considered a new coordinate system where the $t$ coordinates correspond to points on a curve rather than an axis.
+
+
+\paragraph{Parameterization of a line}
+Treating points $A$, $B$ as vectors (only addition, subtraction, scalar multiplication):
+$$P(t) = (1-t)A + tB$$
+
+If $0 \le t \le 1$, this is a functional definition of line segment AB, and if $t \in \mathbb{R}$, this is a functional definition of line AB.
+
+\paragraph{Eliminating the Parameter}
+Although it is possible to eliminate the parameter (solving for $t$ then substituting appropriately, this only produce a super-set ("universe") of the valid points in the parametric curve, for one loses the parameter indicating what points on the curve are valid and "when" (e.g. in particle motion problems).
+
+\paragraph{Graphing a Parametric Curve}
+To graph a parametric curve, it is helpful to think of intervals of note in the functions for $x$ and $y$, along with end behavior. Additionally, consider the range/domain of these functions to determine bounds for your parametric curve.
+
+Orientation, in which \emph{direction} the points on the curve "move" as we increase/decrease $t$ (moving along the "number line"), is crucial to understanding a parametric curve. This is why direction must also be indicated in a parametric curve's graph.
+
+\paragraph{Important Observation}
+When viewed as a set of points, the graph of a relation has no unique parameterization.
+
+There are infinitely many potential ways to parameterize a curve (as seen below in section \ref{param-examples}), so we may be able to pick and choose a convenient parameterization when needed.
+
+\subsubsection{Common Examples of Parameterization} \label{param-examples}
+\paragraph{Parameterization of the Unit Circle}
+This is one of the most important parameterizations of a curve.
+\[
+    \begin{cases}
+        x(t) = \cos t \\
+        y(t) = \sin t
+    \end{cases}
+\]
+
+It is possible to show that the set of points is included by the curve $x^2 + y^2 = 1$ by simply squaring, then adding, these expressions for $x$ and $y$.
+
+This is also a restatement of the unit circle definition for $\sin$ and $\cos$ (replace $t$ with $\theta$).
+
+If $x$ and $y$ are swapped, the same curve appears, but the direction becomes clockwise as opposed to counterclockwise, and the points will appear at different $t$ values.
+
+The "speed" of the traversal of the curve can be scaled by putting a factor on t.
+
+\subparagraph{Speed of a Parametric Curve}
+For instance, to "double" the "angular velocity (speed) of the point" on circle parameterization:
+\[
+    \begin{cases}
+        x(t) = \cos 2t \\
+        y(t) = \sin 2t
+    \end{cases}
+\]
+
+Phase shifts can also be performed in a similar manner by substituting $(t+a)$.
+
+\subparagraph{Scaling a Parametric Curve}
+To scale a curve about an axis, simply multiply $x(t)$ or $y(t)$ by a scalar.
+
+For instance, to parameterize an ellipse
+$$\frac{x^2}{3^2} + \frac{y^2}{2^2} = 1$$
+
+\[
+    \begin{cases}
+        x(t) = 3 \cos t \\
+        y(t) = 2 \sin t
+    \end{cases}
+\]
+
+\subparagraph{Translating a Parametric Curve}
+To translate a curve $(a,b)$ units from $(0,0)$, simply add $a$ and $b$ to the corresponding functions.
+
+For instance, a unit circle centered at $(a,b)$:
+
+\[
+    \begin{cases}
+        x(t) = \cos t + a \\
+        y(t) = \sin t + b
+    \end{cases}
+\]
+
+\paragraph{Trivial Parameterization of $y=f(x)$}
+For any curve $y = f(x)$:
+\[
+    \begin{cases}
+        x(t) = t \\
+        y(t) = f(t)
+    \end{cases}
+\]
+
+\section{Series}
+\section{Differential Equations}
+
+\section{Appendix}
+\subsection{Important Theorem I}
+If $f$ and $g$ agree everywhere, except possibly at $x=a$, then \[ \lim_{x \to a} f(x) = \lim_{x \to a} g(x) \]
+assuming these limits exist.
+
+\subsection{Area of an Equilateral Triangle}
+Can be derived using the Pythagorean Theorem.
+$$A = \frac{\sqrt{3}}{4}s^2$$
+
+\subsection{Surface Area of a Cone}
+A (right circular) cone of radius $r$, slant height $l$, can be unwrapped into a sector of radius $l$ with an arc of length $2 \pi r$. Thus, $\theta = \frac{2\pi r}{l}$ ($S = \theta r$).
+The area of this sector is
+\begin{align*}
+    A & = \frac{1}{2} l^2 \theta  \\
+      & = \frac{1}{2}l^2\frac{2\pi r}{l}  \\
+      & = \pi lr
+\end{align*}
+
+
+Thus, letting $l$ be the lateral length of the cone, $r$ be the radius of the cone's base,
+$$SA = \pi rl$$
+
+\end{document}
