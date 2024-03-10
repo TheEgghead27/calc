@@ -4,6 +4,8 @@ This is an archive of my digitized notes for Mr. Honner's double-period BC Calcu
 
 ## Building
 $\LaTeX$ packages used are all mentioned in the document preamble, and are common to many $\LaTeX$ distributions.
+
+A makefile is provided for convenience.
 ```
-pdflatex *.tex
+make
 ```

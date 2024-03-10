@@ -1,5 +1,5 @@
-# pdftex generated files for spring.tex
-spring.aux
-spring.auxlock
-spring.log
-spring.pdf
+# pdftex generated files
+*.aux
+*.auxlock
+*.log
+*.pdf
