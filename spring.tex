@@ -400,7 +400,7 @@ There are three cases for the \emph{discriminant} of the general conic:
     \item If $C^2 - 4AB < 0$, the conic section is a ellipse.
 \end{enumerate}
 
-\section{Parametric/Polar}
+\section{Parametric}
 \subsection{Parameterization}
 A parameterization, which produces a parametric curve, defines a set of points $(x, y)$ as functions $(x(t), y(t))$.
 
@@ -453,6 +453,8 @@ For instance, to "double" the "angular velocity (speed) of the point" on circle 
     \end{cases}
 \]
 
+Refer to later sections to understand what this actually means.
+
 Phase shifts can also be performed in a similar manner by substituting $(t+a)$.
 
 \subparagraph{Scaling a Parametric Curve}
@@ -489,6 +491,54 @@ For any curve $y = f(x)$:
     \end{cases}
 \]
 
+\subsection{Derivatives of Parametric Curves}
+Note that "the derivative" is not a meaningful term in this context due to the variety of possible derivatives to take.
+
+\subsubsection{Tangent Lines ("First" and "Second" Derivative of the Curve)}
+The slope of the tangent line is $\frac{dy}{dx}$, but we can only immediately derive $\frac{dx}{dt}$ and $\frac{dy}{dt}$.
+
+Good news!
+$$\frac{dy}{dx} = \frac{\frac{dy}{dt}}{\frac{dx}{dt}}$$
+
+Usually, if $\frac{dy}{dt} = 0$, the tangent line is horizontal, and if $\frac{dx}{dt} = 0$, the tangent line is vertical. However, if $\frac{dx}{dt} = \frac{dy}{dt} = 0$, there is an indeterminate form that may represent a cusp of the curve (the particle is momentarily "at rest", refer to the velocity section).
+
+Bad news!
+$$\frac{d^2y}{dx^2} = \frac{d}{dx}\left[\frac{dy}{dx}\right] = \frac{\frac{d}{dt}\left[\frac{dy}{dx}\right]}{\frac{dx}{dt}}$$
+
+\subsubsection{Arclength}
+\begin{align}
+    S &= \int_{\alpha}^{\beta} \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2} \,dt \\
+    S &= \int_{\alpha}^{\beta} \sqrt{(x'(t))^2 + (y'(t))^2} \,dt
+\end{align}
+
+This is the Riemann sum of the displacement between points on the curve.
+
+Considering that this is a sum of velocity-time products, this arclength integral also represents the distance travelled by the particle from $t=\alpha$ to $t=\beta$.
+
+\subsubsection{Speed}
+The speed of a particle at a given moment is
+\begin{align}
+    v &= \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2} \\
+    v &= \sqrt{(x'(t))^2 + (y'(t))^2}
+\end{align}
+Notice that this is the magnitude (scalar, non-negative value) of the velocity vector (which has direction).
+
+\subsubsection{Velocity}
+The velocity vector is $<x'(t), y'(t)>$, and points in the direction of the tangent line when placed upon a point particle on the parametric curve.
+
+For reference, the position vector is $<x(t), y(t)>$.
+
+\subsubsection{Acceleration}
+The acceleration vector is
+$$<x''(t), y''(t)>$$
+
+\subsubsection{Area "Under" a Parametric Curve}
+$$A = \int_{\alpha}^{\beta} y(t) x'(t) \,dt$$
+
+Notice that $x'(t) \,dt$ simply represents the (signed) $\Delta x$, with $x'(t)$ being a local multiplier.
+
+
+\section{Polar}
 \section{Series}
 \section{Differential Equations}
 
@@ -513,5 +563,11 @@ The area of this sector is
 
 Thus, letting $l$ be the lateral length of the cone, $r$ be the radius of the cone's base,
 $$SA = \pi rl$$
+
+\subsection{Vector Magnitude}
+For a 2-element vector $\Vec{c} = <a,b>$, the magnitude of $\Vec{c}$ is
+$$c = \sqrt{a^2 + b^2}$$
+
+This is based on the Pythagorean Theorem/Distance Formula.
 
 \end{document}
