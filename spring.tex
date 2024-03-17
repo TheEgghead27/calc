@@ -502,7 +502,15 @@ $$\frac{dy}{dx} = \frac{\frac{dy}{dt}}{\frac{dx}{dt}}$$
 
 Usually, if $\frac{dy}{dt} = 0$, the tangent line is horizontal, and if $\frac{dx}{dt} = 0$, the tangent line is vertical. However, if $\frac{dx}{dt} = \frac{dy}{dt} = 0$, there is an indeterminate form that may represent a cusp of the curve (the particle is momentarily "at rest", refer to the velocity section).
 
-Bad news!
+\paragraph{Axial Extrema}
+Just like in our conception of $y=f(x)$, we can search for extreme y-values by looking for the zeroes of the function for the y-value, $y'(t)$, but we can also find the leftmost/rightmost points by leveraging $x'(t)$.
+
+However, one must also consider end behavior ($t \to \infty)$, for absolute minima/maxima potentially do not exist on an unclosed interval.
+
+\subsubsection{Concavity}
+We keep notion of concavity as based on our traditional $y=f(x)$ functions, where the concavity is based on $\frac{d^2y}{dx^2}$.
+
+Bad news! To calculate the second derivative of y with respect to x, you will be calculating
 $$\frac{d^2y}{dx^2} = \frac{d}{dx}\left[\frac{dy}{dx}\right] = \frac{\frac{d}{dt}\left[\frac{dy}{dx}\right]}{\frac{dx}{dt}}$$
 
 \subsubsection{Arclength}
@@ -536,7 +544,6 @@ $$<x''(t), y''(t)>$$
 $$A = \int_{\alpha}^{\beta} y(t) x'(t) \,dt$$
 
 Notice that $x'(t) \,dt$ simply represents the (signed) $\Delta x$, with $x'(t)$ being a local multiplier.
-
 
 \section{Polar}
 \section{Series}
