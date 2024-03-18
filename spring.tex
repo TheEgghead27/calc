@@ -545,7 +545,55 @@ $$A = \int_{\alpha}^{\beta} y(t) x'(t) \,dt$$
 
 Notice that $x'(t) \,dt$ simply represents the (signed) $\Delta x$, with $x'(t)$ being a local multiplier.
 
-\section{Polar}
+\section{Polar Coordinates}
+The polar coordinate system uses coordinates of the form
+$$(r, \theta)$$
+
+With $r$ being the \emph{directed} distance from the designated pole point, and $\theta$ being the angle (in standard position) of that point.
+
+The polar coordinate grid is drawn as a series of concentric circles (radius $r$) with straight lines (angle $\theta$) interspersed.
+
+One way to conceptualize this coordinate system is placing a point on "which circle" (distance from pole), then how specifying far to rotate the point about the pole.
+
+The pole is analogous to the origin in the Cartesian plane.
+
+\subsection{Problems with the Polar Coordinate System}
+There is no unique representation of points. This is in stark contrast to the Cartesian plane, in which each point has a unique coordinate label.
+
+Coordinates are simply labels for points, and for any point given by the coordinates $(k, \alpha)$, the point can also be specified by any coordinate of the form $$(k, \alpha + (2n)\pi); n \in \mathbb{Z}$$.
+
+Further, the point $(k, \alpha)$ can \emph{also} be specified by coordinates of form $$(-k, (2n+1)\pi); n \in \mathbb{Z}$$
+
+Even worse, the pole point can be represented by \emph{any} coordinates $$(0, \theta); \theta \in \mathbb{R}$$.
+
+\subsection{Conversions}
+The crux of these conversions is \emph{Trigonometry}.
+
+These conversions between coordinate systems can be thought of as functions mapping $\mathbb{R}^2 \mapsto \mathbb{R}^2$.
+
+\subsubsection{Rectangular to Polar}
+Remaining aware of domain restrictions on $\arctan$ (in which case the magnitude may need to be negated):
+
+$$(x,y) \mapsto \left( \sqrt{x^2+y^2}, \arctan{\frac{y}{x}}\right)$$
+
+More accurately, $r^2 = x^2 + y^2$.
+
+\subsubsection{Polar to Rectangular}
+$$(r, \theta) \mapsto (r \cos{\theta}, r \sin{\theta})$$
+
+\subsection{Common Polar Graphs}
+\subsubsection{Circles Centered at the Pole}
+With $a$ being the radius of the circle (analogous to $x^2+y^2=a^2$):
+$$r = a$$
+
+\subsubsection{Circles Centered on the x-axis}
+With $a$ being the \emph{diameter} of the circle (analogous to $\left(x - \frac{a}{2}\right)^2+y^2=\left(\frac{a}{2}\right)^2$):
+$$r=a \cos{\theta}$$
+
+\subsubsection{Vertical Line}
+With $a$ being the value of the x-intercept (analogous to $x=a$, $a\ne0$):
+$$r = a \sec{\theta}$$
+
 \section{Series}
 \section{Differential Equations}
 
