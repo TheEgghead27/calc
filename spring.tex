@@ -514,10 +514,10 @@ Bad news! To calculate the second derivative of y with respect to x, you will be
 $$\frac{d^2y}{dx^2} = \frac{d}{dx}\left[\frac{dy}{dx}\right] = \frac{\frac{d}{dt}\left[\frac{dy}{dx}\right]}{\frac{dx}{dt}}$$
 
 \subsubsection{Arclength}
-\begin{align}
+\begin{align*}
     S &= \int_{\alpha}^{\beta} \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2} \,dt \\
     S &= \int_{\alpha}^{\beta} \sqrt{(x'(t))^2 + (y'(t))^2} \,dt
-\end{align}
+\end{align*}
 
 This is the Riemann sum of the displacement between points on the curve.
 
@@ -525,10 +525,10 @@ Considering that this is a sum of velocity-time products, this arclength integra
 
 \subsubsection{Speed}
 The speed of a particle at a given moment is
-\begin{align}
+\begin{align*}
     v &= \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2} \\
     v &= \sqrt{(x'(t))^2 + (y'(t))^2}
-\end{align}
+\end{align*}
 Notice that this is the magnitude (scalar, non-negative value) of the velocity vector (which has direction).
 
 \subsubsection{Velocity}
@@ -545,7 +545,7 @@ $$A = \int_{\alpha}^{\beta} y(t) x'(t) \,dt$$
 
 Notice that $x'(t) \,dt$ simply represents the (signed) $\Delta x$, with $x'(t)$ being a local multiplier.
 
-\section{Polar Coordinates}
+\section{Polar Coordinates - 10.3 and 10.4}
 The polar coordinate system uses coordinates of the form
 $$(r, \theta)$$
 
@@ -580,19 +580,114 @@ More accurately, $r^2 = x^2 + y^2$.
 
 \subsubsection{Polar to Rectangular}
 $$(r, \theta) \mapsto (r \cos{\theta}, r \sin{\theta})$$
+Noticing that polar is just a parameterization of $x$ and $y$ in terms of $r$ and $\theta$:
+\begin{align*}
+    x &= r \cos{\theta} \\
+    y &= r \sin{\theta}
+\end{align*}
+
+In addition, $\tan{\theta} = \frac{y}{x}$.
 
 \subsection{Common Polar Graphs}
-\subsubsection{Circles Centered at the Pole}
+\subsubsection{Circles}
+
+\paragraph{Circles Centered at the Pole}
 With $a$ being the radius of the circle (analogous to $x^2+y^2=a^2$):
 $$r = a$$
 
-\subsubsection{Circles Centered on the x-axis}
+\paragraph{Circles Through the Pole:}
+\subparagraph{Diameter on the x-axis}
 With $a$ being the \emph{diameter} of the circle (analogous to $\left(x - \frac{a}{2}\right)^2+y^2=\left(\frac{a}{2}\right)^2$):
 $$r=a \cos{\theta}$$
+\subparagraph{Diameter on the y-axis}
+Similarly, a circle with diameter on the y-axis can be put in polar form as:
+$$r=a \sin{\theta}$$
+\subparagraph{Circle passing an Arbitrary Point}
+For a circle that passes through the pole $(0,0$ and $(a,b)$:
+$$r = a\sin{\theta} + b\cos{\theta}$$
 
-\subsubsection{Vertical Line}
+\subsubsection{Lines}
+\paragraph{Lines through the Pole}
+$$\theta = \arctan{\frac{y}{x}}$$
+
+\paragraph{Vertical Lines}
 With $a$ being the value of the x-intercept (analogous to $x=a$, $a\ne0$):
 $$r = a \sec{\theta}$$
+
+\paragraph{Horizontal Lines}
+With $a$ being the value of the y-intercept (analogous to $y=a$, $a\ne0$):
+$$r = a \csc{\theta}$$
+
+\subsubsection{Limaçon}
+Polar curves of the form $r = c \pm \cos{\theta}$ or $r = c \pm \sin{\theta}$, where $c \ne 0$.
+
+For $c > 1$, there is a dimple (slight bend inwards) on the x-axis (for $\cos$) or y-axis (for $\sin$).\\
+For $c = 1$, there is a cusp hitting the pole from the x-axis (for $\cos$) or y-axis (for $\sin$). This is also known as a cardioid.\\
+For $c < 1$, there is an inner loop.
+
+\subsubsection{Roses}
+Polar curves of the form $r=\cos{k\theta}$ (starts at $(0, 1)$) or $r=\sin{k\theta}$ (starts at $(0, 0)$, rotation by $\frac{3\pi}{2}$).\\
+When $k$ is even, $2k$ petals appear on the curve, over a period of $2\pi$.\\
+When $k$ is odd, $k$ petals appear on the curve, over a period of $\pi$, due to overlaps when $r < 0$ (antiperiodicity).
+
+\subsubsection{Conics}
+Conics with one focus at the pole with eccentricity $e$ and directrix at $x = \pm p$, $e,p > 0$ are described by the polar curve
+
+$$r = \frac{ep}{1\pm e\cos{\theta}}$$
+
+Replace $\cos$ with $\sin$ for vertical orientation.
+
+Our notion of eccentricity applies just the same, $e=0$ makes a circle, $e=1$ makes a parabola, $e$ between makes an ellipse, and $e > 1$ makes a hyperbola.
+\subsection{Polar and Derivatives}
+Once again, "the derivative" is a meaningless term.
+
+\subsubsection{Tangent Lines to Polar Curves} \label{polar-derivatives}
+The slope of a tangent line is always $\frac{dy}{dx}$.
+
+Because polar curves are simply a special case of parametric curves:
+$$\frac{dy}{dx} = \frac{\frac{dy}{d\theta}}{\frac{dx}{d\theta}}$$
+
+For reference:
+\begin{align*}
+    \frac{dx}{d\theta} &= \frac{dr}{d\theta}\cos{\theta}-r\sin{\theta}\\
+    \frac{dy}{d\theta} &= \frac{dr}{d\theta}\sin{\theta}+r\cos{\theta}
+\end{align*}
+
+To find critical values (for \emph{local} minima/maxima), one must solve for zero with these trigonometric expressions.\footnote{Cusps may occur, but the AP exam usually will not try to trick you with such quibbles.}
+
+\subsubsection{Tangents to the Pole}
+Tangent lines to the pole are represented by $\theta = s$, where $s$ is a solution for $r = 0$.
+
+The angle at which the curve approaches the pole is also the angle of the tangent line.
+
+\subsubsection{Polar Derivative}
+The derivative of $r$ with respect to $\theta$, $\frac{dr}{d\theta}$ is the "polar derivative".
+
+One common question asked on AP exams is what it would mean for $\frac{dr}{d\theta} < 0$, which is that $r \to -\infty$. If $r > 0$, this means that the curve is getting closer to the pole.
+
+\subsection{Polar Area - 10.4}
+Polar Area does NOT work like Cartesian area, as the simplest bounds (given angles $\theta$) do not easily correspond with unit squares.
+
+Based on the area of a circle sector being $\frac{1}{2}r^2\theta$, if we use a Riemann Sum of small sectors to approximate the area of a polar curve, we find that
+$$A = \int_{\alpha}^{\beta} \frac{1}{2} \left(f(\theta)\right)^2 d\theta$$
+
+Here,  $r = f(\theta)$, and we assume that $f(\theta)$ is continuous and \emph{non-negative}.
+
+It may also be helpful to leverage the symmetry of certain polar graphs to adjust the bounds such that $f(\theta)$ may remain positive, or to cancel out the coefficient of $\frac{1}{2}$.
+
+\subsubsection{Area Between Polar Curves}
+Unlike the area between Cartesian curves, in which we could simply take the vertical difference between the functions, we must graph the functions and split the area into "ice-cream cone" shaped polar area sections that we can integrate.
+
+The boundaries of these sections are at the $\theta$ values where the graphs intersect. Do note that due to pole, $-r$, and $\theta$ cycling shenanigans, it is best to graph the curve first to get an accurate sense of where the intersections are (which may not always be "collisions" where $r$ and $\theta$ are equal).
+
+\subsection{Polar Arclength}
+This is an additional section in textbook section 10.4.
+
+\vspace{.15in}
+Based on $S = \int_{\alpha}^{\beta} \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2} \,dt$, with $dt$ replaced with $d\theta$, and using the forms of $\frac{dx}{d\theta}$ and $\frac{dy}{d\theta}$ described in section \ref{polar-derivatives}, cancelling based on the Pythagorean Identity for $\sin$ and $\cos$:
+
+$$L = \int_{\alpha}^{\beta} \sqrt{r^2 + \left(\frac{dr}{d\theta}\right)^2} \,d\theta$$
+
 
 \section{Series}
 \section{Differential Equations}
