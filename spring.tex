@@ -5,9 +5,15 @@
 \usepackage{pgfplots}
 \usepackage{soul}
 \usepackage{graphicx} % Required for inserting images
+\usepackage{hyperref}
 \usepgfplotslibrary{external}
 \tikzexternalize
 \pgfplotsset{compat=1.18}
+\hypersetup{
+    colorlinks,
+    linkcolor = black,
+    urlcolor = cyan
+}
 
 \title{Honner's Honors Calculus (Spring Semester)}
 \author{David Chen}
@@ -19,8 +25,8 @@
 \section{Integration Techniques}
 \subsection{Trig Integrals}
 
-$$ \frac{d}{dx} asin(x) = \frac{1}{\sqrt{1 - x^2}} + C $$
-$$ \frac{d}{dx} atan(x) = \frac{1}{1 + x^2} + C $$
+$$ \frac{d}{dx} \arcsin{x} = \frac{1}{\sqrt{1 - x^2}} + C $$
+$$ \frac{d}{dx} \arctan{x} = \frac{1}{1 + x^2} + C $$
 
 \section{Indeterminate Forms - 6.8}
 Limits of the form $\frac{0}{0}$ or $\frac{\infty}{\infty}$. These do not indicate the true value of the limit.
@@ -566,6 +572,15 @@ Further, the point $(k, \alpha)$ can \emph{also} be specified by coordinates of 
 
 Even worse, the pole point can be represented by \emph{any} coordinates $$(0, \theta); \theta \in \mathbb{R}$$.
 
+\subsection{Transformations in the Polar Plane}
+\subsubsection{Reflection over the x-axis}
+To reflect a polar graph over the x-axis, substitute $\theta$ for $-\theta$.
+
+If the polar curve remains seemingly unchanged by this transformation, it is symmetric about the x-axis.
+
+\subsubsection{Rotation by an Angle}
+To rotate a polar graph by any angle $\phi$, substitute $\theta$ for $\theta - \phi$.
+
 \subsection{Conversions}
 The crux of these conversions is \emph{Trigonometry}.
 
@@ -617,6 +632,10 @@ $$r = a \sec{\theta}$$
 \paragraph{Horizontal Lines}
 With $a$ being the value of the y-intercept (analogous to $y=a$, $a\ne0$):
 $$r = a \csc{\theta}$$
+
+\subsubsection{Parabolas}
+With $a$ being the coefficient in $y = \frac{x^2}{a}$
+$$r = a\tan{\theta}\sec{\theta}$$
 
 \subsubsection{Limaçon}
 Polar curves of the form $r = c \pm \cos{\theta}$ or $r = c \pm \sin{\theta}$, where $c \ne 0$.
@@ -688,7 +707,6 @@ Based on $S = \int_{\alpha}^{\beta} \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\
 
 $$L = \int_{\alpha}^{\beta} \sqrt{r^2 + \left(\frac{dr}{d\theta}\right)^2} \,d\theta$$
 
-
 \section{Series}
 \section{Differential Equations}
 
@@ -719,5 +737,13 @@ For a 2-element vector $\Vec{c} = <a,b>$, the magnitude of $\Vec{c}$ is
 $$c = \sqrt{a^2 + b^2}$$
 
 This is based on the Pythagorean Theorem/Distance Formula.
+
+\subsection{Polar Integrals}
+Below are Wolfram Alpha based calculator tools to aid in verifying select Polar Integrals.
+
+\begin{itemize}
+    \item \href{https://www.wolframalpha.com/widgets/view.jsp?id=769788ade06411e063edbd51239787f9}{Polar Area}
+    \item \href{https://www.wolframalpha.com/widgets/view.jsp?id=c26cbb9457ff75f58f479364ddb79cd1}{Polar Arclength}
+\end{itemize}
 
 \end{document}
