@@ -697,7 +697,7 @@ It may also be helpful to leverage the symmetry of certain polar graphs to adjus
 \subsubsection{Area Between Polar Curves}
 Unlike the area between Cartesian curves, in which we could simply take the vertical difference between the functions, we must graph the functions and split the area into "ice-cream cone" shaped polar area sections that we can integrate.
 
-The boundaries of these sections are at the $\theta$ values where the graphs intersect. Do note that due to pole, $-r$, and $\theta$ cycling shenanigans, it is best to graph the curve first to get an accurate sense of where the intersections are (which may not always be "collisions" where $r$ and $\theta$ are equal).
+The boundaries of these sections are at the $\theta$ values where the graphs intersect. Do note that due to pole, $-r$, and $\theta$ cycling shenanigans, it is best to graph the curve first to get an accurate sense of where the intersections are (which may not always be "collisions" where $r$ and $\theta$ are equal). Do \emph{not} forget to check the endpoints!
 
 \subsection{Polar Arclength}
 This is an additional section in textbook section 10.4.
@@ -707,7 +707,168 @@ Based on $S = \int_{\alpha}^{\beta} \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\
 
 $$L = \int_{\alpha}^{\beta} \sqrt{r^2 + \left(\frac{dr}{d\theta}\right)^2} \,d\theta$$
 
-\section{Series}
+\section{Sequences and Series}
+A sequence of numbers is an ordered list (tuple).\footnote{Sequences may contain different types of elements, but for the purposes of this course, we will only work with sequences of numbers.}
+
+Every sequence is a function $f: \mathbb{N} \to \mathbb{R}$, where $f(n) = a_n$.
+
+Informally, a series is a sum of a sequence.
+
+In this course, we are concerned about infinite series.
+
+\subsection{Basic Sequences}
+In general, a sequence of finite length $n$ can be represented in the form
+$$a_1, a_2, a_3, \ldots, a_n $$
+
+The $n$th term, $n \in \mathbb{N}$, is represented by $a_n$.
+
+In an arithmetic sequence, every term is the algebraic mean of its (equidistant) neighbors.
+
+\subsubsection{Arithmetic Sequences}
+An arithmetic sequence (or progression) is a sequence in which $\forall n$, $a_{n+1} - a_n = d$, the difference between any two consecutive terms is a constant, which we call the common difference $d$.
+
+Given $a = a_1$ and $d$, the sequence can be written as
+$$a, \left(a + d\right), \left(a + 2d\right), \left(a + 3d\right), \ldots, \left(a + \left(n-1\right)d\right)$$
+and any term can be written as
+$$a_n = a + (n-1)d$$
+
+This is analogous to a "point-slope" definition of a line, as the arithmetic sequence is in essence a line. One can also define an arithmetic sequence using two "points".
+
+\paragraph{Sum of an Arithmetic Series}
+The sum of the first $n$ terms in an arithmetic series (sum of the terms of the arithmetic sequence) is
+$$S_n = n\frac{a_1+a_n}{2} = \frac{n}{2}\left(2a + \left(n-1\right)d\right)$$
+This can be thought of as $n$ times the average.
+
+\subsubsection{Geometric Sequences}
+A geometric sequence is a sequence in which $\forall n$, $\frac{a_{n+1}}{a_n} = r$, the ratio between any two consecutive terms is a constant, which we call the common ratio $r$.
+
+Given $a = a_1$ and $r$, any term can be evaluated for as
+$$a_n = ar^{n-1}$$
+
+Notice that there is an arithmetic sequence in the exponents of the terms (or the logarithms of the terms).
+
+Interestingly, the geometric sequence also requires two pieces of information, exactly like the arithmetic sequence, to define it (along with the knowledge that it is a sequence of this type).
+
+In a geometric sequence, every term is the geometric mean of its (equidistant) neighbors.
+
+\paragraph{Sum of a Geometric Sequence}
+The sum of the first $n$ terms in a geometric series is
+$$S_n = \frac{a-ar^n}{1-r}=a\frac{1-r^n}{1-r}$$
+This can be thought of as the result of a polynomial long division problem $$\left(1-r^n\right) = \left(1-r\right)\left(r^{n-1} + r^{n-2} + \ldots + r^2 + r + 1\right)$$
+
+Or alternatively, the difference $S_n - rS_n$, where the digits in $rS_n$ (base $r$) are shifted over one digit.
+
+\paragraph{Generic Alternator}
+The special case of $r = -1$ is notable because it gives a repeating sequence $\left(1, -1, 1, -1, \ldots\right)$
+
+\subsection{Properties of Sequences}
+\subsubsection{Convergence}
+A sequence $\left\{ a_n \right\}$ converges if and only if $\lim_{n\to \infty} a_n$ exists. Otherwise, it diverges.
+
+\paragraph{Limit Properties} Assuming that \(\lim_{n \to \infty} a_n = L\) and  \(\lim_{n \to \infty} b_n = K\), in other words, $\left\{ a_n \right\}$ and $\left\{ b_n \right\}$ converge to $L$ and $K$, respectively:
+\begin{align*}
+    &\lim_{n \to \infty}\left( ca_n \right) = cL  \\
+    &\lim_{n \to \infty}\left( a_n \pm b_n \right) = L \pm K  \\
+    &\lim_{n \to \infty}\left( a_n b_n \right) = LK  \\
+    &\lim_{n \to \infty}\left( \frac{a_n}{b_n} \right) = \frac{L}{K} & \left( b_n \ne 0, K \ne 0 \right)
+\end{align*}
+
+\paragraph{Squeeze Theorem for Sequences}
+If $$\lim_{n \to \infty} a_n = L = \lim_{n \to \infty} b_n,$$ and $\exists N$ such that, for $n > N$, $$a_n \le c_n \le b_n,$$ then $$\lim_{n \to \infty} c_n = L$$
+
+\paragraph{Absolute Value Theorem for Sequences}
+For the sequence $\left\{ a_n \right\}$, if $$\lim_{n \to \infty} |a_n| = 0,$$ then $$\lim_{n \to \infty} a_n = 0$$
+This can be considered a special case of the Squeeze Theorem, using $|a_n|$ and $-|a_n|$.
+
+\subsubsection{Monotonicity}
+A sequence is monotonic if its terms are non-decreasing or non-increasing.
+
+A monotonically increasing sequence obeys the condition that
+$$a_1 \le a_2 \le a_3 \le a_4 \le \ldots \le a_n \le \ldots$$
+and a monotonically decreasing sequence obeys the condition that
+$$a_1 \ge a_2 \ge a_3 \ge a_4 \ge \ldots \ge a_n \ge \ldots$$
+
+\paragraph{Strict Increasing/Decreasing}
+A sequence is strictly increasing if its terms only increase.
+$$a_1 < a_2 < a_3 < a_4 < \ldots < a_n < \ldots$$
+A sequence is strictly decreasing if its terms only decrease.
+$$a_1 > a_2 > a_3 > a_4 > \ldots > a_n > \ldots$$
+
+\subsubsection{Boundedness}
+A sequence $\left\{ a_n \right\}$ is bounded above if there is a real number $M$ such that $a_n \le M$ $\forall n$.
+
+A sequence $\left\{ a_n \right\}$ is bounded below if there is a real number $N$ such that $N \le a_n$ $\forall n$.
+
+A sequence $\left\{ a_n \right\}$ is bounded if it is both bounded above and bounded below.
+
+\paragraph{Important Theorem III}
+A sequence of real numbers that is both monotonic and bounded converges.\footnote{Proof is left to the reader who knows real analysis.}
+
+\subsubsection{Miscellaneous}
+In addition, sequences can be:
+\begin{itemize}
+    \item Defined with a piece-wise representation
+    \item Change signs irregularly (e.g. $a_n = \sin{n}$)
+\end{itemize}
+
+\subsection{Infinite Series}
+Every infinite series is really an infinite series of partial sums.
+
+By defining/recasting our question about what it means to add infinitely many terms into a question about convergent series, we are able to apply our existing tools to analyzing infinite series.
+
+"Does this series converge?" is now defined to be the same question as "Does $\left\{ S_n \right\}$ converge?" or "Does $\lim_{n \to \infty} S_n$ exist?"
+
+Unfortunately, even if we can prove that a series converges, we will rarely be able to discern what value it converges to.
+
+\subsubsection{The Fundamental Infinite Series}
+The fundamental infinite series is the infinite geometric series
+$S_n = a + ar + ar^2 + ar^3 + \ldots + ar^n + \ldots$
+which converges to $S = \frac{a}{1-r}$ if $|r| < 1$.
+
+It diverges if $|r| > 1$, and depends if $|r| = 1$ (is $a = 0$?).
+
+We will use the fundamental infinite series as a benchmark for comparing other series.
+
+\paragraph{Source}
+We know $S_n = \frac{a\left(1-r^n\right)}{1-r}$.\\
+We want to know if $\lim_{n \to \infty} S_n$ exists.\\
+Using limit laws for scalar multiples:
+$$\lim_{n \to \infty} \frac{a\left(1-r^n\right)}{1-r} = \frac{a}{1-r} \lim_{n\to\infty} \left(1 - r^n\right)$$
+We claim that
+\begin{enumerate}
+    \item If $|r| < 1$, then this limit exists.
+    \item If $|r| > 1$, then this limit does not exist.
+    \item If $|r| = 1$, it depends on whether or not $a = 0$.
+\end{enumerate}
+
+\paragraph{A note on problem solving} When using the value of $r$ to test for convergence, one must first state that a sequence is a geometric series, and then state that because $|r| < 1$ in this case, the sequence converses.
+
+\subsubsection{Harmonic Series}
+The infinite series
+$$1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + \ldots + \frac{1}{n} + \ldots$$
+or in sigma notation,
+$$\sum_{n=1}^{\infty} \frac{1}{n}$$
+is called the harmonic series.
+
+\paragraph{Relationship to the n\textsuperscript{th} Term Test} Despite the fact that $\lim_{n \to \infty} \frac{1}{n} = 0$, the sequence diverges, as $S_{2n} - S_n > \frac{1}{2}$.
+
+\subsubsection{Properties of Convergent Infinite Series}
+Let $\sum_{n=1}^{\infty} a_n$ and $\sum_{n=1}^{\infty} b_n$ be convergent series.
+
+Then,
+\begin{enumerate}
+    \item $\sum_{n=1}^{\infty} ca_n$ converges to $c\sum_{n=1}^{\infty} a_n$
+    \item $\sum_{n=1}^{\infty} a_n \pm b_n$ converges to $\sum_{n=1}^{\infty} a_n \pm \sum_{n=1}^{\infty} b_n$
+\end{enumerate}
+
+In other words, when the sums converge, they have a linear structure in which algebraic properties apply.
+
+\subsubsection{Convergence/Divergence Tests}
+\paragraph{The n\textsuperscript{th} Term Test for Divergence} If $\lim_{n \to \infty} a_n \ne 0$, then $\sum_{n=1}^{\infty} a_n$ diverges.\\
+This is a test strictly for one type of divergence. It does \emph{not} guarantee the series is convergent (not divergent).
+
+\paragraph{Abstract Concept} As long as the terms of the sequence of partial sums is growing at rates decreasing sufficiently quickly, the series will converge.
+
 \section{Differential Equations}
 
 \section{Appendix}
