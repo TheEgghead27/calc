@@ -863,15 +863,16 @@ Then,
 
 In other words, when the sums converge, they have a linear structure in which algebraic properties apply.
 
-\subsubsection{Convergence/Divergence Tests}
+\subsection{Convergence/Divergence Tests}
 A series either diverges or converges, but some tests only tell if a series converges/diverges in a specific way, and are inconclusive otherwise.
 
 One helpful thing to note is that a value less than a finite number is also finite, and a value greater than $\infty$ is also infinite.
 
-\paragraph{Geometric Series} The first method to check if a series converges or diverges is to check if the series is geometric in nature.
+\subsubsection{Geometric Series} The first method to check if a series converges or diverges is to check if the series is geometric in nature.
 
-\paragraph{The n\textsuperscript{th} Term Test for Divergence}\footnote{Also referred to as the Divergence Test, or the n\textsuperscript{th} Term Test.} If $\lim_{n \to \infty} a_n \ne 0$, then $\sum_{n=1}^{\infty} a_n$ diverges.\\
-This is a test strictly for divergence. Otherwise, the test is inconclusive (it does \emph{not} guarantee the series is convergent (not divergent)).
+\subsubsection{\texorpdfstring{The n\textsuperscript{th} Term Test for Divergence}{The Nth Term Test}} If $\lim_{n \to \infty} a_n \ne 0$, then $\sum_{n=1}^{\infty} a_n$ diverges.\\
+The test is also referred to as the n\textsuperscript{th} Term Test, or simply the Divergence Test.\\
+The test is inconclusive if it does not determine a series to be divergent (it does \emph{not} guarantee the series is not divergent).
 
 Proof is done by taking
 \begin{align*}
@@ -881,9 +882,9 @@ Proof is done by taking
 
 Notice that if $\lim_{n\to \infty} a_n$ does not exist, $\lim_{n\to \infty} S_n$ cannot exist.
 
-\paragraph{Telescoping Series} One uncommon form of series is one wherein terms of the sequence cancel out, making it easy to write an explicit form of $S_n$. and find the value the series converges to..This may be determined using partial fraction decomposition.
+\subsubsection{Telescoping Series} One uncommon form of series is one wherein terms of the sequence cancel out, making it easy to write an explicit form of $S_n$. and find the value the series converges to..This may be determined using partial fraction decomposition.
 
-\paragraph{The Integral Test} If $f(x)$ is \textbf{positive, continuous, and decreasing} for $x\ge1$, and $a_n = f(n)$, then $\sum_{n=1}^{\infty} a_n$ and $\int_{1}^{\infty} f(x) dx$ will either both converge or both diverge.
+\subsubsection{The Integral Test} If $f(x)$ is \textbf{positive, continuous, and decreasing} for $x\ge1$, and $a_n = f(n)$, then $\sum_{n=1}^{\infty} a_n$ and $\int_{1}^{\infty} f(x) dx$ will either both converge or both diverge.
 
 This test is always conclusive when applicable, but does \emph{not} indicate the value a series may converge to.
 
@@ -894,12 +895,12 @@ $$\sum_{n=1}^{\infty} a_n > \int_{1}^{\infty} f(x)dx > \sum_{n=2}^{\infty} a_n$$
 
 On the AP exam, you are expected to write the improper integral and then, recognizing that an improper integral is a limit, rewrite the improper integral using the limit.
 
-\subparagraph{Integral Test Remainder}\footnote{This is a non-AP topic.} If the Integral Test Applies, $S=S_n+R_n$, and $\le \int_{n+1}^{\infty} f(x)dx \le R_n \le \int_{n}^{\infty} f(x)dx$.
+\paragraph{Integral Test Remainder (Non-AP)} If the Integral Test Applies, $S=S_n+R_n$, and $\le \int_{n+1}^{\infty} f(x)dx \le R_n \le \int_{n}^{\infty} f(x)dx$.
 
-\paragraph{The P-Series Test}\footnote{Also referred to as the P-Test.} An infinite series of the form $\sum_{n=1}^{\infty} \frac{1}{n^p}$, ($p>0$) is a p-series. A p-series converges when $p > 1$, and diverges with $p \le 1$.\\
+\subsubsection{The P-(Series) Test} An infinite series of the form $\sum_{n=1}^{\infty} \frac{1}{n^p}$, ($p>0$) is a p-series. A p-series converges when $p > 1$, and diverges with $p \le 1$.\\
 This is a special case of the Integral Test.
 
-\paragraph{The (Direct) Comparison Test}
+\subsubsection{The (Direct) Comparison Test}
 Suppose that $0 < a_n \le b_n$.
 \begin{enumerate}
     \item If $\sum_{n=1}^{\infty} a_n$ diverges, then $\sum_{n=1}^{\infty} b_n$ diverges.
@@ -909,34 +910,34 @@ We can prove that the sequence of partial sums is monotonically increasing and b
 
 To use a Comparison Test, it is necessary to already take an opinion on whether a series converges or diverges, and make the appropriate comparisons.
 
-\paragraph{The Limit Comparison Test}
+\subsubsection{The Limit Comparison Test}
 Suppose $a_n > 0$ and $b_n > 0$. If $$\lim_{n\to\infty}\frac{a_n}{b_n} = L$$ where L is finite and positive, then $\sum_{n=1}^{\infty} a_n$ and $\sum_{n=1}^{\infty} b_n$ either both converge or both diverge.
 
 This test is inconclusive when $L = \infty$ or $L = 0$ (which is in essence $\frac{1}{\infty}$).
 
 The test is proven by showing that for $n > N$, $\frac{a_n}{b_n}$ is within $L \pm \epsilon$, so $\left(L - \epsilon\right)b_n < a_n < \left(L + \epsilon\right)b_n$.
 
-\paragraph{Abstract Concept} As long as the terms of the sequence of partial sums is growing at rates decreasing sufficiently quickly, the series will converge. We only care about the end behavior, and can take off an arbitrary (finite) number of terms off the "front" of the sum with no bearing on convergence/divergence.
+\subsubsection{Abstract Concept} As long as the terms of the sequence of partial sums is growing at rates decreasing sufficiently quickly, the series will converge. We only care about the end behavior, and can take off an arbitrary (finite) number of terms off the "front" of the sum with no bearing on convergence/divergence.
 
-\paragraph{Alternating Series Test}
+\subsubsection{Alternating Series Test}
 Suppose the magnitude $a_n > 0$. The alternating series $$\sum_{n=1}^{\infty} (-1)^{n+1}a_n$$ converges if $\lim_{n \to \infty} a_n = 0$ and $\forall n$, $a_{n+1} \le a_n$ (decreasing).
 
 This can be proved by grouping the terms of the sequence to form a new sequence of partial sums that is monotonically increasing, but bounded by $a_1$ (because the series can also be rewritten as a sequence of monotonically decreasing partial sums).
 
-\subparagraph{Alternating Series Remainder} If an alternating series converges to $S$, then a partial sum $S_n$ is always within $a_{n+1}$ of the value. That is, $\forall n$, $|S-S_n| \le a_{n+1}$.
+\paragraph{Alternating Series Remainder} If an alternating series converges to $S$, then a partial sum $S_n$ is always within $a_{n+1}$ of the value. That is, $\forall n$, $|S-S_n| \le a_{n+1}$.
 
 This can be proven by observing that the partial sums always "jump across" the true value $S$, but with decreasing magnitudes.
 
-\paragraph{Absolute and Conditional Convergence}
+\subsubsection{Absolute and Conditional Convergence}
 A series $\sum_{n}^{\infty}\limits a_n$ is absolutely convergent if $\sum_{n}^{\infty}\limits |a_n|$ converges.\\
 A series $\sum_{n}^{\infty}\limits a_n$ is conditionally convergent if $\sum_{n}^{\infty}\limits a_n$ converges, but $\sum_{n}^{\infty}\limits |a_n|$ diverges.\footnote{The "series of the absolute value of $a_n$" $\left(\sum|a_n|\right)$ is NOT the same as the "absolute value of the series" $\left(|\sum a_n|\right)$.}
 
-\subparagraph{Theorem} If $\sum_{n}^{\infty}\limits |a_n|$ converges, then $\sum_{n}^{\infty}\limits a_n$ converges.
+\paragraph{}{Theorem} If $\sum_{n}^{\infty}\limits |a_n|$ converges, then $\sum_{n}^{\infty}\limits a_n$ converges.
 
 Consider that $$\sum_{n}^{\infty}a_n + |a_n| \le 2\sum_{n}^{\infty}|a_n|$$
 so by Direct Comparison, $\sum_{n}^{\infty}\limits a_n + |a_n|$ converges, and $$\sum_{n}^{\infty} a_n + |a_n| - \sum_{n}^{\infty} |a_n| = \sum_{n}^{\infty} a_n$$.
 
-\subparagraph{Note} A conditionally convergent series may be rearranged to obtain an arbitrary value. (?)
+\paragraph{Note} A conditionally convergent series may be rearranged to obtain an arbitrary value. (?)
 
 \section{Differential Equations}
 
