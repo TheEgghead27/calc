@@ -28,7 +28,7 @@
 $$ \frac{d}{dx} \arcsin{x} = \frac{1}{\sqrt{1 - x^2}} + C $$
 $$ \frac{d}{dx} \arctan{x} = \frac{1}{1 + x^2} + C $$
 
-\section{Indeterminate Forms - 6.8}
+\section{Indeterminate Forms}
 Limits of the form $\frac{0}{0}$ or $\frac{\infty}{\infty}$. These do not indicate the true value of the limit.
 
 As a reminder:
@@ -49,7 +49,7 @@ Suppose $f$, $g$ are differentiable, and $\lim_{x \to a} f(x) = lim_{x \to a} g(
                      &       = \frac{f'(a)}{g'(a)}
 \end{align*}
 
-\subsection{Improper Integrals - 7.8}
+\subsection{Improper Integrals}
 An improper integral is an integral with an infinite limit of integration, or there exists a finite number of discontinuities between the limits of integration.
 
 Note that this integral may not exist, in which case it diverges (usually to $\pm \infty$). If the limit exists, then the integral converges.
@@ -75,12 +75,12 @@ If $0 \le f(x) \le g(x)$ then $$\int_{1}^{\infty} f(x) dx \le \int_{1}^{\infty} 
 Suppose you want to show that $f(x)$ converges. If you can find a $f(x) \ge f(x)$ that converges, then $f(x)$ converges. (A similar argument can be used to prove $g(x)$ diverges.)
 
 \section{Area/Volume (BC)}
-\subsection{Area Between Two Curves - 5.1}
+\subsection{Area Between Two Curves}
 If $f$ and $g$ are continuous on $[a,b]$ with $f(x) \ge g(x)$ for $x \in [a,b]$, then the area between $f$ and $g$ from $a$ to $b$ is $$\int_{a}^{b} (f-g)dx$$ (or $\int_{a}^{b} |f-g| dx$).
 
 This can also be interpreted geometrically as the integral of the vertical difference between $f$ and $g$.
 
-\subsection{Solids of Revolution - 5.2}
+\subsection{Solids of Revolution}
 Solids with axial symmetry about an axis of revolution.
 
 \begin{enumerate}
@@ -102,7 +102,7 @@ Let $f(x)$ be the function producing the curve underneath which the region $R$ i
 $$V = \pi \int_{a}^{b} (f(x)^2) dx$$
 $$V = \pi \int_{a}^{b} (f(x)^2 - g(x)^2) dx$$
 
-\subsubsection{Shell Method  - 5.3}
+\subsubsection{Shell Method}
 Integrates perpendicular to the axis of rotation. May be inconvenient if one lacks a curve function corresponding to these axes.
 
 Based on a Riemann Sum of rectangular prisms $2 \pi rhw$ becoming
@@ -121,7 +121,7 @@ $$V = \int_{a}^{b} A(x)dx$$
 
 The Disk/Washer method is a special case of the volume by known cross section ($A(x) = 2\pi x^2$, circles).
 
-\subsection{Arclength - 8.1}
+\subsection{Arclength}
 The length of an arc. Defined as
 $$ s = \int_{a}^{b} \sqrt{1+(f'(x))^2} dx$$
 
@@ -146,7 +146,7 @@ Since  $\Delta y = f(x + \Delta x) - f(x) = \frac{f(x + \Delta x) - f(x)}{\Delta
     \item Calculator and cope
 \end{enumerate}
 
-\subsection{Surface Areas of Revolution - 8.2}
+\subsection{Surface Areas of Revolution}
 Integrates using lateral surface areas of frustrums (difference between two right circular cones).
 
 Letting $r_1$, $l_1$ be the radius and slant height of the smaller cone, $r_2$, $l_1 + l$ be the radius and slant height of the second cone:
@@ -551,7 +551,7 @@ $$A = \int_{\alpha}^{\beta} y(t) x'(t) \,dt$$
 
 Notice that $x'(t) \,dt$ simply represents the (signed) $\Delta x$, with $x'(t)$ being a local multiplier.
 
-\section{Polar Coordinates - 10.3 and 10.4}
+\section{Polar Coordinates}
 The polar coordinate system uses coordinates of the form
 $$(r, \theta)$$
 
@@ -684,7 +684,7 @@ The derivative of $r$ with respect to $\theta$, $\frac{dr}{d\theta}$ is the "pol
 
 One common question asked on AP exams is what it would mean for $\frac{dr}{d\theta} < 0$, which is that $r \to -\infty$. If $r > 0$, this means that the curve is getting closer to the pole.
 
-\subsection{Polar Area - 10.4}
+\subsection{Polar Area}
 Polar Area does NOT work like Cartesian area, as the simplest bounds (given angles $\theta$) do not easily correspond with unit squares.
 
 Based on the area of a circle sector being $\frac{1}{2}r^2\theta$, if we use a Riemann Sum of small sectors to approximate the area of a polar curve, we find that
