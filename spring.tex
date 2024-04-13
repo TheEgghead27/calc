@@ -863,6 +863,9 @@ Then,
 
 In other words, when the sums converge, they have a linear structure in which algebraic properties apply.
 
+\paragraph{Abstract Concept} If the sequence of partial sums is changing at rates decreasing sufficiently quickly, the series will converge.\\
+Only the end behavior matters, and we can take off an arbitrary (finite) number of terms off the "front" of the sum with no bearing on convergence/divergence.
+
 \subsection{Convergence/Divergence Tests}
 A series either diverges or converges, but some tests only tell if a series converges/diverges in a specific way, and are inconclusive otherwise.
 
@@ -917,9 +920,7 @@ This test is inconclusive when $L = \infty$ or $L = 0$ (which is in essence $\fr
 
 The test is proven by showing that for $n > N$, $\frac{a_n}{b_n}$ is within $L \pm \epsilon$, so $\left(L - \epsilon\right)b_n < a_n < \left(L + \epsilon\right)b_n$.
 
-\subsubsection{Abstract Concept} As long as the terms of the sequence of partial sums is growing at rates decreasing sufficiently quickly, the series will converge. We only care about the end behavior, and can take off an arbitrary (finite) number of terms off the "front" of the sum with no bearing on convergence/divergence.
-
-\subsubsection{Alternating Series Test}
+\subsubsection{The Alternating Series Test}
 Suppose the magnitude $a_n > 0$. The alternating series $$\sum_{n=1}^{\infty} (-1)^{n+1}a_n$$ converges if $\lim_{n \to \infty} a_n = 0$ and $\forall n$, $a_{n+1} \le a_n$ (decreasing).
 
 This can be proved by grouping the terms of the sequence to form a new sequence of partial sums that is monotonically increasing, but bounded by $a_1$ (because the series can also be rewritten as a sequence of monotonically decreasing partial sums).
@@ -932,12 +933,34 @@ This can be proven by observing that the partial sums always "jump across" the t
 A series $\sum_{n}^{\infty}\limits a_n$ is absolutely convergent if $\sum_{n}^{\infty}\limits |a_n|$ converges.\\
 A series $\sum_{n}^{\infty}\limits a_n$ is conditionally convergent if $\sum_{n}^{\infty}\limits a_n$ converges, but $\sum_{n}^{\infty}\limits |a_n|$ diverges.\footnote{The "series of the absolute value of $a_n$" $\left(\sum|a_n|\right)$ is NOT the same as the "absolute value of the series" $\left(|\sum a_n|\right)$.}
 
-\paragraph{}{Theorem} If $\sum_{n}^{\infty}\limits |a_n|$ converges, then $\sum_{n}^{\infty}\limits a_n$ converges.
+\paragraph{Theorem} If $\sum_{n}^{\infty}\limits |a_n|$ converges, then $\sum_{n}^{\infty}\limits a_n$ converges.
 
 Consider that $$\sum_{n}^{\infty}a_n + |a_n| \le 2\sum_{n}^{\infty}|a_n|$$
 so by Direct Comparison, $\sum_{n}^{\infty}\limits a_n + |a_n|$ converges, and $$\sum_{n}^{\infty} a_n + |a_n| - \sum_{n}^{\infty} |a_n| = \sum_{n}^{\infty} a_n$$.
 
-\paragraph{Note} A conditionally convergent series may be rearranged to obtain an arbitrary value. (?)
+\subsubsection{The Ratio Test}
+Let $\sum_{n=1}^{\infty}\limits a_n$ be a series with non-zero terms. Then
+\begin{enumerate}
+    \item $\sum_{n=1}^{\infty}\limits a_n$ converges absolutely if $\lim_{n\to\infty}\limits\lvert \frac{a_{n+1}}{a_n} \rvert < 1$.
+    \item $\sum_{n=1}^{\infty}\limits a_n$ diverges if $\lim_{n\to\infty}\limits\lvert \frac{a_{n+1}}{a_n} \rvert > 1$.
+    \item The test is inconclusive\footnote{Canonical examples are any p-series, for instance $\sum\frac{1}{n}$ and $\sum\frac{1}{n^2}$.} if $\lim_{n\to\infty}\limits\lvert \frac{a_{n+1}}{a_n} \rvert = 1$.
+\end{enumerate}
+This can be proved by direct comparison to an appropriate geometric series, along with the n\textsuperscript{th} Term Test.
+
+These conditions can also be used to determine the bounds of the domain of some function of $x$ defined by infinite series, such as $$f(x) = \sum_{n=1}^{\infty} \frac{x^n}{n}$$
+We can now ask the question ``when does the series converge?'' (for what $x$ values?). This will be useful in section \ref{power-series}.
+
+\subsubsection{The Root Test}
+Let $\sum_{n=1}^{\infty}\limits a_n$ be a series.
+\begin{enumerate}
+    \item $\sum_{n=1}^{\infty}\limits a_n$ converges absolutely if $\lim_{n\to\infty} \sqrt[n]{|a_n|} < 1$.
+    \item $\sum_{n=1}^{\infty}\limits a_n$ diverges if $\lim_{n\to\infty} \sqrt[n]{|a_n|} > 1$.
+    \item The test is inconclusive\footnote{Ditto.} if $\lim_{n\to\infty} \sqrt[n]{|a_n|} > 1$.
+\end{enumerate}
+This test is usually used on series with expressions for $a_n$ with exponents of $n$.
+
+\subsection{Power Series}\label{power-series}
+\subsection{Taylor Series}
 
 \section{Differential Equations}
 
@@ -976,5 +999,14 @@ Below are Wolfram Alpha based calculator tools to aid in verifying select Polar 
     \item \href{https://www.wolframalpha.com/widgets/view.jsp?id=769788ade06411e063edbd51239787f9}{Polar Area}
     \item \href{https://www.wolframalpha.com/widgets/view.jsp?id=c26cbb9457ff75f58f479364ddb79cd1}{Polar Arclength}
 \end{itemize}
+
+\subsection{Rearrangement of Series}
+Also known as the Riemann Rearrangement Theorem.
+
+If $\sum_{n=1}^{\infty}\limits a_n$ converges conditionally, you can rearrange the terms in the series to make the series "converge to" any finite number.
+
+This is because we can design two sub-series, $\sum b_n$ ($b_n = a_n > 0$) and $\sum c_n$ ($c_n = a_n < 0$), which are both divergent, and so we can add precisely enough terms from each side so that the series sum will converge to a desired value.
+
+In short, the rules of arithmetic (commutability) do not apply to conditionally convergent series.
 
 \end{document}
