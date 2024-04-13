@@ -2,4 +2,5 @@
 *.aux
 *.auxlock
 *.log
+*.out
 *.pdf
