@@ -960,6 +960,38 @@ Let $\sum_{n=1}^{\infty}\limits a_n$ be a series.
 This test is usually used on series with expressions for $a_n$ with exponents of $n$.
 
 \subsection{Power Series}\label{power-series}
+Given a variable $x$, an infinite series of the form
+\begin{align*}
+    &\sum_{n=0}^{\infty}a_nx^n & &\sum_{n=0}^{\infty}a_n\left(x-c\right)^n
+\end{align*}
+is a power series in $x$ centered at $x=c$ (such as $c=0$).
+
+A general power series need not be geometric.
+
+\subsubsection{Convergence of a Power Series}
+For a power series centered at $x=c$, c being the center of the interval of convergence, exactly one of the following statements will be true:
+\begin{enumerate}
+    \item The series converges only at $x=c$. ($R = 0$)
+    \item $\exists R \left(0 < r < \infty\right)$ such that the series converges absolutely for $|x-c|<R$ and diverges for $|x-c| > R$.
+    \item The series converges absolutely for all values of x. ($R = \infty$, $I=(-\infty,\infty)$
+\end{enumerate}
+We can know for sure that the series converges absolutely on a continuous set containing $(c-R, c+R)$ but we must inspect the endpoints in addition for conditional convergence.
+
+\subsubsection{General Approach to Power Series}
+\begin{enumerate}
+    \item Determine the radius of convergence. (Ratio Test)
+    \item Determine the interval of convergence. (Including endpoints)
+    \item What does it converge to?
+\end{enumerate}
+For assessments like the AP FRQ section, sufficient arguments must be made to justify the convergence/divergence of the endpoints.
+
+\subsubsection{Interesting Series}
+\begin{align*}
+    f'(x) = \sum_{n=0}^{\infty} x^n &= 1 + x + x^2 + x^3 + \ldots \\
+    f(x) = \sum_{n=1}^{\infty} \frac{x^n}{n} &= x + \frac{x^2}{2} + \frac{x^3}{3} + \ldots \\
+    \int f(x)dx = \sum_{n=2}^{\infty} \frac{x^n}{n(n-1)} &= \frac{x^2}{2} + \frac{x^3}{3 \cdot 2} + \frac{x^4}{4 \cdot 3} + \ldots
+\end{align*}
+
 \subsection{Taylor Series}
 
 \section{Differential Equations}
