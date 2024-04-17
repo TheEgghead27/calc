@@ -973,7 +973,7 @@ For a power series centered at $x=c$, c being the center of the interval of conv
 \begin{enumerate}
     \item The series converges only at $x=c$. ($R = 0$)
     \item $\exists R \left(0 < r < \infty\right)$ such that the series converges absolutely for $|x-c|<R$ and diverges for $|x-c| > R$.
-    \item The series converges absolutely for all values of x. ($R = \infty$, $I=(-\infty,\infty)$
+    \item The series converges absolutely for all values of $x\in\mathbb{R}$. ($R = \infty$, $I=(-\infty,\infty)$
 \end{enumerate}
 We can know for sure that the series converges absolutely on a continuous set containing $(c-R, c+R)$ but we must inspect the endpoints in addition for conditional convergence.
 
@@ -985,7 +985,18 @@ We can know for sure that the series converges absolutely on a continuous set co
 \end{enumerate}
 For assessments like the AP FRQ section, sufficient arguments must be made to justify the convergence/divergence of the endpoints.
 
-\subsubsection{Interesting Series}
+\subsubsection{The Most Important Power Series}
+$$\sum_{n=0}^{\infty} \square^n = 1 + \square + \square^2 + \square^3 + \square^4 + \ldots = \frac{1}{1-\square}$$
+
+Here, the radius $R = 1$: $-1 < \square < 1$.
+
+\subsubsection{Calculus of Power Series}
+The integral/derivative of a series can be rewritten (``distributed'') as a term-wise integral/differentiation (for example, see the Interesting Series below).
+
+For a series that you can model with a function $f(x)$, $\int f(x) = C + \sum \left(\int \square^n\right)$. Similarly to Feynman's Trick, one must calculate the value of $C$ by evaluating these two equivalent expressions.
+
+
+\paragraph{Interesting Series}
 \begin{align*}
     f'(x) = \sum_{n=0}^{\infty} x^n &= 1 + x + x^2 + x^3 + \ldots \\
     f(x) = \sum_{n=1}^{\infty} \frac{x^n}{n} &= x + \frac{x^2}{2} + \frac{x^3}{3} + \ldots \\
@@ -1040,5 +1051,8 @@ If $\sum_{n=1}^{\infty}\limits a_n$ converges conditionally, you can rearrange t
 This is because we can design two sub-series, $\sum b_n$ ($b_n = a_n > 0$) and $\sum c_n$ ($c_n = a_n < 0$), which are both divergent, and so we can add precisely enough terms from each side so that the series sum will converge to a desired value.
 
 In short, the rules of arithmetic (commutability) do not apply to conditionally convergent series.
+
+\subsection{Formal Power Series}
+Combinatorics treats power series as a set of symbols to manipulate.
 
 \end{document}
