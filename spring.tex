@@ -80,6 +80,8 @@ If $f$ and $g$ are continuous on $[a,b]$ with $f(x) \ge g(x)$ for $x \in [a,b]$,
 
 This can also be interpreted geometrically as the integral of the vertical difference between $f$ and $g$.
 
+Generally, the area of such a region is all positive, unlike the area ``under'' a curve.
+
 \subsection{Solids of Revolution}
 Solids with axial symmetry about an axis of revolution.
 
@@ -995,12 +997,25 @@ The integral/derivative of a series can be rewritten (``distributed'') as a term
 
 For a series that you can model with a function $f(x)$, $\int f(x) = C + \sum \left(\int \square^n\right)$. Similarly to Feynman's Trick, one must calculate the value of $C$ by evaluating these two equivalent expressions.
 
-
 \paragraph{Interesting Series}
 \begin{align*}
     f'(x) = \sum_{n=0}^{\infty} x^n &= 1 + x + x^2 + x^3 + \ldots \\
     f(x) = \sum_{n=1}^{\infty} \frac{x^n}{n} &= x + \frac{x^2}{2} + \frac{x^3}{3} + \ldots \\
     \int f(x)dx = \sum_{n=2}^{\infty} \frac{x^n}{n(n-1)} &= \frac{x^2}{2} + \frac{x^3}{3 \cdot 2} + \frac{x^4}{4 \cdot 3} + \ldots
+\end{align*}
+Here, one can also see differentiation/integration as a "shifting" of terms.
+
+\subsubsection{Shift and Subtract}
+The shift and subtract method is (an optional) method for evaluating certain \emph{absolutely convergent} power series.
+
+By multiplying some series $S$ by a factor $a$ such that the denominators of the terms of the sequence underlying $S$ are "shifted" over, one can try to take $aS - S$ to produce a simpler set of terms for the series, such as a geometric series. This is analogous to the finite difference method of approximating a polynomial's derivatives.
+
+For example:
+\begin{align*}
+    \sum_{n=1}^\infty \frac{n}{2^n} = S = &\frac{1}{2} + \frac{2}{4} + \frac{3}{8} + \frac{4}{16} + \frac{5}{32} + \ldots \\
+    2S = 1 + &\frac{2}{2} + \frac{3}{4} + \frac{4}{8} + \frac{5}{16} + \ldots \\
+    -\S = -&\frac{1}{2} - \frac{2}{4} - \frac{3}{8} - \frac{4}{16} - \frac{5}{32} - \ldots  \\
+    S = 1 + &\frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \frac{1}{16} + \ldots = 2
 \end{align*}
 
 \subsection{Taylor Series}
@@ -1054,5 +1069,35 @@ In short, the rules of arithmetic (commutability) do not apply to conditionally 
 
 \subsection{Formal Power Series}
 Combinatorics treats power series as a set of symbols to manipulate.
+
+\subsection{AP Practice}
+\subsubsection{MCQ}
+All topics will be covered in the MCQ.
+
+\subsubsection{FRQ}
+There are 6 FRQs, 30 minutes for 2 calculator-active questions, with an additional 60 minutes for 4 non-calculator questions (though you can go back to the first 2).
+
+Each FRQ is worth 9 points each, 54 points, or $\frac{1}{2}$ of the exam's 108 points are here.
+
+The target is to be over $\frac{2}{3}$ of the points, thus achieving a 5.
+
+There are four types of questions that almost always appear on the AP Calculus BC Exam:
+\begin{itemize}
+    \item Tabular -- A function is given in the form of a table of values. Often involves approximating slopes with secants, integrals with endpoint sums.
+    \item Graphical -- A function (or its derivatives) is given in the form of a graph.
+    \item Accumulation -- A function is given as a rule, usually involving an antiderivative/derivative.
+    \item Taylor Series
+\end{itemize}
+
+Additionally, common topics are
+\begin{itemize}
+    \item Parametric/Polar
+    \item Differential Equations
+    \item Area/Volume (by known cross section/washer method, shell method is optional)
+    \item Miscellaneous -- As per Campbell's law, the exam seeks to be less predictable due to ``corruption pressures''.
+\end{itemize}
+
+\subsubsection{Field Test Questions}
+We are paying beta testers, for questions that are meant to be unusual.
 
 \end{document}
