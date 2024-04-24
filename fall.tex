@@ -1,0 +1,341 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsfonts} % for mathbb
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\title{Honner's Honors Calculus (Fall Semester)}
+\author{David Chen}
+\date{September 2023 - January 2024}
+
+\begin{document}
+
+\maketitle
+
+\section{Functions}
+Functions map a domain (a set of $x$ ``inputs'') to one and only one element of the range a set of ($y$ ``outputs''). Usually, we are discussing functions of \underline{x} to \underline{y}.
+Functions are a subset of Relations (which relate a set of inputs to at least 1 output -- see \ref{vertical-line}).
+
+\subsection{Representations of a Function}
+There are many ways to represent a function, such as a
+\begin{itemize}
+    \item Table
+    \item Graph
+    \item Rule (including piecewise representations)
+    \item Set
+\end{itemize}
+
+\subsection{Finding the Range/Domain}
+For our purposes, we will usually be dealing only with real-valued functions.
+
+A common domain will be $x \in \mathbb{R}$, all real numbers.
+
+In this case, for every vertical line ($x=c$), that line will intercept the graph (there is a value for the function defined at that point).
+
+Similarly, to show that the range is $y \in \mathbb{R}$, use horizontal lines ($y=c$). In general, the range will be dependent on the domain.
+
+"Holes" in the domain, represented by open circles in graphs, are artifacts of the exclusion of some value from the domain.
+
+\subsection{The Vertical Line Test} \label{vertical-line}
+To verify that a graph of a relation is a function, one can use the vertical line test.
+
+If for any vertical line ($x=c$), there are multiple intersections with the relation, the relation is NOT a function. Otherwise, the relation is a function.
+
+\subsubsection{The Horizontal Line Test}
+To verify that a function is invertible, we check if any horizontal line ($y=c$) has multiple intercepts with the graph of the function. If not, every output ($c$) will correspond with one input $x$, so $f^{-1}(y)=x$ is a valid function.
+
+\subsection{Transformations}
+Transformations alter a function. They can be composed, but function composition is not commutative,\footnote{Subtraction is anti-commutative, since switching the order of the terms will make the result negative.} so the order matters.
+
+
+\subsubsection{f(x + c)}
+This shifts (translates) the domain by $c$ ("moving left $c$" on the graph).
+\subsubsection{f(x) + c}
+This shifts (translates) the range by $c$ ("moving up $c$" on the graph).
+\subsubsection{f(-x)}
+This alters the domain ("reflecting over the y-axis" on the graph).
+\subsubsection{-f(x)}
+This alters the range ("reflecting over the x-axis" on the graph).
+\subsubsection{cf(x)}
+This is an axial scaling, for only one dimension is changed.
+
+This is not a translation, nor is it a dilation (which is based on a center point and a scale factor).
+
+\section{Limits}
+If the difference between two numbers is smaller than can be imagined (arbitrarily/indistinguishable close), then the difference is $0$, and they are the same number.
+$$\lim_{x\to a}f(x)=L$$
+As $x$ approaches $a$ (in the domain), $f(x)$ gets arbitrarily close to $L$ (in the range).
+
+We say that $\lim_{x\to a}\limits f(x)$ exists if
+\begin{enumerate}
+    \item $\lim_{x\to a^+}\limits f(x)$ exists (approaching from the positive side)
+    \item $\lim_{x\to a^-}\limits f(x)$ exists (approaching from the negative side)
+    \item $\lim_{x\to a^+}\limits f(x) = \lim_{x\to a^-}\limits f(x)$
+\end{enumerate}
+
+Limits may not exist for odd reasons, such as the domain being integers ($x\in\mathbb{Z}$), since limits are meant to be connected paths through the domain.
+
+In addition, the function may exist as points the limit of the function does not, while the limit may exist at points the function may not.
+
+\subsection{The (Delta-Epsilon) Definition of a Limit}
+For a function $f(x)$ and a real number L, the statement $\lim_{x\to a}\limits f(x) = L$ means that for every $\epsilon > 0$, there exists a $\delta > 0$ such that $0 < |x-a| < \delta$ implies that $|f(x) - L| < \epsilon$.
+
+$\epsilon$ (epsilon) represents a tolerance in the range, and $\delta$ (delta) represents a tolerance in the domain.
+
+\subsection{Limit Laws}\label{limit-laws}
+Limits are not actually numbers, but behave similarly to numbers in that there are algebraic properties related to them.
+
+For instance, letting $b,c \in \mathbb{R}$, $n \in \mathbb{N}$, and
+\begin{align*}
+    \lim_{x\to c} f(x) = L  & & \lim_{x \to c} g(x) = K
+\end{align*}
+
+Then the following properties hold:
+\begin{enumerate}
+    \item Scalar multiple\quad$\lim_{x\to c}\limits\left[bf(x)\right] = bL$
+    \item Sum/Difference\quad$\lim_{x\to c}\limits\left[f(x)\pm g(x)\right] = L \pm K$
+    \item Product\quad$\lim_{x\to c}\limits\left[f(x)g(x)\right] = LK$
+    \item Quotient\quad$\lim_{x\to c}\limits\left[f(x) / g(x)\right] = L / K$, if $K\ne 0$
+    \item Power\quad$\lim_{x\to c}\limits\left[f(x)\right]^n = L^n$
+\end{enumerate}
+
+\subsection{Infinity}
+Infinity is greater than any real number.
+
+$$\lim_{x\to a}f(x) = \infty$$ means that as $x$ gets arbitrarily close to $a$, the value of $f(x)$ grows without bound. For any $N>0$, $\exists\delta$ s.t. $0 < |x-a| < \delta$ implies that $f(x) > N$.
+
+To say that a limit $= \infty$ is to say that this limit does not exist in a particular way (and so the Limit Laws do not apply).
+
+$$\lim_{x\to\infty}f(x) = L$$ means that for every $\epsilon > 0$ there exists an $N > 0$ such that $x>N$ implies that $|f(x)-L|<\epsilon$.
+
+\subsection{Indeterminate Forms}
+The indeterminate forms $\frac{0}{0}$ and $\frac{\infty}{\infty}$ are undefined, they could be anything.
+
+For instance:
+\begin{align*}
+\lim_{x\to 0} \frac{\sin{x}}{x} = 1 & & \lim_{x\to 0}\frac{x}{x^2} = \infty
+\end{align*}
+
+This is not about how small/large the values get, but how fast the values get smaller/larger.
+
+\subsection{Polynomials}
+Based on the Limit Laws (\ref{limit-laws}), and the fact that $\forall c \lim_{x\to c}\limits x = c$, every polynomial\footnote{or rational function so long as f(c) exists} has the property that $\forall c \lim_{x\to c}\limits f(x)  = f(x)$.
+
+\subsubsection{Rational Functions}
+Rational functions are all of the form $\frac{P(x)}{Q(x)}$, with $P, Q$ being polynomials where
+\begin{align*}
+    P(x) = a_nx^n + a_{n-1}x^{n-1} + \ldots + a_1x + a_0 \\
+    Q(x) = b_nx^n + b_{n-1}x^{n-1} + \ldots + b_1x + b_0
+\end{align*}
+
+$$\lim_{x\to\infty}\frac{P(x)}{Q(x)} = \begin{cases}
+    0 & deg(q) > deg(p) \\
+    \frac{a_n}{b_n} & deg(q) = deg(p)\\
+    \pm \infty & deg(q) < deg(p)
+\end{cases}$$
+The last case depends on the signs of $a_n$ and $b_n$.
+
+When $x$ is infinitely large, all that matters is the leading degree term, but when $x$ is small (near $0$), the smaller degree terms matter more.
+
+\subsection{Asymptotes}
+Any function can be an asymptote to another function. The asymptote need not appear at $\pm\infty$, such as in the case of vertical asymptotes (e.g. $y=\log{x}$ has a vertical asymptote $x=0$), and the graph of the function may intersect the asymptote at times.
+
+\subsection{Important Theorem I}
+If $f$ and $g$ agree everywhere, except possibly at $x=a$, then \[ \lim_{x \to a} f(x) = \lim_{x \to a} g(x) \] assuming these limits exist.
+
+This allows us to treat rational functions like polynomials.
+
+\subsection{The Squeeze Theorem}
+Suppose $h(x) \le f(x) \le g(x)$ $\forall x \in$ an open interval $I$ that contains $x=c$, except possibly $x=c$ itself. If $\lim_{x\to c}\limits h(x) = L = \lim_{x\to c}\limits g(x)$, then $\lim_{x \to c}f(x) = L.$
+
+\subsection{Special Trig Limits}\label{trig-limits}
+$$\lim_{x\to 0} \frac{\sin{x}}{x} = 1$$ or in engineer terms, $\sin{x} \approx x$ for small $x$.
+
+This is proven by the fact that $\sin{\theta}\cos{\theta} \le \theta \le \frac{\sin{\theta}}{\cos{\theta}}$. The former statement is based on the area of the arc compared to the area of the right-triangle, and the latter statement is based on the length of the arc compared to the right-triangle with the tangent line.
+
+Because we are working in $0 \le \theta \le \frac{\pi}{2}$, $\sin{\theta} > 0$, we can flip this expression around and show via the Squeeze Theorem that the limit is 1.
+
+$$\lim_{x\to 0} \frac{1-\cos{\theta}}{\theta} = 0$$
+
+\subsection{Continuity}
+The function $f(x)$ is continuous at $x=c$\footnote{Notice that continuity must be a local property about a point.} if
+\begin{enumerate}
+    \item f(c) exists
+    \item the limit $\lim_{x\to c}\limits f(x)$ exists
+    \item $\lim_{x\to c}\limits f(x) = f(c)$
+\end{enumerate}
+A function $f(x)$ is continuous on a set $S$ if $\forall a \in S$, $f(x)$ is continuous at $x=a$.\footnote{This definition may be adjusted for endpoints to use only one-sided limits.} To say that ``$f$ is continuous'' is usually to say that $f$ is continuous on $\mathbb{R}$.
+
+Informally, a continuous function can be drawn without lifting one's pencil.
+
+\subsubsection{Discontinuities}
+\paragraph{Point Discontinuity} One point is missing in the curve. This is also called a removable discontinuity because adding that one point can fix the discontinuity.
+\paragraph{Jump Discontinuity} There is a vertical gap between one portion of a function and the next.
+\paragraph{Infinite Discontinuity} The function goes to $\pm \infty$ as $x \to c$.
+
+\subsubsection{Continuous Functions}
+\begin{itemize}
+    \item All polynomials are continuous.
+    \item All rational functions are continuous where they are defined.
+    \item All trigonometric functions are continuous where they are defined.
+\end{itemize}
+
+If $f,g$ are continuous, then $f+g$, $fg$, $\frac{f}{g}$ ($g\ne0$), and $cf$ are all continuous. The composition of continuous functions is continuous.
+
+If $f(x)$ is continuous at $x=b$ and $\lim_{x\to a}g(x) = b$, then $\lim_{x\to a}f(g(x)) = f(b)$. Limits can pass through continuous functions.
+
+\subsubsection{The Intermediate Value Theorem (IVT)}
+Suppose $f(x)$ is continuous on the \underline{closed} interval $[a,b]$, and $f(a)\ne f(b)$. If $f(a) < k < f(b)$, $\exists c \in (a,b)$ s.t. $f(c)=k$. There may be multiple such intersections, but we only require one.
+
+\paragraph{Related Theorem A}
+Suppose $f(x)$ is continuous on $[a,b]$. If $f(x)$ has no zeroes on the interval, then $f$ is either entirely positive or entirely negative on the interval.
+
+\paragraph{Related Theorem B}
+Suppose $f(x)$ and $g(x)$ are continuous on $[a,b]$. If $f(a) < g(a)$ and $f(b) > g(a)$, then $\exists c$ s.t. $f(c) = g(c)$, based on the IVT for the continuous function $f-g$.
+
+\section{Derivatives}
+\subsection{Secant Lines}
+A secant line is the line joining two points $(a, f(a))$ and $(b, f(b))$ on the graph of a function. Its slope is $\frac{f(a)-f(b)}{a-b}$.
+
+This slope can be considered the average rate of change of the function between $a$ and $b$, or an approximation to the derivative.
+
+
+\subsection{Tangent Lines}
+If $f(x)$ is defined on an open interval containing $c$ and if $\lim_{x\to c}\limits \frac{f(x) - f(c)}{x-c}=m$ exists, then the line passing through $(a, f(a))$ with slope $m$ is the tangent line to the graph of $y=f(x)$ at $x=c$. In this case, we write $f'(c) = m$ (f prime of c) can call $f'(c)$ the derivative of $f(x)$ at $x=c$.
+
+A tangent line is the best local linear approximation to a function at a point. Thus, given the derivative at a point $(x, f(x))$, one can approximate $f(x\pm a) \approx f'(x)(a) + f(x)$.
+
+Tangency is a property of a graph, not a function.
+
+A linear approximation is usually far easier to work with compared to the original form of a function.
+
+\subsubsection{The Vertical Difference Method}
+If $g(x)=mx+b$ is tangent to $f(x)$ at $x=a$, then we expect $V(x) = f(x) - g(x)$ to have a double root at $x=a$.
+
+This places us at the unstable singularity between the region with no intersections and 2 intersections.
+
+Notice that $P(x) = (x-a)^2Q(x) + (mx+b)$, the remainder of dividing a polynomial $P(x)$ by $(x-a)^2$ provides the tangent line at $x=a$.
+\subsection{Definition of the Derivative}
+Differentiability is a local property. ``$f$ is differentiable at $x=c$'' if the limit (described below) exists.
+\paragraph{At a point}
+$$f'(c) = \lim_{x\to c} \frac{f(x) - f(c)}{x-c}$$
+
+\paragraph{As a function}
+$$f'(x) = \lim_{\Delta x\to 0} \frac{f(x) - f(x+\Delta x)}{\Delta x}$$
+
+\paragraph{Symmetric Difference Quotient}
+This is not quite the same as the derivative.
+$$\lim_{h\to 0} \frac{f(x+h) - f(x-h)}{2h}$$
+
+\paragraph{Leibniz Notation}
+$$\frac{dy}{dx}$$
+\subsubsection{Important Theorem II}
+Differentiability implies continuity.\\
+If $f(x)$ is differentiable at $x=c$, then $f(x)$ is continuous at $x=c$.
+
+$|x|$ is a good example of a continuous function that is not differentiable, due to its cusp.
+
+$x^\frac{1}{3}$ is also not differentiable at $x=0$, due to the fact that the tangent line is vertical.
+
+\paragraph{Right/Left Differentiability}
+If we wished to define a function to be differentiable on a closed interval $[a,b]$, we would have to use one-sided limits.
+
+
+\subsection{Differentiation Rules}
+\begin{itemize}
+    \item $\frac{d}{dx}\left[ax+b\right] = a$\quad"The derivative of a linear line is its slope."
+    \item $\frac{d}{dx}\left[c\right] = 0$\quad"The derivative of a constant function is 0.
+    \item $\frac{d}{dx}\left[f(x) \pm g(x)\right] = \frac{d}{dx}\left[f(x)\right] \pm \frac{d}{dx}\left[g(x)\right]$
+    \item $\frac{d}{dx}\left[cf(x)\right] = c\frac{d}{dx}\left[f(x)\right]$
+    \item $\frac{d}{dx}\left[x^n\right] = nx^{n-1}$\quad The Power Rule -- proven using the Binomial Theorem for integers, but applicable to all real exponents.
+    \item $\frac{d}{dx}\left[\sin{x}\right] = \cos{x}$\quad Proven using the limits from \ref{trig-limits}.
+    \item $\frac{d}{dx}\left[\cos{x}\right] = -\sin{x}$
+    \item $\frac{d}{dx}\left[\tan{x}\right] = \frac{1}{\cos^2{x}} = \sec^2{x}$
+    \item $\frac{d}{dx}\left[\cot{x}\right] = \frac{-1}{\sin^2{x}} = -\csc^2{x}$
+\end{itemize}
+
+\subsubsection{The Product Rule}
+$$\frac{d}{dx}\left[f(x)g(x)\right] = f(x)g'(x) + g(x)f'(x)$$
+"First times the derivative of the second plus the second times the derivative of the first."
+
+\subsubsection{The Quotient Rule}
+$$\frac{d}{dx}\left[\frac{p}{q}\right] = \frac{d}{dx}\left[p\cdot q^{-1}\right] = \frac{g(x)f'(x) - f(x)g'(x)}{\left(g(x)\right)^2}$$
+"Low $d$ high minus high $d$ low over low squared."
+
+\subsubsection{The Chain Rule}
+$$\frac{d}{dx}\left[f(g(x))\right] = f'(g(x))g'(x)$$
+
+\subsection{Implicit Differentiation}
+If you cannot solve for an explicit form of $y=f(x)$, you can still differentiate to find an expression for $\frac{dy}{dx}$ (in terms of $x$ and $y$) by differentiating the two sides of an equation, considering the chain rule.
+
+For instance $\sin{y}=x$ has derivative $\frac{dy}{dx}=\sec{y}$ from implicit differentiation.
+
+This method is helpful in solving related rates problems.
+
+\subsection{Applications of Differentiation}
+\subsubsection{Increasing/Decreasing}
+If $f'(x) > 0$, $f(x)$ is increasing. If $f'(x) < 0$, $f(x)$ is decreasing.
+
+
+\section{Appendix}
+\subsection{Notation}
+\subsubsection{\texorpdfstring{The Universal Quantifier $\forall$}{The Universal Quantifier}}
+This symbol stands for "for all ..."
+
+For instance, $\forall x$ means "for all x", the following statement is true.
+
+To describe that a function is odd, one can write $\forall x \left(f\left(-x\right) = -f\left(x\right)\right)$.
+
+\subsubsection{\texorpdfstring{The Existential Qualifier $\exists$}{The Existential Qualifier}}
+This symbol stands for "there exists ..."
+
+For instance $\exists x$ means that there exists (at least one value of) $x$ such that the following statement is true.
+
+\subsubsection{Sets}
+$\left\{\right\}$ represent set builder notation.
+
+$\in$ is the "in" symbol.
+
+$|$ represents "such that".
+
+$\cup$ represents a union of sets (inclusive "or").\\
+Example: $\left\{x \in \mathbb{R} | 1 \le x \le 5 \right\}$ and $\left\{\theta \in \mathbb{R} | 1 \le \theta \le 5 \right\}$ represent the same set, but with different labels.
+
+$\subset$ and $\subseteq$ are the subset (or equal to) symbols.
+
+\subsection{Additional Functions}
+\subsubsection{ceil(x)}
+The ceiling function returns the smallest integer ($y\in\mathbb{Z}$) such that $y \ge x$.\\
+View a graph on \href{https://www.desmos.com/calculator/cpay9r9g5w}{Desmos}.
+
+\subsubsection{sgn(x)}
+The sign function. Defined as
+sgn$(x) = \frac{x}{|x|}$ or sgn$(x) = \begin{cases}
+    -1 &x<0\\
+    +1 &x>0
+\end{cases}$\\
+A similar function, the pulse function, defines pulse$(0)=0$.
+
+\subsubsection{The Dirichlet Function}
+This is a pathological function constructed to be nowhere continuous.
+
+D$(x) = \begin{cases}
+    1 & x\in\mathbb{Q}\\
+    0 & x\notin\mathbb{Q}
+\end{cases}$
+
+\subsection{Circle Facts}
+\begin{itemize}
+    \item Subtends is a word for the relationship between a central angle and its arc.
+    \item All circles are similar.
+    \item To find the arclength $s$ of a circle's arc from the central angle measure $\theta$ and the circle's radius $r$: $s=\theta r$.
+    \item The sector area of a circle is $A=\frac{1}{2}r^2\theta$.
+\end{itemize}
+
+\subsection{Additional Area Formulae}
+\begin{itemize}
+    \item Triangle with angle C and sides a, b -- $A=\frac{1}{2}ab\sin{C}$
+    \item Rhombus with angle C and side length a -- $A=a^2\sin{C}$
+\end{itemize}
+
+\end{document}
