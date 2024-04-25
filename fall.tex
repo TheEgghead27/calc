@@ -193,7 +193,7 @@ Suppose $f(x)$ is continuous on $[a,b]$. If $f(x)$ has no zeroes on the interval
 \paragraph{Related Theorem B}
 Suppose $f(x)$ and $g(x)$ are continuous on $[a,b]$. If $f(a) < g(a)$ and $f(b) > g(a)$, then $\exists c$ s.t. $f(c) = g(c)$, based on the IVT for the continuous function $f-g$.
 
-\section{Derivatives}
+\section{Differentiation}
 \subsection{Secant Lines}
 A secant line is the line joining two points $(a, f(a))$ and $(b, f(b))$ on the graph of a function. Its slope is $\frac{f(a)-f(b)}{a-b}$.
 
@@ -272,10 +272,295 @@ For instance $\sin{y}=x$ has derivative $\frac{dy}{dx}=\sec{y}$ from implicit di
 
 This method is helpful in solving related rates problems.
 
-\subsection{Applications of Differentiation}
-\subsubsection{Increasing/Decreasing}
-If $f'(x) > 0$, $f(x)$ is increasing. If $f'(x) < 0$, $f(x)$ is decreasing.
+\section{Induction}
+Induction can be proven by the Well Ordering Principle (from Number Theory), that there must be a minimum element of a set, and thus the set of $n$ where $P(n)$ is false would have a contradiction if a greater $n$ failed.
 
+\subsection{Weak Induction}
+Let $P(n)$ be a statement about the natural number $n$. If the following are true
+\begin{enumerate}
+    \item $P(0)$ is true
+    \item $P(k)$ is true implies $P(k+1)$ is true
+\end{enumerate}
+Then $P(n)$ is true for all $n\in\mathbb{N}$
+
+In short, a base case must be proven true, and then the inductive step is to assume $P(n)$ is true for some $k$, and then prove part 2.
+
+"Since $P(k)$ is true implies $P(k+1)$ is true, and $P(1)$ is true, we know $P(n)$ is true for all $n\ge1$."
+
+\subsection{Strong (Complete) Induction}
+Let $P(n)$ be a statement about the natural number $n$. If the following are true
+\begin{enumerate}
+    \item $P(0)$ is true
+    \item $P(0), P(1), P(2), \ldots, P(k)$ all being true implies $P(k+1)$ is true
+\end{enumerate}
+Then $P(n)$ is true for all $n\in\mathbb{N}$
+
+Strong Induction explicitly states that all the statements prior to $P(k)$ are true. (The assumption, not the conclusion, is stronger.) It is equivalent to Weak Induction.
+
+\subsection{Useful Results} \label{induction-closed}
+\begin{itemize}
+    \item The Power Rule
+    \item $\sum_{i=0}^{n-1} 2i+1 = n^2$
+    \item $\sum_{i=1}^{n} i= \frac{n(n+1)}{2}$
+\end{itemize}
+
+\subsubsection{Binomial Theorem}
+$$(x+y)^n=\binom{n}{0}x^n + \binom{n}{1}x^{n-1}y^1 + \binom{n}{2}x^{n-2}y^2 + \ldots + \binom{n}{n-1}x^1y^{n-1}+\binom{n}{n}y^n$$
+
+\paragraph{Binomial Coefficient} ``n choose k'' or ``nCk'' or $\binom{n}{k}= \frac{n!}{\left(n-k\right)!k!}$
+
+Pascal's Triangle encodes the binomial coefficients.
+
+Note that $\binom{n}{0}=1$, $\binom{n}{1} = n$.
+
+\subsubsection{The Division Algorithm}
+Given $n,m \in \mathbb{Z}$ and $n\ge m > 0$, $\exists q, r \in \mathbb{Z}$ with $n =qm+r$,$q>0$, $m>r\le0$. Proven by strong induction, cases are $n-m<m$ in which case $r$ is incremented, or $n-m \ge m$ so $q$ is incremented.
+\
+\paragraph{The Division Algorithm for Polynomials}
+Given $P(x)\ge M(x) > 0$ in degree, $\exists Q(x), R(x)$ with $P(x) = Q(x)M(x) + R(x)$. This can be proven by induction on the degree of polynomial.
+
+Thus, we can use polynomial long division.
+
+\section{Polynomials}
+Polynomials are a generalization of numbers, but with base $x$.
+
+\subsection{Factoring}
+One way of factoring is division with $q(x)$ having degree $1$, leaving $r(x)$ with degree 0 (a constant). (see \ref{remainder})
+
+\subsubsection{The Location Principle}
+An application of the IVT on polynomials to find positions where $P(x) = 0$.
+
+\subsubsection{The Zero Product Property}
+If $a,b \in \mathbb{R}$ and $ab=0$, then $a=0$ or $b=0$. This extends to complex numbers, but not modular arithmetic.
+
+This is why factoring reveals roots.
+
+\paragraph{The Remainder Theorem}\label{remainder}
+If you divide a polynomial $p(x)$ by $(x-a)$, the remainder it $p(a)$.
+$$P(a) = (a-a)q(x) + R = 0 + R = R$$
+
+\paragraph{The Factor Theorem} $(x-a)$ is a factor of $p(x)$ if and only if $P(a) = 0$. A factor has no remainder upon division.
+
+\paragraph{The Conjugate Root Theorem} If the polynomial $P(x)$ has real coefficients, then non-real roots occur in conjugate pairs.
+
+Further ``Tools for Root Finding'' are left to the reader to recall.
+
+\subsection{Complex Numbers}
+$\mathbb{C}=\left\{a+bi|a,b\in\mathbb{R}\right\}$ is the set of complex numbers, where $i$ has the property that $i^2 = -1$.
+
+$i$ is the imaginary unit. $a$ is the real part, and $b$ is the imaginary part.
+
+\subsubsection{The Argand Plane} Also known as the "complex plane". Uses a real and imaginary axis, and all complex can be represented as vectors/points on this plane.
+
+\subsubsection{Operations on Complex Numbers}
+\paragraph{Conjugate}
+If $z=a+bi$, $\overline{z}=a-bi$ (a reflection over the real axis).
+
+\paragraph{Addition}
+$$(a+bi) + (c+di) = (a+c) + (b+d)i$$
+
+$z+\overline{z} \in \mathbb{R}$
+
+\paragraph{Multiplication}
+$$(a+bi) \cdot (c+di) = (a+bi)c + (a+bi)di$$
+
+Multiplication by $i$ can be thought of as a rotation by $90\deg$ in the complex plane.
+
+$z\cdot\overline{z} = a^2 + b^2 = |z|^2 \in \mathbb{R}$
+
+\paragraph{Division}
+Division is multiplication by the multiplicative inverse.
+$$\frac{1}{z} = \frac{1}{|z|^2}\overline{z}$$
+
+\paragraph{Additional Conjugate Identities}
+\begin{enumerate}
+    \item $\overline{\overline{z}} = z$.
+    \item $z = \overline{z}$ iff $z\in\mathbb{R}$
+    \item $\overline{z+w} = \overline{z} + \overline{w}$
+    \item $\overline{zw} = \overline{z} \cdot \overline{w}$
+    \item $\overline{\frac{z}{w}} = \frac{\overline{z}}{\overline{w}}$
+    \item $\overline{z^n} = \overline{z}^n$ for $n \in\mathbb{N}$
+\end{enumerate}
+
+\subsubsection{Relation to Polynomials}
+All complex numbers can be thought of as polynomials in $i$.
+
+\paragraph{Fundamental Theorem of Algebra} Any polynomial (with complex coefficients) as at least $1$ complex root. By induction, we can prove that a polynomial of degree $n$ has $n$ roots (perhaps non-unique).\footnote{This was Gauss's PhD thesis when he was 16/17...}
+
+
+\section{Differentiation Applications}
+\subsection{Extrema}
+Let $f(x)$ be defined on an interval $I$ containing $c$.\\
+We say that $f(c)$ is a maximum for $f$ on $I$ if $\forall x \in I$ $f(c) \ge f(x)$.
+We say that $f(c)$ is a minimum for $f$ on $I$ if $\forall x \in I$, $f(c) \le f(x)$.
+
+\subsubsection{The Extreme Value Theorem} If $f$ is continuous on a closed interval $I$, then $f$ takes a maximum and a minimum value on $I$.
+
+Open intervals may not have a definite maximum/minimum, whether that be because the function veered off to infinity or because the function can only approach some bounding value.
+
+The EVT is an existence theorem, which guarantees that extrema exist, but not where they are.
+
+\paragraph{Finding extrema}
+Given a continuous function $f(x)$ on a closed interval $I$ (satisfying the EVT), extrema can only occur at
+\begin{enumerate}
+    \item endpoints of the interval
+    \item $f'(x) = 0$
+    \item $f'(x)$ is undefined
+\end{enumerate}
+The values of $x$ pertaining to \emph{the latter two cases} are called the critical numbers of $f$.
+
+The general strategy for finding extreme values of $f$ on $I = [a,b]$ is to find the critical numbers, and then evaluate for $f(x)$ at the critical numbers at $a,b$.
+
+\subsubsection{Local Minima/Maxima}
+If there is an open interval containing $c$ on which $f(c)$ is a maximum/minimum, then $f(x)$ is a local/relative maximum/minimum.
+
+Because the interval is open, the endpoints of such an interval do \emph{not} count.
+
+If $f(x)$ is differentiable, then relative extrema occur at critical numbers.
+
+\paragraph{Fermat's Theorem (on Stationary Points)}
+If $f$ has a local maximum or minimum at $x=c$ and $f'(c)$ exists, then $f'(c)=0$.
+
+The converse is \emph{not} true, if $f'(x) = 0$, $f(c)$ might not be a local maximum or minimum. A canonical example is $f(x) = x^3$, where $x=0$ is not a local minimum/maximum, the graph simply "flattens out".
+
+\paragraph{The First Derivative Test} Suppose $f$ is continuous on an open interval $I$ about $c$, a critical number of $f$. If $f$ is differentiable on $I$ (except possibly at $x=c$), then $f(c)$ can be classified as follows:
+\begin{itemize}
+    \item If $f'$ changes from $+$ to $-$ at $x=c$, then $f(c)$ is a relative maximum.
+    \item If $f'$ changes from $-$ to $+$ at $x=c$, then $f(c)$ is a relative minimum.
+    \item If $f'$ does not change sign, then no conclusion can be drawn.
+\end{itemize}
+
+This is based on \ref{inc-dec-test} and the fact that going from increasing to decreasing would produce a relative minimum, and decreasing to increasing would produce a relative maximum.
+
+\paragraph{The Second Derivative Test} Suppose $f''(x)$ is continuous near $c$. Then \begin{enumerate}
+    \item If $f'(c) = 0$ and $f''(c) > 0$, then f has a local minimum at $x=c$.
+    \item If $f'(c) = 0$ and $f''(c) < 0$, then f has a local maximum at $x=c$.
+\end{enumerate}
+
+
+\subsection{Rolle's Theorem}
+Let $f$ be continuous on $[a,b]$ and differentiable on $(a,b)$. If $f(a)=f(b)=d$, then $\exists c \in (a,b)$ s.t. $f'(c) = 0$.
+This is trivial to prove for the constant case $f(x)=d$.
+
+For the non-constant case, there is a maximum/minimum value $f(c)$, $c\in[a,b]$, $f(c) \ne d$, with $c$ not being an endpoint. Since the absolute maximum is also a local maximum, $x=c$ is a critical number. Since $f$ is differentiable, $f'(c)$ exists, so $f'(c)=0$.
+
+In short, the EVT allows us to find an absolute maximum, which can be found to be a local maximum (as it is not at an endpoint), and thus Fermat's Theorem applies, and so $f'(c)=0$.
+
+\subsubsection{The Mean Value Theorem}\label{MVT} A generalization of Rolle's Theorem. Also a Very Important Theorem.\\
+Let $f$ be continuous on $[a,b]$ and differentiable on $(a,b)$. $\exists c \in (a,b)$ s.t. $$f'(c) = \frac{f(b)-f(a)}{b-a}$$
+The slope of the tangent line (instantaneous rate of change at $c\in(a,b)$) will be equal to the slope of the secant line (average rate of change on $[a,b]$).
+This can be proven by considering $h(x) = f(x) - g(x)$, where $g(x)$ is the secant line through $(a,f(a))$ and $(b,f(b))$.
+
+Like the EVT, the MVT is also an existence theorem.
+
+\paragraph{Theorem A}
+Suppose $f$ is continuous on $[a,b]$ and differentiable on $(a,b)$. If $f'(x)=0$ $\forall x\in(a,b)$, then $f(x)$ is constant.
+
+\paragraph{Theorem B}
+Suppose $f,g$ are continuous on $[a,b]$ and differentiable on $(a,b)$. If $f'(x)=g'(x)$ $\forall x\in(a,b)$, then $f(x) - g(x)$ is constant. (Thus, $f(x) = g(x) + C$.)
+
+\subsection{Increasing/Decreasing}
+A function $f(x)$ is increasing on an interval $I$ if for $x_1, x_2 \in I$, $x_1 < x_2$ implies $f(x_1) < f(x_2)$.\\
+A function $f(x)$ is decreasing on an interval $I$ if for $x_1, x_2 \in I$, $x_1 < x_2$ implies $f(x_1) > f(x_2)$.
+
+\subsubsection{Increasing/Decreasing Test}\label{inc-dec-test}
+If $f'(x) > 0$ on $I$, then $f$ is increasing on $I$.\\
+If $f'(x) < 0$ on $I$, then $f$ is decreasing on $I$.
+
+These can be proven using MVT-justified linearization ($c \in (x_1,x_2)$).
+
+\subsection{Concavity}
+The \underline{graph} of $f(x)$ is concave upwards on an interval $I$ if all tangent lines of $f$ on $I$ lie below the graph.\\
+The \underline{graph} of $f(x)$ is concave downwards on an interval $I$ if all tangent lines of $f$ on $I$ lie below the graph.
+
+\subsubsection{Test for Concavity}
+Let $f$ be a function whose second derivative exists on an open interval $I$.\\
+If $f''(x) > 0$ for $x \in I$, then $f$ is concave up on $I$.\\
+If $f''(x) < 0$ for $x \in I$, then $f$ is concave down on $I$.
+
+In other words, tangent lines at concave up sections of a curve are underapproximations, while tangent lines at concave down sections of a curve are overapproximations.
+
+\subsubsection{Point of Inflection} A point $P$ on a curve $y=f(x)$ is called an inflection point if $f$ is continuous at $P$ and the curve changes from concave up to concave down (or vice versa) at P.\footnote{Notice that $f$ need not be differentiable.}
+
+Lines have no points of inflection.
+
+\subsection{Optimization}
+The maximization/minimization of a function modeling another quantity with constraints.
+
+First, we go from an objective function $A(x,y)$ that we wish to optimize, and constrain the domain, then find the extrema we want on this domain.
+
+We subject the objective functions to constraints such as $x = f(y)$ so as to ensure make the problem solvable with single-variable calculus.
+
+\paragraph{Note} To minimize $d(x) = \sqrt{f(x)}$, it is sufficient to minimize $f(x)$.
+
+\section{Integration}
+\subsection{Summation Notation}
+$$\sum_{i=0}^{u}$$
+$i$ is the index of summation, $0$ is the lower limit/bound, and $u$ is the upper limit/down.
+
+The open form of a sum writes out the terms explicitly ($a_1 + a_2 + a_3 + \ldots + a_n$), and the closed form of a sum has an explicit formula in terms of anything but the index of summation (usually the upper limit).
+
+Sums can be re-indexed by replacing the index of summation, or by offsetting the upper/lower bounds and expression. For instance:
+$$\sum_{j=2}^{10} j^2 = \sum_{k=2}^{10} k^2 = \sum_{n=7}^{15} (n-5)^2 =$$
+
+If the upper limit is a variable, perhaps $n$, that expression is now a function of $n \in \mathbb{Z}, n \ge k$, with $k$ being the index.
+
+\paragraph{Closed Formulas}can be proven using induction, leading to results such as those in \ref{induction-closed}.
+
+\subsubsection{Algebra of Summations}
+\begin{itemize}
+    \item $\sum_{i=1}^{n}\limits Ca_i = C\sum_{i=1}^{n}\limits a_i$
+    \item $\sum_{i=1}^{n}\limits \left(a_i \pm b_i\right) = \sum_{i=1}^{n}\limits a_i \pm \sum_{i=1}^{n}\limits b_i$
+    \item $\sum_{i=1}^{n}\limits a_i = \sum_{i=1+p}^{n+p}\limits a_{i-p}$
+\end{itemize}
+
+However, $$\sum_{i=1}^{n}\limits a_ib_i \ne \left(\sum_{i=1}^{n}\limits a_i\right)\left(\sum_{i=1}^{n}\limits b_i\right)$$
+
+\subsubsection{Finite Difference Method}
+For sequences that can be modeled by a $k$-degree polynomial, by taking the sequence of the difference between terms, and recursively repeating for $k$ iterations until there is a finite difference between terms, we can find the value of $k$ and solve the system of equations for the coefficients of the polynomial.
+
+\subsection{Anti-Differentiation}
+Suppose $F(x)$ is a function with derivative $F'(x)$. Then $$\int F'(x)dx = F(x) + C$$
+
+We call $F(x)$ the anti-derivative of $F'(x)$ and $\int F'(x)dx$ the indefinite integral of $F'(x)$.
+
+Refer to section \ref{MVT} to reaffirm why $+C$, the constant of integration, is needed to select a function $F(x)$ from a family of anti-derivative functions.\footnote{Note that every indefinite integral equation is equivalent to a differential function.}
+
+\subsection{Area Approximations}
+To approximate area underneath a curve, we can add up rectangles (or right trapezoids) that correspond with the space under the curve.
+
+\subsubsection{Endpoint Approximations}
+If we were to inscribe the rectangles in the region, we would have an underapproximation, but if we were to circumscribe the rectangles, we would have an overapproximation. 
+
+For increasing functions, a left-endpoint sum is an underapproximation, and a right-endpoint sum is an overapproximation. The reverse is the case for decreasing functions.
+
+For an increasing function, $\Delta x = 1$, $$\sum_{n=0}^{3} f(n) \Delta x < A < \sum_{n=1}^{4} f(n) \Delta x$$ would be a bounding of the true area of $f(x)$ from $0$ to $4$ based on a left-endpoint approximation with 4 rectangles, and a similar right-endpoint approximation.
+
+If we were to allow $\Delta x \to 0$, we would get more and more accurate approximations. If corresponding limits existed, we could use a Squeeze Theorem argument to find the true value of A.
+
+\paragraph{Midpoint/Trapezoidal Approximations}
+If we were to instead use the average of $f(a)$ and $f(b)$ at the two endpoints, we would have a more accurate representation of the area using trapezoids.
+
+\subsubsection{Upper/Lower Sums}
+On each subinterval $[x_i, x_{i+1}]$, we choose $x_i^*$ so $f(x_i^*)$ is the maximum on that subinterval. Thus, we get an upper sum. Similarly, we choose a different $x_i^*$ for the minimum on the subinterval to get the lower sum.
+
+More rectangles are not always, unless you have enough of them, such as in the case of a constant function, or in cases where the addition of rectangles introduces additional error (and so you need thinner slices).
+
+\subsubsection{Riemann Sums} A generalization of the left/right/midpoint approximation method.
+$$\sum_{i=0}^{n}f(c_i)\Delta x_i$$
+$\Delta x_i$ is the width of the $i$th subinterval ($x_{i+1} - x_i$).\\The set $\left\{x_i\right\}$ partitions the interval $[a,b]$ into a mesh of (potentially unequal) subpartitions.\\
+$\left\{c_i\right\}$ is the set of representatives picked from the interval.
+
+We define
+$$\lim_{n\to\infty}\sum_{i=0}^{n}f(c_i)\Delta x_i = \int_a^b f(x)dx$$ to be the definite integral of $f(x)$ from $a$ to $b$ provided that the limit exists and is the same for \emph{any choice of} $\left\{c_i\right\}$.
+
+When the definite integral exists, we say that $f$ is \emph{integrable} on $[a,b]$.
+
+Integrable functions are a superset of the continuous functions (non-continuous functions with a finite number of jump discontinuities are also integrable).
+
+
+\section{Trigonometry}
+\subsection{Trigonometric Integrals}
 
 \section{Appendix}
 \subsection{Notation}
@@ -330,6 +615,7 @@ D$(x) = \begin{cases}
     \item All circles are similar.
     \item To find the arclength $s$ of a circle's arc from the central angle measure $\theta$ and the circle's radius $r$: $s=\theta r$.
     \item The sector area of a circle is $A=\frac{1}{2}r^2\theta$.
+    \item The Isoperimetric Theorem shows that the most area enclosed by a set perimeter will be in a circle. In essence, the maximization of symmetry maximizes efficiency.
 \end{itemize}
 
 \subsection{Additional Area Formulae}
@@ -337,5 +623,14 @@ D$(x) = \begin{cases}
     \item Triangle with angle C and sides a, b -- $A=\frac{1}{2}ab\sin{C}$
     \item Rhombus with angle C and side length a -- $A=a^2\sin{C}$
 \end{itemize}
+
+\subsection{Important Inequalities}
+\subsubsection{The General Triangle Inequality}
+$$|x+y| \le |x| + |y|$$
+\subsubsection{The AM-GM Inequality}
+$\forall a,b \ge 0$:
+$$\frac{a+b}{2}\ge\sqrt{ab}$$
+
+The arithmetic mean-geometric mean inequality is proven by considering $(a-b)^2\ge0$.
 
 \end{document}
