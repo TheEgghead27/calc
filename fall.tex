@@ -3,6 +3,9 @@
 \usepackage{amsfonts} % for mathbb
 \usepackage{amsmath}
 \usepackage{hyperref}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccsc}
 
 \title{Honner's Honors Calculus (Fall Semester)}
 \author{David Chen}
@@ -654,11 +657,41 @@ $$b^x=\left(e^{\ln{b}}\right)^x$$
 \subsection{Integration Techniques}
 \subsubsection{u-Substitution}
 We define a variable $u$ to be equal to an expression in terms of $x$. We then differentiate, and treating $du$ and $dx$ like variables\footnote{Every serious math person is crying right now... thankfully I am an engineer...}, we can substitute $dx$ (and a bunch of other stuff, perhaps cancelling as needed) for $du$.
-This is the inverse of the Chain Rule (\ref{chain}).
+This attempts to invert the Chain Rule (\ref{chain}).
 
 This method requires some amount of trial and error.
 
 This method is not to be confused for substituting \emph{equivalent} expressions (such as $\sin^2{\theta} = \frac{1-\cos{2\theta}}{2}$, $\cos^2{\theta} = \frac{1+\cos{2\theta}}{2}$).
+
+\subsubsection{Integration by Parts, or a Method of Successive Approximation}
+$$\int u\,dv=uv-\int v\,du$$
+
+Integration by Parts is useful for the integral of products of simpler functions. You define one factor to be $u$ and another (including the $dx$ to be $dv$)\footnote{You can even use $dv=dx$, $v=x$}. You then define $v$ to be the anti-derivative of $dv$.
+
+For integrals/derivatives that appear to "cycle" ($\sin{x}$,$\cos{x}$,$e^x$), one may be able to repeatedly integrate by parts, then solve with algebra.
+
+This attempts to invert the Product Rule.
+
+\subsubsection{Partial Fraction Decomposition}
+When trying to integrate something of the form
+$$\int\frac{1}{(x-a)(x-b)}\,dx$$
+it is possible to split the fraction into a sum of the two factors of the denominators like so
+$$\frac{1}{(x-a)(x-b)}=\frac{A}{x-a}+\frac{B}{x-b}=\frac{A(x-b)+B(x-a)}{(x-a)(x-b)}$$
+
+Leveraging the two following facts:
+\begin{enumerate}
+    \item Two equivalent rational functions with the same denominator must have the same numerator.
+    \item Two polynomials are equal if and only if their corresponding coefficients are equal.
+\end{enumerate}
+Because polynomials are only equal when their coefficients are equal, there are actually two equations encoded by $0x+1=Ax+Bx+Ab+aB$,
+\begin{align*}
+    0=A+B
+    1=Ab+aB
+\end{align*}
+and you can solve for $A$ and $B$.
+
+\subsubsection{Trigonometric Substitution}
+See \ref{trig-sub}.
 
 \section{Trigonometry}
 Unit Circle Trigonometry extends Right-Triangle Trigonometry -- triangle measuring -- to $\theta \notin [0, 2\pi]$.
@@ -692,8 +725,11 @@ The derivative of a periodic function is also periodic, but the anti-derivative 
 \subsubsection{Anti-Periodicity}
 We say that a function is anti-periodic when $f(x+P)=-f(x)$.
 
+\subsubsection{Modulo}
+mod${\left(x,p\right)}$ is the remainder when $x$ is divided by $p$. The range is $[0,p)$. mod${\left(x,p\right)}$ is $p$-periodic.
+
 \subsection{Trigonometric Identities}
-\subsubsection{The Pythagorean Identity}
+\subsubsection{The Pythagorean Identity} \label{pythagorean}
 $$\sin^2{\theta}+\cos^2{\theta}=1$$
 \begin{align*}
     1+\tan^2{\theta}=\sec^2{\theta}&&
@@ -752,11 +788,26 @@ The latter two are referred to as the Supplement Identities.
 \end{align*}
 
 \subsection{Inverse Trig Functions}
-\subsubsection{Arcsine}
+\subsubsection{Arc-sine}
 $$\arcsin{x}=\sin^{-1}x\ne\left(\sin{x}\right)^{-1}=\frac{1}{\sin{x}}$$
 In order to make $\sin{x}$ "invertible", we restrict the domain to one of infinitely many valid intervals. By convention, we restrict the domain to $\left[-\frac{\pi}{2},\frac{\pi}{2}\right]$. Thus, the domain of $\arcsin{x}$ is $[-1,1]$, and its range is $\left[-\frac{\pi}{2},\frac{\pi}{2}\right]$.
 
 $$\frac{d}{dx}\left[\arcsin{x}\right]=\frac{1}{\sqrt{1-x^2}}$$
+
+\subsubsection{Arc-cosine}
+The domain of $\arccos{x}$ is $[-1,1]$, and its range is from $[0, \pi]$.
+
+$$\frac{d}{dx}\left[\arccos{x}\right]=\frac{-1}{\sqrt{1-x^2}}$$
+
+\subsubsection{Arc-tangent}
+The domain of $\arctan{x}$ is $\mathbb{R}$, and its range is from $[-\frac{\pi}{2},\frac{\pi}{2}]$.
+
+$$\frac{d}{dx}\left[\arctan{x}\right]=\frac{1}{x^2+1}$$
+
+\subsubsection{Arc-secant}
+The domain of $\arcsec{x}$ is $\left\{x\in\mathbb{R}|x\notin(-1,1)\right\}$, and its range is from $\left\{y\in[0,\pi]|y\ne\frac{\pi}{2}\right\}$.
+
+$$\frac{d}{dx}\left[\arcsec{x}\right]=\frac{1}{|x|\sqrt{x^2-1}}$$
 
 \subsection{Trigonometric Integrals}
 \begin{align*}
@@ -769,8 +820,6 @@ To solve integrals of products of trigonometric functions:
     \item Use the Double Angle Formulas
 \end{enumerate}
 
-
-
 \subsubsection{Anti-Derivatives}
 \begin{itemize}
     \item $\int\sin{x}\,dx=-\cos{x}+C$
@@ -780,6 +829,46 @@ To solve integrals of products of trigonometric functions:
     \item $\int\sec^2{x}\,dx=\tan{x}+C$
     \item $\int\sec{x}\tan{x}\,dx=\sec{x}+C$
 \end{itemize}
+
+\subsubsection{Inverse Trigonometric Integrals}
+\begin{itemize}
+    \item $\int\frac{1}{x\sqrt{x^2-a^2}}\,dx=\frac{1}{a}\arcsec{\frac{|x|}{a}}+C$
+    \item $\int\frac{1}{\sqrt{a^2-x^2}}\,dx=\frac{1}{a}\arcsin{\frac{x}{a}}+C$
+    \item $\int\frac{1}{a^2+x^2}\,dx=\frac{1}{a}\arctan{\frac{x}{a}}+C$
+\end{itemize}
+
+\subsubsection{Trigonometric Substitution} \label{trig-sub}
+For integrals with the form $$\int \sqrt{1-x^2}$$ it may be helpful to substitute for $x=\sin{\theta}$ and use \ref{pythagorean}.
+
+Similarly, for integrals with the form $$\int \sqrt{1+x^2}$$ it may be helpful to use $x=\tan{\theta}$.
+\subsubsection{Fourier Series}
+Every bounded periodic functions can be written as a sum of singes and cosines of different frequency, perhaps infinitely many of them.\\
+We assume that $$f(x)=a_0+\sum_{n=1}^{\infty}\left(a_n\cos{nx}+b_n\sin{nx}\right)$$
+Notice that $f(x)$ is $2\pi$-periodic.
+
+\begin{align*}
+    a_0&=\frac{1}{2\pi}\int_{-\pi}^\pi f(x)\,dx\\
+    a_n&=\frac{1}{\pi}\int_{-\pi}^\pi f(x)\cos{nx}\,dx\\
+    b_n&=\frac{1}{\pi}\int_{-\pi}^\pi f(x)\sin{nx}\,dx
+\end{align*}
+
+
+\paragraph{Important Fact}
+For $n,m\in\mathbb{Z}$
+$$\int_{-\pi}^\pi \sin{\left(nx\right)}\sin{\left(mx\right)}\,dx=\begin{cases}
+    0&n\ne m\\
+    \pi&n=m
+\end{cases}$$
+
+\paragraph{Proof for $\sin{nx}$ terms}
+Based on the Important Fact, we can tell that
+$$\int_{-\pi}^\pi f(x)\sin{nx}\,dx=\int_{-\pi}^\pi b_n \sin^2{\left(nx\right)}\,dx$$ because all other terms are $0$. And so,
+$$\frac{\int_{-\pi}^\pi f(x)\sin{nx}\,dx}{\int_{-\pi}^\pi\sin^2{\left(nx\right)}}= b_n$$ and because $\int_{-\pi}^\pi\sin^2{\left(nx\right)}=\pi$,
+
+General Fourier Series require the use of $\cos{nx}$ in similar manners, as the series of $\sin{nx}$ can only encode \emph{odd} functions.
+
+\paragraph{Convergence}
+If $f(x)$ is periodic with period $2\pi$ and $f(x)$ and $f'(x)$ are piecewise continuous on $[-\pi,\pi]$, then the Fourier Series converges, $f(x)$ exactly equals the Fourier Series for all $x$ where $f(x)$ is continuous. When $f(x)$ is discontinuous, the Fourier Series is equal to the average of the right and left-hand limits, $\frac{1}{2}\left[f(x^+)+f(x^-)\right]$.
 
 \section{Appendix}
 \subsection{Notation}
