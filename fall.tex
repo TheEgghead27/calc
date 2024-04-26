@@ -41,7 +41,7 @@ To verify that a graph of a relation is a function, one can use the vertical lin
 
 If for any vertical line ($x=c$), there are multiple intersections with the relation, the relation is NOT a function. Otherwise, the relation is a function.
 
-\subsubsection{The Horizontal Line Test}
+\subsubsection{The Horizontal Line Test}\label{horizontal-line}
 To verify that a function is invertible, we check if any horizontal line ($y=c$) has multiple intercepts with the graph of the function. If not, every output ($c$) will correspond with one input $x$, so $f^{-1}(y)=x$ is a valid function.
 
 \subsection{Transformations}
@@ -247,7 +247,7 @@ If we wished to define a function to be differentiable on a closed interval $[a,
     \item $\frac{d}{dx}\left[c\right] = 0$\quad"The derivative of a constant function is 0.
     \item $\frac{d}{dx}\left[f(x) \pm g(x)\right] = \frac{d}{dx}\left[f(x)\right] \pm \frac{d}{dx}\left[g(x)\right]$
     \item $\frac{d}{dx}\left[cf(x)\right] = c\frac{d}{dx}\left[f(x)\right]$
-    \item $\frac{d}{dx}\left[x^n\right] = nx^{n-1}$\quad The Power Rule -- proven using the Binomial Theorem for integers, but applicable to all real exponents.
+    \item $\frac{d}{dx}\left[x^n\right] = nx^{n-1}$\quad The Power Rule -- proven using the Binomial Theorem for integers, applicable to all real exponents \emph{except $n=-1$}.
     \item $\frac{d}{dx}\left[\sin{x}\right] = \cos{x}$\quad Proven using the limits from \ref{trig-limits}.
     \item $\frac{d}{dx}\left[\cos{x}\right] = -\sin{x}$
     \item $\frac{d}{dx}\left[\tan{x}\right] = \frac{1}{\cos^2{x}} = \sec^2{x}$
@@ -262,8 +262,10 @@ $$\frac{d}{dx}\left[f(x)g(x)\right] = f(x)g'(x) + g(x)f'(x)$$
 $$\frac{d}{dx}\left[\frac{p}{q}\right] = \frac{d}{dx}\left[p\cdot q^{-1}\right] = \frac{g(x)f'(x) - f(x)g'(x)}{\left(g(x)\right)^2}$$
 "Low $d$ high minus high $d$ low over low squared."
 
-\subsubsection{The Chain Rule}
+\subsubsection{The Chain Rule}\label{chain}
 $$\frac{d}{dx}\left[f(g(x))\right] = f'(g(x))g'(x)$$
+
+\subsubsection{Note} The derivative of even functions is odd, and vice versa.
 
 \subsection{Implicit Differentiation}
 If you cannot solve for an explicit form of $y=f(x)$, you can still differentiate to find an expression for $\frac{dy}{dx}$ (in terms of $x$ and $y$) by differentiating the two sides of an equation, considering the chain rule.
@@ -530,7 +532,7 @@ Refer to section \ref{MVT} to reaffirm why $+C$, the constant of integration, is
 To approximate area underneath a curve, we can add up rectangles (or right trapezoids) that correspond with the space under the curve.
 
 \subsubsection{Endpoint Approximations}
-If we were to inscribe the rectangles in the region, we would have an underapproximation, but if we were to circumscribe the rectangles, we would have an overapproximation. 
+If we were to inscribe the rectangles in the region, we would have an underapproximation, but if we were to circumscribe the rectangles, we would have an overapproximation.
 
 For increasing functions, a left-endpoint sum is an underapproximation, and a right-endpoint sum is an overapproximation. The reverse is the case for decreasing functions.
 
@@ -539,14 +541,14 @@ For an increasing function, $\Delta x = 1$, $$\sum_{n=0}^{3} f(n) \Delta x < A <
 If we were to allow $\Delta x \to 0$, we would get more and more accurate approximations. If corresponding limits existed, we could use a Squeeze Theorem argument to find the true value of A.
 
 \paragraph{Midpoint/Trapezoidal Approximations}
-If we were to instead use the average of $f(a)$ and $f(b)$ at the two endpoints, we would have a more accurate representation of the area using trapezoids.
+If we were to instead use the average of $f(a)$ and $f(b)$ at the two endpoints, we may have a more accurate representation of the area using trapezoids. Whether the trapezoids over or under-approximate the function depends on the concavity of the function (consider the tops of the trapezoids to be very small secant lines).
 
 \subsubsection{Upper/Lower Sums}
 On each subinterval $[x_i, x_{i+1}]$, we choose $x_i^*$ so $f(x_i^*)$ is the maximum on that subinterval. Thus, we get an upper sum. Similarly, we choose a different $x_i^*$ for the minimum on the subinterval to get the lower sum.
 
 More rectangles are not always, unless you have enough of them, such as in the case of a constant function, or in cases where the addition of rectangles introduces additional error (and so you need thinner slices).
 
-\subsubsection{Riemann Sums} A generalization of the left/right/midpoint approximation method.
+\subsubsection{Definite Integrals -- Riemann Sums} A generalization of the left/right/midpoint approximation method.
 $$\sum_{i=0}^{n}f(c_i)\Delta x_i$$
 $\Delta x_i$ is the width of the $i$th subinterval ($x_{i+1} - x_i$).\\The set $\left\{x_i\right\}$ partitions the interval $[a,b]$ into a mesh of (potentially unequal) subpartitions.\\
 $\left\{c_i\right\}$ is the set of representatives picked from the interval.
@@ -554,13 +556,230 @@ $\left\{c_i\right\}$ is the set of representatives picked from the interval.
 We define
 $$\lim_{n\to\infty}\sum_{i=0}^{n}f(c_i)\Delta x_i = \int_a^b f(x)dx$$ to be the definite integral of $f(x)$ from $a$ to $b$ provided that the limit exists and is the same for \emph{any choice of} $\left\{c_i\right\}$.
 
+Definite Integrals are simultaneously
+\begin{enumerate}
+    \item The limit of a sum approaching infinite terms
+    \item Area under a curve (sort of)
+    \item A difference of anti-derivatives (by the FTC)
+\end{enumerate}
+
 When the definite integral exists, we say that $f$ is \emph{integrable} on $[a,b]$.
 
-Integrable functions are a superset of the continuous functions (non-continuous functions with a finite number of jump discontinuities are also integrable).
+Integrable functions are a superset of the continuous functions, as non-continuous functions with a finite number of jump discontinuities are also integrable.
 
+\paragraph{Properties of the Definite Integral}
+Because the Definite Integral is in its heart a Riemann Sum, these properties are related to properties of sums. Further, \underline{accumulation problems} may rely on the application of integration.
+\begin{itemize}
+    \item If $f(x)$ is defined at $x=a$, then $$\int_a^a f(x)dx=0$$
+    \item If $f(x)$ is integrable on $[a,b]$, then $$\int_a^b f(x)dx=-\int_b^a\limits f(x)dx$$
+    \item If $f(x)$ is integrable on the intervals of $a, b, c$ then $$\int_a^b f(x)dx = \int_a^c f(x)dx + \int_b^c f(x)dx$$
+    \item If $f(x)$ is integrable on $[a, b]$, then $$\int_a^b kf(x)dx = k\int_a^b f(x)dx$$
+    \item If $f(x)$ and $g(x)$ are integrable on $[a, b]$, then $$\int_a^bf(x)\pm g(x)dx = \int_a^b f(x)dx \pm \int_a^b g(x)dx$$.
+\end{itemize}
+
+\subsection{The Fundamental Theorem of Calculus}
+If $f$ is continuous on $[a,b]$ and $F$ is an anti-derivative of $f$ on $[a,b]$, then $$\int_a^bf(x)dx=F(b)-F(a)$$
+
+\subsubsection{Proof}
+Suppose $f$ is continuous on $[a,b]$ and we want to compute $$\int_a^bf(x)dx = \lim_{n\to\infty}\sum_{i=1}^nf(c_i)\Delta x$$
+We partition $[a,b]$ to be $\left\{x_0,x_1,x_2,\ldots,x_n\right\}$ with $x_0=a$, $x_n=b$, so the $i$\textsuperscript{th} subinterval is $[x_{i-1},x_i]$.
+
+Assuming $f$ has an anti-derivative $F(x)$ such that $F'(x)=f(x)$, we can use the MVT ($F$ is differentiable and thus continuous as it has derivative $f$) to claim that we can always pick a $c_i\in(x_{i-1},x_i)$ such that $$F'(c_i)=f(c_i)=\frac{F\left(x_i\right)-F\left(x_{i-1}\right)}{x_i-x_{i-1}}$$
+
+We can then construct a telescoping sum that leaves only $F(x_n)-F(x_0)=F(b)-F(a)$
+
+\subsubsection{The Second Fundamental Theorem of Calculus}
+If $f(x)$ is continuous on $[a,b]$ then for every $x\in[a,b]$, the function defined by $g(x)=\int_0^xf(t)dt$ is continuous on $[a,b]$ and differentiable on $(a,b)$, and $g'(x)=f(x)$.
+
+\subsubsection{Average Value of a Function (The MVT for Integrals)}
+If $f$ is continuous on $[a,b]$ then there exists a $c\in[a,b]$ s.t. $f(c)(b-a)=\int_a^bf(x)dx$. This is simply an application of the MVT (\ref{MVT}) to the integrals (continuous functions).
+$$f(c) = \frac{1}{b-a}\int_a^bf(x)dx=\frac{F(b)-F(a)}{b-a}$$
+$f(c)$ is the average value of the function over the interval $[a,b]$ ("reshaping" the area under the curve to be a rectangle).
+
+\subsection{Inverse Functions}
+For two functions $f,g$, $g=f^{-1}$ (``$f$ inverse'') if and only if $g(f(x)) = f(g(x)) = x$. When $f$ and $g$ are composed, they form the identity function.
+
+If the domain of $f$ is $A$, and its range is $B$, the domain of $g$ is $B$ and the range is $A$.
+
+A function is not invertible if the process of inversion produces a non-function relation. This can be tested for with the Horizontal Line Test (\ref{horizontal-line}).
+
+\subsubsection{One-to-One}
+A function is one-to-one if $f(a)=f(b)$ implies $a=b$. A function is invertible if and only if it is one-to-one.
+
+\paragraph{Useful Theorem} If $f$ is defined on $[a,b]$ and $f$ is increasing/decreasing on $[a,b]$, then $f$ is one-to-one on $[a,b]$.
+
+Even functions cannot be one-to-one (unless they are only defined at $x=0$).
+
+\subsubsection{Derivatives of Inverse Functions} \label{inverse-derivatives}
+If $f(x)$ is differentiable and $f^{-1}(x)$ exists, then if $f(a)=b$, we know that
+$$(f^{-1})'(b)=\frac{1}{f'(f^{-1}(b))}=\frac{1}{f'(a)}$$
+so long as $f'(a)\ne0$.
+
+If $f$ is increasing/decreasing on its domain, $f^{-1}$ is also increasing/decreasing on its domain.
+
+\subsection{The Natural Logarithm}
+$f(x)=\frac{1}{x}$ is its own inverse. Thus, $F(x)=\int_1^x\frac{1}{x}$ has interesting properties:
+\begin{enumerate}
+    \item $F(1)=0$
+    \item $F(ab)=F(a)+F(b)$
+    \item $F(a^n)=nF(a)$
+    \item $F(\frac{a}{b})=F(a)-F(b)$
+\end{enumerate}
+We call $F(x)$ the natural logarithm.\footnote{$\ln{x}$ can be considered "log base $e$." Because $F(x)$ is a one-to-one function for $x>0$, there exists some unique "base" $e$ such that $F(x)=1$.} We write $\ln{x}=\int_1^x\limits\frac{1}{t}dx$ for $x>0$.\\
+For all $x$ in the domain of $\frac{1}{x}$:
+\begin{align*}
+  \frac{d}{dx}\ln{|x|}=\frac{1}{x}\\
+  \int\frac{1}{x}dx=\ln{|x|}+C
+\end{align*}
+
+Because the logarithm function is one-to-one on its domain of $x>0$, it can be helpful for solving equations involving the exponential function.
+
+\subsubsection{Change of Base}
+Logarithms base anything other than $e$ are simply a domain scaling of the natural logarithm.
+
+$\log_bx=\frac{\ln{x}}{\ln{b}}$
+
+\subsubsection{\texorpdfstring{$e$ as a Limit}{e as a Limit}}
+$$e=\lim_{n\to\infty}\left(1+\frac{1}{n}\right)^n$$
+
+\subsubsection{Exponential Functions}
+We define $e^x=\ln^{-1}x$. Based on the derivative of inverse functions (\ref{inverse-derivatives}), $\frac{d}{dx}e^x=\frac{1}{\frac{1}{e^x}}=e^x$
+
+$e^x$ has properties corresponding with the logarithm, such as $e^xe^y=e^{x+y}$.
+
+\paragraph{Change of Base}
+Because $e^{\ln{b}}=b$ (these are inverses), any exponential function can be rewritten as
+$$b^x=\left(e^{\ln{b}}\right)^x$$
+
+\subsection{Integration Techniques}
+\subsubsection{u-Substitution}
+We define a variable $u$ to be equal to an expression in terms of $x$. We then differentiate, and treating $du$ and $dx$ like variables\footnote{Every serious math person is crying right now... thankfully I am an engineer...}, we can substitute $dx$ (and a bunch of other stuff, perhaps cancelling as needed) for $du$.
+This is the inverse of the Chain Rule (\ref{chain}).
+
+This method requires some amount of trial and error.
+
+This method is not to be confused for substituting \emph{equivalent} expressions (such as $\sin^2{\theta} = \frac{1-\cos{2\theta}}{2}$, $\cos^2{\theta} = \frac{1+\cos{2\theta}}{2}$).
 
 \section{Trigonometry}
+Unit Circle Trigonometry extends Right-Triangle Trigonometry -- triangle measuring -- to $\theta \notin [0, 2\pi]$.
+Angles are placed in standard position, with the initial side pointing along the $x$-axis at $\theta=0$, and the terminal side pointing at $\theta$.\\
+$\cos{\theta}$ is defined to be the $x$-coordinate of the intersection of the terminal side and the unit circle.\\
+$\sin{\theta}$ is defined to be the $y$-coordinate of the intersection of the terminal side and the unit circle.\\
+
+The circular nature of the unit circle explains the periodicity of the trigonometric functions, the terminal side will simply go round and around, leaving us with "circular functions."
+
+\subsection{Definitions of other Trigonometric Functions}
+\begin{align}
+    \tan{\theta} = \frac{\sin{\theta}}{\cos{\theta}}
+    \cot{\theta} = \frac{\cos{\theta}}{\sin{\theta}}
+    \csc{\theta} = \frac{1}{\sin{\theta}}
+    \sec{\theta} = \frac{1}{\cos{\theta}}
+\end{align}
+
+\subsection{Periodicity}
+A function $f(x)$ is $p$-periodic if there exists $p>0$ such that $\forall x \in \mathbb{R}$, $f(x+p)=f(x)$.
+
+If $f(x)$ is $p$-periodic, then $f(x)$ is $np$-periodic, $n\in\mathbb{N}$.
+
+The minimal period of $f(x)$ is called the fundamental period of $f(x)$, if it exists. The fundamental frequency of a period is $f=\frac{1}{p}$, where $p$ is the fundamental period.
+
+The fundamental period of the sum/product of two functions $f(x)$ and $g(x)$, with fundamental periods $p,q$ respectively, is the least common multiple of $p$ and $q$.
+
+If $m(x)$ is $p$-periodic, $f(m(x))$ is also $p$-periodic.
+
+The derivative of a periodic function is also periodic, but the anti-derivative is not guaranteed to be so.
+
+\subsubsection{Anti-Periodicity}
+We say that a function is anti-periodic when $f(x+P)=-f(x)$.
+
+\subsection{Trigonometric Identities}
+\subsubsection{The Pythagorean Identity}
+$$\sin^2{\theta}+\cos^2{\theta}=1$$
+\begin{align*}
+    1+\tan^2{\theta}=\sec^2{\theta}&&
+    1+\cot^2{\theta}=\csc^2{\theta}
+\end{align*}
+
+\subsubsection{Periodicity}
+\begin{align*}
+    \sin{\left(\theta+2\pi k\right)} = \sin{\theta} &&
+    \cos{\left(\theta+2\pi k\right)} = \cos{\theta}
+\end{align*}
+\subsubsection{Even/Odd}
+\begin{align*}
+    \sin{\left(-\theta\right)} = -\sin{\theta}&&
+    \cos{\left(-\theta\right)} = \cos{\theta}
+\end{align*}
+\subsubsection{Phase Shift}
+\begin{align*}
+    \sin{\left(\frac{\pi}{2} + \theta\right)} = \cos{\theta} &&
+    \cos{\left(\frac{\pi}{2} + \theta\right)} = -\sin{\theta}\\
+    \sin{\left(\pi + \theta\right)} = -\sin{\theta} &&
+    \cos{\left(\pi + \theta\right)} = -\cos{\theta}\\
+    \sin{\left(\pi - \theta\right)} = \sin{\theta} &&
+    \cos{\left(\pi - \theta\right)} = -\cos{\theta}\\
+\end{align*}
+The latter two are referred to as the Supplement Identities.
+
+\subsubsection{Angle Sum and Difference Formulas} "sine cosine cosine sine, cosine cosine sine sine!"
+\begin{align*}
+    \sin{\left(\alpha+\beta\right)} &= \sin{\alpha}\cos{\beta}+\cos{\alpha}\sin{\beta}\\
+    \cos{\left(\alpha+\beta\right)} &= \cos{\alpha}\cos{\beta}-\sin{\alpha}\sin{\beta}\\
+    \sin{\left(\alpha-\beta\right)} &= \sin{\alpha}\cos{\beta}-\cos{\alpha}\sin{\beta}\\
+    \cos{\left(\alpha-\beta\right)} &= \cos{\alpha}\cos{\beta}+\sin{\alpha}\sin{\beta}
+\end{align*}
+\paragraph{Double Angle Formulas} immediately result from the Angle Sum Formula.
+\begin{align*}
+    \sin{\left(2\alpha\right)} &= 2\sin{\alpha}\cos{\alpha}\\
+    \cos{\left(2\alpha\right)} &= \cos^2{\alpha}-\sin^2{\alpha}\\
+                                &= 2\cos^2{\alpha}-1\\
+                                &= 1-2\sin^2{\alpha}
+\end{align*}
+
+\subsubsection{Product to Sum Formulas}
+\begin{align*}
+    \cos{\alpha}\cos{\beta}&=\frac{1}{2}\left(\cos\left(\alpha-\beta\right)+\cos{\left(\alpha+\beta\right)}\right)\\
+    \sin{\alpha}\sin{\beta}&=\frac{1}{2}\left(\cos\left(\alpha-\beta\right)-\cos{\left(\alpha+\beta\right)}\right)\\
+    \sin{\alpha}\cos{\beta}&=\frac{1}{2}\left(\sin\left(\alpha-\beta\right)+\sin{\left(\alpha+\beta\right)}\right)\\
+\end{align*}
+
+\subsubsection{Sum to Product Formulas}
+\begin{align*}
+    \sin{\alpha}+\sin{\beta}&=2\sin{\left(\frac{\alpha+\beta}{2}\right)}\cos{\left(\frac{\alpha-\beta}{2}\right)}\\
+    \sin{\alpha}-\sin{\beta}&=2\sin{\left(\frac{\alpha-\beta}{2}\right)}\cos{\left(\frac{\alpha+\beta}{2}\right)}\\
+    \cos{\alpha}+\cos{\beta}&=2\cos{\left(\frac{\alpha+\beta}{2}\right)}\cos{\left(\frac{\alpha-\beta}{2}\right)}\\
+    \cos{\alpha}-\cos{\beta}&=-2\sin{\left(\frac{\alpha+\beta}{2}\right)}\sin{\left(\frac{\alpha-\beta}{2}\right)}\\
+\end{align*}
+
+\subsection{Inverse Trig Functions}
+\subsubsection{Arcsine}
+$$\arcsin{x}=\sin^{-1}x\ne\left(\sin{x}\right)^{-1}=\frac{1}{\sin{x}}$$
+In order to make $\sin{x}$ "invertible", we restrict the domain to one of infinitely many valid intervals. By convention, we restrict the domain to $\left[-\frac{\pi}{2},\frac{\pi}{2}\right]$. Thus, the domain of $\arcsin{x}$ is $[-1,1]$, and its range is $\left[-\frac{\pi}{2},\frac{\pi}{2}\right]$.
+
+$$\frac{d}{dx}\left[\arcsin{x}\right]=\frac{1}{\sqrt{1-x^2}}$$
+
 \subsection{Trigonometric Integrals}
+\begin{align*}
+    \int \sin^n{x}\cos^m{x}dx && \int \sec^n{x}\tan^m{x}dx
+\end{align*}
+To solve integrals of products of trigonometric functions:
+\begin{enumerate}
+    \item Set aside a $\sin{x}$/$\cos{x}$/$\tan{x}$/$\sec{x}\tan{x}$ for u-Substitution
+    \item Use the Pythagorean Identities
+    \item Use the Double Angle Formulas
+\end{enumerate}
+
+
+
+\subsubsection{Anti-Derivatives}
+\begin{itemize}
+    \item $\int\sin{x}\,dx=-\cos{x}+C$
+    \item $\int\cos{x}\,dx=\sin{x}+C$
+    \item $\int\tan{x}\,dx=\int\frac{\sin{x}}{\cos{x}}dx=-\ln{|\cos{x}|}+C$
+    \item $\int\sec{x}\,dx=\int\frac{1}{\cos{x}}dx=\ln{|\sec{x}+\tan{x}|}+C$
+    \item $\int\sec^2{x}\,dx=\tan{x}+C$
+    \item $\int\sec{x}\tan{x}\,dx=\sec{x}+C$
+\end{itemize}
 
 \section{Appendix}
 \subsection{Notation}
@@ -608,6 +827,15 @@ D$(x) = \begin{cases}
     1 & x\in\mathbb{Q}\\
     0 & x\notin\mathbb{Q}
 \end{cases}$
+
+\subsubsection{Hyperbolic Trig}
+"sinch"
+$$\sinh{x}=\frac{e^x-e^{-x}}{2}$$
+
+"kosh"
+$$\sinh{x}=\frac{e^x+e^{-x}}{2}$$
+
+These can be considered the "odd" and "even" portions of $f(x)=e^x$.
 
 \subsection{Circle Facts}
 \begin{itemize}
