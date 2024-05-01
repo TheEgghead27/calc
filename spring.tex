@@ -1020,9 +1020,32 @@ For example:
     S = 1 + &\frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \frac{1}{16} + \ldots = 2
 \end{align*}
 
-\subsection{Taylor Series}
+\subsection{Taylor Polynomials}
+Given a function $f(x)$ with $n$ derivatives, the Taylor Polynomial of $f(x)$ centered at $x=c$ is constructed to satisfy:
+\begin{align*}
+    P_n(c)&=f(c)\\
+    P_n'(c)&=f'(c)\\
+    &\;\;\vdots\\
+    P_n^{(n)}(c)&=f^{(n)}(c)
+\end{align*}
+In essence, this is a generalization of the tangent line to higher-degree polynomials.\\
+Suppose $f(x)$ has $n$ derivatives at $x=c$. Then
+$$P_n(x)=f(c)+f'(c)\left(x-c\right)+\frac{f''(c)}{2!}\left(x-c\right)^2+\frac{f'''(c)}{3!}\left(x-c\right)^3+\ldots+\frac{f^{(n)}(c)}{n!}\left(x-c\right)^n$$
+is the $n$\textsuperscript{th} degree Taylor Polynomial of $f(x)$ centered at $x=c$.\\
+In the special case of $c=0$, this is also called a Maclaurin Polynomial.
+
+\subsubsection{Taylor's Remainder Theorem}
+
+\subsubsection{Taylor Series}
+\subsubsection{Common Taylor Series}
+\paragraph{The Exponential Function}
+$$e^x=\sum_{n=0}^{\infty}\limits\frac{x^n}{n!}$$
+Based on the Ratio Test, we know this converges everywhere.
+
 
 \section{Differential Equations}
+\subsection{Slope Fields}
+\subsection{Euler's Method}
 
 \section{Appendix}
 \subsection{Area of an Equilateral Triangle}
