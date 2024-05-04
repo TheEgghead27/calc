@@ -22,11 +22,6 @@
 \begin{document}
 
 \maketitle
-\section{Integration Techniques}
-\subsection{Trig Integrals}
-
-$$ \frac{d}{dx} \arcsin{x} = \frac{1}{\sqrt{1 - x^2}} + C $$
-$$ \frac{d}{dx} \arctan{x} = \frac{1}{1 + x^2} + C $$
 
 \section{Indeterminate Forms}
 Limits of the form $\frac{0}{0}$ or $\frac{\infty}{\infty}$. These do not indicate the true value of the limit.
@@ -1035,12 +1030,41 @@ is the $n$\textsuperscript{th} degree Taylor Polynomial of $f(x)$ centered at $x
 In the special case of $c=0$, this is also called a Maclaurin Polynomial.
 
 \subsubsection{Taylor's Remainder Theorem}
+If $f(x)$ has at least $n+1$ derivatives in an interval $I$ around $x=c$, then for each $x \in I$, there is a $z$ between $x$ and $c$ such that
+$$f(x) = f(c) + f'(c)\left(x-c\right) + \frac{f''(c)}{2!}\left(x-c\right)^2 + \ldots + \frac{f^{(n)}(c)}{n!}\left(x-c\right)^n+R_n(x)$$
+where the remainder term $$R_n=\frac{f^{(n+1)}(z)}{(n+1)!}\left(x-c\right)^{n+1}$$
+or in short, $f(x) = P_n(x) + R_n(x)$, or $f(x) - P_n(x) = R_n(x)$.
+
+Like the MVT, this is merely an existence theorem (we will never know $z$), but we can use this theorem to extrapolate bounds on the value of a function.
+
+\paragraph{Lagrange Error Bound}
+$$\left|R_n(x)\right|\le\frac{\left|x-c\right|^{n+1}}{(n+1)!}\cdot\max\left|f^{(n+1)}(z)\right|$$
+for all $z$ between $x$ and $c$.
 
 \subsubsection{Taylor Series}
-\subsubsection{Common Taylor Series}
-\paragraph{The Exponential Function}
-$$e^x=\sum_{n=0}^{\infty}\limits\frac{x^n}{n!}$$
-Based on the Ratio Test, we know this converges everywhere.
+Suppose $f(x)$ has derivatives of all orders ($f\in C^\infty$, the class of infinitely differentiable functions) at $x=c$, then
+$$\sum_{n=0}^\infty \frac{f^{(n)}(c)}{n!}\left(x-c\right)^n=f(c)+f'(c)\left(x-c\right)+\frac{f''(c)}{2!}\left(x-c\right)^2+\ldots$$
+is the Taylor Series for $f(x)$ at $x=c$. If $x=0$, we also call this a Maclaurin Series.
+
+This is analogous to Fourier Series, where instead of modeling periodic functions with linear combinations of $\sin{x}$ or $\cos{x}$, functions $f\in C^\infty$ are modelled with polynomials as the basis function.
+
+\paragraph{Theorem} If $\lim_{n\to\infty}\limits R_n=0$ for all $x\in I$, then the Taylor Series converges to its function.
+
+\subsubsection{Important Taylor Series}
+Based on the Ratio Test, these three Taylor Series have an interval of convergence of $\left(-\infty,\infty\right)$.
+\begin{align*}
+    e^x&=\sum_{n=0}^{\infty}\limits\frac{x^n}{n!}=1+x+\frac{x^2}{2}+\frac{x^3}{3!}+\frac{x^4}{4!}+\frac{x^5}{5!}+\ldots\\
+    \sin{x}&=\sum_{n=0}^\infty(-1)^n\frac{x^{2n+1}}{(2n+1)!}=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\ldots\\
+    \cos{x}&=\sum_{n=0}^\infty(-1)^n\frac{x^{2n}}{(2n)!}=1-\frac{x^2}{2!}+\frac{x^4}{4!}+\ldots
+\end{align*}
+\paragraph{Other Important Taylor Series}
+The series for $\ln{x}$ converges from $(0,2]$, and the others converge from $[-1,1]$.
+\begin{align*}
+    \frac{1}{1-x}&=\sum_{n=0}^\infty x^n=1+x+x^2+x^3+x^4+x^5+x^6+x^7+x^8+\ldots\\
+    \ln{x}&=\sum_{n=1}^\infty (-1)^{n-1}\frac{(x-1)^n}{n}=\left(x-1\right)-\frac{\left(x-1\right)^2}{2}+\frac{\left(x-1\right)^3}{3}-\ldots\\
+    \arctan{x}&=\sum_{n=0}^\infty (-1)^{n}\frac{x^{2n+1}}{2n+1}=x-\frac{x^3}{3}+\frac{x^5}{5}-\frac{x^7}{7}+\frac{x^9}{9}-\frac{x^{11}}{11}+\ldots
+\end{align*}
+Note that $\arctan{x}=\int \frac{1}{x^2}dx$. Also, many substitutions $\square$ can be made for $x$ in series such as $e^x$.
 
 
 \section{Differential Equations}
