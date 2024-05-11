@@ -1066,10 +1066,42 @@ The series for $\ln{x}$ converges from $(0,2]$, and the others converge from $[-
 \end{align*}
 Note that $\arctan{x}=\int \frac{1}{x^2}dx$. Also, many substitutions $\square$ can be made for $x$ in series such as $e^x$.
 
-
 \section{Differential Equations}
+Equations written in terms of derivatives. Solutions are function(s), not numbers.
+
+The general solution describes a family of functions that could be solutions to a differential equation, while the particular solution is the function that is the solution to a differential equation \emph{and} a given constraint ($y(a)=b$).
+
+\subsection{Separation of Variables}
+Also known as the only method required for solving AP-level differential equations.
+
+Multiply and divide the equation such that $\frac{dy}{dx}$ will be separated into two sides with only their respective variables, then integrate. Although both sides technically have a $C$, it is simpler to treat them as a single $C$.
+
+\subsection{Exponential Growth Models}
+The fundamental differential equation is $\frac{dy}{dt}=ky$.
+Assuming $y>0$, $\ln{|y|}=\ln{y}=kt+C$
+$$y=e^{kt+C}=e^ce^{kt}=Ce^{kt}$$
+
+\subsubsection{Logistic Growth (BC)}
+This is a second order approximation of population growth.
+$$\frac{dy}{dt}=ky\left(1-\frac{y}{L}\right)$$
+
+There are two parameters, $k$ to control the speed at which growth/decay occurs, and $L$, the limiting value of the function as $t\to\infty$.
+
+$\frac{dy}{dx}$ is at a maximum exactly between the limits of the logistic growth curve. (the graph of $\frac{dy}{dt}$ as a function of $y$ is a parabola with vertex $\frac{L}{2}$, roots $0$ and $L$).
+
+The closed form solution, derived through partial fraction decomposition, is $y=\frac{L}{1+be^{-kt}}$, but this is not required for the AP exam.
+
 \subsection{Slope Fields}
-\subsection{Euler's Method}
+A slope field is a lattice of small tangent lines representing $\frac{dy}{dx}$ at a given point in the field.\footnote{This is not to be confused with a vector field.}
+
+It is useful to use slope fields to develop an educated guess for particular solutions to non-separable differential equations.
+
+\subsubsection{Euler's Method}
+A method of successive approximation for points on a solution curve.
+
+Instead of using a single tangent line to approximate the value of $y(c+a)$ given an initial constraint value of $y(c)$, which we denote $(x_0,y_0)=(c,y(c))$, and the slope field $F(x,y)$, we subdivide the interval into subintervals of a given "step size" ($h$).  We then compute the endpoints of each interval $(x_n,y_n)$ iteratively using the approximation $$y_n=y_{n-1}+h\cdot F\left(x_{n-1},y_{n-1}\right)$$ until we reach the desired $x_n$.
+
+Note that for nonlinear conditions, evaluations may become chaotic: errors may be amplified or dampened in unpredictable ways due to minor miscalculations/changes in step size.
 
 \section{Appendix}
 \subsection{Area of an Equilateral Triangle}
