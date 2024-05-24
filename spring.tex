@@ -103,13 +103,13 @@ $$V = \pi \int_{a}^{b} (f(x)^2 - g(x)^2) dx$$
 Integrates perpendicular to the axis of rotation. May be inconvenient if one lacks a curve function corresponding to these axes.
 
 Based on a Riemann Sum of rectangular prisms $2 \pi rhw$ becoming
-$$\lim_{n \to \infty} \sum_{i=1}^{n} 2 \pi r(x_i) f(x_i) \Delta x_i$$
+$$\lim_{n \to \infty} \sum_{i=1}^{n} 2 \pi \cdot r(x_i) \cdot f(x_i) \Delta x_i$$
 
 Shells can be "unwrapped" into a figure resembling a rectangular prism, with the difference in area approaching $0$ as $w = \Delta x \to 0$.
 
 Let $f(x)$ be the function producing the curve underneath which the region $R$ is bounded by (with the other bounding sides being $x = a$, $x = b$, and $y = 0$). Let $r(x)$ be the function representing the distance ("radius") of the curve from the axis of rotation (usually $r(x) = b - x$, with $b$ potentially being $0$). In this case, we are revolving about the y-axis.
 
-$$V = 2\pi \int_{a}^{b} r(x)f(x) dx$$
+$$V = 2\pi \int_{a}^{b} r(x) \cdot f(x) dx$$
 
 \subsubsection{Volume by Known Cross Section}
 Let $A(x)$ be the area of the cross section.
@@ -895,7 +895,7 @@ $$\sum_{n=1}^{\infty} a_n > \int_{1}^{\infty} f(x)dx > \sum_{n=2}^{\infty} a_n$$
 
 On the AP exam, you are expected to write the improper integral and then, recognizing that an improper integral is a limit, rewrite the improper integral using the limit.
 
-\paragraph{Integral Test Remainder (Non-AP)} If the Integral Test Applies, $S=S_n+R_n$, and $\le \int_{n+1}^{\infty} f(x)dx \le R_n \le \int_{n}^{\infty} f(x)dx$.
+\paragraph{Integral Test Remainder (Non-AP)} If the Integral Test Applies, $S=S_n+R_n$, and $\int_{n+1}^{\infty} f(x)dx \le R_n \le \int_{n}^{\infty} f(x)dx$.
 
 \subsubsection{The P-(Series) Test} An infinite series of the form $\sum_{n=1}^{\infty} \frac{1}{n^p}$, ($p>0$) is a p-series. A p-series converges when $p > 1$, and diverges with $p \le 1$.\\
 This is a special case of the Integral Test.
