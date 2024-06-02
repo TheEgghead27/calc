@@ -1103,6 +1103,77 @@ Instead of using a single tangent line to approximate the value of $y(c+a)$ give
 
 Note that for nonlinear conditions, evaluations may become chaotic: errors may be amplified or dampened in unpredictable ways due to minor miscalculations/changes in step size.
 
+\section{Extension: Statistics}
+For our definitions of statistics, we base all of our analysis on sets.
+
+\subsection{Sample Space}
+The set ($S$) of all possible outcomes.
+\subsubsection{Event} An event $E$ is a subset of $S$.
+
+The probability of an event $E$ is given as $P(E)=Pr(E)=\frac{|E|}{|S|}$ where $|A|$ is the size of the set (cardinality of) $A$.
+
+\paragraph{Complements}
+Given $E \subseteq S$, $E^C= S \setminus E = \left\{x \in S | x \notin E\right\}$.
+
+Note that $E \cup E^C = S$, $E \cap E^C = \varnothing$, so
+\begin{align*}
+    P(S) &= P(E \cup E^C) = P(E) + P(E^C) \\
+    1 &= P(E) + P(E^C)
+\end{align*}
+See section \ref{prob-ax} for more details.
+
+\subsection{Axioms of Probability}\label{prob-ax}
+The unifying principles of any probability system.
+
+\begin{enumerate}
+    \item $P(E)\ge0$
+    \item $P(S)=1$
+    \item $P(E \cup F) = P(E) + P(F)$ if $E \cap F = \varnothing$ ($E$ and $F$ are disjoint sets with no overlaps, so their union ("or") will add elements of the set)
+\end{enumerate}
+
+\subsubsection{Principle of Inclusion/Exclusion}
+Another useful relationship is
+$|A \cup B| = |A| + |B| - |A \cap B|$
+$$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
+
+\subsection{Independence}
+Two events $A$ and $B$ are independent if $P(A \cap B) = P(A)P(B)$.
+Independence is a symmetric relation, is $B$ is independent with respect to $A$, so is $A$ in respect to $B$, as can be verified from \ref{cond-prob}.
+
+\subsubsection{Conditional Probability}\label{cond-prob}
+Given two events $A$ and $B$, the conditional probability of $B$ given $A$ denoted $P(B|A)$ is defined to be 
+$$P(B|A)=\frac{P(B \cap A)}{P(A)}$$
+It is helpful to think of this as a ratio of sets, or a restricted sample space.
+
+Two events $A$ and $B$ are independent if $P(B|A)=P(B)$, as
+\begin{align*}
+    P(B) &= P(B|A) = \frac{P(B \cap A)}{P(A)}\\
+    P(B)P(A) &= P(B \cap A)
+\end{align*}
+
+\paragraph{Additional Identities} that follow from the above include
+\begin{align*}
+    P(A|B)P(B) = P(A \cap B) = P(B|A)P(A)\\
+    P(B|A) = P(A|B)\frac{P(B)}{P(A)}\\
+    P(A) = P(A|B)P(N)+P(A|B^C)P(B^C)
+\end{align*}
+
+\subsection{Binomial Model}
+For $n$ independent events, such as a coin flip, the odds of a certain number $k$ of outcomes with probability $p$ occurring is
+$$P(x = k) = \binom{n}{k} p^k(1-p)^{n-k}$$
+The multiplication/combinatorial terms refer to the commutativity of the events (you can get $3$ heads from $5$ tosses multiple ways).
+
+The sum of $P(x=k)$ for all $k$ is $1$.
+
+\subsection{Random Variables}
+A random "variable"\footnote{It is more appropriate to consider these functions.} $X$ represents a set of values in $S$, and maps that set to $\mathbb{R}$.  $X: S \to R$.
+
+The probability of a specific range value being returned from $X$ can be modeled with a (discrete) probability distribution function, which can differ greatly.
+For instance, some are skewed, some are symmetric, and some are geometric/exponential.
+
+\subsubsection{Weighted Average}
+$$\sigma_{s \in S} P(S)X(S)$$ is the weighted average of all values of $x$. This is the most important value associated to a random variable.
+
 \section{Appendix}
 \subsection{Area of an Equilateral Triangle}
 Can be derived using the Pythagorean Theorem.
