@@ -1106,6 +1106,8 @@ Note that for nonlinear conditions, evaluations may become chaotic: errors may b
 \section{Extension: Statistics}
 For our definitions of statistics, we base all of our analysis on sets.
 
+Statistics in general is about trading accuracy/verbosity in (numerical) data for a simpler/terser amount of description numbers. A "first order approximation" can be done with measures of central tendency, and additional information can be conveyed by variation from that central tendency.
+
 \subsection{Sample Space}
 The set ($S$) of all possible outcomes.
 \subsubsection{Event} An event $E$ is a subset of $S$.
@@ -1171,7 +1173,7 @@ A random "variable"\footnote{It is more appropriate to consider these functions.
 The probability of a specific range value being returned from $X$ can be modeled with a (discrete) probability distribution function, which can differ greatly.
 For instance, some are skewed, some are symmetric, and some are geometric/exponential.
 
-\subsubsection{Weighted Average}
+\subsubsection{Weighted Average} \label{expected}
 $$\sum_{s \in S} P(S)X(S)$$ is the weighted average of all values of $x$. This is the most important value associated to a random variable.
 
 \paragraph{Expectation (Expected Value)} Given a random variable $X$, the expectation, or expected value of $X$, is given by
@@ -1179,6 +1181,58 @@ $$E\left[X\right]=\sum_x xP(x)$$ where $x$ ranges over all possible values of $X
 
 Expectation is linear. $$E\left[X+Y\right] = E\left[X\right] + E\left[Y\right]$$
 Example: expected value of the sum of two six-sided dice $3.5 + 3.5 = 7$.
+
+\subsubsection{Variance} \label{variance}
+Variance is a description of variation from the mean $E[X] = \mu$.
+$$Var(X) = \sum_x\left(x-\mu\right)^2p(x)$$
+
+A helpful identity is  $$Var[X] = E[X^2] - \left(E[X]\right)^2$$
+
+Notice that we do not use the signed difference from $\mu$, as $\mu$ is constructed to have the property that that sum is $0$.
+
+The standard deviation of a random variable $\sigma(X)$ is defined as
+$$\sigma^2(X) = Var(X)$$
+
+\subsection{Continuous Random Variables}
+A random variable $X$ is a continuous, random variable if there exists a non-negative function $f(x)$ such that for any set of real number $B$
+$$P(X \in B) = \int_B f(x)\,dx$$
+
+$f(x)$ is called the probability density function (PDF).
+
+\subsubsection{Properties}
+The basic probability calculation for a continuous random variable $X$ is
+$$P(a \le x \le b)=\int_a^b f(x)\,dx$$
+the probability that $X$ takes a value between $a$ and $b$.
+
+\begin{itemize}
+    \item For $a < b < c$, $P(a \le X \le b) + P(b \le X \le c) = P(a \le X \le c($
+    \item $\int_{-\infty}^\infty f(x)\,dx = 1$, as with discrete probability, an event in the sample space \emph{must} occur.
+    \item $P(X = a) = 0$, any single value has an infinitesimally minute chance of being chosen.
+\end{itemize}
+
+\paragraph{Expected Value} is defined analogously to section \ref{expected}.
+$$E[X] = \int_{-\infty}^\infty xf(x)\,dx$$
+
+In addition, for any function $g$ of $X$, $$E[g(X)] = \int_{-\infty}^\infty g(x)f(x)\,dx$$
+
+This is a measure of central tendency.
+
+\paragraph{Variance} is defined analogously to section \ref{variance}.
+$$Var(X) = \int_{-\infty}^\infty \left(x-\mu\right)^2f(x)\,dx$$
+
+\paragraph{Mean Absolute Deviation}
+$$\int_{-\infty}^\infty |x-\mu|f(x)\,dx$$
+
+\subsubsection{Common PDFs}
+The uniform distribution of numbers from $[0, n]$ can be defined as
+\[
+    f(x) =
+    \begin{cases}
+        \frac{1}{n} & x \in [0,n] \\
+        0 & x \notin [0,n]
+    \end{cases}
+\]
+Notice that we define a PDF to be valued $0$ outside of the relevant interval.
 
 \section{Appendix}
 \subsection{Area of an Equilateral Triangle}
