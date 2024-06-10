@@ -1160,13 +1160,6 @@ Two events $A$ and $B$ are independent if $P(B|A)=P(B)$, as
     P(A) = P(A|B)P(N)+P(A|B^C)P(B^C)
 \end{align*}
 
-\subsection{Binomial Model}
-For $n$ independent events, such as a coin flip, the odds of a certain number $k$ of outcomes with probability $p$ occurring is
-$$P(x = k) = \binom{n}{k} p^k(1-p)^{n-k}$$
-The multiplication/combinatorial terms refer to the commutativity of the events (you can get $3$ heads from $5$ tosses multiple ways).
-
-The sum of $P(x=k)$ for all $k$ is $1$.
-
 \subsection{Random Variables}
 A random "variable"\footnote{It is more appropriate to consider these functions.} $X$ represents a set of values in $S$, and maps that set to $\mathbb{R}$.  $X: S \to R$.
 
@@ -1192,6 +1185,30 @@ Notice that we do not use the signed difference from $\mu$, as $\mu$ is construc
 
 The standard deviation of a random variable $\sigma(X)$ is defined as
 $$\sigma^2(X) = Var(X)$$
+
+\subsubsection{Median}
+The median of a continuous random variable is the value $b$ such that
+$$\int_{-\infty}^b f(x)\,dx = \int_b^\infty f(x)\,dx = \frac{1}{2}$$
+
+\subsection{Common Discrete PDFs}
+\subsubsection{Uniform} \label{uni}
+For each $k\in\left\{1, 2, 3, \ldots n \right\}$, $P(X=k)=\frac{1}{n}$.
+
+\subsubsection{Binomial Model}
+For $n$ independent events, such as a coin flip, the odds of a certain number $k$ of outcomes with probability $p$ occurring is
+$$P(x = k) = \binom{n}{k} p^k(1-p)^{n-k}$$
+The multiplication/combinatorial terms refer to the commutativity of the events (you can get $3$ heads from $5$ tosses multiple ways).
+
+The sum of $P(x=k)$ for all $k$ is $1$.
+
+\subsubsection{Geometric Model}\label{geo}
+This is a geometric distribution, in which $k-1$ "tails" are flipped, ending with a single heads on the $k$th iteration. Omitting the $p$ produces the likelihood of only getting those $k-1$ tails.
+$$P(X=k)=q^{k-1}p = (1 - p)^{k-1}p$$
+
+\subsubsection{Poisson Distribution}
+In the case that (1) any two occurrences are independent of each other, and (2) the average rate of occurrences is independent of occurrences, the situation can be modeled with
+$$P(X=k)=\frac{\lambda^ke^{-\lambda}}{k!}$$
+with $k$ being the number of occurrences per unit time.
 
 \subsection{Continuous Random Variables}
 A random variable $X$ is a continuous, random variable if there exists a non-negative function $f(x)$ such that for any set of real number $B$
@@ -1223,7 +1240,14 @@ $$Var(X) = \int_{-\infty}^\infty \left(x-\mu\right)^2f(x)\,dx$$
 \paragraph{Mean Absolute Deviation}
 $$\int_{-\infty}^\infty |x-\mu|f(x)\,dx$$
 
-\subsubsection{Common PDFs}
+\subsubsection{Cumulative Distribution Functions}
+A cumulative distribution function (CDF) can be defined as
+$$P(X < x) = \int_0^a f(x)\,dx$$
+
+\subsection{Common Continuous PDFs}
+\subsubsection{The Uniform Distribution}
+A continuous generalization of \ref{uni}.
+
 The uniform distribution of numbers from $[0, n]$ can be defined as
 \[
     f(x) =
@@ -1233,6 +1257,41 @@ The uniform distribution of numbers from $[0, n]$ can be defined as
     \end{cases}
 \]
 Notice that we define a PDF to be valued $0$ outside of the relevant interval.
+\begin{align*}
+    P(X\ge a)=\frac{n-a}{n}
+    E[X] = \frac{n}{2}
+\end{align*}
+
+\subsubsection{The Exponential Distribution}
+A continuous generalization of \ref{geo}.
+
+The exponential distribution can be defined as
+\[
+    f(x) =
+    \begin{cases}
+        \lambda e^{-\lambda x} & x \ge 0 \\
+        0 & x < 0
+    \end{cases}
+\]
+
+This distribution is "memoryless" in that $P(X \ge a + \Delta a | X \ge a) = P(X \ge \Delta a)$.
+
+\begin{align*}
+    E[X] = \frac{1}{\lambda} && Var(X) = \frac{1}{\lambda^2}
+\end{align*}
+
+\subsubsection{The Beta Distribution}
+The beta distribution is useful in Bayesian statistics, where models are updated as information becomes available. This distribution is defined for $[0,1]$, and parameterized by $\alpha$ and $\beta$.
+
+\begin{align*}
+    f(x) &= \frac{x^{\alpha - 1}\left(1-x\right)^{\beta - 1}}{B(\alpha, \beta)}\\
+    B(x) &= \int_0^1x^{\alpha-1}\left(1-x\right)^{\beta - 1}\,dx=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}
+\end{align*}
+
+
+\subsubsection{The Normal Distribution}
+This distribution is parameterized by $\mu$, the mean of the distribution, and $\sigma$, the standard deviation of the distribution. This distribution is important because it is used for modeling many natural quantities.
+$$f(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}$$
 
 \section{Appendix}
 \subsection{Area of an Equilateral Triangle}
@@ -1247,7 +1306,6 @@ The area of this sector is
       & = \frac{1}{2}l^2\frac{2\pi r}{l}  \\
       & = \pi lr
 \end{align*}
-
 
 Thus, letting $l$ be the lateral length of the cone, $r$ be the radius of the cone's base,
 $$SA = \pi rl$$
