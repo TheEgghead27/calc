@@ -1258,7 +1258,7 @@ The uniform distribution of numbers from $[0, n]$ can be defined as
 \]
 Notice that we define a PDF to be valued $0$ outside of the relevant interval.
 \begin{align*}
-    P(X\ge a)=\frac{n-a}{n}
+    P(X\ge a)=\frac{n-a}{n} &&
     E[X] = \frac{n}{2}
 \end{align*}
 
@@ -1277,7 +1277,7 @@ The exponential distribution can be defined as
 This distribution is "memoryless" in that $P(X \ge a + \Delta a | X \ge a) = P(X \ge \Delta a)$.
 
 \begin{align*}
-    E[X] = \frac{1}{\lambda} && Var(X) = \frac{1}{\lambda^2}
+   P(X\ge a) = e^{-\lambda a}&& E[X] = \frac{1}{\lambda} && Var(X) = \frac{1}{\lambda^2}
 \end{align*}
 
 \subsubsection{The Beta Distribution}
@@ -1285,7 +1285,8 @@ The beta distribution is useful in Bayesian statistics, where models are updated
 
 \begin{align*}
     f(x) &= \frac{x^{\alpha - 1}\left(1-x\right)^{\beta - 1}}{B(\alpha, \beta)}\\
-    B(x) &= \int_0^1x^{\alpha-1}\left(1-x\right)^{\beta - 1}\,dx=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}
+    B(x) &= \int_0^1x^{\alpha-1}\left(1-x\right)^{\beta - 1}\,dx=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}\\
+    \Gamma(x) &= \int_0^\infty t^{x-1}e^{-t}\,dt
 \end{align*}
 
 
