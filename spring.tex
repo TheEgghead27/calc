@@ -1050,7 +1050,7 @@ This is analogous to Fourier Series, where instead of modeling periodic function
 
 \paragraph{Theorem} If $\lim_{n\to\infty}\limits R_n=0$ for all $x\in I$, then the Taylor Series converges to its function.
 
-\subsubsection{Important Taylor Series}
+\subsubsection{Important Taylor Series}\label{important-taylor}
 Based on the Ratio Test, these three Taylor Series have an interval of convergence of $\left(-\infty,\infty\right)$.
 \begin{align*}
     e^x&=\sum_{n=0}^{\infty}\limits\frac{x^n}{n!}=1+x+\frac{x^2}{2}+\frac{x^3}{3!}+\frac{x^4}{4!}+\frac{x^5}{5!}+\ldots\\
@@ -1065,6 +1065,18 @@ The series for $\ln{x}$ converges from $(0,2]$, and the others converge from $[-
     \arctan{x}&=\sum_{n=0}^\infty (-1)^{n}\frac{x^{2n+1}}{2n+1}=x-\frac{x^3}{3}+\frac{x^5}{5}-\frac{x^7}{7}+\frac{x^9}{9}-\frac{x^{11}}{11}+\ldots
 \end{align*}
 Note that $\arctan{x}=\int \frac{1}{x^2}dx$. Also, many substitutions $\square$ can be made for $x$ in series such as $e^x$.
+
+\subsection{Extension: Euler's Formula}
+$$e^{ix}=\cos{x}+i\sin{x}$$
+This can be proven using the series in section \ref{important-taylor}.
+
+\subsubsection{Polar Form of Complex Numbers}
+$z=|z|e^{i\theta}$
+$e^{i\theta}$ acts as a unit vector rotating in the Argand Plane, and it is then scaled by magnitude $|z|$.
+
+\subsubsection{De Moivre's Formula}
+$$\left(e^{i\pi}\right)^n = e^{in\pi} = \left(\cos{x}+i\sin{x}\right)^n = \cos{nx} + i\sin{nx}$$
+
 
 \section{Differential Equations}
 Equations written in terms of derivatives. Solutions are function(s), not numbers.
@@ -1222,7 +1234,7 @@ $$P(a \le x \le b)=\int_a^b f(x)\,dx$$
 the probability that $X$ takes a value between $a$ and $b$.
 
 \begin{itemize}
-    \item For $a < b < c$, $P(a \le X \le b) + P(b \le X \le c) = P(a \le X \le c($
+    \item For $a < b < c$, $P(a \le X \le b) + P(b \le X \le c) = P(a \le X \le c)$
     \item $\int_{-\infty}^\infty f(x)\,dx = 1$, as with discrete probability, an event in the sample space \emph{must} occur.
     \item $P(X = a) = 0$, any single value has an infinitesimally minute chance of being chosen.
 \end{itemize}
@@ -1294,11 +1306,40 @@ The beta distribution is useful in Bayesian statistics, where models are updated
 This distribution is parameterized by $\mu$, the mean of the distribution, and $\sigma$, the standard deviation of the distribution. This distribution is important because it is used for modeling many natural quantities.
 $$f(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}$$
 
-\subsubsection{Fat Tail Distirbutions}
+\subsubsection{Fat Tail Distributions}
 Distributions of the form
 $$f(x) = \frac{c}{x^k}$$
 
 In some cases, the mean can be finite, but the variance can be infinite.
+
+\subsection{Measures of Central Tendency}
+Common measures of central tendency are the solutions that minimize certain error functions.
+
+\subsubsection{Mean}
+The mean minimizes
+$$\sum_{x\in S} \left|x_ - x_i\right|^2$$
+This is related to the Euclidean Distance, or $L^2$ norm.
+\subsubsection{Median}
+The median minimizes
+$$\sum_{x\in S} \left|x_ - x_i\right|^1$$
+This is related to the Taxicab Distance, or $L^1$ norm.
+\subsubsection{Mode}
+The mode minimizes
+$$\sum_{x\in S} \left|x_ - x_i\right|^0$$
+Treating $0^0$ as $0$, this is a rudimentary expression of the $L^0$ norm.
+
+\subsubsection{Linear Regression}
+Linear regression finds a line that minimizes
+$$\sum_{x_i} \left(y_i - (mx_i + b)\right)^2$$
+the sum of squared deviations. Notice that this is a multi-variable function $e(m,b)$, where partial derivatives must be solved.
+
+\subsection{Estimators}
+An unbiased estimator has less error on average. A biased estimator would be regularly above or below the true value of a guessing problem.
+
+Example:
+Given a 2-element subset of $\left\{1,2,3,4,\ldots n\right\}$, estimate $n$.
+
+Guessing the maximum value of the subset would be on average a consistently lower guess. It is instead better to consider the expected value of the maximum value of the subset.
 
 \section{Appendix}
 \subsection{Area of an Equilateral Triangle}
