@@ -4,13 +4,20 @@
 \usepackage{graphicx} % Required for inserting images
 \usepackage{pgfplots}
 \pgfplotsset{width=3in,compat=1.9}
+
+
 \DeclareMathOperator{\sgn}{sgn}
+
 \title{Calculus! Calculus!}
 \author{David Chen}
 \date{September 2024}
+
 \begin{document}
+
 \maketitle
+
 \section{Multivariable Functions and Space}
+
 \subsection{Functions}
 $$f: \mathbb{R}^n \to \mathbb{R}^m$$
 Functions map a \textbf{domain} (e.g. $\mathbb{R}^n$, read "R N") to a \textbf{codomain} (e.g. $\mathbb{R}^m$ -- see section \ref{set-multiplication} for more information). In the scope of this course, we will usually have $n$ or $m = 1$, and $n,m \in \mathbb{N}$.\footnote{In generalized multivariable calculus, more profound matrix transformations are used.}
@@ -21,35 +28,43 @@ Common function domain/codomain pairings we consider are
     \item $f: \mathbb{R}^3 \to \mathbb{R}$ -- can be represented as labelling each point in 3-space with a value (e.g. temperature).
     \item $f: \mathbb{R}^2 \to \mathbb{R}^2$ -- can be considered a transformation in 2-space.
 \end{itemize}
+
 \subsection{Representing N-space on Cartesian Axes}
 A figure in N-space represents N values (from both the domain and codomain) per point. For instance, a number line represents 1-space, and the xy-plane represents 2-space.
+
 \subsubsection{Axes}
 For 3-space, we conventionally use 3 mutually perpendicular axes -- $x, y, z$, meeting at an origin $O(0,0,0)$ -- to represent the three dimensions. By convention, these axes follow the "right-hand rule", with the alternative "left-hand rule" leading to certain negations in formulae.
 This does not extend quite that well to 4-space,\footnote{Most of us cannot visualize 4-space with 4 orthogonal axes. Please talk to your doctor if this is not the case...} but is also true of 2-space (though the RHR does not matter).
+
 \paragraph{Sections}
 Just as in 2-space there are 4 quadrants, in 3-space, there are 8 octants.
+
 \subsubsection{Line Formulae}
 These familiar formulae for 2D lines extend to 3D in intuitive ways.
+
 \paragraph{Distance}
 The 2D distance formula
 $$d = \sqrt{(\Delta x)^2 + (\Delta y)^2}$$
 generalizes readily into the 3D distance formula
 $$d = \sqrt{(\Delta x)^2 + (\Delta y)^2 + (\Delta z)^2}$$
 based on the Pythagorean Theorem.
+
 \paragraph{Midpoint}
 The formula for a midpoint on a 2D line between $(x_1, y_1)$ and $(x_2, y_2)$
 $$M\left(\frac{x_1+x_2}{2},\frac{y_1+y_2}{2}\right)$$
 generalizes readily into the 3D midpoint formula for points $(x_1, y_1, z_2)$ and $(x_2, y_2, z_2)$
 $$M\left(\frac{x_1+x_2}{2},\frac{y_1+y_2}{2}, \frac{z_1+z_2}{2}\right)$$
 Alternative coordinate systems are possible, and will be discussed in a future section.
+
 \paragraph{Partitioning}
 The point P partitioning a line segment AB determined by points $A(x_1,y_1)$ and $B(x_2,y_2)$ into segments with lengths in the ratio $a:b$ has coordinates
 $$P\left(x_1+\frac{a}{a+b}\left(x_1+x_2\right), y_1+\frac{a}{a+b}\left(y_1+y_2\right)\right) = P\left(\frac{ax_2 + bx_1}{a+b}, \frac{ay_2 + by_1}{a+b}\right)$$
 Similarly, the point P partitioning AB in 3-space between $A(x_1, y_1, z_1)$ and $B(x_2, y_2, z_2)$ into segments with lengths in the ratio $a:b$ has coordinates
 $$P\left(\frac{ax_2 + bx_1}{a+b}, \frac{ay_2 + by_1}{a+b}, \frac{az_2 + bz_1}{a+b}\right)$$
+
 \subsubsection{Contours}
 Contours allow for the construction of a $N$-dimensional representation/sampling of a $N+1$-dimensional function. For instance, contour surfaces are 3D samples of a 4D space.
-We use contour curves\footnote{Although the textbook uses the term level curve interchangably it may be helpful to depict the "level" as the $z$-value in 3-space.} to represent a 3D surface with points $(x,y,z)$ using the curves in the $xy$-plane such that $z=c$, for some constant in the codomain. Below is a (low resolution) contour plot of the top half of a sphere:
+We use contour curves\footnote{Although the textbook uses the term level curve interchangably it may be helpful to depict the "level" as the $z$-value in 3-space.} to represent a 3D surface with points $(x,y,z)$ by projecting the curves produced for a fixed $z=c$ onto the $xy$-plane. Below is a (low resolution) contour plot of the top half of a sphere:
 \begin{center}
 \begin{tikzpicture}
 \begin{axis}
@@ -65,10 +80,14 @@ We use contour curves\footnote{Although the textbook uses the term level curve i
 \end{tikzpicture}
 \end{center}
 It is useful to have constant $\Delta z$ intervals so that the contours can visually represent the steepness of the surface.
+
 \section{Notable 2D Figures}
+
 \subsection{Lines}
+
 \subsubsection{Standard Form} The set of points satisfying a linear equation of the form $$Ax + By + C = 0$$
 Although there are 3 nominal coefficients, there are only 2 effective coefficients because (assuming at least one of $A,B$ is non-zero), we can divide by a coefficient, thus leaving 2 unknown ratios as coefficients. This explains why 2 points are sufficient to uniquely define a line, and distinct lines can only intersect at 1 point.
+
 \subsubsection{Additional Equations}
 \begin{itemize}
     \item Point-Slope: $y-y_1 = m(x-x_1)$
@@ -83,9 +102,11 @@ x_1 & y_1 & 1 \\
 x_2 & y_2 & 1
 \end{vmatrix}= 0$
 \end{itemize}
+
 \subsubsection{Distance from a Point}
 The distance to a line $Ax+By+C=0$ from point $(x_1, y_1)$ is
 $$d=\frac{\left|Ax_1 + By_1 + C\right|}{\sqrt{a^2+b^2}}$$
+
 \subsubsection{Area of a Triangle in 2-space}
 Given points $(x_1, y_1), (x_2, y_2), (x_3, y_3)$, the area of the triangle formed by these points is
 $$A = \frac{1}{2}\begin{vmatrix}
@@ -95,19 +116,27 @@ $$A = \frac{1}{2}\begin{vmatrix}
 \end{vmatrix} = \frac{1}{2}\left|(x_1-x_2)(y_2-y_3) - (x_2 - x_3)(y_1 - y_2)\right|$$
 The latter form can be derived using the distance from a point formula. See \ref{determinant} for more information about the former form.
 This is also known as the shoelace formula, because it can be represented as taking the points in order (clockwise/counterclockwise) and "lacing" the coordinates to form equivalent products.
+
 \subsubsection{Projection}
 The projection of a line segment with slope $m$ and length $l$ onto the $x$-axis is
 $$\Delta x = l\sqrt{\frac{1}{1+m^2}}$$
+
 \subsubsection{Angle Between Lines}
 For two intersecting lines with slopes $m_1$ and $m_2$, $m_1 < m_2$ the angle between the two can be found by $$\arctan{m_2} - \arctan{m_1} = \theta$$
+
 \subsection{Conic Sections}
+
 \paragraph{General Equation} The set of points satisfying a degree 2 equation of the form $$Ax^2+By^2 + Cxy + Dx + Ey + F =0$$
 There are 6 nominal coefficients and 5 effective coefficients. This explains why 5 points are sufficient to uniquely define a conic section, and distinct conic sections can intersect at a maximum of 4 points.
+
 \subsection{Cubics}
+
 \paragraph{Standard Form} The set of points satisfying a degree 3 equation of the form $$Ax^3 + By^3 + Cx^2y + Dxy^2 + Ex^2 + Fy^2 + Gxy + Hx + Jy + K = 0$$
 There are 10 nominal coefficients and 9 effective coefficients. However, distinct conics can intersect at more than 8 points. This is known as the Euler-Cramer Paradox.
+
 \subsubsection{The Euler-Cramer Paradox}
 For polynomials of degree $\ge 3$, Because the system of intersection points may contain rows that are \textbf{not} linearly independent, it is possible that that the determinant of the matrix would be $0$: there is not a unique solution curve for the system. See \ref{determinant} for more information.
+
 \section{Determinants} \label{determinant}
 A \textbf{matrix} is a rectangular array of numbers.\footnote{Tensors can be considered a generalization of matrices to higher dimensions.} The dimensions are denoted $N \times M$, with $N$ being the number of rows, and $M$ being the number of columns. By convention, matrix variables are denoted with capital letters. Matrix elements can be addressed with subscripts $a_{n,m}$, with the comma delimiter being optional.
 $$A = \begin{bmatrix}
@@ -118,6 +147,7 @@ $$A = \begin{bmatrix}
 \end{bmatrix}$$
 A \textbf{determinant} is a function that maps a real number to every \textbf{square} matrix.
 The determinant of a $1\times1$ matrix $\left[a\right]$ is the scalar $a$, and the determinant of a $2\times2$ matrix $\left[\begin{smallmatrix} a & b \\ c & d \end{smallmatrix}\right]$ is $ad - bc$.
+
 \subsection{Recursive (Cofactor) Definition}
 Given an element $a_{ij}$ of matrix $A$, the corresponding minor $M_{ij}$ is the determinant obtained by deleting row $i$ and column $j$ of matrix A.
 The cofactor (co-factor) of $a_{ij}$ is $$C_{ij} = (-1)^{i+j}M_{ij}$$
@@ -129,16 +159,21 @@ $$\begin{bmatrix}
     + & - & + & - & \cdots \\
     \vdots & \vdots & \vdots & \vdots \\
 \end{bmatrix}$$
+
 \subsection{Explicit Definition}
 This definition is listed as a fun aside; it is useful for proving determinant properties for the general case.
 For the set of all permutations $S_n$, with the signature function $\sgn(\sigma)$ denoting $(-1)^n$, with $n$ being the number of transpositions (element swaps) from the original ordering of elements to get the permutation $\sigma(i)$:
 $$\det{A} = \sum_{\sigma \in S_n} \sgn{\sigma} \prod_{i=1}^n a_{i,\sigma(i)}$$
+
 \subsection{Determinant Properties}
 Note that many of these properties do not have standard names.
 The sum property (\ref{det-sum}), combined with the switching property (\ref{det-switch}), are sometimes referred to as the \textbf{multilinearity} of determinants in columns/rows.
+
 \subsubsection{Scalar Multiple Property}
 If any row or column is multiplied by a constant $k$, the determinant value gets multiplied by $k$.
+
 \paragraph{Proof} Consider the recursive determinant sum for the new matrix, using the row/column that was multiplied. $k$ can be factored out of the entire sum, leaving the original determinant sum multiplied by the scalar $k$.
+
 \subsubsection{Sum Property} \label{det-sum}
 If all the elements of a row or column are expressed as a summation of two or more addends, then the determinant can be broken down as a sum of corresponding smaller elements.
 $$
@@ -161,18 +196,26 @@ $$
     \end{vmatrix}
 $$
 This property can be applied multiple times to separate rows.
+
 \paragraph{Proof} Consider the explicit definition of the determinant. Choosing $i$ or $j$ to target the addends' row/column, we can use the distributive property to split the product into two, which represent the determinant of the separate matrices.
+
 \subsubsection{Switching Property} \label{det-switch}
 If we interchange any two rows/columns of the determinant, the determinant is multiplied by $-1$.
+
 \subsubsection{Sum of Rows Property} \label{det-sum-rows}
 Let $A$ be an $n\times n$ matrix and let B be a matrix which results from adding a multiple of a row/column to another row/column. Then $\det{A} = \det{B}$.
+
 \subsubsection{Zero Property}\label{det-zero}
 The determinant of a matrix with a row/column of zeroes is $0$.
+
 \paragraph{Proof} Consider the recursive definition of the determinant. Choosing the row with $0$s will lead to $a_{ij}$ always being $0$, so the final sum is 0.
 This property allows us to show that since the determinant form of a line results in an expression of the form $Ax+By+C=0$, and that the two points $(x_1,y_1)$ and $(x_2,y_2)$ satisfy this equation, the two points definitively show that the solutions to the equation form the line.
+
 \subsubsection{Identical Column Zero Property}
 If a (square) matrix has two identical rows/columns (or rows that are a linear combination of others), then its determinant is zero.
+
 \paragraph{Proof} Using the sum of rows property (\ref{det-sum-rows}), we can manipulate the matrix such that the row is only $0$s, thus allowing us to apply the zero property (\ref{det-zero}).\footnote{Although not mentioned in class, the determinant of a transposed matrix is equal to the original matrix, making this applicable to columns too.}
+
 \subsubsection{Dimensional Analysis of Determinants}
 In the case of the determinant representing a triangle's area, we can translate and rotate the triangle -- since these are rigid motions, area is preserved -- making a new figure with coordinates that form a matrix with the following determinant
 $$\begin{vmatrix}
@@ -181,20 +224,56 @@ $$\begin{vmatrix}
     x_2' & y_2' & 1 \\
 \end{vmatrix} = x_1'y_2'$$
 where $x_1'$ represents the base length (rotated onto the x-axis), and $y_2'$ represents the height (rotated to be parallel to the y-axis). This determinant represents area (square distance units).
+
 \section{3D Figures}
-contour map
-traces/projection/cross section
-quadratic surfaces (saddle and friends)
-\section{TOPICS FROM OP}
-\begin{itemize}
-    \item Determinants and their properties
-    \item Distance formula, midpoint formula, equations of cylinder/ spheres in 3 space
-    \item Sketching contours
-    \item Matching contours, equations and surfaces
-\end{itemize}
+To draw a 3D figure, it is helpful to consider its level curves and traces (cross-sections in planes such as the $xz$ or $yz$ plane) by setting one of the variables $=0$ or $=c$.
+
+\subsection{Planes}
+A single variable equal to a constant represents a plane parallel to the other axes' plane. For instance, the $xz$-plane can be represented with $y=0$, and $y=c$ produces parallel planes.
+A linear equation in 2 variables (e.g. $y=mx+b$) produces a plane in 3-space that intersects the equivalent line on the $xy$-plane ($z=0$).
+
+\subsection{Cylinders}
+Cylinders with rulings (straight lines) parallel to an axis are represented with equations in 2 variables for 3-space.
+For instance, $1 = x^2 + y^2$ represents a circular cylinder, with rulings parallel to the omitted $z$-axis.
+Other equations can produce non-circular cylinders.
+
+\subsection{Quadratic Surfaces}
+Quadratic surfaces are second-degree polynomials in 3-space. Equations are given for the surfaces on the $z$ axis, but these variables can be interchanged to produce surfaces along the $x$ or $y$ axes.
+
+\subsubsection{Ellipsoids}
+An ellipsoid has traces that are all ellipses. In analogy to 2D ellipses, the variables $a$, $b$, $c$ represents half the width of the ellipse along that axis.
+$$\frac{x^2}{a^2} + \frac{y^2}{b^2}+\frac{z^2}{c^2}=1$$
+\paragraph{Spheres} are special cases of the ellipsoid (in which $a=b=c=r$), and they can also be defined as the set of points equidistant from a center, based on the 3D distance formula. A sphere of radius $r$ centered at point $(h, k, l)$ has equation
+$$(x-h)^2+(y-k)^2+(z-l)^2=r^2$$
+
+\subsubsection{Cones}
+Cones have elliptical level curves, and hyperbolic vertical traces (or in the degenerate case at the origin, two crossing lines similar to the absolute value function).
+$$\frac{x^2}{a^2} + \frac{y^2}{b^2} = \frac{z^2}{c^2}$$
+Notice that if instead of $z^2$, one uses $z=\sqrt{\ldots}$, a "single" cone appears.
+
+\subsubsection{Elliptic Paraboloid}
+Elliptic paraboloids have parabolic vertical cross sections, and elliptical horizontal contours. Wow!
+$$\frac{x^2}{a^2} + \frac{y^2}{b^2} = \frac{z}{c}$$
+
+\subsubsection{Hyperbolic Paraboloid}
+Hyperbolic paraboloids have parabolic vertical cross sections, and elliptical horizontal contours. Also wow!
+$$\frac{x^2}{a^2} - \frac{y^2}{b^2} = \frac{z}{c}$$
+The hyperbolic paraboloid is also a ruled surface -- it is possible to run a series of straight lines across it.
+
+\subsubsection{Hyperboloid of One Sheet}
+Horizontal traces are ellipses, and vertical traces are hyperbolas (degenerate at the plane $y=b$ or $x=a$).
+$$\frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2}=1$$
+
+\subsubsection{Hyperboloid of Two Sheets}
+Horizontal traces are ellipses, and vertical traces are hyperbolas. The textbook likes to say that "2 $-$ signs" indicates 2 sheets.
+$$\frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2}= -1$$
+$$-\frac{x^2}{a^2} - \frac{y^2}{b^2} + \frac{z^2}{c^2}= 1$$
+
 \section{Appendix}
+
 \subsubsection{Cartesian Products} \label{set-multiplication}
 For sets $A, B$, their Cartesian product is $$A \times B = \left\{ (a,b) | a \in A, b \in B\right\}$$
 This produces a set of (ordered) 2-tuples/vectors.
 The "$n$-ary Cartesian product" generalizes this process to produce N-tuples/vectors, leading to a definition for "exponentiating" sets, as in $\mathbb{R}^n$.
+
 \end{document}
