@@ -2,6 +2,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphicx} % Required for inserting images
+\usepackage[hidelinks]{hyperref}
 \usepackage{pgfplots}
 \pgfplotsset{width=3in,compat=1.9}
 
@@ -20,7 +21,7 @@
 
 \subsection{Functions}
 $$f: \mathbb{R}^n \to \mathbb{R}^m$$
-Functions map a \textbf{domain} (e.g. $\mathbb{R}^n$, read "R N") to a \textbf{codomain} (e.g. $\mathbb{R}^m$ -- see section \ref{set-multiplication} for more information). In the scope of this course, we will usually have $n$ or $m = 1$, and $n,m \in \mathbb{N}$.\footnote{In generalized multivariable calculus, more profound matrix transformations are used.}
+Functions map a \textbf{domain} (e.g. $\mathbb{R}^n$, read ``R N") to a \textbf{codomain} (e.g. $\mathbb{R}^m$ -- see section \ref{set-multiplication} for more information). In the scope of this course, we will usually have $n$ or $m = 1$, and $n,m \in \mathbb{N}$.\footnote{In generalized multivariable calculus, more profound matrix transformations are used.}
 Common function domain/codomain pairings we consider are
 \begin{itemize}
     \item $f: \mathbb{R}^2 \to \mathbb{R}$ -- can be represented as mapping points on the 2D plane to label values or as a 3D \textbf{surface}.
@@ -33,11 +34,11 @@ Common function domain/codomain pairings we consider are
 A figure in N-space represents N values (from both the domain and codomain) per point. For instance, a number line represents 1-space, and the xy-plane represents 2-space.
 
 \subsubsection{Axes}
-For 3-space, we conventionally use 3 mutually perpendicular axes -- $x, y, z$, meeting at an origin $O(0,0,0)$ -- to represent the three dimensions. By convention, these axes follow the "right-hand rule", with the alternative "left-hand rule" leading to certain negations in formulae.
-This does not extend quite that well to 4-space,\footnote{Most of us cannot visualize 4-space with 4 orthogonal axes. Please talk to your doctor if this is not the case...} but is also true of 2-space (though the RHR does not matter).
+For 3-space, we conventionally use 3 mutually perpendicular axes -- $x, y, z$, meeting at an origin $O(0,0,0)$ -- to represent the three dimensions. By convention, these axes follow the ``right-hand rule", with the alternative ``left-hand rule" leading to certain negations in formulae.
+This model is similar to the axes in 2-space, where the RHR does not make a difference, but is harder to visualize in 4-space.\footnote{Most of us cannot visualize 4-space with 4 orthogonal axes. Please talk to your doctor if this is not the case...}
 
 \paragraph{Sections}
-Just as in 2-space there are 4 quadrants, in 3-space, there are 8 octants.
+There are 4 quadrants in 2-space, and 8 octants in 3-space.
 
 \subsubsection{Line Formulae}
 These familiar formulae for 2D lines extend to 3D in intuitive ways.
@@ -64,7 +65,7 @@ $$P\left(\frac{ax_2 + bx_1}{a+b}, \frac{ay_2 + by_1}{a+b}, \frac{az_2 + bz_1}{a+
 
 \subsubsection{Contours}
 Contours allow for the construction of a $N$-dimensional representation/sampling of a $N+1$-dimensional function. For instance, contour surfaces are 3D samples of a 4D space.
-We use contour curves\footnote{Although the textbook uses the term level curve interchangably it may be helpful to depict the "level" as the $z$-value in 3-space.} to represent a 3D surface with points $(x,y,z)$ by projecting the curves produced for a fixed $z=c$ onto the $xy$-plane. Below is a (low resolution) contour plot of the top half of a sphere:
+We use contour curves\footnote{Although the textbook uses the term level curve interchangably it may be helpful to depict the ``level" as the $z$-value in 3-space.} to represent a 3D surface with points $(x,y,z)$ by projecting the curves produced for a fixed $z=c$ onto the $xy$-plane. Below is a (low resolution) contour plot of the top half of a sphere:
 \begin{center}
 \begin{tikzpicture}
 \begin{axis}
@@ -114,8 +115,18 @@ $$A = \frac{1}{2}\begin{vmatrix}
     x_2 & y_2 & 1 \\
     x_3 & y_3 & 1 \\
 \end{vmatrix} = \frac{1}{2}\left|(x_1-x_2)(y_2-y_3) - (x_2 - x_3)(y_1 - y_2)\right|$$
-The latter form can be derived using the distance from a point formula. See \ref{determinant} for more information about the former form.
-This is also known as the shoelace formula, because it can be represented as taking the points in order (clockwise/counterclockwise) and "lacing" the coordinates to form equivalent products.
+The latter form can be derived using the distance from a point formula. See section \ref{determinant} for more information about the former form.
+This is also known as the shoelace formula, because it can be represented as taking the points in order (clockwise/counterclockwise) and ``lacing" the coordinates to form equivalent products.
+
+\subsubsection{Dimensional Analysis of the Determinant Method}
+In the case of the determinant representing a triangle's area, we can translate and rotate the triangle -- since these are rigid motions, area is preserved -- making a new figure with coordinates that form a matrix with the following determinant
+$$\begin{vmatrix}
+    0 & 0 & 1 \\
+    x_1' & 0 & 1 \\
+    x_2' & y_2' & 1 \\
+\end{vmatrix} = x_1'y_2'$$
+where $x_1'$ represents the base length (rotated onto the x-axis), and $y_2'$ represents the height (rotated to be parallel to the y-axis). This determinant represents area (square distance units).
+
 
 \subsubsection{Projection}
 The projection of a line segment with slope $m$ and length $l$ onto the $x$-axis is
@@ -135,7 +146,7 @@ There are 6 nominal coefficients and 5 effective coefficients. This explains why
 There are 10 nominal coefficients and 9 effective coefficients. However, distinct conics can intersect at more than 8 points. This is known as the Euler-Cramer Paradox.
 
 \subsubsection{The Euler-Cramer Paradox}
-For polynomials of degree $\ge 3$, Because the system of intersection points may contain rows that are \textbf{not} linearly independent, it is possible that that the determinant of the matrix would be $0$: there is not a unique solution curve for the system. See \ref{determinant} for more information.
+For polynomials of degree $\ge 3$, Because the system of intersection points may contain rows that are \textbf{not} linearly independent, it is possible that that the determinant of the matrix would be $0$: there is not a unique solution curve for the system. See section \ref{determinant} for more information.
 
 \section{Determinants} \label{determinant}
 A \textbf{matrix} is a rectangular array of numbers.\footnote{Tensors can be considered a generalization of matrices to higher dimensions.} The dimensions are denoted $N \times M$, with $N$ being the number of rows, and $M$ being the number of columns. By convention, matrix variables are denoted with capital letters. Matrix elements can be addressed with subscripts $a_{n,m}$, with the comma delimiter being optional.
@@ -157,7 +168,7 @@ $$\begin{bmatrix}
     + & - & + & - & \cdots \\
     - & + & - & + & \cdots \\
     + & - & + & - & \cdots \\
-    \vdots & \vdots & \vdots & \vdots \\
+    \vdots & \vdots & \vdots & \vdots & \ddots \\
 \end{bmatrix}$$
 
 \subsection{Explicit Definition}
@@ -216,15 +227,6 @@ If a (square) matrix has two identical rows/columns (or rows that are a linear c
 
 \paragraph{Proof} Using the sum of rows property (\ref{det-sum-rows}), we can manipulate the matrix such that the row is only $0$s, thus allowing us to apply the zero property (\ref{det-zero}).\footnote{Although not mentioned in class, the determinant of a transposed matrix is equal to the original matrix, making this applicable to columns too.}
 
-\subsubsection{Dimensional Analysis of Determinants}
-In the case of the determinant representing a triangle's area, we can translate and rotate the triangle -- since these are rigid motions, area is preserved -- making a new figure with coordinates that form a matrix with the following determinant
-$$\begin{vmatrix}
-    0 & 0 & 1 \\
-    x_1' & 0 & 1 \\
-    x_2' & y_2' & 1 \\
-\end{vmatrix} = x_1'y_2'$$
-where $x_1'$ represents the base length (rotated onto the x-axis), and $y_2'$ represents the height (rotated to be parallel to the y-axis). This determinant represents area (square distance units).
-
 \section{3D Figures}
 To draw a 3D figure, it is helpful to consider its level curves and traces (cross-sections in planes such as the $xz$ or $yz$ plane) by setting one of the variables $=0$ or $=c$.
 
@@ -249,7 +251,7 @@ $$(x-h)^2+(y-k)^2+(z-l)^2=r^2$$
 \subsubsection{Cones}
 Cones have elliptical level curves, and hyperbolic vertical traces (or in the degenerate case at the origin, two crossing lines similar to the absolute value function).
 $$\frac{x^2}{a^2} + \frac{y^2}{b^2} = \frac{z^2}{c^2}$$
-Notice that if instead of $z^2$, one uses $z=\sqrt{\ldots}$, a "single" cone appears.
+Notice that if instead of $z^2$, one uses $z=\sqrt{\ldots}$, a ``single" cone appears.
 
 \subsubsection{Elliptic Paraboloid}
 Elliptic paraboloids have parabolic vertical cross sections, and elliptical horizontal contours. Wow!
@@ -265,15 +267,14 @@ Horizontal traces are ellipses, and vertical traces are hyperbolas (degenerate a
 $$\frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2}=1$$
 
 \subsubsection{Hyperboloid of Two Sheets}
-Horizontal traces are ellipses, and vertical traces are hyperbolas. The textbook likes to say that "2 $-$ signs" indicates 2 sheets.
+Horizontal traces are ellipses, and vertical traces are hyperbolas. The textbook likes to say that 2 minus signs correlate with 2 sheets.
 $$\frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2}= -1$$
 $$-\frac{x^2}{a^2} - \frac{y^2}{b^2} + \frac{z^2}{c^2}= 1$$
 
 \section{Appendix}
-
-\subsubsection{Cartesian Products} \label{set-multiplication}
+\subsection{Cartesian Products} \label{set-multiplication}
 For sets $A, B$, their Cartesian product is $$A \times B = \left\{ (a,b) | a \in A, b \in B\right\}$$
 This produces a set of (ordered) 2-tuples/vectors.
-The "$n$-ary Cartesian product" generalizes this process to produce N-tuples/vectors, leading to a definition for "exponentiating" sets, as in $\mathbb{R}^n$.
+The ``$n$-ary Cartesian product" generalizes this process to produce $n$-tuples/vectors, leading to a definition for ``exponentiating" sets, as in $\mathbb{R}^n$.
 
 \end{document}
