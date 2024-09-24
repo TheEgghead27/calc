@@ -59,7 +59,7 @@ Alternative coordinate systems are possible, and will be discussed in a future s
 
 \paragraph{Partitioning}
 The point P partitioning a line segment AB determined by points $A(x_1,y_1)$ and $B(x_2,y_2)$ into segments with lengths in the ratio $a:b$ has coordinates
-$$P\left(x_1+\frac{a}{a+b}\left(x_1+x_2\right), y_1+\frac{a}{a+b}\left(y_1+y_2\right)\right) = P\left(\frac{ax_2 + bx_1}{a+b}, \frac{ay_2 + by_1}{a+b}\right)$$
+$$P\left(x_1+\frac{a}{a+b}\left(x_2-x_1\right), y_1+\frac{a}{a+b}\left(y_2-y_1\right)\right) = P\left(\frac{ax_2 + bx_1}{a+b}, \frac{ay_2 + by_1}{a+b}\right)$$
 Similarly, the point P partitioning AB in 3-space between $A(x_1, y_1, z_1)$ and $B(x_2, y_2, z_2)$ into segments with lengths in the ratio $a:b$ has coordinates
 $$P\left(\frac{ax_2 + bx_1}{a+b}, \frac{ay_2 + by_1}{a+b}, \frac{az_2 + bz_1}{a+b}\right)$$
 
@@ -239,12 +239,13 @@ Cylinders with rulings (straight lines) parallel to an axis are represented with
 For instance, $1 = x^2 + y^2$ represents a circular cylinder, with rulings parallel to the omitted $z$-axis.
 Other equations can produce non-circular cylinders.
 
-\subsection{Quadratic Surfaces}
-Quadratic surfaces are second-degree polynomials in 3-space. Equations are given for the surfaces on the $z$ axis, but these variables can be interchanged to produce surfaces along the $x$ or $y$ axes.
+\subsection{Quadric Surfaces}
+Quadric surfaces are second-degree polynomials in 3-space. Equations are given for the surfaces on the $z$ axis, but these variables can be interchanged to produce surfaces along the $x$ or $y$ axes.
 
 \subsubsection{Ellipsoids}
 An ellipsoid has traces that are all ellipses. In analogy to 2D ellipses, the variables $a$, $b$, $c$ represents half the width of the ellipse along that axis.
 $$\frac{x^2}{a^2} + \frac{y^2}{b^2}+\frac{z^2}{c^2}=1$$
+
 \paragraph{Spheres} are special cases of the ellipsoid (in which $a=b=c=r$), and they can also be defined as the set of points equidistant from a center, based on the 3D distance formula. A sphere of radius $r$ centered at point $(h, k, l)$ has equation
 $$(x-h)^2+(y-k)^2+(z-l)^2=r^2$$
 
