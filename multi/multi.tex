@@ -106,7 +106,7 @@ x_2 & y_2 & 1
 
 \subsubsection{Distance from a Point}
 The distance to a line $Ax+By+C=0$ from point $(x_1, y_1)$ is
-$$d=\frac{\left|Ax_1 + By_1 + C\right|}{\sqrt{a^2+b^2}}$$
+$$d=\frac{\left|Ax_1 + By_1 + C\right|}{\sqrt{A^2+B^2}}$$
 
 \subsubsection{Area of a Triangle in 2-space}
 Given points $(x_1, y_1), (x_2, y_2), (x_3, y_3)$, the area of the triangle formed by these points is
@@ -231,8 +231,28 @@ If a (square) matrix has two identical rows/columns (or rows that are a linear c
 To draw a 3D figure, it is helpful to consider its level curves and traces (cross-sections in planes such as the $xz$ or $yz$ plane) by setting one of the variables $=0$ or $=c$.
 
 \subsection{Planes}
-A single variable equal to a constant represents a plane parallel to the other axes' plane. For instance, the $xz$-plane can be represented with $y=0$, and $y=c$ produces parallel planes.
-A linear equation in 2 variables (e.g. $y=mx+b$) produces a plane in 3-space that intersects the equivalent line on the $xy$-plane ($z=0$).
+\subsubsection{Drawing a Plane}
+Because planes extend infinitely, we draw a quadrilateral or triangular slice of a plane in 3-space to represent it.
+
+\subsubsection{Special Cases}
+A single variable equal to a constant represents a plane parallel to the other axes' plane. For instance, the $xz$-plane can be represented with $y=0$, and $y=c$ produces planes parallel to the $xz$-plane.
+
+A linear equation in 2 variables (e.g. $y=mx+b$) produces a plane in 3-space that intersects the equivalent line on its corresponding plane (e.g. the $xy$-plane where $z=0$) and serves as a cylinder with rulings parallel to the third axis.
+
+\subsubsection{General Linear Functions}
+$$ax+by+cz=d$$
+The contours of a general linear function are evenly spaced, parallel lines. (Proof: Consider $z=c$. A series of lines linearly dependent on $c$ is produced.)
+The constant term $d$ corresponds with the z-intercept ($0$, $0$, $\frac{d}{c}$).
+
+\subsubsection{Point-Slope-Slope}
+Given the slopes $m_x=\frac{\Delta{z}}{\Delta{x}}$ and $m_x=\frac{\Delta{z}}{\Delta{y}}$ and a point ($x_1$, $y_1$, $z_1$) on the plane:
+$$z-z_1 = m_x(x-x_1) + m_y(y-y_1)$$
+$m_x$ and $m_y$ are most easily calculated when you have lines on the $xz$ and $yz$ planes respectively, or pairs of points on parallel points (i.e. ($x_1$, $c$, $z_1$) and ($x_2$, $c$, $z_2$) for $m_x$). Note that point-slope-slope form can be rearranged into standard form. $m_x$ and $m_y$ can also be solved for from standard form by isolating $z$ and dividing by $-c$.
+
+\subsubsection{Intercept Form}
+For a plane intersecting the x-axis at $(a,0,0)$, the y-axis at $(0,b,0)$, and the z-axis at $(0,0,c)$, the equation for the plane can be defined as:
+$$\frac{x}{a}+\frac{y}{b}+\frac{z}{c}=1$$
+Intercept form is useful for providing the three non-collinear points that can be used to draw a plane.
 
 \subsection{Cylinders}
 Cylinders with rulings (straight lines) parallel to an axis are represented with equations in 2 variables for 3-space.
