@@ -254,6 +254,12 @@ For a plane intersecting the x-axis at $(a,0,0)$, the y-axis at $(0,b,0)$, and t
 $$\frac{x}{a}+\frac{y}{b}+\frac{z}{c}=1$$
 Intercept form is useful for providing the three non-collinear points that can be used to draw a plane.
 
+\subsubsection{``Slope" on a Plane}
+For an arbitrary plane defined by a line with angle $\theta$ to the $x$-axis in the $xy$-plane, the slope $m_\theta$ of the intersection line between this vertical plane and a plane with slopes $m_x$ and $m_y$ is
+$$m_\theta = m_x\cos{\theta} + m_y\sin{\theta}= m_x\frac{\Delta x}{\Delta t} + m_y\frac{\Delta y}{\Delta t}$$ as shown by the right triangle (with angle $\theta$) formed by the line, the $x$-axis, and the $y$-axis.
+
+An alternative form for $m_\theta=\frac{\Delta z}{\Delta l}$, with $l$ being the distance along the line defined by $\theta$, is $$m_\theta = \frac{m_x+m_y\tan{\theta}}{\sqrt{1+\tan^2{\theta}}}$$
+
 \subsection{Cylinders}
 Cylinders with rulings (straight lines) parallel to an axis are represented with equations in 2 variables for 3-space.
 For instance, $1 = x^2 + y^2$ represents a circular cylinder, with rulings parallel to the omitted $z$-axis.
@@ -291,6 +297,53 @@ $$\frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2}=1$$
 Horizontal traces are ellipses, and vertical traces are hyperbolas. The textbook likes to say that 2 minus signs correlate with 2 sheets.
 $$\frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2}= -1$$
 $$-\frac{x^2}{a^2} - \frac{y^2}{b^2} + \frac{z^2}{c^2}= 1$$
+
+\section{Vectors}
+Vectors possess both magnitude and direction. They can be represented as arrows (directed line segments). They possess an initial point (tail) and a terminal point (arrow-head).
+There is a one-to-one correspondence between points and (position) vectors.
+
+\subsection{Notation and Terminology}
+Vectors are usually represented with bolded or lowercase variables $\Vec{a}$, with the arrow head pointing towards the terminal point (e.g. $\overrightarrow{PQ}$). Examples in this section will be in 2-space, but can be generalized to 3-space.
+
+Free vectors are vectors with initial points "freely roaming" about space. Position vectors are vectors with initial points on the original of space. These vectors are equivalent (see below).
+
+The magnitude of a vector is denoted $\left|\Vec{a}\right|$ or $\left|\left|\Vec{a}\right|\right|$. This symbol is not the absolute value operator when vectors are involved.
+
+A unit vector is a vector with a magnitude of $1$. Unit vectors are represented with a hat, such as the conventional $\hat{i}$ and $\hat{j}$ pointing in the $x$ and $y$ directions.
+
+The coordinates of the terminal point of a position vector are called the components of the vector $\left\langle a_1, a_2 \right\rangle$.
+
+\subsection{Properties of Vectors}
+\begin{itemize}
+    \item $\Vec{a}=\Vec{b}$ if they have the same magnitude and direction. Thus, a vector is the same regardless of what specific points it originates/ends at.
+    \item $-\overrightarrow{PQ} = \overrightarrow{QP}$, the negation of a vector reverses its direction.
+    \item $\overrightarrow{0}$ is defined to have no direction and $0$ magnitude.
+\end{itemize}
+
+\subsection{Operations on Vectors}
+\subsubsection{Addition and Subtraction}
+Addition of vectors $\overrightarrow{a}$ and $\overrightarrow{b}$ can be defined as adding their components.
+$$\langle a_1, a_2 \rangle + \langle b_1, b_2 \rangle = \langle a_1 + b_1, a_2 + b_2\rangle$$
+
+Graphically, addition of two vectors can be represented as attaching the head of on vector to the tail of another, with their sum being the vector represented by the tail of the first vector and the head of the final vector. Alternatively, the parallelogram bounding the two vectors (with tails at the same point) contains the sum vector as its diagonal.
+
+Subtraction of vectors is the addition of the negative vector.
+
+\subsubsection{Magnitude}
+The magnitude can be represented as the distance from the tail to the head. For a vector $\overrightarrow{a} = \langle a_1, a_2 \rangle$:
+$$\left|\overrightarrow{a}\right| = \sqrt{a_1^2+a_2^2}$$
+
+\paragraph{Unit Vector in the Direction of a Given Vector}
+For an arbitrary vector $\overrightarrow{a}$:
+$$\hat{a} = \frac{\overrightarrow{a}}{\left|\left|\overrightarrow{a}\right|\right|} = \left\langle \frac{a_1}{\left|\left|\overrightarrow{a}\right|\right|}, \frac{a_2}{\left|\left|\overrightarrow{a}\right|\right|}, \frac{a_3}{\left|\left|\overrightarrow{a}\right|\right|} \right\rangle$$
+For a vector with direction described by angle $\alpha$ to the $x$-axis (and $\beta$ as its complement to the $y$-axis):
+$$\hat{a} = \left\langle \cos{\alpha}, \sin{\alpha} \right\rangle = \left\langle \cos{\alpha}, \cos{\beta} \right\rangle$$
+This can be generalized to 3-space by drawing perpendiculars from the terminal point of the vector to each of the axes in space, and taking the cosines of each obtained angle.
+
+\subsubsection{Scalar Multiplication}
+Multiplying a vector by a scalar $k$ results in a vector in the same direction, but with the components scaled by $k$:
+$$k\overrightarrow{a} = \langle ka_1, ka_2 \rangle$$
+The magnitude of the new vector is $k\left|\left|\overrightarrow{a}\right|\right|$.
 
 \section{Appendix}
 \subsection{Cartesian Products} \label{set-multiplication}
