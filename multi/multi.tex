@@ -9,6 +9,13 @@
 
 \DeclareMathOperator{\sgn}{sgn}
 
+\DeclareMathOperator{\comp}{comp}
+\DeclareMathOperator{\proj}{proj}
+
+\newcommand{\vect}[1]{\ensuremath{\overrightarrow{#1}}}
+\newcommand{\magnitude}[1]{\ensuremath{\lVert #1 \rVert}}
+\newcommand{\magvect}[1]{\magnitude{\vect{#1}}}
+
 \title{Calculus! Calculus!}
 \author{David Chen}
 \date{September 2024}
@@ -65,7 +72,9 @@ $$P\left(\frac{ax_2 + bx_1}{a+b}, \frac{ay_2 + by_1}{a+b}, \frac{az_2 + bz_1}{a+
 
 \subsubsection{Contours}
 Contours allow for the construction of a $N$-dimensional representation/sampling of a $N+1$-dimensional function. For instance, contour surfaces are 3D samples of a 4D space.
-We use contour curves\footnote{Although the textbook uses the term level curve interchangably it may be helpful to depict the ``level" as the $z$-value in 3-space.} to represent a 3D surface with points $(x,y,z)$ by projecting the curves produced for a fixed $z=c$ onto the $xy$-plane. Below is a (low resolution) contour plot of the top half of a sphere:
+We use contour curves\footnote{Although the textbook uses the term level curve interchangably it may be helpful to depict the ``level" as the $z$-value in 3-space.} to represent a 3D surface with points $(x,y,z)$ by projecting the curves produced for a fixed $z=c$ onto the $xy$-plane.
+\iffalse
+Below is a (low resolution) contour plot of the top half of a sphere:
 \begin{center}
 \begin{tikzpicture}
 \begin{axis}
@@ -80,6 +89,7 @@ We use contour curves\footnote{Although the textbook uses the term level curve i
 \end{axis}
 \end{tikzpicture}
 \end{center}
+\fi
 It is useful to have constant $\Delta z$ intervals so that the contours can visually represent the steepness of the surface.
 
 \section{Notable 2D Figures}
@@ -299,6 +309,7 @@ $$\frac{x^2}{a^2} + \frac{y^2}{b^2} - \frac{z^2}{c^2}= -1$$
 $$-\frac{x^2}{a^2} - \frac{y^2}{b^2} + \frac{z^2}{c^2}= 1$$
 
 \section{Vectors}
+
 Vectors possess both magnitude and direction. They can be represented as arrows (directed line segments). They possess an initial point (tail) and a terminal point (arrow-head).
 There is a one-to-one correspondence between points and (position) vectors.
 
@@ -309,7 +320,7 @@ Free vectors are vectors with initial points "freely roaming" about space. Posit
 
 The magnitude of a vector is denoted $\left|\Vec{a}\right|$ or $\left|\left|\Vec{a}\right|\right|$. This symbol is not the absolute value operator when vectors are involved.
 
-A unit vector is a vector with a magnitude of $1$. Unit vectors are represented with a hat, such as the conventional $\hat{i}$ and $\hat{j}$ pointing in the $x$ and $y$ directions.
+A unit vector is a vector with a magnitude of $1$. Unit vectors are represented with a hat, such as the ortho-normal basis vectors\footnote{ortho(gonal -- perpendicular; normal -- magnitude 1; basis vectors -- vectors that can be linearly combined (i.e. added and scaled) to represent all of space} $\hat{i} = \langle1, 0$, $0\rangle$, $\hat{j} = \langle 0, 1, 0 \rangle$, $\hat{k} = \langle 0, 0, 1 \rangle$ pointing in the $x$, $y$, and $z$ directions.
 
 The coordinates of the terminal point of a position vector are called the components of the vector $\left\langle a_1, a_2 \right\rangle$.
 
@@ -344,6 +355,82 @@ This can be generalized to 3-space by drawing perpendiculars from the terminal p
 Multiplying a vector by a scalar $k$ results in a vector in the same direction, but with the components scaled by $k$:
 $$k\overrightarrow{a} = \langle ka_1, ka_2 \rangle$$
 The magnitude of the new vector is $k\left|\left|\overrightarrow{a}\right|\right|$.
+
+\section{Vector Products}
+Vector "multiplication" encompasses multiple defined products between vectors.
+
+\subsection{Dot Product}
+The dot product ("inner product", "scalar product") of two vectors $\vect{a} = \langle a_1, a_2, a_3 \rangle$, $\vect{b} = \langle b_1, b_2, b_3 \rangle$, with an angle $\theta$ between them, is the scalar
+$$\vect{a} \cdot \vect{b} = \magvect{a}\magvect{b}\cos{\theta} = a_1b_1 + a_2b_2 + a_3b_3$$
+Using a geometric interpretation of the two vectors and their difference, one can use the law of cosines to prove the equivalence of the two definitions.
+
+As will be shown in the next sections, it is useful to conceptualize sums of products as dot products.
+
+\subsubsection{Projection}
+The scalar projection of a vector \vect{a} onto \vect{b} is the "component" of \vect{a} on \vect{b}, delimited by a perpendicular to \vect{b} drawn from the tip of \vect{a}. With the angle between \vect{a} and \vect{b} being $\theta$, this is
+$$\comp_{\vect{b}} \vect{a} = \magvect{a}\cos{\theta} = \frac{\vect{a} \cdot \vect{b}}{\magvect{b}}$$
+
+The vector projection of a vector \vect{a} onto \vect{b} is the "projection" of \vect{a} on \vect{b} pointing in the same direction at \vect{b}.
+$$\proj_{\vect{b}}\vect{a} = \left(\comp_{\vect{b}}\vect{a}\right)\hat{b} = \frac{\vect{a} \cdot \vect{b}}{\magvect{b}^2} \vect{b}$$
+
+\subsubsection{Properties of the Dot Product}
+\begin{enumerate}
+    \item Commutative Property: $\vect{a} \cdot \vect{b} = \vect{b} \cdot \vect{a}$
+    \item Distributive Property\footnote{Over addition/subtraction}: $c\left(\vect{a} \cdot \vect{b}\right) = c\vect{a} \cdot \vect{b} = \vect{a} \cdot c\vect{b}$
+    \item Scalar Multiplication Property: $\vect{a} \cdot \left(\vect{b} + \vect{c}\right) = \vect{a} \cdot \vect{b} + \vect{a} \cdot \vect{c}$
+    \item Zero Property: $\vect{a} \cdot \vect{0} = 0$
+    \item ``Squaring" Theorem: $\vect{a} \cdot \vect{a} = \magvect{a}^2$
+\end{enumerate}
+Note that $\vect{0}$ is the zero vector, with $0$ magnitude and undefined direction.
+
+\subsubsection{Theorem 1: The Cauchy-Schwartz Inequality}
+$$\vect{a} \cdot \vect{b} \le \magvect{a}\magvect{b}$$
+
+The Arithmetic Mean/Quadratic Mean (AM-QM) Inequality can be proven using a vector $\langle1, 1, 1, ...\rangle$:
+$$\frac{a_1 + a_2 + \cdots + a_n}{n} \le \sqrt{\frac{a_1^2 + a_2^2 + \cdots + a_n^2}{n}}$$
+
+\subsubsection{Theorem 2: Perpendicular Vectors}
+$$\vect{a} \perp \vect{b} \iff \vect{a} \cdot \vect{b} = 0$$ for $\vect{a}, \vect{b} \ne 0$, such that $\magvect{a}, \magvect{b} \ne 0$, implying that for $\magvect{a}\magvect{b}\cos{\theta} = 0$, $\cos{\theta} = 0$. More generally, the solutions for $\theta$ indicate the angle between two vectors.
+
+\subsubsection{Perpendiculars and Angles to Lines}
+A line $Ax + By + C = 0$ is parallel to $Ax + By = 0$. This can be rewritten as the dot product $\langle A, B \rangle \cdot \langle x, y \rangle$, with $\langle x, y \rangle$ representing the set of vectors parallel to the line. From Theorem 2,
+$$\langle A, B \rangle \perp Ax + By + C = 0$$
+the vector $\langle A, B \rangle$, along with its family of scaled vectors, is perpendicular to the line.
+
+One can also determine the angle between lines $A_1x + B_1y = C1$ and $A_2x + B_2y = C_2$ by taking the dot product between vectors parallel to the lines (or perpendicular vectors, i.e. $\langle A_1, B_1 \rangle \cdot \langle A_2, B_@ \rangle$).
+
+\subsubsection{Perpendiculars to Planes}
+The set of all vectors $\langle x, y, z \rangle$ perpendicular to a vector $\langle A, B, C \rangle$ in 3-space is a plane.
+\begin{align*}
+    \langle A, B, C \rangle \cdot \langle x, y, z \rangle &= 0 \\
+    Ax + By + Cz &= 0
+\end{align*}
+
+To obtain the specific plane perpendicular to a vector passing through point $(x_0, y_0, z_0)$, one evaluates the dot product
+\begin{align*}
+    \langle A, B, C \rangle \cdot \langle x - x_0, y - y_0, z - z_0 \rangle &= 0 \\
+    A\left(x - x_0\right) + B\left(y - y_0\right) + C\left(z - z_0\right) &= 0
+\end{align*}
+
+Note that a plane of the form $z = m_xx + m_yy$ can be rewritten as
+\begin{align*}
+    0 &= m_xx + m_yy - z \\
+    0 &= \langle m_x, m_y, -1 \rangle \cdot \langle x, y, z \rangle
+\end{align*}
+
+\subsection{Cross Product}
+The cross product ("vector product", "outer product") of $\vect{a} = \langle a_1, a_2, a_3 \rangle$ and $\vect{b} = \langle a_1, a_2, a_3 \rangle$ is the vector
+$$\vect{a} \times \vect{b} = \left\langle a_2b_3 - a_3b_2, a_3b_1 - a_1b_3, a_1b_2 - a_2b_1\right\rangle =
+    \begin{vmatrix}
+        \hat{i} & \hat{j} & \hat{k} \\
+        a_1     & a_2     & a_3     \\
+        b_1     & b_2     & b_3     \\
+    \end{vmatrix}
+$$
+This vector is constructed such that $\vect{a} \times \vect{b} \perp \vect{a}$ and $\vect{a} \times \vect{b} \perp \vect{b}$, representing the family of vectors perpendicular to the intersection of two planes. This third vector satisfies the right-hand rule.
+
+The magnitude of the cross product is
+$$\magnitude{\vect{a} \times \vect{b}} = \magvect{a}\magvect{b}\sin{\theta}$$
 
 \section{Appendix}
 \subsection{Cartesian Products} \label{set-multiplication}
