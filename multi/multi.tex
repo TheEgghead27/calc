@@ -15,6 +15,7 @@
 \newcommand{\vect}[1]{\ensuremath{\overrightarrow{#1}}}
 \newcommand{\magnitude}[1]{\ensuremath{\lVert #1 \rVert}}
 \newcommand{\magvect}[1]{\magnitude{\vect{#1}}}
+\newcommand{\abs}[1]{\left|#1\right|}
 
 \title{Calculus! Calculus!}
 \author{David Chen}
@@ -429,8 +430,22 @@ $$\vect{a} \times \vect{b} = \left\langle a_2b_3 - a_3b_2, a_3b_1 - a_1b_3, a_1b
 $$
 This vector is constructed such that $\vect{a} \times \vect{b} \perp \vect{a}$ and $\vect{a} \times \vect{b} \perp \vect{b}$, representing the family of vectors perpendicular to the intersection of two planes. This third vector satisfies the right-hand rule.
 
+\subsubsection{Properties of the Dot Product}
+\begin{enumerate}
+    \item Zero Property: $\vect{a} \times \vect{0} = \vect{0} = \vect{0} \times \vect{a}$
+    \item $\vect{a} \times \vect{b} \perp \vect{a}$ and $\vect{a} \times \vect{b} \perp \vect{b}$
+    \item Anti-Commutative Property: $\vect{a} \times \vect{b} = -\left(\vect{a} \times \vect{b}\right)$
+    \item Distributive Property: $\vect{a} \times \left(\vect{b} + \vect{c}\right) = \vect{a} \times \vect{b} + \vect{a} \times \vect{c}$
+\end{enumerate}
+\subsubsection{Theorem 1: Magnitude of the Cross Product}\label{mag-cross-product}
 The magnitude of the cross product is
 $$\magnitude{\vect{a} \times \vect{b}} = \magvect{a}\magvect{b}\sin{\theta}$$
+
+\paragraph{Lemma} Through algebraic expansion, it can be shown that $$\magnitude{\vect{a} \times \vect{b}}^2 = \magvect{a}^2\magvect{b}^2 - \left(\vect{a} \cdot \vect{b}\right)^2$$
+Using the non-coordinate definition of the dot product, we can use the identity $1-\cos^2{x} = \sin^2{x}$ to prove the expression for the magnitude of a cross product where $0 \le \theta \le \pi$.
+
+\subsubsection{Theorem 2: Parallel Vectors}
+From \ref{mag-cross-product}, if $\vect{a}, \vect{b} \ne \vect{0}$, then $$\vect{a} \times \vect{b} = 0 \iff \vect{a} \parallel \vect{b}$$
 
 \section{Appendix}
 \subsection{Cartesian Products} \label{set-multiplication}
