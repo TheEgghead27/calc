@@ -451,6 +451,37 @@ Using the orthogonal component as a height, it can be shown that cross product o
 \subsubsection{Theorem 2: Parallel Vectors}
 From \ref{mag-cross-product}, if $\vect{a}, \vect{b} \ne \vect{0}$, then $$\vect{a} \times \vect{b} = 0 \iff \vect{a} \parallel \vect{b}$$
 
+\subsection{Lines in 3-space}
+A line in 3-space can be defined as a vector-valued function or an equivalent parametric curve.
+
+Lines in 3-space can intersect, be parallel, or skew (the lines live in different parallel planes).
+
+\subsubsection{Vector Form}
+Treating the set of points $(x,y,z)$ as analogous vectors:
+$$\langle x, y, z \rangle = \langle x_o, y_o, z_o \rangle + \langle a, b, c \rangle t = \vect{r}(t)$$
+The initial point is $\langle x_o, y_o, z_o \rangle$, and $\langle a,b,c \rangle$ is the direction vector. $t \in \mathbb{R}$, it is a scalar that allows the direction vector to trace out the whole line.\\
+There are two methods for finding the line of intersection between two points.
+\paragraph{Method I} By setting the equations of the two planes equal to one another, we can obtain linear expressions for two variables (e.g. $x,y$) in terms of the third variable ($z$), or expressions for all three variables in terms of a fourth parameter $t$. Any constants in these expressions are used in the initial point, any variable terms can have $t$ factored out to produce the direction vector term.
+
+\paragraph{Method II} The cross product of the perpendiculars to two planes is parallel to the line of intersection, $\vect{n_1} \times \vect{n_2}$ can be used as a direction vector.
+
+The offset can be determined by setting one of the variables $x, y, z = 0$, and solving for the other two variables, leading to a given point that can be used for the initial point.
+
+\subsubsection{Parametric Form}
+The linear expressions for $x,y,z$ mentioned in Method I can be used as functions in a parametric equation:
+\begin{align*}
+    x(t) &= x_o + at \\
+    y(t) &= y_o + bt \\
+    z(t) &= z_o + ct
+\end{align*}
+
+\paragraph{Symmetric Form}
+We can also express the line as the set of points satisfying this equation:
+$$
+\frac{x-x_o}{a} = \frac{y-y_o}{b} = \frac{z-z_o}{c}
+$$
+The value of this ratio can be considered the ``value of $t$" in the functional forms of the line.
+
 \section{Appendix}
 \subsection{Cartesian Products} \label{set-multiplication}
 For sets $A, B$, their Cartesian product is $$A \times B = \left\{ (a,b) | a \in A, b \in B\right\}$$
