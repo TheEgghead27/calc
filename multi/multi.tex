@@ -17,6 +17,8 @@
 \newcommand{\magvect}[1]{\magnitude{\vect{#1}}}
 \newcommand{\abs}[1]{\left|#1\right|}
 
+\renewcommand{\labelitemii}{\textopenbullet}
+
 \title{Calculus! Calculus!}
 \author{David Chen}
 \date{September 2024}
@@ -115,9 +117,9 @@ x_2 & y_2 & 1
 \end{vmatrix}= 0$
 \end{itemize}
 
-\subsubsection{Distance from a Point}
-The distance to a line $Ax+By+C=0$ from point $(x_1, y_1)$ is
-$$d=\frac{\left|Ax_1 + By_1 + C\right|}{\sqrt{A^2+B^2}}$$
+\subsubsection{Distance from a Point} \label{pt-dist-2-space}
+The distance to a line $ax+by+c=0$ from point $(x_1, y_1)$ is
+$$d=\frac{\left|ax_1 + by_1 + c\right|}{\sqrt{a^2+b^2}}$$
 
 \subsubsection{Area of a Triangle in 2-space}
 Given points $(x_1, y_1), (x_2, y_2), (x_3, y_3)$, the area of the triangle formed by these points is
@@ -270,6 +272,21 @@ For an arbitrary plane defined by a line with angle $\theta$ to the $x$-axis in 
 $$m_\theta = m_x\cos{\theta} + m_y\sin{\theta}= m_x\frac{\Delta x}{\Delta t} + m_y\frac{\Delta y}{\Delta t}$$ as shown by the right triangle (with angle $\theta$) formed by the line, the $x$-axis, and the $y$-axis.
 
 An alternative form for $m_\theta=\frac{\Delta z}{\Delta l}$, with $l$ being the distance along the line defined by $\theta$, is $$m_\theta = \frac{m_x+m_y\tan{\theta}}{\sqrt{1+\tan^2{\theta}}}$$
+
+\subsubsection{Distance from a Point}
+The distance to a plane $ax+by+cz+d=0$ from point $(x_1, y_1, z_1)$ in 3-space is similar to that of a point to a line in 2-space (\ref{pt-dist-2-space}).
+\begin{align*}
+d=\frac{\abs{ax_1+by_1+cz_1+d}}{\sqrt{a^2+b^2+c^2}} =
+\comp_{\langle a, b, c \rangle} \vect{D} = \frac{\langle a, b, c \rangle \cdot \vect{D}}{\magnitude{\langle a, b, c \rangle}}a
+\end{align*}
+
+This can be derived by taking the parallel component of the difference/distance vector $\vect{D} = \langle x-x_1, y-y_1, z-z_1\rangle$ between a point $(x,y,z)$ on the plane and the point $(x_1, y_1, z_1)$ and the perpendicular to the plane $\langle a, b, c \rangle$.
+
+\paragraph{Distance between Planes}
+The distance between planes $ax + by + cz + d = 0$ and $ax + by + cz + e = 0$ can be derived from the distance between the first plane and a point $(x_0, y_0, z_0)$ on the second plane.
+\[
+D=\frac{\abs{d-e}}{\sqrt{a^2+b^2+c^2}}
+\]
 
 \subsection{Cylinders}
 Cylinders with rulings (straight lines) parallel to an axis are represented with equations in 2 variables for 3-space.
@@ -428,7 +445,7 @@ $$\vect{a} \times \vect{b} = \left\langle a_2b_3 - a_3b_2, a_3b_1 - a_1b_3, a_1b
         b_1     & b_2     & b_3     \\
     \end{vmatrix}
 $$
-This vector is constructed such that $\vect{a} \times \vect{b} \perp \vect{a}$ and $\vect{a} \times \vect{b} \perp \vect{b}$, representing the family of vectors perpendicular to the intersection of two planes. This third vector satisfies the right-hand rule.
+This vector is constructed such that $\vect{a} \times \vect{b} \perp \vect{a}$ and $\vect{a} \times \vect{b} \perp \vect{b}$, representing the family of vectors perpendicular to the perpendicular vectors of two planes, or the vector of the line of intersection between those planes. This third vector satisfies the right-hand rule.
 
 \subsubsection{Properties of the Dot Product}
 \begin{enumerate}
@@ -446,26 +463,43 @@ Using the non-coordinate definition of the dot product, we can use the identity 
 
 \paragraph{Corollaries}
 The orthogonal component of $\vect{a}$ onto $\vect{b}$ is $$\frac{\magnitude{\vect{a}\times\vect{b}}}{\magvect{b}}$$
-Using the orthogonal component as a height, it can be shown that cross product of two vectors also represents the area of the parallelogram bounded by the two vectors.
+Using the orthogonal component as a height, it can be shown that cross product of two vectors also represents the area of the parallelogram bounded by the two vectors. (Half of this area is the triangle bounded by the two vectors.)
 
 \subsubsection{Theorem 2: Parallel Vectors}
 From \ref{mag-cross-product}, if $\vect{a}, \vect{b} \ne \vect{0}$, then $$\vect{a} \times \vect{b} = 0 \iff \vect{a} \parallel \vect{b}$$
 
 \subsection{Lines in 3-space}
-A line in 3-space can be defined as a vector-valued function or an equivalent parametric curve.
+A line in 3-space can be defined as a vector-valued function ($\mathbb{R} \to \mathbb{R}^n$) or an equivalent parametric curve.
+Lines in 3-space can be described as
+\begin{itemize}
+    \item Intersecting
+    \item Parallel, if
+    \begin{itemize}
+        \item there exists a plane containing the two non-intersecting lines, and/or
+        \item the two lines have direction vectors that are scalar multiples of one another, and/or
+        \item the distance between the lines is constant.
+    \end{itemize}
+    \item Skew, if
+    \begin{itemize}
+        \item the lines are neither parallel or skew, and/or
+        \item the lines cannot be contained by a single plane, and/or
+        \item the lines can be contained in two parallel planes.
+    \end{itemize}
+\end{itemize}
+intersect, be parallel, or skew (the lines live in different parallel planes).
 
-Lines in 3-space can intersect, be parallel, or skew (the lines live in different parallel planes).
+They can be either intersecting or parallel with planes.
 
 \subsubsection{Vector Form}
 Treating the set of points $(x,y,z)$ as analogous vectors:
 $$\langle x, y, z \rangle = \langle x_o, y_o, z_o \rangle + \langle a, b, c \rangle t = \vect{r}(t)$$
 The initial point is $\langle x_o, y_o, z_o \rangle$, and $\langle a,b,c \rangle$ is the direction vector. $t \in \mathbb{R}$, it is a scalar that allows the direction vector to trace out the whole line.\\
 There are two methods for finding the line of intersection between two points.
-\paragraph{Method I} By setting the equations of the two planes equal to one another, we can obtain linear expressions for two variables (e.g. $x,y$) in terms of the third variable ($z$), or expressions for all three variables in terms of a fourth parameter $t$. Any constants in these expressions are used in the initial point, any variable terms can have $t$ factored out to produce the direction vector term.
+\paragraph{Method I} By setting the equations of the two planes equal to one another, we can obtain linear expressions for all three variables in terms of a fourth parameter $t$ (i.e. there is a single degree of freedom in this system of 2 equations and 3 unknowns). Any constants in these expressions are used in the initial point, any variable terms can have $t$ factored out to produce the direction vector term.
 
 \paragraph{Method II} The cross product of the perpendiculars to two planes is parallel to the line of intersection, $\vect{n_1} \times \vect{n_2}$ can be used as a direction vector.
 
-The offset can be determined by setting one of the variables $x, y, z = 0$, and solving for the other two variables, leading to a given point that can be used for the initial point.
+The offset can be determined by setting one of the variables $x, y, z = 0$, and solving for the other two variables through the system of 2 planes, leading to a point that can be used for the initial point.
 
 \subsubsection{Parametric Form}
 The linear expressions for $x,y,z$ mentioned in Method I can be used as functions in a parametric equation:
@@ -481,6 +515,12 @@ $$
 \frac{x-x_o}{a} = \frac{y-y_o}{b} = \frac{z-z_o}{c}
 $$
 The value of this ratio can be considered the ``value of $t$" in the functional forms of the line.
+
+\subsubsection{Distance of Point to Line}
+Using a difference/distance vector from the point to a point on the line, we can take the cross product to get the distance to the line.
+
+\subsubsection{Distance of Skew Lines}
+Using the cross product of the two lines' direction vectors, we can find the parallel planes that contain the lines. This can then be used to find the distance between the lines.
 
 \section{Appendix}
 \subsection{Cartesian Products} \label{set-multiplication}
