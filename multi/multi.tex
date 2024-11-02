@@ -522,6 +522,63 @@ Using a difference/distance vector from the point to a point on the line, we can
 \subsubsection{Distance of Skew Lines}
 Using the cross product of the two lines' direction vectors, we can find the parallel planes that contain the lines. This can then be used to find the distance between the lines.
 
+\section{3D Limits}
+The definition for limits of functions $f: \mathbb{R}^2 \to \mathbb{R}$
+\[
+    \lim_{(x,y)\to(a,b)}f(x,y) = L
+\] if and only if $\forall\epsilon>0, \exists\delta>0 \ni 0<\sqrt{(x-a)^2+(y-b)^2}<\delta \Rightarrow \abs{f(x,y) - L}<\epsilon$.\footnote{The limit of a function $f(x,y)$ is equal to $L$ if and only if for all positive $\epsilon$, there exists a positive $\delta$ such that if the point $(x,y)$ is within a (circular, but could also be rectangular) neighborhood constrained by distance $\delta$, it is guaranteed that the difference between $f(x,y)$ and the value $L$ will be less than $\epsilon$.}
+
+\subsection{Showing Limits DNE}
+It is easier to prove that a limit does not exist than it is to show that one exists. In both cases, we choosing relations between $x$ and $y$ (e.g. setting $x=a$/$y=b$, or $y=f(x)$/$x=f(y)$) that constrain the limit to a single variable and allow us to use familiar methods of analysis. Note that L'Hôpital's rule only applies for single-variable limits.
+
+\subsubsection{The One-Path Approach}
+If \(\lim_{(x,y)\to(a,b)}f(x,y) = DNE\) along some path (a continuous curve) $c_1$, then \(\lim_{(x,y)\to(a,b)}f(x,y)\) does not exist.
+
+For instance, a limit going to $\infty$ does not exist.
+
+\subsubsection{The Two-Path Approach}
+If \(\lim_{(x,y)\to(a,b)}f(x,y) = L_1\) along some path $c_1$, and if \(\lim_{(x,y)\to(a,b)}f(x,y) = L_2\) along some path $c_2$, and if $L_1\ne L_2$, then \(\lim_{(x,y)\to(a,b)}f(x,y)\) does not exist.
+
+\subsection{Limit Properties}
+Given that $f(x,y)=L$, $g(x,y)=M$; $L,M,k\in\mathbb{R}$ and $n\in\mathbb{N}$:
+\begin{align*}
+    &\lim_{(x,y)\to(a,b)}f(x,y)\pm g(x,y) = L \pm M \\
+    &\lim_{(x,y)\to(a,b)}kf(x,y) = kL \\
+    &\lim_{(x,y)\to(a,b)}f(x,y) \cdot g(x,y) = L \cdot M \\
+    &\lim_{(x,y)\to(a,b)}\frac{f(x,y)}{g(x,y)} = \frac{L}{M} & \text{for } M\ne0 \\
+    &\lim_{(x,y)\to(a,b)}(f(x,y))^n = L^n \\
+\end{align*}
+
+\subsection{Evaluating Limits}
+As suggested by the two-path approach to proving limits do not exist, limits should have consistent values for \emph{all} "paths" taken to approach the limiting point.
+
+\subsubsection{Continuity}
+$f(x,y)$ is continuous at $(a,b)$ iff $f(a,b)=\lim_{(x,y)\to(a,b)}f(x,y) = f(a,b)$. This property be proven using $\epsilon-\delta$ proofs that accommodate arbitrary points on $f(x,y)$.
+
+Based on the Limit Properties, we can determine that sums and products of continuous functions are also continuous.\\
+Continuous functions include (considering their respective domains):
+\begin{itemize}
+    \item all polynomials in $x,y$ (sums of terms in the form $cx^ny^m$, with constants $c\in\mathbb{R}$, $n,m\in\mathbb{N}\cup\left\{0\right\}$)
+    \item trigonometric functions $\sin{x}$, $\cos{x}$, etc.
+    \item $e^x$ and its inverse $\ln{x}$
+\end{itemize}
+
+\paragraph{Algebraic Manipulation}
+Canceling denominators in a rational function, like in single-variable limits, is a useful means of simplifying the evaluation of a limit to one that can be evaluated using continuity. For denominators with square-roots, it may be advantageous to use a conjugate to rationalize the denominator.
+
+\subsubsection{Substitution}
+Letting $u=g(x,y)$, and letting $u\to g(a,b)$ may simplify the form of a function composed of $g(x,y)$ terms. Take note of range restrictions on $g(x,y)$, such as $g(x,y)=x^2+y^2$ implying that $u > 0$, the limiting value will be $0^+$.
+
+\paragraph{Polar Substitution}
+Using $x = r\cos{\theta}$, $y=r\sin{\theta}$, with $0 \le r$ and $0\le\theta<2\pi$ (so as to allow for nearly one-to-one mapping of Cartesian coordinates to polar coordinates), one can restate a function in terms of $r$ and $\theta$.
+
+In particularly fortunate cases, $\theta$ can be eliminated using identities such as $\sin^2{\theta}+\cos^2{\theta}=1$. In other cases, it is useful to consider the bounds of trigonometric functions and construct comparisons that can be used with the Squeeze Theorem.
+
+\subsubsection{Squeeze Theorem}
+The Squeeze Theorem is rather useful in cases where we know a function with a simpler expression that is bound to be greater/less than that, or we have a limiting value like $0$.
+
+This simpler expression could be derived by replacing a difficult function (e.g. $\sin$ or $\cos$) with bounds (e.g. $-1$ and $1$) or by comparing the function to one with a simpler numerator/denominator (e.g. $\frac{1}{x^2+4x+5} < \frac{1}{x^2}$).
+
 \section{Appendix}
 \subsection{Cartesian Products} \label{set-multiplication}
 For sets $A, B$, their Cartesian product is $$A \times B = \left\{ (a,b) | a \in A, b \in B\right\}$$
