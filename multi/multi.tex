@@ -523,7 +523,7 @@ Using a difference/distance vector from the point to a point on the line, we can
 Using the cross product of the two lines' direction vectors, we can find the parallel planes that contain the lines. This can then be used to find the distance between the lines.
 
 \section{3D Limits}
-The definition for limits of functions $f: \mathbb{R}^2 \to \mathbb{R}$
+The definition for limits of functions $f: \mathbb{R}^2 \to \mathbb{R}$ is:
 \[
     \lim_{(x,y)\to(a,b)}f(x,y) = L
 \] if and only if $\forall\epsilon>0, \exists\delta>0 \ni 0<\sqrt{(x-a)^2+(y-b)^2}<\delta \Rightarrow \abs{f(x,y) - L}<\epsilon$.\footnote{The limit of a function $f(x,y)$ is equal to $L$ if and only if for all positive $\epsilon$, there exists a positive $\delta$ such that if the point $(x,y)$ is within a (circular, but could also be rectangular) neighborhood constrained by distance $\delta$, it is guaranteed that the difference between $f(x,y)$ and the value $L$ will be less than $\epsilon$.}
@@ -534,7 +534,7 @@ It is easier to prove that a limit does not exist than it is to show that one ex
 \subsubsection{The One-Path Approach}
 If \(\lim_{(x,y)\to(a,b)}f(x,y) = DNE\) along some path (a continuous curve) $c_1$, then \(\lim_{(x,y)\to(a,b)}f(x,y)\) does not exist.
 
-For instance, a limit going to $\infty$ does not exist.
+As a reminder, a limit going to $\pm\infty$ does not exist.
 
 \subsubsection{The Two-Path Approach}
 If \(\lim_{(x,y)\to(a,b)}f(x,y) = L_1\) along some path $c_1$, and if \(\lim_{(x,y)\to(a,b)}f(x,y) = L_2\) along some path $c_2$, and if $L_1\ne L_2$, then \(\lim_{(x,y)\to(a,b)}f(x,y)\) does not exist.
@@ -553,7 +553,7 @@ Given that $f(x,y)=L$, $g(x,y)=M$; $L,M,k\in\mathbb{R}$ and $n\in\mathbb{N}$:
 As suggested by the two-path approach to proving limits do not exist, limits should have consistent values for \emph{all} "paths" taken to approach the limiting point.
 
 \subsubsection{Continuity}
-$f(x,y)$ is continuous at $(a,b)$ iff $f(a,b)=\lim_{(x,y)\to(a,b)}f(x,y) = f(a,b)$. This property be proven using $\epsilon-\delta$ proofs that accommodate arbitrary points on $f(x,y)$.
+$f(x,y)$ is continuous at $(a,b)$ iff $f(a,b)=\lim_{(x,y)\to(a,b)}f(x,y) = f(a,b)$. This property be proven using $\epsilon-\delta$ proofs that accommodate arbitrary points on $f(x,y)$, or by use of limit properties that combine existing continuous functions.
 
 Based on the Limit Properties, we can determine that sums and products of continuous functions are also continuous.\\
 Continuous functions include (considering their respective domains):
@@ -578,6 +578,30 @@ In particularly fortunate cases, $\theta$ can be eliminated using identities suc
 The Squeeze Theorem is rather useful in cases where we know a function with a simpler expression that is bound to be greater/less than that, or we have a limiting value like $0$.
 
 This simpler expression could be derived by replacing a difficult function (e.g. $\sin$ or $\cos$) with bounds (e.g. $-1$ and $1$) or by comparing the function to one with a simpler numerator/denominator (e.g. $\frac{1}{x^2+4x+5} < \frac{1}{x^2}$).
+
+\section{Partial Derivatives}
+If $z=f(x,y)$, then the partial derivative of $f$ with respect to $x$ at point $(a,b)$ is
+\begin{align*}
+    f_x(a,b) &= \lim_{h\to0} \frac{f(a+h,b) - f(a,b)}{h} \\
+    f_x(a,b) &= \lim_{x \to a} \frac{f(x,b)-f(a,b)}{x-a}
+\end{align*}
+similarly, the partial derivative of $f$ with respect to $y$ at $(a,b)$ is
+\begin{align*}
+    f_y(a,b) &= \lim_{h\to0} \frac{f(a,b+h) - f(a,b)}{h} \\
+    f_y(a,b) &= \lim_{y \to b} \frac{f(a,y)-f(a,b)}{y-b}
+\end{align*}
+We use partial derivatives to find slopes of tangent lines to surfaces along specific planes. We can then use these slopes in a point-slope-slope form to determine the tangent plane to a surface. The existence of partial derivatives a point does not guarantee that the surface is differentiable at that point.
+
+\subsection{Evaluating Partial Derivatives}
+Instead of explicitly evaluating the limit, we will usually use differentiation rules to obtain partial derivatives. For $f_x$/$f_y$, the other variable ($y$ or $x$, respectively) is considered a \emph{constant}, not a variable, so it is not necessary to use the Chain Rule like for implicit differentiation (as seen in Calc I).
+
+\subsection{Notation}
+The partial (derivative) of $f$ (or $z=f$) with respect to $x$ can be written as:
+\[
+f_x(x,y)=f_x=\frac{\partial}{\partial x}\left[f(x,y)\right] = \frac{\partial f}{\partial x} = \frac{\partial z}{\partial x}=D_xf=f_1=D_1f
+\]
+Note that the $_1$ subscripts are shorthand for the vector $\langle 1, 0 \rangle$, the unit vector pointing in the $+x$ direction. This can be replaced with a general unit vector $\hat{u}$ when taking partial derivatives in other directions.
+
 
 \section{Appendix}
 \subsection{Cartesian Products} \label{set-multiplication}
