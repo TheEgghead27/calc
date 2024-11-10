@@ -365,9 +365,10 @@ $$\left|\overrightarrow{a}\right| = \sqrt{a_1^2+a_2^2}$$
 \paragraph{Unit Vector in the Direction of a Given Vector}
 For an arbitrary vector $\overrightarrow{a}$:
 $$\hat{a} = \frac{\overrightarrow{a}}{\left|\left|\overrightarrow{a}\right|\right|} = \left\langle \frac{a_1}{\left|\left|\overrightarrow{a}\right|\right|}, \frac{a_2}{\left|\left|\overrightarrow{a}\right|\right|}, \frac{a_3}{\left|\left|\overrightarrow{a}\right|\right|} \right\rangle$$
-For a vector with direction described by angle $\alpha$ to the $x$-axis (and $\beta$ as its complement to the $y$-axis):
+For a 2-space vector with direction described by angle $\alpha$ to the $x$-axis (and $\beta$ as its complement to the $y$-axis):
 $$\hat{a} = \left\langle \cos{\alpha}, \sin{\alpha} \right\rangle = \left\langle \cos{\alpha}, \cos{\beta} \right\rangle$$
 This can be generalized to 3-space by drawing perpendiculars from the terminal point of the vector to each of the axes in space, and taking the cosines of each obtained angle.
+$$\hat{a} = \left\langle \cos{\alpha}, \cos{\beta}, \cos{\gamma} \right\rangle$$
 
 \subsubsection{Scalar Multiplication}
 Multiplying a vector by a scalar $k$ results in a vector in the same direction, but with the components scaled by $k$:
@@ -415,7 +416,7 @@ A line $Ax + By + C = 0$ is parallel to $Ax + By = 0$. This can be rewritten as 
 $$\langle A, B \rangle \perp Ax + By + C = 0$$
 the vector $\langle A, B \rangle$, along with its family of scaled vectors, is perpendicular to the line.
 
-One can also determine the angle between lines $A_1x + B_1y = C1$ and $A_2x + B_2y = C_2$ by taking the dot product between vectors parallel to the lines (or perpendicular vectors, i.e. $\langle A_1, B_1 \rangle \cdot \langle A_2, B_@ \rangle$).
+One can also determine the angle between lines $A_1x + B_1y = C1$ and $A_2x + B_2y = C_2$ by taking the dot product between vectors parallel to the lines (or perpendicular vectors, i.e. $\langle A_1, B_1 \rangle \cdot \langle A_2, B_2 \rangle$).
 
 \subsubsection{Perpendiculars to Planes}
 The set of all vectors $\langle x, y, z \rangle$ perpendicular to a vector $\langle A, B, C \rangle$ in 3-space is a plane.
@@ -595,13 +596,29 @@ We use partial derivatives to find slopes of tangent lines to surfaces along spe
 \subsection{Evaluating Partial Derivatives}
 Instead of explicitly evaluating the limit, we will usually use differentiation rules to obtain partial derivatives. For $f_x$/$f_y$, the other variable ($y$ or $x$, respectively) is considered a \emph{constant}, not a variable, so it is not necessary to use the Chain Rule like for implicit differentiation (as seen in Calc I).
 
+\subsubsection{Higher Order Partial Derivatives}
+A higher order partial derivative can be taken in the same direction as the first order derivative (with additional results being analogous to their 2-space equivalents, i.e. "concavity" on the second order derivative).
+
+Calculating a higher order partial derivative uses the same differentiation rules as for the first order partial derivative, keeping in mind that the partial we are taking may be in a different variable (e.g. $\frac{\partial}{\partial x}$ then $\frac{\partial}{\partial y}$). For a function $\mathbb{R}^2\to\mathbb{R}$, there are $2^n$ possible permutation of the axial variables for an $n$-th order derivative.
+
+Under suitable conditions $f_{xy} = f_{yx}$.
+
+\subsubsection{Implicit Differentiation}
+Considering $x,y$ as independent variables, with $z$ being dependent on a relation to $x,y$, we can implicitly differentiate for $\frac{\partial z}{\partial x}$ or $\frac{\partial z}{\partial y}$ (with $\frac{\partial y}{\partial x}$ and $\frac{\partial x}{\partial y}$ both being $0$, as independence implies that $x$ and $y$ are constant with respect to one another) using a Chain Rule analogous to functions in 2-space.
+
 \subsection{Notation}
 The partial (derivative) of $f$ (or $z=f$) with respect to $x$ can be written as:
 \[
 f_x(x,y)=f_x=\frac{\partial}{\partial x}\left[f(x,y)\right] = \frac{\partial f}{\partial x} = \frac{\partial z}{\partial x}=D_xf=f_1=D_1f
 \]
-Note that the $_1$ subscripts are shorthand for the vector $\langle 1, 0 \rangle$, the unit vector pointing in the $+x$ direction. This can be replaced with a general unit vector $\hat{u}$ when taking partial derivatives in other directions.
+Note that the $_1$ subscripts represent the direction of the \emph{first} independent variable (i.e. $x$).\\
+This can be replaced with a general unit vector $\hat{u}$ when taking partial derivatives in other directions.
 
+\subsubsection{Higher Order Partials}
+The order in which partials are taken is reversed between the two notations we use. Using Leibniz Notation, the partials are read from right to left, as if they were function compositions. Using subscript notation, the partials are read from left to right.
+\[
+    \frac{\partial}{\partial y} \left(\frac{\partial f}{\partial x}\right) = \frac{\partial^2f}{\partial y \partial x} = f_{xy}(x,y) = f_{12}
+\]
 
 \section{Appendix}
 \subsection{Cartesian Products} \label{set-multiplication}
