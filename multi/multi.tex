@@ -21,7 +21,7 @@
 
 \title{Calculus! Calculus!}
 \author{David Chen}
-\date{September 2024}
+\date{September 2024 -- June 2025}
 
 \begin{document}
 
@@ -31,7 +31,7 @@
 
 \subsection{Functions}
 $$f: \mathbb{R}^n \to \mathbb{R}^m$$
-Functions map a \textbf{domain} (e.g. $\mathbb{R}^n$, read ``R N") to a \textbf{codomain} (e.g. $\mathbb{R}^m$ -- see section \ref{set-multiplication} for more information). In the scope of this course, we will usually have $n$ or $m = 1$, and $n,m \in \mathbb{N}$.\footnote{In generalized multivariable calculus, more profound matrix transformations are used.}
+Functions map a \textbf{domain} (e.g. $\mathbb{R}^n$, read ``R N") to a \textbf{codomain} (e.g. $\mathbb{R}^m$ -- see appendix \ref{set-multiplication} for more information). In the scope of this course, we will usually have $n$ or $m = 1$, and $n,m \in \mathbb{N}$.\footnote{In generalized multivariable calculus, more profound matrix transformations are used.}
 Common function domain/codomain pairings we consider are
 \begin{itemize}
     \item $f: \mathbb{R}^2 \to \mathbb{R}$ -- can be represented as mapping points on the 2D plane to label values or as a 3D \textbf{surface}.
@@ -277,7 +277,7 @@ An alternative form for $m_\theta=\frac{\Delta z}{\Delta l}$, with $l$ being the
 The distance to a plane $ax+by+cz+d=0$ from point $(x_1, y_1, z_1)$ in 3-space is similar to that of a point to a line in 2-space (\ref{pt-dist-2-space}).
 \begin{align*}
 d=\frac{\abs{ax_1+by_1+cz_1+d}}{\sqrt{a^2+b^2+c^2}} =
-\comp_{\langle a, b, c \rangle} \vect{D} = \frac{\langle a, b, c \rangle \cdot \vect{D}}{\magnitude{\langle a, b, c \rangle}}a
+\comp_{\langle a, b, c \rangle} \vect{D} = \frac{\langle a, b, c \rangle \cdot \vect{D}}{\magnitude{\langle a, b, c \rangle}}
 \end{align*}
 
 This can be derived by taking the parallel component of the difference/distance vector $\vect{D} = \langle x-x_1, y-y_1, z-z_1\rangle$ between a point $(x,y,z)$ on the plane and the point $(x_1, y_1, z_1)$ and the perpendicular to the plane $\langle a, b, c \rangle$.
