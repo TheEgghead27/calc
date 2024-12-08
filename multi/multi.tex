@@ -704,6 +704,8 @@ If $f$ is differentiable at $(a,b)$ then
 \end{align*}
 Note that $\epsilon_1, \epsilon_2\to0$ as $(\Delta{x},\Delta{y})\to(0,0)$.
 
+\paragraph{Product/Quotient Rule} The product and quotient rule for $\mathbb{R}\to\mathbb{R}$ functions can be proven by defining a function $F(a,b)=ab$, with $a=f(x)$ and $b=g(x)$, applying the Chain Rule to $F$ produces the same results.
+
 \subsection{Directional Derivatives}
 To take the directional derivative in 3-space of a function $f$ at point $(a,b,\cdots)$ along some direction vector $\vect{u}=m\langle u_1, u_2\rangle$ $D_{\vect{u}}$ we take $\hat{u}=\langle u_1, u_2\rangle$ ($D_{\vect{u}} = D_{\hat{u}}$). We can then form parametric equations $x=a+hu_1$, $y=b+hu_2$,for the 2-space line going through $(a,b)$ in the direction of \vect{u} and define
 $$D_{\hat{u}}f=\lim_{h\to0}\frac{f(a+hu_1,b+hu_2)-f(a,b)}{h}$$
@@ -713,6 +715,13 @@ Using the Chain Rule, $D_{\hat{u}}f = f_xu_1+f_yu_2=\langle f_x, f_y \rangle \cd
 We define the gradient of $f(x,y)$ to be
 $$\nabla f(x,y) = \langle f_x(x,y), f_y(x,y) \rangle$$
 The "nabla" is the gradient operator, which operates on functions to return a vector-valued function.
+
+From the fact that $$D_{\hat{u}}f=\nabla f \cdot \hat{u}=\abs{\nabla f}\abs{\hat{u}}\cos{\theta}$$, we can warrant that $\nabla f$ points in the direction of greatest ascent (increase in $f$), $-\nabla f$ points in the direction of greatest descent, and that $\abs{\nabla f}$ is the largest directional derivative.
+
+For a level curve $f(x,y)=c$, and assuming the existence of differentiable parameterizations $x(t), y(t)$ that can be used to determine a vector $\langle x'(t), y'(t)\rangle$ tangent to the contour (i.e. $\frac{dz}{dt}=0$), $$\nabla{f}\cdot\langle x'(t), y'(t)\rangle=\frac{\partial f}{\partial x}\frac{dx}{dt}+\frac{\partial f}{\partial y}\frac{dy}{dt}=\frac{dz}{dt}=0$$
+indicating that the gradient is perpendicular to the tangent curve, and the level curve as a whole.
+
+This result generalizes to higher dimensions as well, allowing us to more easily find normal vectors to surfaces.
 
 \section{Appendix}
 \subsection{Cartesian Products} \label{set-multiplication}
