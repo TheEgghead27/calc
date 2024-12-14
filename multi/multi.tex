@@ -716,12 +716,66 @@ We define the gradient of $f(x,y)$ to be
 $$\nabla f(x,y) = \langle f_x(x,y), f_y(x,y) \rangle$$
 The "nabla" is the gradient operator, which operates on functions to return a vector-valued function.
 
-From the fact that $$D_{\hat{u}}f=\nabla f \cdot \hat{u}=\abs{\nabla f}\abs{\hat{u}}\cos{\theta}$$, we can warrant that $\nabla f$ points in the direction of greatest ascent (increase in $f$), $-\nabla f$ points in the direction of greatest descent, and that $\abs{\nabla f}$ is the largest directional derivative.
+From the fact that $$D_{\hat{u}}f=\nabla f \cdot \hat{u}=\abs{\nabla f}\abs{\hat{u}}\cos{\theta}$$ we can warrant that $\nabla f$ points in the direction of \textbf{greatest ascent} (increase in $f$), $-\nabla f$ points in the direction of \textbf{greatest descent}, and that $\abs{\nabla f}$ is the \textbf{largest directional derivative}.
 
 For a level curve $f(x,y)=c$, and assuming the existence of differentiable parameterizations $x(t), y(t)$ that can be used to determine a vector $\langle x'(t), y'(t)\rangle$ tangent to the contour (i.e. $\frac{dz}{dt}=0$), $$\nabla{f}\cdot\langle x'(t), y'(t)\rangle=\frac{\partial f}{\partial x}\frac{dx}{dt}+\frac{\partial f}{\partial y}\frac{dy}{dt}=\frac{dz}{dt}=0$$
 indicating that the gradient is perpendicular to the tangent curve, and the level curve as a whole.
 
 This result generalizes to higher dimensions as well, allowing us to more easily find normal vectors to surfaces.
+
+Note that due to the linearity of differentiation, differention rules apply to gradients too.
+
+\subsection{Extrema}
+Extrema may exist at critical points $(a,b)$ where $\nabla f(a,b) = \vect{0}$ (i.e. $f_x(a,b)=0$, $f_y(a,b)=0$).
+
+For some surfaces, it is possible to determine the nature of an extremum by analyzing the function (e.g. square values must be positive, suggesting the critical point of the paraboloid $f(x,y)=x^2+y^2$ at $(0,0)$ is a minimum; if you take different slices of a surfaces, and find that a point is a local minimum for some paths, but a local maximum along others, that point is a saddle point).
+
+\subsubsection{Second Derivatives Test}
+If $f(x,y)$ has continuous second-order partials and $\nabla f(a,b)=0$, then consider the determinant/discriminant
+\[
+D = f_{xx}(a,y)f_{yy}(a,b)-\left(f_{xy}(a,b)\right)^2
+\]
+\begin{enumerate}
+    \item If $D>0$ and $f_{xx}(a,b)$ or $f_{yy}(a,b) > 0$ then $f(a,b)$ is a local minimum.
+    \item If $D>0$ and $f_{xx}(a,b)$ or $f_{yy}(a,b) < 0$ then $f(a,b)$ is a local maximum.
+    \item If $D<0$, then $f(a,b)$ is a saddle point.
+    \item If $D=0$, then the test is inconclusive.
+\end{enumerate}
+$D$ can also be written as the determinant of the Hessian matrix \(D=\begin{vmatrix}
+    f_{xx} & f_{xy}\\
+    f_{yx} & f_{yy}
+\end{vmatrix}\).
+
+\paragraph{Proof}
+The gradient must be $\vect{0}$, as the points in the direction of the gradient would be greater/lesser than the point we are investigating.
+
+Assuming that $f(x,y)$ is infinitely differentiable function, $f$ can be defined as a Taylor Polynomial about point $(a,b)$ in two variables.
+\begin{align*}
+    f(x,y) = &f(a,b) + f_x(a,b)(x-a) + f_y(a,b)(y-b) +\\
+             &\frac{f_{xx}(a,b)}{2}(x-a)^2+\frac{f_{yy}(a,b)}{2}(y-b)^2+f_{xy}(x-b)(y-b)+\cdots
+\end{align*}
+Moving $f(a,b)$ to the other side, and considering that $\nabla{f}(a,b)=\langle f_x, f_y \rangle = \langle 0,0 \rangle$:
+\[
+    f(x,y)-f(a,b)=\Delta{f} = \frac{f_{xx}(a,b)}{2}(x-a)^2+\frac{f_{yy}(a,b)}{2}(y-b)^2+f_{xy}(x-b)(y-b)+\cdots
+\]
+At points sufficiently close to $x$ and $y$, the cubic terms and beyond become negligible. Factoring out a $\frac{\left(y-b\right)^2}{2}$ (the choice of $y$ is arbitrary as $x$ works too; note that this value is always positive):
+\[
+    \Delta{f} = \frac{\left(y-b\right)^2}{2}\left[f_{xx}(a,b)\left(\frac{x-a}{y-b}\right)^2 + 2f_{xy}(a,b)\left(\frac{x-a}{y-b}\right)+f_{yy}(a,b)\right]
+\]
+
+Letting $\omega = \frac{x-a}{y-b}$, we can write the interior expression, which determine the sign of $\Delta{f}$ as a quadratic
+\[
+f_{xx}(a,b)\omega^2+2f_{xy}(a,b)\omega+f_{yy}(a,b)
+\] with $A = f_{xx}(a,b)$, $B=2f_{xy}(a,b)$, $C=f_{yy}(a,b)$. From on the discriminant $B^2-4AC=4D$, we can determine if this quadratic has
+\begin{enumerate}
+    \item $D > 0$: two real roots, i.e. the expression is sometimes negative and sometimes positive
+    \item $D < 0$: two complex roots, i.e. the expression is always postive or negative
+    \item $D = 0$: one root
+\end{enumerate}
+From these results about the sign of the quadratic, we can sometimes determine the sign of $\Delta{f}$, allowing us to discern whether a point is a local maximum/minimum or a saddle point. If $D=0$, we cannot draw a comprehensive conclusion about whether the sign of $\Delta{f}$ changes.
+
+\subsubsection{Optimization Examples}
+\paragraph{Regression (Least-Squares) Line} A \textbf{Linear Regression} aims to produce coefficients for a line $y=Ax+B$ that minimizes the squares [to avoid sign issues] of the $\Delta{y}$s between the points and the line. One can write a function for the sum of the squares of the differences as a function of $A,B$ and determine a minimum point.
 
 \section{Appendix}
 \subsection{Cartesian Products} \label{set-multiplication}
