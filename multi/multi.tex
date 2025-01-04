@@ -723,14 +723,14 @@ indicating that the gradient is perpendicular to the tangent curve, and the leve
 
 This result generalizes to higher dimensions as well, allowing us to more easily find normal vectors to surfaces.
 
-Note that due to the linearity of differentiation, differention rules apply to gradients too.
+Note that due to the linearity of differentiation, differentiation rules apply to gradients too.
 
-\subsection{Extrema}
+\section{Optimization}
 Extrema may exist at critical points $(a,b)$ where $\nabla f(a,b) = \vect{0}$ (i.e. $f_x(a,b)=0$, $f_y(a,b)=0$).
 
 For some surfaces, it is possible to determine the nature of an extremum by analyzing the function (e.g. square values must be positive, suggesting the critical point of the paraboloid $f(x,y)=x^2+y^2$ at $(0,0)$ is a minimum; if you take different slices of a surfaces, and find that a point is a local minimum for some paths, but a local maximum along others, that point is a saddle point).
 
-\subsubsection{Second Derivatives Test}
+\subsection{Second Derivatives Test}
 If $f(x,y)$ has continuous second-order partials and $\nabla f(a,b)=0$, then consider the determinant/discriminant
 \[
 D = f_{xx}(a,y)f_{yy}(a,b)-\left(f_{xy}(a,b)\right)^2
@@ -769,19 +769,42 @@ f_{xx}(a,b)\omega^2+2f_{xy}(a,b)\omega+f_{yy}(a,b)
 \] with $A = f_{xx}(a,b)$, $B=2f_{xy}(a,b)$, $C=f_{yy}(a,b)$. From on the discriminant $B^2-4AC=4D$, we can determine if this quadratic has
 \begin{enumerate}
     \item $D > 0$: two real roots, i.e. the expression is sometimes negative and sometimes positive
-    \item $D < 0$: two complex roots, i.e. the expression is always postive or negative
+    \item $D < 0$: two complex roots, i.e. the expression is always positive or negative
     \item $D = 0$: one root
 \end{enumerate}
 From these results about the sign of the quadratic, we can sometimes determine the sign of $\Delta{f}$, allowing us to discern whether a point is a local maximum/minimum or a saddle point. If $D=0$, we cannot draw a comprehensive conclusion about whether the sign of $\Delta{f}$ changes.
 
-\subsubsection{Optimization on a Curve}
+\subsubsection{Optimization Example: Regression (Least-Squares) Line} A \textbf{Linear Regression} aims to produce coefficients for a line $y=Ax+B$ that minimizes the squares [to avoid sign issues] of the $\Delta{y}$s between the points and the line. One can write a function for the sum of the squares of the differences as a function of $A,B$ and determine a minimum point.
+
+\subsection{Optimization on a Curve}
 If we are optimizing a surface $f(x,y)$ with $x$ and $y$ being constrained to a curve $g(x,y)=c$ (i.e. a level curve/contour of $g$), critical values occur when $\nabla f(x,y) \parallel \nabla g(x,y)$. This can be expressed as
 $$\nabla f(x,y) = \lambda\nabla g(x,y)$$ with $\lambda$ being a scalar known as the Lagrange Multiplier.
 
 This is because the maxima will occur when the directional derivative of $f(x,y)$ is $0$ in the direction of (tangent to) $g(x,y)$, which happens when the gradient of $f$ is perpendicular to the tangent (``velocity") vector. The proof is situated using a chain rule expressing $g(x,y)=c$ as a parametric curve with $x(t)$ and $y(t)$.
 
-\subsubsection{Optimization Examples}
-\paragraph{Regression (Least-Squares) Line} A \textbf{Linear Regression} aims to produce coefficients for a line $y=Ax+B$ that minimizes the squares [to avoid sign issues] of the $\Delta{y}$s between the points and the line. One can write a function for the sum of the squares of the differences as a function of $A,B$ and determine a minimum point.
+Note that with certain constraints, it may be possible to reparameterize a function $f(x,y)$ into a single-variable function that can be easily optimized.
+
+\subsection{Optimization in a Region}
+\subsubsection{Regions}
+A \textbf{region} $D$ in $\mathbb{R}^2$ is said to be bounded if it can be enclosed (or contained) in a circle (or other figure) with finite radius.\footnote{Note that a region in $\mathbb{R}$ is more familiarly known as an interval.}\\
+A point $P$ is:
+\begin{itemize}
+    \item \textbf{inside} (interior to) $D$ if there exists a neighborhood of $P$ that is also contained in $D$.
+    \item \textbf{outside} (exterior to) $D$ if there exists a neighborhood of $P$ that consists of only points $\notin D$.
+    \item \textbf{on the boundary} of $D$ if every neighborhood of $P$ contains points inside and outside of $D$.
+\end{itemize}
+A region is closed if it contains all of its boundary points.
+
+\subsubsection{Extreme Value Theorem}
+If $f(x,y)$ is continuous on a closed and bounded region $D$, then $f$ must achieve both an absolute minimum and absolute maximum on $D$.\\
+These extrema may occur at critical points or on the boundary of the region.
+
+To apply the EVT to find absolute extrema:
+\begin{enumerate}
+    \item Find critical points of $f(x,y)$ within the region by solving for $\nabla{f} = \vect{0}$ (or undefined).
+    \item Find extrema of $f$ subject to your bounding constraint, using Lagrange Multipliers or other techniques.
+    \item Evaluate $f(x,y)$ at all of the relevant points to determine which are the absolute extremes.
+\end{enumerate}
 
 \section{Appendix}
 \subsection{Cartesian Products} \label{set-multiplication}
