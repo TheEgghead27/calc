@@ -806,6 +806,46 @@ To apply the EVT to find absolute extrema:
     \item Evaluate $f(x,y)$ at all of the relevant points to determine which are the absolute extremes.
 \end{enumerate}
 
+\section{Space Curves}
+In general, a space curve is a function $f: \mathbb{R}\to\mathbb{R}^n$. We can consider the output of these functions to be vectors or points. The single parameter variable (conventionally $t$) may have domain restrictions, or the range of outputs may be constrained.
+
+Although such functions can parameterize a curve, such a parameterization is not unique; there exist infinitely many functions that produce the same curve.
+
+\subsection{Limits}
+The limit of a vector function $\vect{r}(t)$, if it exists, is the limit of its components.
+
+$$\lim_{t\to{a}}\vect{r}(t)=\lim_{t\to{a}}\langle x(t),y(t) \rangle = \langle \lim_{t\to{a}}x(t),\lim_{t\to{a}}y(t) \rangle$$
+
+\subsection{Continuity}
+$\vect{r}(t)$ is continuous at $\vect{r}(a)$ if and only if $$\lim_{t\to{a}}\vect{r}(t)=\vect{r}(a)$$
+
+\subsection{Derivatives}
+The definition of a vector function $\vect{r}(t)$'s derivative is analogous to that of a function in 2-space.
+$$\vect{r}'(t)=\frac{d\vect{r}}{t}=\lim_{h\to0}\frac{\vect{r}(t+h)-\vect{r}(t)}{h}=\langle x'(t), y'(t) \rangle$$
+The limit of the secant vector is the tangent vector; this vector is tangent to the curve at $t$ so long as it exists and $\ne\vect{0}$. In this case, the tangent line to the curve $\vect{r}(t)$ at $t=a$ is
+$$\langle x,y,z \rangle = \vect{r}(a)+t\cdot\vect{r}'(a)$$ Functions that have continuous derivatives with $\vect{r}'(t)\ne0$ are \textbf{smoothly parameterized}.
+
+\subsubsection{Properties of the Derivative}
+Letting $\vect{r}(t), \vect{u}(t), \vect{v}(t)$ be differentiable vector-valued functions, and $f(t)$ be a differentiable scalar function:
+\begin{enumerate}
+    \item $\frac{d}{dt}\left(c\cdot\vect{r}(t)\right)=c\cdot\vect{r}'(t)$
+    \item $\frac{d}{dt}\left(f(t)\cdot\vect{r}(t)\right)=f(t)\cdot\vect{r}'(t)+\vect{r}(t)\cdot f'(t)$
+    \item $\frac{d}{dt}\left(\vect{u}(t)\cdot\vect{v}(t)\right)=\vect{u}(t)\cdot\vect{v}'(t)+\vect{u}'(t)\cdot \vect{v}(t)$
+    \item $\frac{d}{dt}\left(\vect{u}(t)\times\vect{v}(t)\right)=\vect{u}(t)\times\vect{v}'(t)+\vect{u}'(t)\times \vect{v}(t)$ (Note that order matters due to the cross product being anti-commutative, and all functions must be $\mathbb{R}\to\mathbb{R}^3$.)
+\end{enumerate}
+
+\subsubsection{Derivative of the Magnitude}
+Considering the derivative of the squared magnitude $\magnitude{\vect{r}(t)}^2$ for a non-zero vector function, we find that
+\begin{align*}
+    \frac{d}{dt}\left(\magnitude{\vect{r}}^2\right) = \frac{d}{dt}\left(\vect{r}\cdot\vect{r}\right) &= 2\vect{r}\cdot\vect{r}' = 2\magvect{r}\frac{d}{dt}\left(\magvect{r}\right)\\
+    \frac{d}{dt}\left(\magvect{r}\right) &= \frac{\vect{r}\cdot\vect{r}'}{\magvect{r}}
+\end{align*}
+As a corollary, if $\magvect{r}=c$, the velocity vector is perpendicular to the position vector.
+
+(note that $\frac{d}{dt}\left(\magvect{\vect{r}}\right) = \vect{r}'(t)\cos{\theta}$).
+
+\subsubsection{The Unit Tangent}
+The unit tangent to $\vect{r}(t)$ is $$\vect{T}(t)=\frac{\vect{r}'(t)}{\magnitude{\vect{r}'(t)}}$$
 \section{Appendix}
 \subsection{Cartesian Products} \label{set-multiplication}
 For sets $A, B$, their Cartesian product is $$A \times B = \left\{ (a,b) | a \in A, b \in B\right\}$$
