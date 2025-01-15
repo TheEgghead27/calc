@@ -844,8 +844,36 @@ As a corollary, if $\magvect{r}=c$, the velocity vector is perpendicular to the 
 
 (note that $\frac{d}{dt}\left(\magvect{\vect{r}}\right) = \vect{r}'(t)\cos{\theta}$).
 
+\subsection{Planes to a Curve}
+\subsubsection{The Normal Plane}
+The normal plane at a point on the curve $\vect{r}(t)$ is
+$$\vect{r}' \cdot\langle x - r_x, y - r_y, z - r_z\rangle = 0$$
+
 \subsubsection{The Unit Tangent}
-The unit tangent to $\vect{r}(t)$ is $$\vect{T}(t)=\frac{\vect{r}'(t)}{\magnitude{\vect{r}'(t)}}$$
+The unit tangent at a point on the curve $\vect{r}(t)$ is $$\vect{T}=\frac{\vect{r}'}{\magnitude{\vect{r}'}}$$ which is the normalization of $\vect{r}'$.
+Thus, both $\vect{r}'$ and $\vect{T}$ are parallel and point in the direction of the tangent line.
+
+\paragraph{Derivative of the Unit Tangent}
+To evaluate this derivative, we use the Product/Quotient Rule (keeping in mind that $\magvect{r'}$ is a non-constant scalar, so we must use the Derivative of the Magnitude).
+$$\vect{T'}=\frac{1}{\magnitude{\vect{r}'}}\vect{r}''-\left(\frac{\vect{r}'\cdot\vect{r}''}{\magnitude{\vect{r}'}^3}\right)\vect{r}'$$
+Note that because the unit tangent has constant magnitude, we know the unit tangent's derivative must be orthogonal to the unit tangent.
+
+\subsubsection{The Normal Vector}
+The normal vector at a point on the curve $\vect{r}(t)$ is $$\vect{N}=\frac{\vect{T}'}{\magnitude{\vect{T}'}}$$ which is the normalization of $\vect{T}$.
+Thus, both $\vect{N}$ and $\vect{T'}$ are parallel and orthogonal to the tangent line.
+
+In addition, because $\vect{N}$ is a linear combination of $\vect{r}'$ and $\vect{r}''$, we know that it is coplanar with $\vect{r}'$ and $\vect{r}''$.
+
+\subsubsection{The Osculating Plane}
+The osculating ("kissing") plane contains the vectors $\vect{r}'$, $\vect{r}''$, $\vect{T}$, $\vect{T}'$, and $\vect{N}$. Taking the cross product between two of these vectors (that are non-parallel!), we obtain a normal to the osculating plane, which also lies on the tangent plane. This plane is analogous to a 2nd-degree Taylor approximation for a curve, in the sense that it attempts to match $\vect{r}'$ and $\vect{r}''$.
+
+\paragraph{Binormal} The Binormal vector is defined to specifically be
+$$\vect{B}=\vect{T}\times\vect{N}$$
+This is a unit vector (as it is the cross product of two orthogonal unit vectors), and its direction serves as the third dimension in a 3-space orthonormal basis (set of 3 orthogonal unit vectors which we can use for defining a coordinate system).
+
+\subsubsection{The Rectifying Plane}
+The rectifying plane contains $\vect{T}$ and $\vect{B}$.
+
 \section{Appendix}
 \subsection{Cartesian Products} \label{set-multiplication}
 For sets $A, B$, their Cartesian product is $$A \times B = \left\{ (a,b) | a \in A, b \in B\right\}$$
