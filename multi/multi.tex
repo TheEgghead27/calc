@@ -785,16 +785,7 @@ This is because the maxima will occur when the directional derivative of $f(x,y)
 Note that with certain constraints, it may be possible to reparameterize a function $f(x,y)$ into a single-variable function that can be easily optimized.
 
 \subsection{Optimization in a Region}
-\subsubsection{Regions}
-A \textbf{region} $D$ in $\mathbb{R}^2$ is said to be bounded if it can be enclosed (or contained) in a circle (or other figure) with finite radius.\footnote{Note that a region in $\mathbb{R}$ is more familiarly known as an interval.}\\
-A point $P$ is:
-\begin{itemize}
-    \item \textbf{inside} (interior to) $D$ if there exists a neighborhood of $P$ that is also contained in $D$.
-    \item \textbf{outside} (exterior to) $D$ if there exists a neighborhood of $P$ that consists of only points $\notin D$.
-    \item \textbf{on the boundary} of $D$ if every neighborhood of $P$ contains points inside and outside of $D$.
-\end{itemize}
-A region is closed if it contains all of its boundary points.
-
+See section \ref{regions} for an introduction to regions.
 \subsubsection{Extreme Value Theorem}
 If $f(x,y)$ is continuous on a closed and bounded region $D$, then $f$ must achieve both an absolute minimum and absolute maximum on $D$.\\
 These extrema may occur at critical points or on the boundary of the region.
@@ -874,10 +865,100 @@ This is a unit vector (as it is the cross product of two orthogonal unit vectors
 \subsubsection{The Rectifying Plane}
 The rectifying plane contains $\vect{T}$ and $\vect{B}$.
 
+\subsubsection{Skipped Topics}
+Curvature and Arclength have been omitted at this time to transition to the Spring semester.
+
+\section{Double Integrals}
+\subsection{Review of Single Integrals}
+A Riemann integral is the limit of a Riemann Sum with subintervals $x_n$ and random sample points from those intervals $x_n^*$
+$$\int_a^bf(x)\,dx=\lim_{\substack{n\to\infty\\max\Delta{x_i}\to0}}\sum^n_{i=1}f(x_i^*)\Delta{x_i}$$
+The value of the integral represents the (signed\footnote{If $f(x)>0$, then signed area and absoliute area are equivalent.}) area under the curve.
+
+\subsection{Defining Double Integrals}
+Some solids $S$ can be defined in terms of a surface $f(x,y)$ and a base region $R$ on the $z=0$ plane.
+$$S=\left\{(x,y,z)|(x,y)\in R, 0\le z\le f(x,y)\right\}$$
+
+For such solids, we can define subrectangles that are based on the Cartesian product of subintervals $x_n$ and $y_m$ along the $x$ and axes respectively. Taking Riemann sums of these infinitesmal areas, we define double integrals to be
+\begin{align*}
+    \mathop{\int\int}_Rf(x,y)\,dA
+        &=\sum_{j=1}^m\sum_{i=1}^nf(x_{ij}^*,y_{ij}^*)\cdot\Delta A\\
+        &=\sum_{j=1}^m\sum_{i=1}^nf(x_{ij}^*,y_{ij}^*)\cdot\Delta x\Delta y
+\end{align*}
+
+If $R=[a,b]\times[c,d]$, $$\mathop{\int\int}_Rf(x,y)\,dA=\mathop{\int\int}_{[a,b]\times[c,d]}f(x,y)\,dA$$
+
+If we are finding the signed volume between two surfaces $f(x,y)$ and $g(x,y)$, we simply integrate with heights of $f(x,y)-g(x,y)$, obtaining the double integral $$\mathop{\int\int_R}f(x,y)-g(x,y)\,dA$$ Note that $g(x,y)=0$ is the simple special case.
+
+\subsection{Estimating Double Integrals}
+Just as one can estimate a single integral based on a finite number of rectangular subintervals in $\mathbb{R}^2$, it is possible to estimate a double integral based on a finite number of rectangular prism subintervals in $\mathbb{R^3}$ by doing two Riemann sums.
+
+On a standard test question, you may be given a surface $f$ on rectangular region $[a,b]\times[c,d]$ split into $n \times m$ subintervals. The sum evaluates $f$ at a defined sample point from each subrectangle, multiplying it by the area of the subrectangle.
+
+\subsection{Evaluating Double Integrals}
+By integrating along a single axis (using the Fundamental Theorem of Calculus), we can define area functions $A(y)=\int_a^bf(x,y)\,dx$ or $A(x)=\int_c^df(x,y)\,dy$ for a slice of the surface along a fixed $y$ or $x$ respectively. If we iteratively integrate again along the other axis, these iterated integrals may evaluate to a numerical value for the volume integral.
+
+\subsubsection{Fubini's Theorem}
+If $f(x,y)$ is continuous on a rectangle $[a,b]\times[c,d]$, then
+$$\mathop{\int\int}_Rf(x,y)\,dA=\int_a^b\int_c^df(x,y)\,dy\,dx=\int_c^d\int_a^bf(x,y)\,dx\,dy$$
+
+The order in which the infinitesimal elements are written matters, with the innermost integral pairing with the innermost infinitesimal.
+
+\subsubsection{The Very Nice Theorem}
+From the linearity properties of double integrals, if $f(x,y)=g(x) \cdot h(y)$ and $R=[a,b]\times[c,d]$ then
+\begin{align*}
+    \mathop{\int\int}_Rf(x,y)\,dA &=\int_a^b\int_c^dg(x)\cdot h(y)\,dy\,dx\\
+        &=\int_a^bg(x)\left(\int_c^d h(y)\,dy\right)\,dx\\
+    &=\int_a^bg(x)\,dx\int_c^dh(y)\,dy
+\end{align*}
+
+\subsection{Properties of Double Integrals}
+\begin{enumerate}
+    \item If $f(x,y)>0 \forall(x,y)\in{R}$, then $\mathop{\int\int}_Rf(x,y)\,dA$ is the volume bounded by $f$ and the $xy$ plane.
+    \item $dA=dx\,dy$ or $dA=dy\,dx$
+    \item If $f(x,y)$ is continuous on $R$, then $\mathop{\int\int}_R f(x,y)\,dA$ exists.\footnote{Point and slit discontinuities on a function still allow integrability, assuming no singularities diverge to infinity, or the discontinuities are on broader region.}
+\end{enumerate}
+The following properties indicate the linearity of integration:
+\begin{enumerate}
+    \item $\mathop{\int\int}_Rf(x,y)\pm g(x,y)\,dA=\mathop{\int\int}_R f(x,y)\,dA\pm\mathop{\int\int}_R g(x,y)\,dA$
+    \item $\mathop{\int\int}_Rcf(x,y)\,dA=c\mathop{\int\int}_R f(x,y)\,dA$
+    \item If $f(x,y)\ge g(x,y)$ on $R$ then $\mathop{\int\int}_R f(x,y)\,dA\ge\mathop{\int\int}_R g(x,y)\,dA$
+\end{enumerate}
+
+\subsection{Double Integrals over Non-Rectangular Regions}
+To evaluate a double integral on a Type I region $R_1$ between $[a,b]$ on the $x$-axis, and functions $g_1(x)$ and $g_2(x)$ on the $y$-axis (see section \ref{regions}), we can set the bounds for $y$ to be $g_1(x)$ and $g_2(x)$, then integrate as normal. This is analogous to integrating rectangles of height $g_2(x)-g_1(x)$ and width $dx$.
+
+$$\mathop{\int\int}_{R_I} f(x,y)\,dA=\int^b_a\int^{g_2(x)}_{g_1(x)}f(x,y)\,dy\,dx$$
+
+We can perform analogous operations on a Type II region, integrating rectangles of width $h_2(x)-h_1(x)$ and height $dy$.
+$$\mathop{\int\int}_{R_{II}} f(x,y)\,dA=\int^d_c\int^{h_2(y)}_{h_1(y)}f(x,y)\,dx\,dy$$
+
+For regions that are both Type I and II, we can choose to use either representation of the region to integrate the function. It may be harder (or even impossible!) to integrate along a certain axis, and in such cases, swapping the order of integration by rewriting the integration region along the other axis may be necessary.
+
+The bounds may be provided, or they may need to be derived from the intercepts between relevant surfaces/curves.
+
 \section{Appendix}
 \subsection{Cartesian Products} \label{set-multiplication}
 For sets $A, B$, their Cartesian product is $$A \times B = \left\{ (a,b) | a \in A, b \in B\right\}$$
 This produces a set of (ordered) 2-tuples/vectors.
 The ``$n$-ary Cartesian product" generalizes this process to produce $n$-tuples/vectors, leading to a definition for ``exponentiating" sets, as in $\mathbb{R}^n$.
+
+\subsection{Regions} \label{regions}
+A \textbf{region} $D$ in $\mathbb{R}^2$ is said to be bounded if it can be enclosed (or contained) in a circle (or other figure) with finite radius.\footnote{Note that a region in $\mathbb{R}$ is more familiarly known as an interval.}\\
+A point $P$ is:
+\begin{itemize}
+    \item \textbf{inside} (interior to) $D$ if there exists a neighborhood of $P$ that is also contained in $D$.
+    \item \textbf{outside} (exterior to) $D$ if there exists a neighborhood of $P$ that consists of only points $\notin D$.
+    \item \textbf{on the boundary} of $D$ if every neighborhood of $P$ contains points inside and outside of $D$.
+\end{itemize}
+A region is closed if it contains all of its boundary points.
+
+\subsubsection{Type I and II Regions}
+A Type I region is an $\mathbb{R}^2$ region bounded between two continuous functions $g_1(x)$ and $g_2(x)$:
+$$D=\left\{(x,y)|a\le x\le b, g_1(x)\le y\le g_2(x)\right\}$$
+
+A Type II region is an analogous region bounded between functions of $y$:
+$$D=\left\{(x,y)|c\le y\le d, h_1(y)\le x\le h_2(y)\right\}$$
+
+Some regions can be both Types I and II.
 
 \end{document}
