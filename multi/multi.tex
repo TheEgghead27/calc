@@ -868,7 +868,7 @@ The rectifying plane contains $\vect{T}$ and $\vect{B}$.
 \subsubsection{Skipped Topics}
 Curvature and Arclength have been omitted at this time to transition to the Spring semester.
 
-\section{Double Integrals}
+\section{Multiple Integrals}
 \subsection{Review of Single Integrals}
 A Riemann integral is the limit of a Riemann Sum with subintervals $x_n$ and random sample points from those intervals $x_n^*$
 $$\int_a^bf(x)\,dx=\lim_{\substack{n\to\infty\\max\Delta{x_i}\to0}}\sum^n_{i=1}f(x_i^*)\Delta{x_i}$$
@@ -881,8 +881,8 @@ $$S=\left\{(x,y,z)|(x,y)\in R, 0\le z\le f(x,y)\right\}$$
 For such solids, we can define subrectangles that are based on the Cartesian product of subintervals $x_n$ and $y_m$ along the $x$ and axes respectively. Taking Riemann sums of these infinitesmal areas, we define double integrals to be
 \begin{align*}
     \mathop{\int\int}_Rf(x,y)\,dA
-        &=\sum_{j=1}^m\sum_{i=1}^nf(x_{ij}^*,y_{ij}^*)\cdot\Delta A\\
-        &=\sum_{j=1}^m\sum_{i=1}^nf(x_{ij}^*,y_{ij}^*)\cdot\Delta x\Delta y
+        &=\lim_{\substack{m,n\to\infty\\max\Delta{x_i},\Delta{y_j}\to0}}\sum_{j=1}^m\sum_{i=1}^nf(x_{ij}^*,y_{ij}^*)\cdot\Delta A\\
+        &=\lim_{\substack{m,n\to\infty\\max\Delta{x_i},\Delta{y_j}\to0}}\sum_{j=1}^m\sum_{i=1}^nf(x_{ij}^*,y_{ij}^*)\cdot\Delta x\Delta y
 \end{align*}
 
 If $R=[a,b]\times[c,d]$, $$\mathop{\int\int}_Rf(x,y)\,dA=\mathop{\int\int}_{[a,b]\times[c,d]}f(x,y)\,dA$$
@@ -936,6 +936,30 @@ For regions that are both Type I and II, we can choose to use either representat
 
 The bounds may be provided, or they may need to be derived from the intercepts between relevant surfaces/curves.
 
+\subsection{Average Value}
+For surfaces, the average value of the surface over a region is
+$$f_{avg}=\frac{\mathop{\int\int_Rf\,dA}}{\mathop{\int\int_R\,dA}}$$
+with $\mathop{\int\int_R\,dA}=\mathop{\int\int_R1\,dA}$ being the area of the region.
+A ``cylinder'' with a base of $R$ and height of $f_avg$ would contain the same (signed) volume as the surface over that region.
+
+This statement generalizes to all dimensions, i.e. for the average value of a function $g: \mathbb{R^3}\to\mathbb{R}$ over a region of space $E$ is
+$$g_{avg}=\frac{\mathop{\int\int\int_E g(x,y,z)}\,dV}{\mathop{\int\int\int_E\,dV}}$$
+
+\subsection{Triple Integrals}
+A triple integral over a region of space $E$ is defined as
+\begin{align*}
+    \mathop{\int\int\int}_E f(x,y,z)\,dV
+    &=\lim_{\substack{l,m,n\to\infty\\max\Delta{x_i},\Delta{y_j},\Delta{z_k}\to0}}\sum^l_{k=1}\sum^m_{j=1}\sum^n_{i=1}f(x_i^*,y_j^*,z_k^*) \Delta{V}\\
+    &=\lim_{\substack{l,m,n\to\infty\\max\Delta{x_i},\Delta{y_j},\Delta{z_k}\to0}}\sum^l_{k=1}\sum^m_{j=1}\sum^n_{i=1}f(x_i^*,y_j^*,z_k^*) \Delta{x}\Delta{y}\Delta{z}
+\end{align*}
+
+\subsubsection{Evaluating Triple Integrals}
+Fubini's Theorem holds for evaluating along regions that are rectangular prisms, so bounds can be written in analogous manners to double and single integrals. The Very Nice Theorem remains true in general.
+
+For integrals over general Type I regions between $z=g_1(x,y)$ and $z=g_2(x,y)$ and with an $xy$-plane projection $D$, we can rewrite the integral as
+$$\mathop{\int\int}_D\int^{g_1(x,y)}_{g_2(x,y)} f(x,y,z)\,dz\,dA$$
+and analogous expressions are used for Type II and III regions,\footnote{See definitions for regions of types I-III in section \ref{regions}.} which can be used to subdivide any non-simple region into suitable simple regions for use with iterated integrals.
+
 \section{Appendix}
 \subsection{Cartesian Products} \label{set-multiplication}
 For sets $A, B$, their Cartesian product is $$A \times B = \left\{ (a,b) | a \in A, b \in B\right\}$$
@@ -953,12 +977,23 @@ A point $P$ is:
 A region is closed if it contains all of its boundary points.
 
 \subsubsection{Type I and II Regions}
-A Type I region is an $\mathbb{R}^2$ region bounded between two continuous functions $g_1(x)$ and $g_2(x)$:
+A Type I region is an $\mathbb{R}^2$ region bounded between two (continuous) curves $y=g_1(x)$ and $y=g_2(x)$:
 $$D=\left\{(x,y)|a\le x\le b, g_1(x)\le y\le g_2(x)\right\}$$
 
 A Type II region is an analogous region bounded between functions of $y$:
 $$D=\left\{(x,y)|c\le y\le d, h_1(y)\le x\le h_2(y)\right\}$$
 
 Some regions can be both Types I and II.
+
+\subsubsection{Type I -- III Regions in Space}
+A Type I solid region is a $\mathbb{R}^3$ region bounded between two (continuous) surfaces $z=g_1(x,y)$ and $z=g_2(x,y)$ that can be projected onto an $xy$-plane region $D$:
+$$E_I=\left\{(x,y,z)|(x,y)\in D, g_1(x,y)\le z \le g_2(x,y)\right\}$$
+
+Type II and III are analogous but with plane projections on the $xy$ and $yz$-planes.\footnote{We do not usually care what the specific name is, but the textbook uses the following convention}
+
+\begin{align*}
+E_{II}=\left\{(x,y,z)|(y,z)\in D, h_1(y,z)\le x \le h_2(y,z)\right\}\\
+E_{III}=\left\{(x,y,z)|(x,z)\in D, i_1(x,z)\le y \le i_2(x,z)\right\}
+\end{align*}
 
 \end{document}
