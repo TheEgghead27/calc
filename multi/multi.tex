@@ -960,6 +960,31 @@ For integrals over general Type I regions between $z=g_1(x,y)$ and $z=g_2(x,y)$ 
 $$\mathop{\int\int}_D\int^{g_1(x,y)}_{g_2(x,y)} f(x,y,z)\,dz\,dA$$
 and analogous expressions are used for Type II and III regions,\footnote{See definitions for regions of types I-III in section \ref{regions}.} which can be used to subdivide any non-simple region into suitable simple regions for use with iterated integrals.
 
+\subsection{Polar Integrals in 2-Space}
+\subsubsection{Polar Coordinates}
+We can use $x=r\cos{\theta}$ and $y=r\sin{\theta}$ to convert from rectangular to polar, or $r^2=x^2+y^2$ and $\theta=\arctan{\frac{y}{x}}$ to convert from polar to rectangular. Note that we must be mindful if the values of $r$ and $\theta$ we choose lead to overlapping points (multiple polar points can be converted to one Cartesian point).
+
+\subsubsection{Polar Area}
+The basic unit of polar area is the sector, with area $A=\pi{r^2}\frac{\Delta\theta}{2\pi}=\frac{1}{2}r^2\Delta\theta$. A polar rectangle is the difference between two sectors with radii $r$ and $r+\Delta{r}$.
+
+\paragraph{Area of Infinitesimal Polar Rectangles}
+We begin with the area of polar rectangles defined in terms of $\Delta{\theta}$ and radii $R,r$, with $R=r+\Delta{r}$, then rearrange.
+\begin{align*}
+    A&=\frac{1}{2}\Delta{\theta}\left(R^2-r^2\right)\\
+     &=\frac{1}{2}\Delta{\theta}\left(R-r\right)\left(R+r\right)\\
+     &=\frac{R+r}{2}\Delta{\theta}\Delta{r}\\
+\end{align*}
+Letting $r_{median}=\frac{R+r}{2}$, because $R\to{r}$ as $\Delta{r}\to0$, $r_{median}\to{r}$, the differential area is
+$$dA=r\,dr\,d\theta$$
+
+\subsubsection{Definition}
+We take the limit of a Riemann Sum consisting of infinitesimal polar rectangles. For a function $f(r,\theta)$ on a polar rectangle $a \le r \le b$, $\alpha \le \theta \le \beta$:
+\begin{align*}
+    \mathop{\int\int}_Rf(r,\theta)\,dA &=\lim_{\substack{m,n\to\infty\\max\Delta{r},\Delta{\theta}\to0}}\sum_{j=1}^m\sum_{i=1}^nf(r_{ij}^*,\theta_{ij}^*)\cdot\Delta A\\
+    &=\lim_{\substack{m,n\to\infty\\max\Delta{r},\Delta{\theta}\to0}}\sum_{j=1}^m\sum_{i=1}^nf(r_{ij}^*,\theta_{ij}^*)\cdot r\Delta r\Delta\theta\\
+    &=\int_\alpha^\beta\int_a^bf(r,\theta)\,r\,dr\,d\theta
+\end{align*}
+
 \section{Appendix}
 \subsection{Cartesian Products} \label{set-multiplication}
 For sets $A, B$, their Cartesian product is $$A \times B = \left\{ (a,b) | a \in A, b \in B\right\}$$
