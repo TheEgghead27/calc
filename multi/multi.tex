@@ -985,10 +985,9 @@ We take the limit of a Riemann Sum consisting of infinitesimal polar rectangles.
     &=\int_\alpha^\beta\int_a^bf(r,\theta)\,r\,dr\,d\theta
 \end{align*}
 
-
 \subsection{Integrals in Cylindrical Coordinates}
 \subsubsection{Cylindrical Coordinates}
-Cylindrical coordinates are an extension of polar coordinates to $\mathbb{R}^3$ by adding a linear $z$ coordinate. Points are of the form $(r,\theta,z)$
+Cylindrical coordinates are an extension of polar coordinates to $\mathbb{R}^3$ by adding a linear $z$ coordinate. Points are of the form $(r,\theta,z)$, and by convention $0\le{r}$.
 
 To convert cylindrical to Cartesian coordinates, we use the expression
 $$(x,y,z)=(r\cos\theta,r\sin\theta,z)$$
@@ -999,7 +998,6 @@ To convert Cartesian to cylindrical coordinates, we use the relations
     z&=z
 \end{align*}
 
-
 \subsubsection{Cylindrical Volumes}
 The basic unit of cylindrical area is an extruded polar rectangle.
 Considering such a "cylinder"\footnote{Using the textbook definition of cylinder as any figure that has consistent cross sections aligned parallel to an axis.} with height $\Delta z$ and a base that is a polar rectangle $\frac{1}{2}\Delta\theta(\Delta R^2-r^2)$, with $R-r = \Delta{r}$, we can obtain an analogous expression to polar area, used for cylindrical integrals.
@@ -1007,7 +1005,7 @@ $$dV=r\,dr\,d\theta\,dz$$
 
 \subsection{Integrals in Spherical Coordinates}
 \subsubsection{Spherical Coordinates}
-Spherical coordinates are an extension of polar coordinates to $\mathbb{R}^3$ by replacing the $R^2$ circle $x^2+y^2=r^2$ with an $\mathbb{R}^3$ sphere $x^2+y^2+z^2=\rho^2$. Two angles, $\theta$ on the $xy$-plane measured from the positive $x$-axis and $\phi$ measured from the positive $z$-axis, define a point on the sphere. Points are of the form $(\rho,\theta,\phi)$ in this course, but other fields may use alternative conventions.
+Spherical coordinates are an extension of polar coordinates to $\mathbb{R}^3$ by replacing the $R^2$ circle $x^2+y^2=r^2$ with an $\mathbb{R}^3$ sphere $x^2+y^2+z^2=\rho^2$. Two angles, $\theta$ on the $xy$-plane measured from the positive $x$-axis and $\phi$ measured from the positive $z$-axis, define a point on the sphere. Points are of the form $(\rho,\theta,\phi)$ in this course, but other fields may use alternative conventions. By convention, we use $0\le\rho$, $0\le\phi\le\pi$.
 
 To convert spherical to Cartesian coordinates, we use $\rho\sin\phi$ for the radius of the circle on the $xy$-plane below the point and $\rho\cos\phi$ for the height of the point, and derive the expression
 $$(x,y,z)=(\rho\sin\phi\cos\theta,\rho\sin\phi\sin\theta,\rho\cos\phi)$$
@@ -1019,9 +1017,9 @@ To convert Cartesian to spherical coordinates, we use the relations
 \end{align*}
 
 \subsubsection{Spherical Volumes}
-The basic unit of spherical area is an solid bounded by lateral arcs with length $\rho\sin\phi\Delta\theta$, by radial lines separated by $\Delta\rho$, and a vertically-tending arc with height $\rho\Delta\phi$.
+The basic unit of spherical area is a spherical wedge, a solid bounded between two spherical coordinates. The ''length`` of the (interior) arc is $\rho\sin\phi\Delta\theta$, with the ''width`` of the solid being bound by radial lines separated by $\Delta\rho$, and the ''height`` being from an arc with length $\rho\Delta\phi$.
 
-This produces a volume with dimensions $\Delta{V}=\rho^2\sin\phi\cdot\Delta\theta\Delta\phi\Delta\rho$, which in the limit tends towards
+This produces a volume with approximate dimensions $\Delta{V}=\rho^2\sin\phi\cdot\Delta\theta\Delta\phi\Delta\rho$, which in the limit tends towards
 $$dV=\rho^2\sin\phi\,d\rho\,d\theta\,d\phi$$
 
 \section{Appendix}
