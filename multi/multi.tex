@@ -1022,6 +1022,44 @@ The basic unit of spherical area is a spherical wedge, a solid bounded between t
 This produces a volume with approximate dimensions $\Delta{V}=\rho^2\sin\phi\cdot\Delta\theta\Delta\phi\Delta\rho$, which in the limit tends towards
 $$dV=\rho^2\sin\phi\,d\rho\,d\theta\,d\phi$$
 
+\subsection{The Jacobian}
+
+\subsubsection{Transformations and Projections}
+A transformation function $f: \mathbb{R}^n\to\mathbb{R}^n$ can be considered a change of coordinate systems within $n$-space. The pre-image refers to the points in the domain, and the image refers to the points in the range. It is helpful to conceptualize such functions as operating on vectors corresponding to points.\\
+A projection function $f: \mathbb{R}^n\to\mathbb{R}^{n-1}$ can be considered flattening of a points from a higher dimension onto a lower one.
+
+\subsubsection{Homeomorphisms}
+A homeomorphism is a function which is continuous and has a continuous inverse.
+
+\subsubsection{Definition of the Jacobian}
+For a transformation $\vect{T}: \langle u,v \rangle\to\langle x,y \rangle$, with functions $x(u,v)$, $y(u,v)$ being differentiable homeomorphisms, an infinitesimal square area $dA\cdot\hat{k}$ in $uv$ maps to an area approximated by a parallelogram bounded by the vectors $\langle x_u, y_u\rangle\Delta u$, $\langle x_v, y_v\rangle\Delta v$ (for a rectangle in $u,v$ beginning at $(h,k)$, the vectors represent the displacements to the image of adjacent corners $(h+\Delta h,k)$, $(h,k+\Delta k)$).
+
+The area of this parallelogram can be found using the cross-product (appending a $0 \hat{k}$ component to these vectors):
+\begin{align*}
+\Delta u \langle x_u, y_u,0\rangle\times \Delta v \langle x_v, y_v, 0\rangle &=
+\begin{vmatrix}
+\hat{t} & \hat{j} & \hat{k}\\
+x_u & y_u & 0 \\
+x_v & y_v & 0
+\end{vmatrix}\Delta u\Delta v \\ &=
+\begin{vmatrix}
+    x_u & y_u \\
+    x_v & y_v
+\end{vmatrix}\Delta u \Delta v\,\hat{k}
+\end{align*}
+From this, we define the Jacobian to be the scale factor
+$$\frac{\partial(x,y)}{\partial(u,v)}=\left|\begin{vmatrix}
+    x_u & x_v\\
+    y_u & y_v
+\end{vmatrix}\right|$$
+the absolute value of the determinant of the (transposed\footnote{Note that the determinant of a transposed matrix is the same as the original.}) cross-product matrix.
+
+\subsubsection{Applying the Jacobian}
+To apply the Jacobian, we will often need to find the inverse transformation $T^{-1}: (x,y)\to(u,v)$, which we obtain by solving the system $x=x(u,v)$, $y=y(u,v)$ for $u$ and $v$. Note that when both are well-defined, the Jacobian of the inverse transformation is the reciprocal of the Jacobian of the transformation: $$\frac{\partial(u,v)}{\partial(x,y)}=\frac{1}{\frac{\partial(x,y)}{\partial(u,v)}}$$
+
+An integral in $xy$ over $R$ can be rewritten as an integral of $uv$ over $S$ (where $T$ maps $S$ to $R$ using functions $x(u,v)$, $y(u,v)$), scaled by the Jacobian.
+$$\mathop{\int\int}_Rf(x,y)\,dx\,dy=\mathop{\int\int}_Sf(x(u,v), y(u,v))\frac{\partial(x,y)}{\partial(u,v)}\,du\,dv$$
+
 \section{Appendix}
 \subsection{Cartesian Products} \label{set-multiplication}
 For sets $A, B$, their Cartesian product is $$A \times B = \left\{ (a,b) | a \in A, b \in B\right\}$$
