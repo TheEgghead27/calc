@@ -1060,6 +1060,50 @@ To apply the Jacobian, we will often need to find the inverse transformation $T^
 An integral in $xy$ over $R$ can be rewritten as an integral of $uv$ over $S$ (where $T$ maps $S$ to $R$ using functions $x(u,v)$, $y(u,v)$), scaled by the Jacobian.
 $$\mathop{\int\int}_Rf(x,y)\,dx\,dy=\mathop{\int\int}_Sf(x(u,v), y(u,v))\frac{\partial(x,y)}{\partial(u,v)}\,du\,dv$$
 
+\section{Vector Calculus}
+\subsection{Line Integrals of Scalar Functions}
+We define the integral of a scalar function $f(x,y)$ along a path $C$ in the $xy$-plane (the "line") as
+$$\int_C f(x,y)\,ds = \lim_{\substack{n\to\infty\\\max \Delta{s}\to0}}f(x_i^*,y_i^*)\,\Delta{s}_i$$
+where $ds$ is an infinitesimal arclength element, and $\Delta{s}$ is a small arc length element.\footnote{In some notations, $\oint$ is used for all line integrals, but we choose to reserve this symbol for strictly loop (closed line) integrals.} In essence, we are integrating for the "area" of the "curtain" bounded by $z=0$ and $z=f(x,y)$ along the curve $C$.
+
+For a smoothly parameterized curve $C=\langle x(t),y(t)\rangle$ from $a\le t \le b$,
+\[
+    \Delta{s}=\sqrt{(\Delta{x})^2+(\Delta y)^2} = \sqrt{\left(\frac{\Delta{x}}{\Delta t}\right)^2+\left(\frac{\Delta{y}}{\Delta t}\right)^2}\,\Delta t
+\]
+and in the limit,\footnote{Note that for $x=t$, $x'(t) = 1$, lending itself to the familiar arclength integral formula for a $f:\mathbb{R}\to\mathbb{R}$.} \[ds = \sqrt{\left(\frac{dx}{dt}\right)^2+\left(\frac{dy}{dt}\right)^2}\,dt = \sqrt{x'(t)^2 + y'(t)^2}\,dt\]
+$$\int_Cf(x,y)\,ds=\int_a^bf(x(t),y(t))\sqrt{x'(t)^2 + y'(t)^2}\,dt$$
+Analogous line integrals in space exist for $f: \mathbb{R}^3\to\mathbb{R}$ functions.
+
+\subsubsection{Line Integrals with Respect to $dx$ and $dy$}
+Considering a smoothly parameterized curve $C=\langle x(t),y(t)\rangle$ from $a\le t \le b$, the signed area of the curtain's projection onto the $x$ or $y$ axis can be written as
+\begin{align*}
+    \int_Cf(x,y)\,dx&=\int_a^bf(x,y)\,x'(t)\,dt\\
+    \int_Cf(x,y)\,dy&=\int_a^bf(x,y)\,y'(t)\,dt
+\end{align*}
+Note that $x'(t)\,dt=\frac{dx}{dt}dt$, and the same goes for $y$. Further, the orientation of $C$ matters, as we account whether the curve is moving in the positive or negative $x$/$y$ direction using the derivative's sign.
+
+When these two integrals show up together, we use the following notation:
+$$\int_Cf(x,y)\,dx+\int_Cg(x,y)\,dy=\int_cf(x,y)\,dx+g(x,y)\,dy$$
+This represents an implicit dot product of $\langle f(x,y),\,g(x,y)\rangle\cdot\langle dx,\,dy\rangle=\langle f(x,y),\,g(x,y)\rangle\cdot\langle \frac{dx}{dt},\,\frac{dy}{dt}\rangle\,dt$.
+\subsubsection{Properties of Line Integrals}
+\begin{itemize}
+    \item The value of a line integral in $ds$ is independent of the parameterization used. A corollary is that a line integral along a curve $C$, or the same curve in the opposite direction $-C$, produce the same value. $\int_C f(x,y)\,ds=\int_{-C}f(x,y)\,ds$
+    \begin{itemize}
+        \item For line integrals on $dx$ and $dy$, this is not true, $\int_Cf(x,y)\,dx=-\int_{-C}f(x,y)\,dx$ and the same applies for $y$.
+    \end{itemize}
+    \item Like other integrals, a line integral can have its domain of integration be split into multiple (hopefully easier to integrate) sub-curves and added together.
+\end{itemize}
+
+\subsection{Vector Fields}
+A vector field is a collection of vectors corresponding to each point on a plane. We graphically represent a sample of the vector field (such as on the lattice points, which have integer coordinates) with vectors on a plane (potentially scaled to fit).
+\subsubsection{Work Done by a Vector Field}
+In the model of physics, any movement of a particle along a curve that has a parallel component with elements of a vector field has work done on it, representing how the gradient "helps" (in the positive direction) or "hinders" (in the negative direction) the particle's motion. (Note that a particle moving on a curve tangent to the vectors in a vector field has 0 work done.) We take the integral of the dot product of field's "force" with the infinitesimal path vector element ($d\vect{s}$, or using the unit tangent $\vect{T}\,ds$).
+
+$$\int_C\vect{F}\cdot d\vect{s}=\int_C\vect{F}\cdot d\vect{r}=\int_C\vect{F}\cdot\vect{T}\,\,ds$$
+
+Considering that $\vect{T}=\frac{\vect{r}'(t)}{\left|\vect{r}'(t)\right|}$ and $ds = \left|\vect{r}'(t)\right|\,dt$, the integrals become
+$$\int_C\vect{F}\cdot\vect{r}'(t)\,dt$$
+
 \section{Appendix}
 \subsection{Cartesian Products} \label{set-multiplication}
 For sets $A, B$, their Cartesian product is $$A \times B = \left\{ (a,b) | a \in A, b \in B\right\}$$
