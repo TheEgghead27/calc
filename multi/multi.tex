@@ -4,6 +4,8 @@
 \usepackage{graphicx} % Required for inserting images
 \usepackage[hidelinks]{hyperref}
 \usepackage{pgfplots}
+\usepackage{titling}
+\usepackage{esint}
 \pgfplotsset{width=3in,compat=1.9}
 
 
@@ -11,6 +13,9 @@
 
 \DeclareMathOperator{\comp}{comp}
 \DeclareMathOperator{\proj}{proj}
+
+\DeclareMathOperator{\curl}{curl}
+\DeclareMathOperator{\divergence}{div}
 
 \newcommand{\vect}[1]{\ensuremath{\overrightarrow{#1}}}
 \newcommand{\magnitude}[1]{\ensuremath{\lVert #1 \rVert}}
@@ -1074,7 +1079,7 @@ and in the limit,\footnote{Note that for $x=t$, $x'(t) = 1$, lending itself to t
 $$\int_Cf(x,y)\,ds=\int_a^bf(x(t),y(t))\sqrt{x'(t)^2 + y'(t)^2}\,dt$$
 Analogous line integrals in space exist for $f: \mathbb{R}^3\to\mathbb{R}$ functions.
 
-\subsubsection{Line Integrals with Respect to $dx$ and $dy$}
+\subsubsection{Line Integrals with Respect to \texorpdfstring{$dx$ and $dy$}{dx and dy}}
 Considering a smoothly parameterized curve $C=\langle x(t),y(t)\rangle$ from $a\le t \le b$, the signed area of the curtain's projection onto the $x$ or $y$ axis can be written as
 \begin{align*}
     \int_Cf(x,y)\,dx&=\int_a^bf(x,y)\,x'(t)\,dt\\
@@ -1084,7 +1089,7 @@ Note that $x'(t)\,dt=\frac{dx}{dt}dt$, and the same goes for $y$. Further, the o
 
 When these two integrals show up together, we use the following notation:
 $$\int_Cf(x,y)\,dx+\int_Cg(x,y)\,dy=\int_cf(x,y)\,dx+g(x,y)\,dy$$
-This represents an implicit dot product of $\langle f(x,y),\,g(x,y)\rangle\cdot\langle dx,\,dy\rangle=\langle f(x,y),\,g(x,y)\rangle\cdot\langle \frac{dx}{dt},\,\frac{dy}{dt}\rangle\,dt$.
+This represents a dot product of $\langle f(x,y),\,g(x,y)\rangle\cdot\langle dx,\,dy\rangle=\langle f(x,y),\,g(x,y)\rangle\cdot\langle \frac{dx}{dt},\,\frac{dy}{dt}\rangle\,dt$.
 \subsubsection{Properties of Line Integrals}
 \begin{itemize}
     \item The value of a line integral in $ds$ is independent of the parameterization used. A corollary is that a line integral along a curve $C$, or the same curve in the opposite direction $-C$, produce the same value. $\int_C f(x,y)\,ds=\int_{-C}f(x,y)\,ds$
@@ -1103,12 +1108,122 @@ $$\int_C\vect{F}\cdot d\vect{s}=\int_C\vect{F}\cdot d\vect{r}=\int_C\vect{F}\cdo
 
 Considering that $\vect{T}=\frac{\vect{r}'(t)}{\left|\vect{r}'(t)\right|}$ and $ds = \left|\vect{r}'(t)\right|\,dt$, the integrals become
 $$\int_C\vect{F}\cdot\vect{r}'(t)\,dt$$
+So long as orientation (e.g. clockwise, counter-clockwise) is preserved, the value of $\int_C\vect{F}\cdot\vect{r}'(t)\,dt$ will be independent of the choice of parameterization of $C$.
+
+For a vector field $\vect{F}(x,y)\langle f(x,y), g(x,y) \rangle$, and curve $C: \vect{r}(t)=\langle x(t),y(t) \rangle$ from $t_1$ to $t_2$, expanding the dot product produces
+\begin{align*}
+    \int_C\vect{F} \cdot \vect{r}&=\int_{t_1}^{t_2} f(x(t),y(t))\,x'(t)\,dt+\int_{t_1}^{t_2}g(x(t),y(t))\,y'(t)\,dt\\
+    &=\int_C f(x,y)\,dx+g(x,y)\,dy
+\end{align*}
+
+\subsubsection{Conservative Vector Fields}
+If $\vect{F}=\vect{\nabla}f$, then $\vect{F}$ is called a conservative vector field, and $f$ is called the potential of $\vect{F}$.
+
+\paragraph{FTC for Line Integrals (Path Independence)}
+If $f(x,y)$ is a differentiable function, and $\vect{r}(t)$ is a simple curve in the plane, then
+\begin{align*}
+    \int_C\vect{F}\cdot d\vect{r} &= \int_a^b\left\langle\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}\right\rangle\cdot\langle x'(t),y'(t) \rangle\,dt\\
+    &= \int_a^b\left(\frac{\partial f}{\partial x}\frac{\partial x}{\partial t} + \frac{\partial f}{\partial y}\frac{\partial y}{\partial t}\right)\,dt\\
+    &=\int_a^b \frac{df}{dt}\,dt\\
+    &= f(x(b),y(b)) - f(x(a),y(a))\\
+    &= f(\vect{r}(b)) - f(\vect{r}(a))
+\end{align*}
+Thus,
+\begin{itemize}
+    \item line integrals of conservative vector fields are path independent; for curves $C_1,C_2$ with identical start and end points: $\int_{C_1}\vect{\nabla}f\cdot d\vect{r} = \int_{C_2}\vect{\nabla}f\cdot d\vect{r}$
+    \item line integrals of conservative vector fields over simple closed loops are zero: $\oint \vect{\nabla}f\cdot d\vect{r} = 0$
+\end{itemize}
+
+\paragraph{The Path Independence Test for Conservative Vector Fields}
+If $\vect{F}(x,y)=\langle P(x,y), Q(x,y) \rangle$ is a vector field defined on an open, connected set $D$ and if $\vect{F}$ is path independent on D, then $\vect{F}$ is conservative on $D$. This can be proven by defining a function $f(x,y)$ with a fixed origin point $(a,b)$ that also has the following properties (based on path independence):
+$$f(x,y) = \int_{(a,b)}^{(x,y)}\vect{F}\cdot d\vect{r} = \int_{(a,b)}^{(c,y)}\vect{F}\cdot d\vect{r} + \int_{(c,y)}^{(x,y)}\vect{F}\cdot d\vect{r}$$
+We can then warrant that
+\begin{align*}
+    \frac{\partial f}{\partial x} &= \frac{\partial}{\partial x}\left( \int_{(a,b)}^{(c,y)}\vect{F}\cdot d\vect{r} + \int_{(c,y)}^{(x,y)}\vect{F}\cdot d\vect{r} \right)\\
+    &= \frac{\partial}{\partial x} \left(\int_{(c,y)}^{(x,y)}\vect{F}\cdot d\vect{r} \right) = \frac{\partial}{\partial x} \left(\int_{(c,y)}^{(x,y)}P(x,y)\,dx + Q(x,y)\,dy \right)\\
+    &= \frac{\partial}{\partial x}\int_{(c,y)}^{(x,y)}P(x,y)\,dx\\&= P(x,y)
+\end{align*}
+because $a,b,c,y$ are all fixed with respect to $x$. By similar reasoning, we can show that $\frac{\partial f}{\partial y} = Q(x,y)$, and so $\vect{F} = \vect{\nabla} f$.
+
+\paragraph{The Component Test for Conservative Vector Fields}
+If $\vect{F} = \langle P(x,y),Q(x,y)\rangle$ is a vector field on a simply connected closed region $D$ and if $P(x,y), Q(x,y)$ have continuous partials (the conditions of Green's Theorem), and if $\frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x}$ then $\vect{F}$ is conservative. This is based on the converse of Clairaut's Theorem, or derived from Green's Theorem showing path independence.
+
+\subsubsection{Green's Theorem}
+Let $C$ be a piecewise smooth (i.e. has finite corners), positively oriented (i.e. counterclockwise), simple, closed curve  and let $D$ be the region enclosed by $C$. If $P(x,y),Q(x,y)$ have continuous partials on an open region containing $D$ (and the boundary, so that we avoid one-sided derivatives), then
+$$\int_C P(x,y)\,dx+Q(x,y)\,dy=\iint_D\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\,dA$$
+The proof is trivial for conservative vector fields. For a type I and II region, bounded by $y=g_1(x)$ and $y=g_2(x)$ ($x\in[a,b]$) as a type I region and $x=h_1(y)$ and $x=h_2(y)$ ($y\in[c,d]$) as a type II region:\footnote{For a purely type I or II region, one of these function pairs reduce to constants.}
+\begin{align*}
+    \iint -\frac{\partial P}{\partial y}\,dA &= -\int_a^b\int_{g_1(x)}^{g_2(x)}\frac{\partial P}{\partial y}\,dy\,dx\\
+    &=-\int_a^bP(x,g_2(x))-P(x,g_1(x))\,dx
+\end{align*}
+we can parameterize the boundary of the type I region as $C_1:\langle t, g_1(t)\rangle$, $C_2:\langle t, g_2(t)\rangle$, any additional sides of the region are either nonexistent (in the case of a type I and II region) or irrelevant ($dx=0$ for $x=c$ bounding a type I region).
+\begin{align*}
+    \oint_CP\,dx &= \int_{C_1}P\,dx + \int_{C_2}P\,dx\\
+    &=\int_a^bP(t,g_1(t))\,dt+\int_b^aP(t,g_2(t))\,dt\\
+    &=-\int_a^bP(x,g_2(x))-P(x,g_1(x))\,dx
+\end{align*}
+By similar reasoning
+\begin{align*}
+    \iint_D\frac{\partial Q}{\partial x}\,dA &= \int_c^d\int_{h_1(y)}^{h_2(y)}\frac{\partial Q}{\partial x}\,dx\,dy\\
+    &= \int_c^dQ(h_2(y),y)-Q(h_1(y),y)\,dy\\
+    &= \int_d^cQ(h_1(t),t)\,dt+\int_c^dQ(h_2(t),t)\,dt\\
+    &=\oint_CQ\,dy
+\end{align*}
+
+\paragraph{A note on notation}
+For a simple closed curve $C$ that is oriented counterclockwise, and is the boundary of a region $D$, the following notations are equivalent:
+$$\int_C=\oint_C=\ointctrclockwise_C=\int_{\partial D}$$
+
+\subsection{Del: Curl and Divergence}
+The del operator $\nabla$ (nabla) in $\mathbb{R}^3$  is
+$$\vect{\nabla}=\left\langle \frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z}\right\rangle$$
+
+\subsubsection{Curl}
+The curl of a vector field $\vect{F} = \langle P,Q,R \rangle$ is
+$$\curl \vect{F} = \vect{\nabla}\times\vect{F}=\left\langle\frac{\partial R}{\partial y}-\frac{\partial Q}{\partial z},\frac{\partial P}{\partial z}-\frac{\partial R}{\partial x}, \frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right\rangle$$
+Extending a $2-$vector field to $3-$space by defining $\vect{F}=\langle P, Q, 0 \rangle$, we find that the curl for a $2-$vector field is always
+$$\curl \vect{F} = \left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)\hat{k}$$
+and that a conservative vector field is irrotational ($\curl \vect{F} = 0$).
+
+The curl can be conceptualized as a measure of vorticity/rotational tendency/circulation density, with each component in $\hat{i}, \hat{j}, \hat{k}$ representing the tendency of the vector field to cause rotation of a "paddle" on the $yz$, $xz$, or $xy$ planes respectively.
+
+We can define the circulation density of $\vect{F}$ at $(a,b)$ to be the limit of the work done on an infinitesimal loop around the point $(a,b)$ over its area. We choose the square $C$ of side length $2h$ centered at $(a,b)$ in the $xy$ plane, but alternative choices, like circles, should produce similar results.
+$$\frac{\int_C \vect{F}\cdot d\vect{r}}{(2h)^2}$$
+Using the parameterizations $\langle a-t, b+h \rangle$, $\langle a+h,b+t \rangle$, $\langle a+t, b+h \rangle$, and $\langle a-h,b-t\rangle$ for the four sides of the square, we can expand the former integral into the form
+\begin{align*}
+    \frac{\int_C \vect{F}\cdot d\vect{r}}{(2h)^2}=&\frac{1}{(2h)^2}\left[\int_{-h}^h-P(a-t,b+h)\,dt + \int_{-h}^hP(a+t,b-h)\,dt\right] +\\
+    &\frac{1}{(2h)^2}\left[\int_{-h}^hQ(a+h,b+t)\,dt-\int_{-h}^hQ(a+h,b-t)\,dt\right]
+\end{align*}
+From the Mean Value Theorem for integrals, there must exist $t_1,t_2\in(a-h,a+h)$ and $t_3,t_4\in(b-h,b+h)$ such that
+\begin{align*}
+    \frac{\int_{-h}^h-P(a-t,b+h)\,dt}{2h}&=-P(t_1,b+h)\\
+    \frac{\int_{-h}^h P(a+t,b-h)\,dt}{2h}&= P(t_2,b-h)\\
+    \frac{\int_{-h}^h Q(a-h,b-t)\,dt}{2h}&=Q(a-h,t_3)\\
+    \frac{\int_{-h}^h Q(a+h,b+t)\,dt}{2h}&=Q(a+h,t_4)
+\end{align*}
+$$\frac{\int_C \vect{F}\cdot d\vect{r}}{(2h)^2}=\frac{1}{2h}\left(Q(a+h,t_4)-Q(a-h,t_3)\right)-\frac{1}{2h}\left(P(t_1,b+h) - P(t_2,b-h)\right)$$
+and taking the limit as $h\to0$ (which implies $t_1,t_2 \to a$, $t_3,t_4\to b$), we obtain
+$$\lim_{h\to0}\frac{\int_C \vect{F}\cdot d\vect{r}}{(2h)^2} = \frac{\partial Q}{\partial x}\Bigr|_{(a,b)} - \frac{\partial P}{\partial y}\Bigr|_{(a,b)} = \curl{\vect{F}}(a,b)\cdot\hat{k}$$
+By similar reasoning, we can justify the $\hat{i},\hat{j}$ components of the curl.
+
+\paragraph{Relation to Green's Theorem}
+Green's Theorem claims that integrating $\iint_D\curl{\vect{F}}\cdot\hat{k}\,dA$ is equal to the line integral on the boundary of $D$. This can be justified by splitting the region into infinitesimal regions bounded by tiny loops. The curls on the points (tiny loops) interior to the region cancel out with their neighbors, while the curls on the boundary points' loops do not fully cancel, adding up into the elements of the line integral.
+
+\subsubsection{Divergence}
+If $\vect{F}(x,y,z)=\langle P(x,y,z), Q(x,y,z), R(x,y,z)$,
+$$\divergence \vect{F} = \vect{\nabla}\cdot\vect{F}= \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}$$
+which represents the magnitude of vector "creation"/"destruction".
 
 \section{Appendix}
 \subsection{Cartesian Products} \label{set-multiplication}
 For sets $A, B$, their Cartesian product is $$A \times B = \left\{ (a,b) | a \in A, b \in B\right\}$$
 This produces a set of (ordered) 2-tuples/vectors.
 The ``$n$-ary Cartesian product" generalizes this process to produce $n$-tuples/vectors, leading to a definition for ``exponentiating" sets, as in $\mathbb{R}^n$.
+
+\subsection{Curves}
+ A\textbf{simple} curve has no cusps (has continuous derivatives) and does not intersect itself.
+
+A \textbf{closed} curve bounds a region (for any starting point, a parameterization of the curve would end at itself).
 
 \subsection{Regions} \label{regions}
 A \textbf{region} $D$ in $\mathbb{R}^2$ is said to be bounded if it can be enclosed (or contained) in a circle (or other figure) with finite radius.\footnote{Note that a region in $\mathbb{R}$ is more familiarly known as an interval.}\\
@@ -1118,7 +1233,9 @@ A point $P$ is:
     \item \textbf{outside} (exterior to) $D$ if there exists a neighborhood of $P$ that consists of only points $\notin D$.
     \item \textbf{on the boundary} of $D$ if every neighborhood of $P$ contains points inside and outside of $D$.
 \end{itemize}
-A region is closed if it contains all of its boundary points.
+A region is \textbf{closed} if it contains all of its boundary points and \textbf{open} if it contains none of its boundary points.\footnote{In other words, for all points in an open set, there exists a circle surrounding the point that is wholly within the region.}
+
+A set in $\mathbb{R}^2$ is \textbf{connected} if there exists a path connecting any two points within the set via a path inside said set. Such a region is \textbf{simply connected} if there are no holes within said set.
 
 \subsubsection{Type I and II Regions}
 A Type I region is an $\mathbb{R}^2$ region bounded between two (continuous) curves $y=g_1(x)$ and $y=g_2(x)$:
@@ -1133,8 +1250,7 @@ Some regions can be both Types I and II.
 A Type I solid region is a $\mathbb{R}^3$ region bounded between two (continuous) surfaces $z=g_1(x,y)$ and $z=g_2(x,y)$ that can be projected onto an $xy$-plane region $D$:
 $$E_I=\left\{(x,y,z)|(x,y)\in D, g_1(x,y)\le z \le g_2(x,y)\right\}$$
 
-Type II and III are analogous but with plane projections on the $xy$ and $yz$-planes.\footnote{We do not usually care what the specific name is, but the textbook uses the following convention}
-
+Type II and III are analogous but with plane projections on the $xy$ and $yz$-planes.\footnote{We do not usually care what the specific name is, but the textbook uses the following convention.}
 \begin{align*}
 E_{II}=\left\{(x,y,z)|(y,z)\in D, h_1(y,z)\le x \le h_2(y,z)\right\}\\
 E_{III}=\left\{(x,y,z)|(x,z)\in D, i_1(x,z)\le y \le i_2(x,z)\right\}
