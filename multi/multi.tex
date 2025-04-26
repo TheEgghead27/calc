@@ -1214,6 +1214,17 @@ If $\vect{F}(x,y,z)=\langle P(x,y,z), Q(x,y,z), R(x,y,z)$,
 $$\divergence \vect{F} = \vect{\nabla}\cdot\vect{F}= \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}$$
 which represents the magnitude of vector "creation"/"destruction".
 
+\paragraph{Relation to Green's Theorem}
+If, instead of integrating the field vectors tangent to the curve $C$ with parameterization $\vect{r}(t) = \langle x(t), y(t)\rangle$ (as we use with the curl form of Green's Theorem), we integrate the field vectors normal and outward to $C$, we find the normal unit vectors to be
+$$\vect{n}(t) = \frac{1}{|r'(t)|}\left\langle y'(t), -x'(t)\right\rangle$$ and apply Green's Theorem as follows:
+\begin{align*}
+    \oint_C \vect{F}\cdot\vect{n}\,ds&=\int_a^b \vect{F}\cdot\vect{n}\,|r'(t)|\,dt\\
+    &=\int_a^b P(x,y)(y'(t))+Q(x,y)(-x'(t))\,dt\\
+    &=\int_a^b P(x,y)\,dy-Q(x,y)\,dx\\
+    &=\iint_D \frac{\partial P}{\partial x} --\frac{\partial Q}{\partial x}\,dA\\
+    &=\iint_D \divergence\vect{F}\,dA
+\end{align*}
+
 \section{Appendix}
 \subsection{Cartesian Products} \label{set-multiplication}
 For sets $A, B$, their Cartesian product is $$A \times B = \left\{ (a,b) | a \in A, b \in B\right\}$$
