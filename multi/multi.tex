@@ -1065,7 +1065,7 @@ To apply the Jacobian, we will often need to find the inverse transformation $T^
 An integral in $xy$ over $R$ can be rewritten as an integral of $uv$ over $S$ (where $T$ maps $S$ to $R$ using functions $x(u,v)$, $y(u,v)$), scaled by the Jacobian.
 $$\mathop{\int\int}_Rf(x,y)\,dx\,dy=\mathop{\int\int}_Sf(x(u,v), y(u,v))\frac{\partial(x,y)}{\partial(u,v)}\,du\,dv$$
 
-\section{Vector Calculus}
+\section{Line Integrals}
 \subsection{Line Integrals of Scalar Functions}
 We define the integral of a scalar function $f(x,y)$ along a path $C$ in the $xy$-plane (the "line") as
 $$\int_C f(x,y)\,ds = \lim_{\substack{n\to\infty\\\max \Delta{s}\to0}}f(x_i^*,y_i^*)\,\Delta{s}_i$$
@@ -1225,6 +1225,59 @@ $$\vect{n}(t) = \frac{1}{|r'(t)|}\left\langle y'(t), -x'(t)\right\rangle$$ and a
     &=\iint_D \divergence\vect{F}\,dA
 \end{align*}
 
+\section{Surface Integrals}
+\subsection{Parametric Surfaces}
+A parametric representation of a surface in space is a function $\vect{R}:\mathbb{R}^2\to\mathbb{R}^3$, mapping pairs of $u,v$ coordinates to vectors representing points.
+$$\vect{r}(u,v)=\left\langle x(u,v).y(u,v), z(u,v) \right\rangle$$
+We will work with differentiable parametric surfaces, which will be able to accept tangent planes at all points without gaps.
+
+Parameterizations are not unique: there are many possible parameterizations for a single curve.
+
+\subsubsection{Trivial Parameterization}
+For a surface defined by $z=f(x,y)$, the trivial parameterization
+$$\vect{r}(u,v)=\left\langle u,v,f(u,v) \right\rangle$$
+is a possible parameterization, but maybe not always the most useful.
+
+\subsubsection{Solids of Revolution}
+For a solid of revolution of a function $f(x)$ about the $x$-axis from $a\le x\le b$, we can parameterize it as
+$$\langle u, f(u)\cos v, f(u) \sin v\rangle$$
+with $a \le u=x \le b$, $v$ restricted as needed to avoid redundant points on the surface.
+
+\subsubsection{Grid Lines}
+A grid line of a parametric surface is a curve obtained by fixing one of the variables, and letting the other variable vary. Instance, $\vect{r}(u,c)$, with $c$ being a constant in the $v$ domain, produces a grid line.
+
+\subsection{Tangent Planes to a Parametric Surface}
+Like how we take derivatives $f_x$ and $f_y$ of a surface $z=f(x,y)$ to represent vectors (askew to the $x$ and $y$ axes) on the tangent plane at that point, we take the derivatives $\vect{r_u}$ and $\vect{r_v}$ to represent vectors (approximating the grid lines at that point and) on the tangent plane at that point, then cross them to get a normal to the tangent plane. Which normal, $\vect{r_u}\times\vect{r_v}$ or $\vect{r_v}\times\vect{r_u}$, is used depends on the orientation of the surface, which is defined by convention.\footnote{For surfaces given by $z=f(x,y)$, we define $w=z-f(x,y)$ and let $\vect{\nabla}$ be the normal of choice.}
+
+\paragraph{Trivial Parameterization Normals}
+$$\vect{r_u}\times\vect{r_v}=\left\langle-\frac{\partial f}{\partial x},-\frac{\partial f}{\partial y}, 1\right\rangle$$
+Compare this to the normal vector we have used in the past for $z=f(x,y)$ in section \ref{partials-to-tangent}.
+
+\subsection{Surface Area Integrals}
+For a smooth surface, the surface's area near a given point $\vect{r}(u,v)$ is approximately the area of the parallelogram bound by the point and its nearby neighbors $\vect{r}(u+,v+\Delta v), \vect{r}(u+\Delta u, v)$. This can be approximated with the cross product of the tangent vectors, scaled.\footnote{It may be helpful to think of the grid line tangents as $\frac{\partial \vect{r}}{\partial u}$ and $\frac{\partial \vect{r}}{\partial v}$, and the $\Delta u,\Delta v$ as scaling those to fit. Also note that we assume the cross product is not $0$ (an ill-defined area).}
+$$\Delta S \approx \left|\vect{r_u}\times\vect{r_v}\right|\Delta u\Delta v$$
+Taking this approximation to the limit, and integrating over the entire domain $D$ in $u,v$, we get
+$$S = \iint_DdS=\iint_{(u,v)\in D}\left|\vect{r_u}\times\vect{r_v}\right|\,du\,dv=\iint_{(u,v)\in D}\left|\vect{r_u}\times\vect{r_v}\right|\,dv\,du$$
+
+\subsection{Surface Integrals of Scalar Functions}
+To integrate a function $w=f(x,y,z)$ ($f:\mathbb{R}^3\to\mathbb{R}$) over a region in space parameterized by $\vect{r}(u,v)=\langle x(u,v), y(u,v), z(u,v) \rangle$ for $u,v \in D$ (a finite domain), we can take a surface integral
+$$\iint_{(u,v)\in D} f(x,y,z)\,dS=\iint_{(u,v)\in D}f(x(u,v),y(u,v),z(u,v))\left|\vect{r_u}\times\vect{r_v}\right|\,du\,dv$$
+This can be conceptualized as summing elements of infinitesimal surface area multiplied by a "height"/"temperature"/"charge" at each point in space. Alternatively, it could be visualized as finding the volume of a thick crop of perfectly straight hairs/hedgehog quills with lengths given by $f(x,y,z)$.
+
+\subsubsection{Special Cases}
+\begin{itemize}
+    \item The case of $f(x,y,z)=1$ is a surface area integral.
+    \item If a trivially-parameterized surface is used, $dS$ resolves to $\sqrt{1+\left(f_x\right)^2+\left(f_y\right)^2}$, which is analogous to the $\sqrt{1+(f'(x))^2}$ term from arclength integrals.
+\end{itemize}
+
+\subsection{Surface Integrals of Vector-Valued Functions}
+Let $S$ be an orientable surface with orientation given by $\hat{n}$, and $$\vect{F}(x,y,z)=\left\langle P(x,y,z),Q(x,y,z),R(x,y,z)\right\rangle$$ be a continuous vector field defined $\forall (x,y,z)\in S$. The surface integral (or flux) of $\vect{F}$ on $S$ is
+$$\iint_S\vect{F}\cdot\vect{n}\,dS=\iint_S\vect{F}\cdot d\vect{S}$$
+Because the normal vector is one of
+$$\hat{n}=\pm\frac{\vect{r_u}\times\vect{r_v}}{\left|\vect{r_u}\times\vect{r_v}\right|}$$
+we can simplify
+$$\hat{n}\,dS=\pm\frac{\vect{r_u}\times\vect{r_v}}{\left|\vect{r_u}\times\vect{r_v}\right|}\left|\vect{r_u}\times\vect{r_v}\right|\,dA=\pm\left(\vect{r_u}\times\vect{r_v}\right)\,dA$$
+
 \section{Appendix}
 \subsection{Cartesian Products} \label{set-multiplication}
 For sets $A, B$, their Cartesian product is $$A \times B = \left\{ (a,b) | a \in A, b \in B\right\}$$
@@ -1266,5 +1319,8 @@ Type II and III are analogous but with plane projections on the $xy$ and $yz$-pl
 E_{II}=\left\{(x,y,z)|(y,z)\in D, h_1(y,z)\le x \le h_2(y,z)\right\}\\
 E_{III}=\left\{(x,y,z)|(x,z)\in D, i_1(x,z)\le y \le i_2(x,z)\right\}
 \end{align*}
+
+\subsection{Orientable Surfaces}
+If a continuous field of unit normals can be defined for a surface (excluding edges/boundaries), then it is orientable. All non-orientable surfaces contain a Möbius strip (a non-orientable surface that can be constructed by twisting a ribbon and taping the ends together).
 
 \end{document}
