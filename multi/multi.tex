@@ -1278,6 +1278,68 @@ $$\hat{n}=\pm\frac{\vect{r_u}\times\vect{r_v}}{\left|\vect{r_u}\times\vect{r_v}\
 we can simplify
 $$\hat{n}\,dS=\pm\frac{\vect{r_u}\times\vect{r_v}}{\left|\vect{r_u}\times\vect{r_v}\right|}\left|\vect{r_u}\times\vect{r_v}\right|\,dA=\pm\left(\vect{r_u}\times\vect{r_v}\right)\,dA$$
 
+\subsection[Divergence Theorem]{Divergence Theorem\footnote{Also known as Gauss's Theorem, or Ostrogradsky's Theorem.}}
+Given a vector field $\vect{F}=\left\langle P(x,y,z), Q(x,y,z), R(x,y,z) \right\rangle$ that is differentiable on an open region\footnote{We stipulate that the region itself is open so that we do not have to worry about behavior at the boundaries (single-sided limits).} including the closed region $E$, we can say that the flux on the surface $S$ that bounds $E$ is equal to the integral of the divergence within the volume $E$:
+$$\iint_S\vect{F}\cdot\ d\vect{S}=\iiint_E\divergence{\vect{F}}\,dV$$
+We will prove this for a region that can be described as types I, II, and III, with the assumption being that all regions can be subdivided into such chunks, with their integrals then summed to produce the integral of their union. The integral of divergence is
+\begin{align*}
+    \iiint_E\divergence{\vect{F}}\,dV&=\iiint\frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}\,dV \\
+    &= \iiint_E\frac{\partial P}{\partial x}\,dV + \iiint_E\frac{\partial Q}{\partial y}\,dV + \iiint_E\frac{\partial R}{\partial z}\,dV
+\end{align*}
+We will now focus on the last integral, running with the assumption that this is a Type I region, similar arguments can be applied for the other parts of the sum. Choosing $dV=dz\,dA$, where $z=f(x,y)$ for the top portion and $z=g(x,y)$ on the bottom, and each area element $dA$ is in the projection $D$ of the region on the $xy$-plane:
+\begin{align*}
+    \iiint_E\frac{\partial R}{\partial z}\,dV &= \iint_{(x,y)\in D}\int^{f(x,y)}_{g(x,y)}\frac{\partial R}{\partial z}\,dz\,dA\\
+    &=\iint_{(x,y)\in D}R(x,y,f(x,y))-R(x,y,g(x,y))\,dA
+\end{align*}
+We will now show that the flux integral's $z$-component corresponds with this term. The integral of flux is
+\begin{align*}
+    \iint_S\vect{F}\cdot d\vect{S}&=\iint_S\vect{F}\cdot \hat{n}\,dS=\iint_S\left(P(x,y,z)\,\hat{i},Q(x,y,z)\,\hat{j}, R(x,y,z)\,\hat{k}\right)\cdot\hat{n}\,dS\\
+    &=\iint_S P(x,y,z)\,\hat{i}\cdot\hat{n}\,dS + \iint_S Q(x,y,z)\,\hat{j}\cdot\hat{n}\,dS  + \iint_S R(x,y,z)\,\hat{k}\cdot\hat{n}\,dS
+\end{align*}
+Just like before, we will now focus on the last integral, assuming that this is a Type I region. Splitting the surface into two trivially parameterized surfaces $S_1:\vect{r_1}(x,y)=\left\langle x,y, f(x,y) \right\rangle$ and $S_2:\vect{r_2}(x,y)=\left\langle x,y,g(x,y) \right\rangle$, with \textit{outward} normal vectors $\frac{1}{\sqrt{f_x^2+f_y^2+1}}\left\langle -f_x,-f_y,1\right\rangle$ and $\frac{1}{\sqrt{g_x^2+g_y^2+1}}\left\langle g_x,g_y,-1\right\rangle$:
+\begin{align*}
+    \iint_S R \,\hat{k}\cdot\hat{n}\,dS =& \iint_{S_1} R\,\hat{k}\cdot\hat{n}\,dS + \iint_{S_2} R\,\hat{k}\cdot\hat{n}\,dS\\
+    =& \iint_{(x,y)\in D} R\,\hat{k}\cdot\frac{1}{\sqrt{f_x^2+f_y^2+1}}\left\langle -f_x,-f_y,1\right\rangle\sqrt{f_x^2+f_y^2+1}\,dA + \\&\iint_{(x,y)\in D} R\,\hat{k}\cdot\frac{1}{\sqrt{g_x^2+g_y^2+1}}\left\langle g_x,g_y,-1\right\rangle\sqrt{g_x^2+g_y^2+1}\,dA\\
+    =& \iint_{(x,y)\in D} R\,\hat{k}\cdot\left\langle -f_x,-f_y,1\right\rangle\,dA +\iint_{(x,y)\in D} R\,\hat{k}\cdot\left\langle g_x,g_y,-1\right\rangle\,dA\\
+    =& \iint_{(x,y)\in D} R(x,y,f(x,y))\, dA +\iint_{(x,y)\in D} -R(x,y,g(x,y))\,dA\\
+    =& \iint_{(x,y)\in D} R(x,y,f(x,y)) -R(x,y,g(x,y))\,dA
+\end{align*}
+By applying similar arguments to all 3 dimensions, we have shown that the flux through a closed surface is equivalent to the divergence in the volume bounded by the surface.
+
+\subsection{Stokes' Theorem}
+Given a vector field $\vect{F}=\left\langle P(x,y,z), Q(x,y,z), R(x,y,z) \right\rangle$ that is differentiable on an open region including the smooth surface $S$, we can say that the surface integral of the curl on $S$ is equal to the loop integral of $\vect{F}$ along the boundary curve $\partial S = C$:
+$$\iint_S\curl{\vect{F}}\cdot d\vect{S}=\oint_C\vect{F}\cdot d\vect{r}$$
+We assume that $S$ can be given by a function $z=f(x,y)$ (similar arguments apply for $y=g(x,z)$ and $x=h(y,z)$, and by summing we can extend to more general surfaces), the normal vector $\vect{n}$ to $S$ has an upward orientation, $C$ will be oriented counterclockwise to be consistent with $\hat{n}$ (via the right-hand rule), with $C$'s projection onto the $xy$-plane being $D$. We will prove that the loop integral is equivalent to the expansion of the surface integral:
+$$\iint_S\curl{\vect{F}}\cdot d\vect{S}=\iint_D \left\langle\left(\frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z}\right),\left(\frac{\partial P}{\partial z} - \frac{\partial R}{\partial x}\right),\left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right)\right\rangle\cdot d\vect{S}$$
+Since $d\vect{S} = \left\langle -f_x,-f_y, 1\right\rangle$ for a trivially parameterized surface $z=f(x,y)$ with upward orientation, we can expand this dot product to be
+$$\iint_D -\left(\frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z}\right)\frac{\partial z}{\partial x}-\left(\frac{\partial P}{\partial z} - \frac{\partial R}{\partial x}\right)\frac{\partial z}{\partial y}+\left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right)\,dA$$
+For the loop integral, we consider $C: \vect{r}(t)=\left\langle x(t), y(t), f(x(t), y(t)) \right\rangle$ with $a\le t \le b$, and apply the Chain Rule. $C_1: \vect{r}(t)\cdot\langle1,1,0\rangle$, the projection of $C$ onto the $xy$-plane.
+\begin{align*}
+    \oint_C\vect{F}\cdot d\vect{r} =& \int_a^b P\frac{dx}{dt}+Q\frac{dy}{dt}+R\frac{dz}{dt}\,dt\\
+    =& \int_a^b P\frac{dx}{dt}+Q\frac{dy}{dt}+R\left(\frac{\partial z}{\partial x}\frac{dx}{dt}+\frac{\partial z}{\partial y}\frac{dy}{dt}\right)\,dt\\
+    =& \int_a^b \left(P + R\frac{\partial z}{\partial x} \right)\frac{dx}{dt}+\left(Q + R\frac{\partial z}{\partial y}\right)\frac{dy}{dt}\,dt\\
+    =& \oint_{C_1} \left(P + R\frac{\partial z}{\partial x} \right)\,dx+\left(Q + R\frac{\partial z}{\partial y}\right)\,dy
+\end{align*}
+By Green's Theorem, the above expression is equivalent to (keeping the Chain and Product Rules in mind)
+\begin{align*}
+    \iint_D&\frac{\partial}{\partial x}\left(Q + R\frac{\partial z}{\partial y}\right) - \frac{\partial}{\partial y}\left(P + R\frac{\partial z}{\partial x} \right)\,dA\\
+    = \iint_D&\frac{\partial Q}{\partial x} + \frac{\partial Q}{\partial z}\frac{\partial z}{\partial x}+ R\frac{\partial^2z}{\partial x\,\partial y}+\frac{\partial z}{\partial y} \left(\frac{\partial R}{\partial x} + \frac{\partial R}{\partial z}\frac{\partial z}{\partial x}\right) \\-&\frac{\partial P}{\partial y} - \frac{\partial P}{\partial z}\frac{\partial z}{\partial y} - R\frac{\partial^2 z}{\partial y\,\partial x} - \frac{\partial z}{\partial x}\left(\frac{\partial R}{\partial y } + \frac{\partial R}{\partial z}\frac{\partial z}{\partial y}{}\right)\,dA
+\end{align*}
+By Clairaut's Theorem, we can cancel the double partials, and we can still cancel out two more terms that have the same factors, rearranged, with opposite signs.
+\[
+    \iint_D\frac{\partial Q}{\partial x} +\frac{\partial Q}{\partial z}\frac{\partial z}{\partial x} + \frac{\partial z}{\partial y} \frac{\partial R}{\partial x} - \frac{\partial P}{\partial y} -  \frac{\partial P}{\partial z}\frac{\partial z}{\partial y} - \frac{\partial z}{\partial x}\frac{\partial R}{\partial y} \,dA
+\]
+This is the expanded form of the curl integral.
+
+\subsubsection{Implications of Stokes' Theorem}
+Stokes' Theorem implies that any two surfaces $S_1,S_2$ with the same boundary curve $C$ will have the same result for $$\iint_{S_1}\curl\vect{F}\cdot d\vect{S} = \oint_C\vect{F}\cdot d\vect{r} = \iint_{S_2}\curl\vect{F}\cdot d\vect{S}$$
+As a corollary of this, any closed surface $S$ with an orientation (outward/inward) can be subdivided into two surfaces $S_1,S_2$ with the same boundary curve $C$ and normal vectors in opposite directions, so
+\begin{align*}
+    \oiint_S \curl\vect{F}\cdot d\vect{S} =& \iint_{S_1}\curl\vect{F}\cdot\hat{n}\,dS + \iint_{S_2}\curl\vect{F}\cdot-\hat{n}\,dS \\=& \oint_C\vect{F}\cdot d\vect{r} - \oint_C\vect{F}\cdot d\vect{r} = 0
+\end{align*}
+Stokes' Theorem is also the generalization of (a vector form of) Green's Theorem to 3-space, for if $S$ lies entirely within the $xy$-plane, Stokes' Theorem resolves to:
+$$\iint_S \curl\vect{F}\cdot\hat{k}\,dA = \oint_C \vect{F}\cdot d\vect{r}$$
+
 \section{Appendix}
 \subsection{Cartesian Products} \label{set-multiplication}
 For sets $A, B$, their Cartesian product is $$A \times B = \left\{ (a,b) | a \in A, b \in B\right\}$$
