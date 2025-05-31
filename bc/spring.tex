@@ -105,9 +105,9 @@ Integrates perpendicular to the axis of rotation. May be inconvenient if one lac
 Based on a Riemann Sum of rectangular prisms $2 \pi rhw$ becoming
 $$\lim_{n \to \infty} \sum_{i=1}^{n} 2 \pi \cdot r(x_i) \cdot f(x_i) \Delta x_i$$
 
-Shells can be "unwrapped" into a figure resembling a rectangular prism, with the difference in area approaching $0$ as $w = \Delta x \to 0$.
+Shells can be ``unwrapped'' into a figure resembling a rectangular prism, with the difference in area approaching $0$ as $w = \Delta x \to 0$.
 
-Let $f(x)$ be the function producing the curve underneath which the region $R$ is bounded by (with the other bounding sides being $x = a$, $x = b$, and $y = 0$). Let $r(x)$ be the function representing the distance ("radius") of the curve from the axis of rotation (usually $r(x) = b - x$, with $b$ potentially being $0$). In this case, we are revolving about the y-axis.
+Let $f(x)$ be the function producing the curve underneath which the region $R$ is bounded by (with the other bounding sides being $x = a$, $x = b$, and $y = 0$). Let $r(x)$ be the function representing the distance (``radius'') of the curve from the axis of rotation (usually $r(x) = b - x$, with $b$ potentially being $0$). In this case, we are revolving about the y-axis.
 
 $$V = 2\pi \int_{a}^{b} r(x) \cdot f(x) dx$$
 
@@ -236,7 +236,7 @@ Expressions are provided for the special case of ellipses centered at $(0, 0)$ a
     \item Eccentricity: $e = \frac{c}{a}$, $0 < e < 1$ (The eccentricity of an ellipse is always between $0$ and $1$.)
 
         As $e \to 0$, the ellipse figure approaches that of a circle.
-    \item Area: $ab\pi = (\sqrt{ab})^2\pi$, (related to geometric mean of "principal radii")
+    \item Area: $ab\pi = (\sqrt{ab})^2\pi$, (related to geometric mean of ``principal radii'')
     \item Circumference: No closed form exists
 \end{itemize}
 
@@ -291,7 +291,7 @@ For a point $P(x_o, y_o)$, and a line given by $Ax + By + C = 0$
 
 $$d = \frac{|C + Ax_o + By_o|}{\sqrt{A^2+B^2}}$$
 
-This is on its own a generalization of the boolean question "is a point on a line?" to a qualitative "how much is this point not on the line?"
+This is on its own a generalization of the boolean question ``is a point on a line?'' to a qualitative ``how much is this point not on the line?''
 
 This can be generalized to any dimension.
 
@@ -417,12 +417,12 @@ $$P(t) = (1-t)A + tB$$
 If $0 \le t \le 1$, this is a functional definition of line segment AB, and if $t \in \mathbb{R}$, this is a functional definition of line AB.
 
 \paragraph{Eliminating the Parameter}
-Although it is possible to eliminate the parameter (solving for $t$ then substituting appropriately, this only produce a super-set ("universe") of the valid points in the parametric curve, for one loses the parameter indicating what points on the curve are valid and "when" (e.g. in particle motion problems).
+Although it is possible to eliminate the parameter (solving for $t$ then substituting appropriately, this only produce a super-set (``universe'') of the valid points in the parametric curve, for one loses the parameter indicating what points on the curve are valid and ``when'' (e.g. in particle motion problems).
 
 \paragraph{Graphing a Parametric Curve}
 To graph a parametric curve, it is helpful to think of intervals of note in the functions for $x$ and $y$, along with end behavior. Additionally, consider the range/domain of these functions to determine bounds for your parametric curve.
 
-Orientation, in which \emph{direction} the points on the curve "move" as we increase/decrease $t$ (moving along the "number line"), is crucial to understanding a parametric curve. This is why direction must also be indicated in a parametric curve's graph.
+Orientation, in which \emph{direction} the points on the curve ``move'' as we increase/decrease $t$ (moving along the ``number line''), is crucial to understanding a parametric curve. This is why direction must also be indicated in a parametric curve's graph.
 
 \paragraph{Important Observation}
 When viewed as a set of points, the graph of a relation has no unique parameterization.
@@ -445,10 +445,10 @@ This is also a restatement of the unit circle definition for $\sin$ and $\cos$ (
 
 If $x$ and $y$ are swapped, the same curve appears, but the direction becomes clockwise as opposed to counterclockwise, and the points will appear at different $t$ values.
 
-The "speed" of the traversal of the curve can be scaled by putting a factor on t.
+The ``speed'' of the traversal of the curve can be scaled by putting a factor on t.
 
 \subparagraph{Speed of a Parametric Curve}
-For instance, to "double" the "angular velocity (speed) of the point" on circle parameterization:
+For instance, to ``double'' the ``angular velocity (speed) of the point'' on circle parameterization:
 \[
     \begin{cases}
         x(t) = \cos 2t \\
@@ -495,15 +495,15 @@ For any curve $y = f(x)$:
 \]
 
 \subsection{Derivatives of Parametric Curves}
-Note that "the derivative" is not a meaningful term in this context due to the variety of possible derivatives to take.
+Note that ``the derivative'' is not a meaningful term in this context due to the variety of possible derivatives to take.
 
-\subsubsection{Tangent Lines ("First" and "Second" Derivative of the Curve)}
+\subsubsection{Tangent Lines (``First'' and ``Second'' Derivative of the Curve)}
 The slope of the tangent line is $\frac{dy}{dx}$, but we can only immediately derive $\frac{dx}{dt}$ and $\frac{dy}{dt}$.
 
 Good news!
 $$\frac{dy}{dx} = \frac{\frac{dy}{dt}}{\frac{dx}{dt}}$$
 
-Usually, if $\frac{dy}{dt} = 0$, the tangent line is horizontal, and if $\frac{dx}{dt} = 0$, the tangent line is vertical. However, if $\frac{dx}{dt} = \frac{dy}{dt} = 0$, there is an indeterminate form that may represent a cusp of the curve (the particle is momentarily "at rest", refer to the velocity section).
+Usually, if $\frac{dy}{dt} = 0$, the tangent line is horizontal, and if $\frac{dx}{dt} = 0$, the tangent line is vertical. However, if $\frac{dx}{dt} = \frac{dy}{dt} = 0$, there is an indeterminate form that may represent a cusp of the curve (the particle is momentarily ``at rest'', refer to the velocity section).
 
 \paragraph{Axial Extrema}
 Just like in our conception of $y=f(x)$, we can search for extreme y-values by looking for the zeroes of the function for the y-value, $y'(t)$, but we can also find the leftmost/rightmost points by leveraging $x'(t)$.
@@ -543,7 +543,7 @@ For reference, the position vector is $<x(t), y(t)>$.
 The acceleration vector is
 $$<x''(t), y''(t)>$$
 
-\subsubsection{Area "Under" a Parametric Curve}
+\subsubsection{Area ``Under'' a Parametric Curve}
 $$A = \int_{\alpha}^{\beta} y(t) x'(t) \,dt$$
 
 Notice that $x'(t) \,dt$ simply represents the (signed) $\Delta x$, with $x'(t)$ being a local multiplier.
@@ -556,7 +556,7 @@ With $r$ being the \emph{directed} distance from the designated pole point, and 
 
 The polar coordinate grid is drawn as a series of concentric circles (radius $r$) with straight lines (angle $\theta$) interspersed.
 
-One way to conceptualize this coordinate system is placing a point on "which circle" (distance from pole), then how specifying far to rotate the point about the pole.
+One way to conceptualize this coordinate system is placing a point on ``which circle'' (distance from pole), then how specifying far to rotate the point about the pole.
 
 The pole is analogous to the origin in the Cartesian plane.
 
@@ -655,7 +655,7 @@ Replace $\cos$ with $\sin$ for vertical orientation.
 
 Our notion of eccentricity applies just the same, $e=0$ makes a circle, $e=1$ makes a parabola, $e$ between makes an ellipse, and $e > 1$ makes a hyperbola.
 \subsection{Polar and Derivatives}
-Once again, "the derivative" is a meaningless term.
+Once again, ``the derivative'' is a meaningless term.
 
 \subsubsection{Tangent Lines to Polar Curves} \label{polar-derivatives}
 The slope of a tangent line is always $\frac{dy}{dx}$.
@@ -677,7 +677,7 @@ Tangent lines to the pole are represented by $\theta = s$, where $s$ is a soluti
 The angle at which the curve approaches the pole is also the angle of the tangent line.
 
 \subsubsection{Polar Derivative}
-The derivative of $r$ with respect to $\theta$, $\frac{dr}{d\theta}$ is the "polar derivative".
+The derivative of $r$ with respect to $\theta$, $\frac{dr}{d\theta}$ is the ``polar derivative''.
 
 One common question asked on AP exams is what it would mean for $\frac{dr}{d\theta} < 0$, which is that $r \to -\infty$. If $r > 0$, this means that the curve is getting closer to the pole.
 
@@ -692,9 +692,9 @@ Here,  $r = f(\theta)$, and we assume that $f(\theta)$ is continuous and \emph{n
 It may also be helpful to leverage the symmetry of certain polar graphs to adjust the bounds such that $f(\theta)$ may remain positive, or to cancel out the coefficient of $\frac{1}{2}$.
 
 \subsubsection{Area Between Polar Curves}
-Unlike the area between Cartesian curves, in which we could simply take the vertical difference between the functions, we must graph the functions and split the area into "ice-cream cone" shaped polar area sections that we can integrate.
+Unlike the area between Cartesian curves, in which we could simply take the vertical difference between the functions, we must graph the functions and split the area into ``ice-cream cone'' shaped polar area sections that we can integrate.
 
-The boundaries of these sections are at the $\theta$ values where the graphs intersect. Do note that due to pole, $-r$, and $\theta$ cycling shenanigans, it is best to graph the curve first to get an accurate sense of where the intersections are (which may not always be "collisions" where $r$ and $\theta$ are equal). Do \emph{not} forget to check the endpoints!
+The boundaries of these sections are at the $\theta$ values where the graphs intersect. Do note that due to pole, $-r$, and $\theta$ cycling shenanigans, it is best to graph the curve first to get an accurate sense of where the intersections are (which may not always be ``collisions'' where $r$ and $\theta$ are equal). Do \emph{not} forget to check the endpoints!
 
 \subsection{Polar Arclength}
 This is an additional section in textbook section 10.4.
@@ -727,7 +727,7 @@ $$a, \left(a + d\right), \left(a + 2d\right), \left(a + 3d\right), \ldots, \left
 and any term can be written as
 $$a_n = a + (n-1)d$$
 
-This is analogous to a "point-slope" definition of a line, as the arithmetic sequence is in essence a line. One can also define an arithmetic sequence using two "points".
+This is analogous to a ``point-slope'' definition of a line, as the arithmetic sequence is in essence a line. One can also define an arithmetic sequence using two ``points''.
 
 In an arithmetic sequence, every term is the algebraic mean of its (equidistant) neighbors.
 
@@ -813,7 +813,7 @@ Every infinite series is really an infinite series of partial sums.
 
 By defining/recasting our question about what it means to add infinitely many terms into a question about convergent series, we are able to apply our existing tools to analyzing infinite series.
 
-"Does this series converge?" is now defined to be the same question as "Does $\left\{ S_n \right\}$ converge?" or "Does $\lim_{n \to \infty} S_n$ exist?"
+``Does this series converge?'' is now defined to be the same question as ``Does $\left\{ S_n \right\}$ converge?'' or ``Does $\lim_{n \to \infty} S_n$ exist?''
 
 Unfortunately, even if we can prove that a series converges, we will rarely be able to discern what value it converges to.
 
@@ -861,7 +861,7 @@ Then,
 In other words, when the sums converge, they have a linear structure in which algebraic properties apply.
 
 \paragraph{Abstract Concept} If the sequence of partial sums is changing at rates decreasing sufficiently quickly, the series will converge.\\
-Only the end behavior matters, and we can take off an arbitrary (finite) number of terms off the "front" of the sum with no bearing on convergence/divergence.
+Only the end behavior matters, and we can take off an arbitrary (finite) number of terms off the ``front'' of the sum with no bearing on convergence/divergence.
 
 \subsection{Convergence/Divergence Tests}
 A series either diverges or converges, but some tests only tell if a series converges/diverges in a specific way, and are inconclusive otherwise.
@@ -924,11 +924,11 @@ This can be proved by grouping the terms of the sequence to form a new sequence 
 
 \paragraph{Alternating Series Remainder} If an alternating series converges to $S$, then a partial sum $S_n$ is always within $a_{n+1}$ of the value. That is, $\forall n$, $|S-S_n| \le a_{n+1}$.
 
-This can be proven by observing that the partial sums always "jump across" the true value $S$, but with decreasing magnitudes.
+This can be proven by observing that the partial sums always ``jump across'' the true value $S$, but with decreasing magnitudes.
 
 \subsubsection{Absolute and Conditional Convergence}
 A series $\sum_{n}^{\infty}\limits a_n$ is absolutely convergent if $\sum_{n}^{\infty}\limits |a_n|$ converges.\\
-A series $\sum_{n}^{\infty}\limits a_n$ is conditionally convergent if $\sum_{n}^{\infty}\limits a_n$ converges, but $\sum_{n}^{\infty}\limits |a_n|$ diverges.\footnote{The "series of the absolute value of $a_n$" $\left(\sum|a_n|\right)$ is NOT the same as the "absolute value of the series" $\left(|\sum a_n|\right)$.}
+A series $\sum_{n}^{\infty}\limits a_n$ is conditionally convergent if $\sum_{n}^{\infty}\limits a_n$ converges, but $\sum_{n}^{\infty}\limits |a_n|$ diverges.\footnote{The ``series of the absolute value of $a_n$'' $\left(\sum|a_n|\right)$ is NOT the same as the ``absolute value of the series'' $\left(|\sum a_n|\right)$.}
 
 \paragraph{Theorem} If $\sum_{n}^{\infty}\limits |a_n|$ converges, then $\sum_{n}^{\infty}\limits a_n$ converges.
 
@@ -1000,12 +1000,12 @@ For a series that you can model with a function $f(x)$, $\int f(x) = C + \sum \l
     f(x) = \sum_{n=1}^{\infty} \frac{x^n}{n} &= x + \frac{x^2}{2} + \frac{x^3}{3} + \ldots \\
     \int f(x)dx = \sum_{n=2}^{\infty} \frac{x^n}{n(n-1)} &= \frac{x^2}{2} + \frac{x^3}{3 \cdot 2} + \frac{x^4}{4 \cdot 3} + \ldots
 \end{align*}
-Here, one can also see differentiation/integration as a "shifting" of terms.
+Here, one can also see differentiation/integration as a ``shifting'' of terms.
 
 \subsubsection{Shift and Subtract}
 The shift and subtract method is (an optional) method for evaluating certain \emph{absolutely convergent} power series.
 
-By multiplying some series $S$ by a factor $a$ such that the denominators of the terms of the sequence underlying $S$ are "shifted" over, one can try to take $aS - S$ to produce a simpler set of terms for the series, such as a geometric series. This is analogous to the finite difference method of approximating a polynomial's derivatives.
+By multiplying some series $S$ by a factor $a$ such that the denominators of the terms of the sequence underlying $S$ are ``shifted'' over, one can try to take $aS - S$ to produce a simpler set of terms for the series, such as a geometric series. This is analogous to the finite difference method of approximating a polynomial's derivatives.
 
 For example:
 \begin{align*}
@@ -1111,14 +1111,14 @@ It is useful to use slope fields to develop an educated guess for particular sol
 \subsubsection{Euler's Method}
 A method of successive approximation for points on a solution curve.
 
-Instead of using a single tangent line to approximate the value of $y(c+a)$ given an initial constraint value of $y(c)$, which we denote $(x_0,y_0)=(c,y(c))$, and the slope field $F(x,y)$, we subdivide the interval into subintervals of a given "step size" ($h$).  We then compute the endpoints of each interval $(x_n,y_n)$ iteratively using the approximation $$y_n=y_{n-1}+h\cdot F\left(x_{n-1},y_{n-1}\right)$$ until we reach the desired $x_n$.
+Instead of using a single tangent line to approximate the value of $y(c+a)$ given an initial constraint value of $y(c)$, which we denote $(x_0,y_0)=(c,y(c))$, and the slope field $F(x,y)$, we subdivide the interval into subintervals of a given ``step size'' ($h$).  We then compute the endpoints of each interval $(x_n,y_n)$ iteratively using the approximation $$y_n=y_{n-1}+h\cdot F\left(x_{n-1},y_{n-1}\right)$$ until we reach the desired $x_n$.
 
 Note that for nonlinear conditions, evaluations may become chaotic: errors may be amplified or dampened in unpredictable ways due to minor miscalculations/changes in step size.
 
 \section{Extension: Statistics}
 For our definitions of statistics, we base all of our analysis on sets.
 
-Statistics in general is about trading accuracy/verbosity in (numerical) data for a simpler/terser amount of description numbers. A "first order approximation" can be done with measures of central tendency, and additional information can be conveyed by variation from that central tendency.
+Statistics in general is about trading accuracy/verbosity in (numerical) data for a simpler/terser amount of description numbers. A ``first order approximation'' can be done with measures of central tendency, and additional information can be conveyed by variation from that central tendency.
 
 \subsection{Sample Space}
 The set ($S$) of all possible outcomes.
@@ -1142,7 +1142,7 @@ The unifying principles of any probability system.
 \begin{enumerate}
     \item $P(E)\ge0$
     \item $P(S)=1$
-    \item $P(E \cup F) = P(E) + P(F)$ if $E \cap F = \varnothing$ ($E$ and $F$ are disjoint sets with no overlaps, so their union ("or") will add elements of the set)
+    \item $P(E \cup F) = P(E) + P(F)$ if $E \cap F = \varnothing$ ($E$ and $F$ are disjoint sets with no overlaps, so their union (``or'') will add elements of the set)
 \end{enumerate}
 
 \subsubsection{Principle of Inclusion/Exclusion}
@@ -1173,7 +1173,7 @@ Two events $A$ and $B$ are independent if $P(B|A)=P(B)$, as
 \end{align*}
 
 \subsection{Random Variables}
-A random "variable"\footnote{It is more appropriate to consider these functions.} $X$ represents a set of values in $S$, and maps that set to $\mathbb{R}$.  $X: S \to R$.
+A random ``variable''\footnote{It is more appropriate to consider these functions.} $X$ represents a set of values in $S$, and maps that set to $\mathbb{R}$.  $X: S \to R$.
 
 The probability of a specific range value being returned from $X$ can be modeled with a (discrete) probability distribution function, which can differ greatly.
 For instance, some are skewed, some are symmetric, and some are geometric/exponential.
@@ -1214,7 +1214,7 @@ The multiplication/combinatorial terms refer to the commutativity of the events 
 The sum of $P(x=k)$ for all $k$ is $1$.
 
 \subsubsection{Geometric Model}\label{geo}
-This is a geometric distribution, in which $k-1$ "tails" are flipped, ending with a single heads on the $k$th iteration. Omitting the $p$ produces the likelihood of only getting those $k-1$ tails.
+This is a geometric distribution, in which $k-1$ ``tails'' are flipped, ending with a single heads on the $k$th iteration. Omitting the $p$ produces the likelihood of only getting those $k-1$ tails.
 $$P(X=k)=q^{k-1}p = (1 - p)^{k-1}p$$
 
 \subsubsection{Poisson Distribution}
@@ -1286,7 +1286,7 @@ The exponential distribution can be defined as
     \end{cases}
 \]
 
-This distribution is "memoryless" in that $P(X \ge a + \Delta a | X \ge a) = P(X \ge \Delta a)$.
+This distribution is ``memoryless'' in that $P(X \ge a + \Delta a | X \ge a) = P(X \ge \Delta a)$.
 
 \begin{align*}
    P(X\ge a) = e^{-\lambda a}&& E[X] = \frac{1}{\lambda} && Var(X) = \frac{1}{\lambda^2}
@@ -1375,7 +1375,7 @@ Below are Wolfram Alpha based calculator tools to aid in verifying select Polar 
 \subsection{Rearrangement of Series}
 Also known as the Riemann Rearrangement Theorem.
 
-If $\sum_{n=1}^{\infty}\limits a_n$ converges conditionally, you can rearrange the terms in the series to make the series "converge to" any finite number.
+If $\sum_{n=1}^{\infty}\limits a_n$ converges conditionally, you can rearrange the terms in the series to make the series ``converge to'' any finite number.
 
 This is because we can design two sub-series, $\sum b_n$ ($b_n = a_n > 0$) and $\sum c_n$ ($c_n = a_n < 0$), which are both divergent, and so we can add precisely enough terms from each side so that the series sum will converge to a desired value.
 

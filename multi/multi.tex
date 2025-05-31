@@ -36,7 +36,7 @@
 
 \subsection{Functions}
 $$f: \mathbb{R}^n \to \mathbb{R}^m$$
-Functions map a \textbf{domain} (e.g. $\mathbb{R}^n$, read ``R N") to a \textbf{codomain} (e.g. $\mathbb{R}^m$ -- see appendix \ref{set-multiplication} for more information). In the scope of this course, we will usually have $n$ or $m = 1$, and $n,m \in \mathbb{N}$.\footnote{In generalized multivariable calculus, more profound matrix transformations are used.}
+Functions map a \textbf{domain} (e.g. $\mathbb{R}^n$, read ``R N'') to a \textbf{codomain} (e.g. $\mathbb{R}^m$ -- see appendix \ref{set-multiplication} for more information). In the scope of this course, we will usually have $n$ or $m = 1$, and $n,m \in \mathbb{N}$.\footnote{In generalized multivariable calculus, more profound matrix transformations are used.}
 Common function domain/codomain pairings we consider are
 \begin{itemize}
     \item $f: \mathbb{R}^2 \to \mathbb{R}$ -- can be represented as mapping points on the 2D plane to label values or as a 3D \textbf{surface}.
@@ -49,7 +49,7 @@ Common function domain/codomain pairings we consider are
 A figure in N-space represents N values (from both the domain and codomain) per point. For instance, a number line represents 1-space, and the xy-plane represents 2-space.
 
 \subsubsection{Axes}
-For 3-space, we conventionally use 3 mutually perpendicular axes -- $x, y, z$, meeting at an origin $O(0,0,0)$ -- to represent the three dimensions. By convention, these axes follow the ``right-hand rule", with the alternative ``left-hand rule" leading to certain negations in formulae.
+For 3-space, we conventionally use 3 mutually perpendicular axes -- $x, y, z$, meeting at an origin $O(0,0,0)$ -- to represent the three dimensions. By convention, these axes follow the ``right-hand rule'', with the alternative ``left-hand rule'' leading to certain negations in formulae.
 This model is similar to the axes in 2-space, where the RHR does not make a difference, but is harder to visualize in 4-space.\footnote{Most of us cannot visualize 4-space with 4 orthogonal axes. Please talk to your doctor if this is not the case...}
 
 \paragraph{Sections}
@@ -80,7 +80,7 @@ $$P\left(\frac{ax_2 + bx_1}{a+b}, \frac{ay_2 + by_1}{a+b}, \frac{az_2 + bz_1}{a+
 
 \subsubsection{Contours}
 Contours allow for the construction of a $N$-dimensional representation/sampling of a $N+1$-dimensional function. For instance, contour surfaces are 3D samples of a 4D space.
-We use contour curves\footnote{Although the textbook uses the term level curve interchangably it may be helpful to depict the ``level" as the $z$-value in 3-space.} to represent a 3D surface with points $(x,y,z)$ by projecting the curves produced for a fixed $z=c$ onto the $xy$-plane.
+We use contour curves\footnote{Although the textbook uses the term level curve interchangably it may be helpful to depict the ``level'' as the $z$-value in 3-space.} to represent a 3D surface with points $(x,y,z)$ by projecting the curves produced for a fixed $z=c$ onto the $xy$-plane.
 \iffalse
 Below is a (low resolution) contour plot of the top half of a sphere:
 \begin{center}
@@ -134,7 +134,7 @@ $$A = \frac{1}{2}\begin{vmatrix}
     x_3 & y_3 & 1 \\
 \end{vmatrix} = \frac{1}{2}\left|(x_1-x_2)(y_2-y_3) - (x_2 - x_3)(y_1 - y_2)\right|$$
 The latter form can be derived using the distance from a point formula. See section \ref{determinant} for more information about the former form.
-This is also known as the shoelace formula, because it can be represented as taking the points in order (clockwise/counterclockwise) and ``lacing" the coordinates to form equivalent products.
+This is also known as the shoelace formula, because it can be represented as taking the points in order (clockwise/counterclockwise) and ``lacing'' the coordinates to form equivalent products.
 
 \subsubsection{Dimensional Analysis of the Determinant Method}
 In the case of the determinant representing a triangle's area, we can translate and rotate the triangle -- since these are rigid motions, area is preserved -- making a new figure with coordinates that form a matrix with the following determinant
@@ -272,7 +272,7 @@ For a plane intersecting the x-axis at $(a,0,0)$, the y-axis at $(0,b,0)$, and t
 $$\frac{x}{a}+\frac{y}{b}+\frac{z}{c}=1$$
 Intercept form is useful for providing the three non-collinear points that can be used to draw a plane.
 
-\subsubsection{``Slope" on a Plane}
+\subsubsection{``Slope'' on a Plane}
 For an arbitrary plane defined by a line with angle $\theta$ to the $x$-axis in the $xy$-plane, the slope $m_\theta$ of the intersection line between this vertical plane and a plane with slopes $m_x$ and $m_y$ is
 $$m_\theta = m_x\cos{\theta} + m_y\sin{\theta}= m_x\frac{\Delta x}{\Delta t} + m_y\frac{\Delta y}{\Delta t}$$ as shown by the right triangle (with angle $\theta$) formed by the line, the $x$-axis, and the $y$-axis.
 
@@ -311,7 +311,7 @@ $$(x-h)^2+(y-k)^2+(z-l)^2=r^2$$
 \subsubsection{Cones}
 Cones have elliptical level curves, and hyperbolic vertical traces (or in the degenerate case at the origin, two crossing lines similar to the absolute value function).
 $$\frac{x^2}{a^2} + \frac{y^2}{b^2} = \frac{z^2}{c^2}$$
-Notice that if instead of $z^2$, one uses $z=\sqrt{\ldots}$, a ``single" cone appears.
+Notice that if instead of $z^2$, one uses $z=\sqrt{\ldots}$, a ``single'' cone appears.
 
 \subsubsection{Elliptic Paraboloid}
 Elliptic paraboloids have parabolic vertical cross sections, and elliptical horizontal contours. Wow!
@@ -339,7 +339,7 @@ There is a one-to-one correspondence between points and (position) vectors.
 \subsection{Notation and Terminology}
 Vectors are usually represented with bolded or lowercase variables $\Vec{a}$, with the arrow head pointing towards the terminal point (e.g. $\overrightarrow{PQ}$). Examples in this section will be in 2-space, but can be generalized to 3-space.
 
-Free vectors are vectors with initial points "freely roaming" about space. Position vectors are vectors with initial points on the original of space. These vectors are equivalent (see below).
+Free vectors are vectors with initial points ``freely roaming'' about space. Position vectors are vectors with initial points on the original of space. These vectors are equivalent (see below).
 
 The magnitude of a vector is denoted $\left|\Vec{a}\right|$ or $\left|\left|\Vec{a}\right|\right|$. This symbol is not the absolute value operator when vectors are involved.
 
@@ -381,20 +381,20 @@ $$k\overrightarrow{a} = \langle ka_1, ka_2 \rangle$$
 The magnitude of the new vector is $k\left|\left|\overrightarrow{a}\right|\right|$.
 
 \section{Vector Products}
-Vector "multiplication" encompasses multiple defined products between vectors.
+Vector ``multiplication'' encompasses multiple defined products between vectors.
 
 \subsection{Dot Product}
-The dot product ("inner product", "scalar product") of two vectors $\vect{a} = \langle a_1, a_2, a_3 \rangle$, $\vect{b} = \langle b_1, b_2, b_3 \rangle$, with an angle $\theta$ between them, is the scalar
+The dot product (``inner product'', ``scalar product'') of two vectors $\vect{a} = \langle a_1, a_2, a_3 \rangle$, $\vect{b} = \langle b_1, b_2, b_3 \rangle$, with an angle $\theta$ between them, is the scalar
 $$\vect{a} \cdot \vect{b} = \magvect{a}\magvect{b}\cos{\theta} = a_1b_1 + a_2b_2 + a_3b_3$$
 Using a geometric interpretation of the two vectors and their difference, one can use the law of cosines to prove the equivalence of the two definitions.
 
 As will be shown in the next sections, it is useful to conceptualize sums of products as dot products.
 
 \subsubsection{Projection}
-The scalar projection of a vector \vect{a} onto \vect{b} is the "component" of \vect{a} on \vect{b}, delimited by a perpendicular to \vect{b} drawn from the tip of \vect{a}. With the angle between \vect{a} and \vect{b} being $\theta$, this is
+The scalar projection of a vector \vect{a} onto \vect{b} is the ``component'' of \vect{a} on \vect{b}, delimited by a perpendicular to \vect{b} drawn from the tip of \vect{a}. With the angle between \vect{a} and \vect{b} being $\theta$, this is
 $$\comp_{\vect{b}} \vect{a} = \magvect{a}\cos{\theta} = \frac{\vect{a} \cdot \vect{b}}{\magvect{b}}$$
 
-The vector projection of a vector \vect{a} onto \vect{b} is the "projection" of \vect{a} on \vect{b} pointing in the same direction at \vect{b}.
+The vector projection of a vector \vect{a} onto \vect{b} is the ``projection'' of \vect{a} on \vect{b} pointing in the same direction at \vect{b}.
 $$\proj_{\vect{b}}\vect{a} = \left(\comp_{\vect{b}}\vect{a}\right)\hat{b} = \frac{\vect{a} \cdot \vect{b}}{\magvect{b}^2} \vect{b}$$
 
 \subsubsection{Properties of the Dot Product}
@@ -403,7 +403,7 @@ $$\proj_{\vect{b}}\vect{a} = \left(\comp_{\vect{b}}\vect{a}\right)\hat{b} = \fra
     \item Distributive Property\footnote{Over addition/subtraction}: $c\left(\vect{a} \cdot \vect{b}\right) = c\vect{a} \cdot \vect{b} = \vect{a} \cdot c\vect{b}$
     \item Scalar Multiplication Property: $\vect{a} \cdot \left(\vect{b} + \vect{c}\right) = \vect{a} \cdot \vect{b} + \vect{a} \cdot \vect{c}$
     \item Zero Property: $\vect{a} \cdot \vect{0} = 0$
-    \item ``Squaring" Theorem: $\vect{a} \cdot \vect{a} = \magvect{a}^2$
+    \item ``Squaring'' Theorem: $\vect{a} \cdot \vect{a} = \magvect{a}^2$
 \end{enumerate}
 Note that $\vect{0}$ is the zero vector, with $0$ magnitude and undefined direction.
 
@@ -443,7 +443,7 @@ Note that a plane of the form $z = m_xx + m_yy$ can be rewritten as
 \end{align*}
 
 \subsection{Cross Product}
-The cross product ("vector product", "outer product") of $\vect{a} = \langle a_1, a_2, a_3 \rangle$ and $\vect{b} = \langle a_1, a_2, a_3 \rangle$ is the vector
+The cross product (``vector product,'' ``outer product'') of $\vect{a} = \langle a_1, a_2, a_3 \rangle$ and $\vect{b} = \langle a_1, a_2, a_3 \rangle$ is the vector
 $$\vect{a} \times \vect{b} = \left\langle a_2b_3 - a_3b_2, a_3b_1 - a_1b_3, a_1b_2 - a_2b_1\right\rangle =
     \begin{vmatrix}
         \hat{i} & \hat{j} & \hat{k} \\
@@ -520,7 +520,7 @@ We can also express the line as the set of points satisfying this equation:
 $$
 \frac{x-x_o}{a} = \frac{y-y_o}{b} = \frac{z-z_o}{c}
 $$
-The value of this ratio can be considered the ``value of $t$" in the functional forms of the line.
+The value of this ratio can be considered the ``value of $t$'' in the functional forms of the line.
 
 \subsubsection{Distance of Point to Line}
 Using a difference/distance vector from the point to a point on the line, we can take the cross product to get the distance to the line.
@@ -570,7 +570,7 @@ Given that $f(x,y)=L$, $g(x,y)=M$; $L,M,k\in\mathbb{R}$ and $n\in\mathbb{N}$:
 \end{align*}
 
 \subsection{Evaluating Limits}
-As suggested by the two-path approach to proving limits do not exist, limits should have consistent values for \emph{all} "paths" taken to approach the limiting point.
+As suggested by the two-path approach to proving limits do not exist, limits should have consistent values for \emph{all} ``paths'' taken to approach the limiting point.
 
 \subsubsection{Continuity}
 $f(x,y)$ is continuous at $(a,b)$ iff $f(a,b)=\lim_{(x,y)\to(a,b)}f(x,y) = f(a,b)$. This property be proven using $\epsilon-\delta$ proofs that accommodate arbitrary points on $f(x,y)$, or by use of limit properties that combine existing continuous functions.
@@ -622,7 +622,7 @@ The potential tangent plane has equation
 	z - f(a,b) &= f_x(x - a) + f_y(y - b)\\
 	L(x,y) &= f_x(x-a) + f_y(y-b) + f(a,b)
 \end{align*}
-$L(x,y)$ can also be referred to as the "linearization of $f$," "linear approximation of $f$," or "tangent plane approximation of $f$."
+$L(x,y)$ can also be referred to as the ``linearization of $f$,'' ``linear approximation of $f$,'' or ``tangent plane approximation of $f$.''
 
 The normal vector is
 $$\langle f_x(a,b), f_y(a,b), -1 \rangle$$
@@ -633,7 +633,7 @@ Note that the mere existence of partials does not imply continuity nor different
 Instead of explicitly evaluating the limit, we will usually use differentiation rules to obtain partial derivatives. For $f_x$/$f_y$, the other variable ($y$ or $x$, respectively) is considered a \emph{constant}, not a variable, so it is not necessary to use the Chain Rule like for implicit differentiation (as seen in Calc I).
 
 \subsubsection{Higher Order Partial Derivatives}
-A higher order partial derivative can be taken in the same direction as the first order derivative (with additional results being analogous to their 2-space equivalents, i.e. "concavity" on the second order derivative).
+A higher order partial derivative can be taken in the same direction as the first order derivative (with additional results being analogous to their 2-space equivalents, i.e. ``concavity'' on the second order derivative).
 
 Calculating a higher order partial derivative uses the same differentiation rules as for the first order partial derivative, keeping in mind that the partial we are taking may be in a different variable (e.g. $\frac{\partial}{\partial x}$ then $\frac{\partial}{\partial y}$). For a function $\mathbb{R}^2\to\mathbb{R}$, there are $2^n$ possible permutation of the axial variables for an $n$-th order derivative.
 
@@ -719,7 +719,7 @@ Using the Chain Rule, $D_{\hat{u}}f = f_xu_1+f_yu_2=\langle f_x, f_y \rangle \cd
 \subsubsection{Gradients}
 We define the gradient of $f(x,y)$ to be
 $$\nabla f(x,y) = \langle f_x(x,y), f_y(x,y) \rangle$$
-The "nabla" is the gradient operator, which operates on functions to return a vector-valued function.
+The ``nabla'' is the gradient operator, which operates on functions to return a vector-valued function.
 
 From the fact that $$D_{\hat{u}}f=\nabla f \cdot \hat{u}=\abs{\nabla f}\abs{\hat{u}}\cos{\theta}$$ we can warrant that $\nabla f$ points in the direction of \textbf{greatest ascent} (increase in $f$), $-\nabla f$ points in the direction of \textbf{greatest descent}, and that $\abs{\nabla f}$ is the \textbf{largest directional derivative}.
 
@@ -785,7 +785,7 @@ From these results about the sign of the quadratic, we can sometimes determine t
 If we are optimizing a surface $f(x,y)$ with $x$ and $y$ being constrained to a curve $g(x,y)=c$ (i.e. a level curve/contour of $g$), critical values occur when $\nabla f(x,y) \parallel \nabla g(x,y)$. This can be expressed as
 $$\nabla f(x,y) = \lambda\nabla g(x,y)$$ with $\lambda$ being a scalar known as the Lagrange Multiplier.
 
-This is because the maxima will occur when the directional derivative of $f(x,y)$ is $0$ in the direction of (tangent to) $g(x,y)$, which happens when the gradient of $f$ is perpendicular to the tangent (``velocity") vector. The proof is situated using a chain rule expressing $g(x,y)=c$ as a parametric curve with $x(t)$ and $y(t)$.
+This is because the maxima will occur when the directional derivative of $f(x,y)$ is $0$ in the direction of (tangent to) $g(x,y)$, which happens when the gradient of $f$ is perpendicular to the tangent (``velocity'') vector. The proof is situated using a chain rule expressing $g(x,y)=c$ as a parametric curve with $x(t)$ and $y(t)$.
 
 Note that with certain constraints, it may be possible to reparameterize a function $f(x,y)$ into a single-variable function that can be easily optimized.
 
@@ -861,7 +861,7 @@ Thus, both $\vect{N}$ and $\vect{T'}$ are parallel and orthogonal to the tangent
 In addition, because $\vect{N}$ is a linear combination of $\vect{r}'$ and $\vect{r}''$, we know that it is coplanar with $\vect{r}'$ and $\vect{r}''$.
 
 \subsubsection{The Osculating Plane}
-The osculating ("kissing") plane contains the vectors $\vect{r}'$, $\vect{r}''$, $\vect{T}$, $\vect{T}'$, and $\vect{N}$. Taking the cross product between two of these vectors (that are non-parallel!), we obtain a normal to the osculating plane, which also lies on the tangent plane. This plane is analogous to a 2nd-degree Taylor approximation for a curve, in the sense that it attempts to match $\vect{r}'$ and $\vect{r}''$.
+The osculating (``kissing'') plane contains the vectors $\vect{r}'$, $\vect{r}''$, $\vect{T}$, $\vect{T}'$, and $\vect{N}$. Taking the cross product between two of these vectors (that are non-parallel!), we obtain a normal to the osculating plane, which also lies on the tangent plane. This plane is analogous to a 2nd-degree Taylor approximation for a curve, in the sense that it attempts to match $\vect{r}'$ and $\vect{r}''$.
 
 \paragraph{Binormal} The Binormal vector is defined to specifically be
 $$\vect{B}=\vect{T}\times\vect{N}$$
@@ -1005,7 +1005,7 @@ To convert Cartesian to cylindrical coordinates, we use the relations
 
 \subsubsection{Cylindrical Volumes}
 The basic unit of cylindrical area is an extruded polar rectangle.
-Considering such a "cylinder"\footnote{Using the textbook definition of cylinder as any figure that has consistent cross sections aligned parallel to an axis.} with height $\Delta z$ and a base that is a polar rectangle $\frac{1}{2}\Delta\theta(\Delta R^2-r^2)$, with $R-r = \Delta{r}$, we can obtain an analogous expression to polar area, used for cylindrical integrals.
+Considering such a ``cylinder''\footnote{Using the textbook definition of cylinder as any figure that has consistent cross sections aligned parallel to an axis.} with height $\Delta z$ and a base that is a polar rectangle $\frac{1}{2}\Delta\theta(\Delta R^2-r^2)$, with $R-r = \Delta{r}$, we can obtain an analogous expression to polar area, used for cylindrical integrals.
 $$dV=r\,dr\,d\theta\,dz$$
 
 \subsection{Integrals in Spherical Coordinates}
@@ -1067,9 +1067,9 @@ $$\mathop{\int\int}_Rf(x,y)\,dx\,dy=\mathop{\int\int}_Sf(x(u,v), y(u,v))\frac{\p
 
 \section{Line Integrals}
 \subsection{Line Integrals of Scalar Functions}
-We define the integral of a scalar function $f(x,y)$ along a path $C$ in the $xy$-plane (the "line") as
+We define the integral of a scalar function $f(x,y)$ along a path $C$ in the $xy$-plane (the ``line'') as
 $$\int_C f(x,y)\,ds = \lim_{\substack{n\to\infty\\\max \Delta{s}\to0}}f(x_i^*,y_i^*)\,\Delta{s}_i$$
-where $ds$ is an infinitesimal arclength element, and $\Delta{s}$ is a small arc length element.\footnote{In some notations, $\oint$ is used for all line integrals, but we choose to reserve this symbol for strictly loop (closed line) integrals.} In essence, we are integrating for the "area" of the "curtain" bounded by $z=0$ and $z=f(x,y)$ along the curve $C$.
+where $ds$ is an infinitesimal arclength element, and $\Delta{s}$ is a small arc length element.\footnote{In some notations, $\oint$ is used for all line integrals, but we choose to reserve this symbol for strictly loop (closed line) integrals.} In essence, we are integrating for the ``area'' of the ``curtain'' bounded by $z=0$ and $z=f(x,y)$ along the curve $C$.
 
 For a smoothly parameterized curve $C=\langle x(t),y(t)\rangle$ from $a\le t \le b$,
 \[
@@ -1102,7 +1102,7 @@ This represents a dot product of $\langle f(x,y),\,g(x,y)\rangle\cdot\langle dx,
 \subsection{Vector Fields}
 A vector field is a collection of vectors corresponding to each point on a plane. We graphically represent a sample of the vector field (such as on the lattice points, which have integer coordinates) with vectors on a plane (potentially scaled to fit).
 \subsubsection{Work Done by a Vector Field}
-In the model of physics, any movement of a particle along a curve that has a parallel component with elements of a vector field has work done on it, representing how the gradient "helps" (in the positive direction) or "hinders" (in the negative direction) the particle's motion. (Note that a particle moving on a curve tangent to the vectors in a vector field has 0 work done.) We take the integral of the dot product of field's "force" with the infinitesimal path vector element ($d\vect{s}$, or using the unit tangent $\vect{T}\,ds$).
+In the model of physics, any movement of a particle along a curve that has a parallel component with elements of a vector field has work done on it, representing how the gradient ``helps'' (in the positive direction) or ``hinders'' (in the negative direction) the particle's motion. (Note that a particle moving on a curve tangent to the vectors in a vector field has 0 work done.) We take the integral of the dot product of field's ``force'' with the infinitesimal path vector element ($d\vect{s}$, or using the unit tangent $\vect{T}\,ds$).
 
 $$\int_C\vect{F}\cdot d\vect{s}=\int_C\vect{F}\cdot d\vect{r}=\int_C\vect{F}\cdot\vect{T}\,\,ds$$
 
@@ -1185,7 +1185,7 @@ Extending a $2-$vector field to $3-$space by defining $\vect{F}=\langle P, Q, 0 
 $$\curl \vect{F} = \left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)\hat{k}$$
 and that a conservative vector field is irrotational ($\curl \vect{F} = 0$).
 
-The curl can be conceptualized as a measure of vorticity/rotational tendency/circulation density, with each component in $\hat{i}, \hat{j}, \hat{k}$ representing the tendency of the vector field to cause rotation of a "paddle" on the $yz$, $xz$, or $xy$ planes respectively.
+The curl can be conceptualized as a measure of vorticity/rotational tendency/circulation density, with each component in $\hat{i}, \hat{j}, \hat{k}$ representing the tendency of the vector field to cause rotation of a ``paddle'' on the $yz$, $xz$, or $xy$ planes respectively.
 
 We can define the circulation density of $\vect{F}$ at $(a,b)$ to be the limit of the work done on an infinitesimal loop around the point $(a,b)$ over its area. We choose the square $C$ of side length $2h$ centered at $(a,b)$ in the $xy$ plane, but alternative choices, like circles, should produce similar results.
 $$\frac{\int_C \vect{F}\cdot d\vect{r}}{(2h)^2}$$
@@ -1212,7 +1212,7 @@ Green's Theorem claims that integrating $\iint_D\curl{\vect{F}}\cdot\hat{k}\,dA$
 \subsubsection{Divergence}
 If $\vect{F}(x,y,z)=\langle P(x,y,z), Q(x,y,z), R(x,y,z)$,
 $$\divergence \vect{F} = \vect{\nabla}\cdot\vect{F}= \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}$$
-which represents the magnitude of vector "creation"/"destruction".
+which represents the magnitude of vector ``creation''/``destruction''.
 
 \paragraph{Relation to Green's Theorem}
 If, instead of integrating the field vectors tangent to the curve $C$ with parameterization $\vect{r}(t) = \langle x(t), y(t)\rangle$ (as we use with the curl form of Green's Theorem), we integrate the field vectors normal and outward to $C$, we find the normal unit vectors to be
@@ -1262,7 +1262,7 @@ $$S = \iint_DdS=\iint_{(u,v)\in D}\left|\vect{r_u}\times\vect{r_v}\right|\,du\,d
 \subsection{Surface Integrals of Scalar Functions}
 To integrate a function $w=f(x,y,z)$ ($f:\mathbb{R}^3\to\mathbb{R}$) over a region in space parameterized by $\vect{r}(u,v)=\langle x(u,v), y(u,v), z(u,v) \rangle$ for $u,v \in D$ (a finite domain), we can take a surface integral
 $$\iint_{(u,v)\in D} f(x,y,z)\,dS=\iint_{(u,v)\in D}f(x(u,v),y(u,v),z(u,v))\left|\vect{r_u}\times\vect{r_v}\right|\,du\,dv$$
-This can be conceptualized as summing elements of infinitesimal surface area multiplied by a "height"/"temperature"/"charge" at each point in space. Alternatively, it could be visualized as finding the volume of a thick crop of perfectly straight hairs/hedgehog quills with lengths given by $f(x,y,z)$.
+This can be conceptualized as summing elements of infinitesimal surface area multiplied by a ``height''/``temperature''/``charge'' at each point in space. Alternatively, it could be visualized as finding the volume of a thick crop of perfectly straight hairs/hedgehog quills with lengths given by $f(x,y,z)$.
 
 \subsubsection{Special Cases}
 \begin{itemize}
@@ -1344,7 +1344,7 @@ $$\iint_S \curl\vect{F}\cdot\hat{k}\,dA = \oint_C \vect{F}\cdot d\vect{r}$$
 \subsection{Cartesian Products} \label{set-multiplication}
 For sets $A, B$, their Cartesian product is $$A \times B = \left\{ (a,b) | a \in A, b \in B\right\}$$
 This produces a set of (ordered) 2-tuples/vectors.
-The ``$n$-ary Cartesian product" generalizes this process to produce $n$-tuples/vectors, leading to a definition for ``exponentiating" sets, as in $\mathbb{R}^n$.
+The ``$n$-ary Cartesian product'' generalizes this process to produce $n$-tuples/vectors, leading to a definition for ``exponentiating'' sets, as in $\mathbb{R}^n$.
 
 \subsection{Curves}
 A \textbf{simple} curve has no cusps (has continuous derivatives) and does not intersect itself.
